@@ -2,7 +2,7 @@
 
 ## Introduction
 
-数据库大作业之资料管理系统（Material Managing System）。
+数据库大作业之资料管理系统（Materials Management System）。
 
 资料类型：
 
