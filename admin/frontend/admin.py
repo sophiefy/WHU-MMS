@@ -45,7 +45,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 class Admin:
     def __init__(self):
         self.mainWin = MainWin()
-
+        self.database = None
 
 
 if __name__ == '__main__':

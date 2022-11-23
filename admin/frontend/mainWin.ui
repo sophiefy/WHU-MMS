@@ -36,7 +36,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="pageHome"/>
       <widget class="QWidget" name="pageAddBook">
@@ -344,6 +344,34 @@ background-color: rgb(85, 255, 127);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
           </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>书名</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>作者</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>出版社</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>出版时间</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ISBN</string>
+           </property>
+          </column>
          </widget>
         </item>
         <item>
@@ -798,6 +826,39 @@ background-color: rgb(85, 255, 127);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
           </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>标题</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>作者</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>机构</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>发表日期</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>会议 / 期刊</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>DOI</string>
+           </property>
+          </column>
          </widget>
         </item>
         <item>
