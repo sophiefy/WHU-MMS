@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1008</width>
-    <height>692</height>
+    <height>691</height>
    </rect>
   </property>
   <property name="font">
@@ -36,53 +36,11 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="pageHome"/>
       <widget class="QWidget" name="pageAddBook">
        <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-          </property>
-          <property name="text">
-           <string>作者</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_3">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-          </property>
-          <property name="text">
-           <string>出版社</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
         <item row="5" column="1">
          <widget class="QComboBox" name="bookCombo">
           <property name="font">
@@ -93,24 +51,34 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_4">
+        <item row="6" column="0">
+         <widget class="QPushButton" name="bookAddBtn">
           <property name="font">
            <font>
             <family>微软雅黑</family>
             <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+           <string notr="true">background-color: rgba(255, 255, 255, 0);
+background-color: rgb(85, 255, 127);</string>
           </property>
           <property name="text">
-           <string>出版时间</string>
+           <string>添加</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+         </widget>
+        </item>
+        <item row="1" column="1" colspan="2">
+         <widget class="QLineEdit" name="bookAuthorEdit">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
           </property>
          </widget>
         </item>
@@ -135,8 +103,8 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_6">
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -149,15 +117,36 @@
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="text">
-           <string>类别</string>
+           <string>作者</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
-        <item row="6" column="0">
-         <widget class="QPushButton" name="bookAddBtn">
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="text">
+           <string>出版时间</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" colspan="2">
+         <widget class="QLineEdit" name="bookPressEdit">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -165,11 +154,8 @@
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 0);
-background-color: rgb(85, 255, 127);</string>
-          </property>
-          <property name="text">
-           <string>添加</string>
+           <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
           </property>
          </widget>
         </item>
@@ -194,19 +180,6 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="5" column="2">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="4" column="1" colspan="2">
          <widget class="QLineEdit" name="bookISBNEdit">
           <property name="font">
@@ -218,6 +191,62 @@ background-color: rgb(85, 255, 127);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);
 </string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="text">
+           <string>出版社</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" colspan="2">
+         <widget class="QLineEdit" name="bookNameEdit">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="text">
+           <string>类别</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -235,47 +264,18 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1" colspan="2">
-         <widget class="QLineEdit" name="bookPressEdit">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-           </font>
+        <item row="5" column="2">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
           </property>
-         </widget>
-        </item>
-        <item row="1" column="1" colspan="2">
-         <widget class="QLineEdit" name="bookAuthorEdit">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" colspan="2">
-         <widget class="QLineEdit" name="bookNameEdit">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
-          </property>
-         </widget>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -344,13 +344,41 @@ background-color: rgb(85, 255, 127);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
           </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>书名</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>作者</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>出版社</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>出版时间</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ISBN</string>
+           </property>
+          </column>
          </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <property name="spacing">
-           <number>10</number>
-          </property>
           <item>
            <widget class="QPushButton" name="bookFirstBtn">
             <property name="font">
@@ -404,77 +432,73 @@ background-color: rgb(85, 255, 127);</string>
            </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
-            <item>
-             <widget class="QLabel" name="label_17">
-              <property name="font">
-               <font>
-                <family>微软雅黑</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Plain</enum>
-              </property>
-              <property name="text">
-               <string>跳转至第</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="paperJumpEdit_2">
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>微软雅黑</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_18">
-              <property name="font">
-               <font>
-                <family>微软雅黑</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Plain</enum>
-              </property>
-              <property name="text">
-               <string>页</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QLabel" name="label_17">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="text">
+             <string>跳转至第</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="paperJumpEdit_2">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_18">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="text">
+             <string>页</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="bookConfirmBtn">
@@ -486,6 +510,51 @@ background-color: rgb(85, 255, 127);</string>
             </property>
             <property name="text">
              <string>确定</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bookEditBtn">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(85, 255, 0);</string>
+            </property>
+            <property name="text">
+             <string>编辑</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bookDeleteBtn">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 0, 0);</string>
+            </property>
+            <property name="text">
+             <string>删除</string>
             </property>
            </widget>
           </item>
@@ -798,6 +867,39 @@ background-color: rgb(85, 255, 127);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
           </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>标题</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>作者</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>机构</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>发表日期</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>会议 / 期刊</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>DOI</string>
+           </property>
+          </column>
          </widget>
         </item>
         <item>
