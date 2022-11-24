@@ -1,3 +1,5 @@
+import traceback
+
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -5,7 +7,9 @@ from PyQt5.QtGui import *
 import sys
 
 from frontend.mainWin import Ui_MainWindow
+from frontend.editBookWin import Ui_FormEditBook
 from backend.CRUD import Database
+
 
 class MainWin(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -40,6 +44,31 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         return name, author, press, release_date, ISBN
 
+    def getSelectedBookInfo(self):
+        row = self.bookTbl.currentRow()
+        name = self.bookTbl.item(row, 0).text()
+        author = self.bookTbl.item(row, 1).text()
+        press = self.bookTbl.item(row, 2).text()
+        release_date = self.bookTbl.item(row, 3).text()
+        ISBN = self.bookTbl.item(row, 4).text()
+
+        return name, author, press, release_date, ISBN
+
+    def updateBookTable(self, table):
+        assert table is not None
+        self.bookTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.bookTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                self.bookTbl.insertRow(i)
+                self.bookTbl.setItem(i, 0, QTableWidgetItem(row[0]))
+                self.bookTbl.setItem(i, 1, QTableWidgetItem(row[1]))
+                self.bookTbl.setItem(i, 2, QTableWidgetItem(row[2]))
+                self.bookTbl.setItem(i, 3, QTableWidgetItem(row[3]))
+                self.bookTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+        except Exception as e:
+            print(e)
+
     def closeEvent(self, e):
         reply = QMessageBox.question(self,
                                      '询问',
@@ -53,14 +82,43 @@ class MainWin(QMainWindow, Ui_MainWindow):
             e.ignore()
 
 
+class EditBookWin(QDialog, Ui_FormEditBook):
+    def __init__(self):
+        super(EditBookWin, self).__init__()
+
+        self.setupUi(self)
+
+    def putOldBookInfo(self, row):
+        name, author, press, release_date, ISBN = row[0], row[1], row[2], row[3], row[4]
+        self.bookNameEdit.setText(name)
+        self.bookAuthorEdit.setText(author)
+        self.bookPressEdit.setText(press)
+        self.bookDateEdit.setText(release_date)
+        self.bookISBNEdit.setText(ISBN)
+
+    def getNewBookInfo(self):
+        name = self.bookNameEdit.text()
+        author = self.bookAuthorEdit.text()
+        press = self.bookPressEdit.text()
+        release_date = self.bookDateEdit.text()
+        ISBN = self.bookISBNEdit.text()
+
+        return name, author, press, release_date, ISBN
+
+
 class Admin:
     def __init__(self):
         self.mainWin = MainWin()
+        self.editBookWin = EditBookWin()
         self.database = None
 
         # initial signal slots
         self.mainWin.searchBookBtn.clicked.connect(self.update_book_table)
         self.mainWin.bookAddBtn.clicked.connect(self.add_book)
+        self.mainWin.bookEditBtn.clicked.connect(self.edit_book)
+        self.mainWin.bookDeleteBtn.clicked.connect(self.delete_book)
+
+        self.editBookWin.bookAddBtn.clicked.connect(self.confirm_edit_book)
 
         self.create_connection('database/books.db')
 
@@ -73,27 +131,13 @@ class Admin:
             table = self.database.read_book()
             print('table: ', table)
             if table:
-                self.mainWin.bookTbl.setRowCount(0)
-                self.mainWin.bookTbl.clearContents()
-                try:
-                    for i, row in enumerate(table):
-                        self.mainWin.bookTbl.insertRow(i)
-                        self.mainWin.bookTbl.setItem(i, 0, QTableWidgetItem(row[0]))
-                        self.mainWin.bookTbl.setItem(i, 1, QTableWidgetItem(row[1]))
-                        self.mainWin.bookTbl.setItem(i, 2, QTableWidgetItem(row[2]))
-                        self.mainWin.bookTbl.setItem(i, 3, QTableWidgetItem(row[3]))
-                        self.mainWin.bookTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                except Exception as e:
-                    print(e)
-
+                self.mainWin.updateBookTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def add_book(self):
         name, author, press, release_date, ISBN = self.mainWin.getNewBookInfo()
 
-        # 2022年11月23日 -> 2022-11-23
-        # release_date = release_date.replace('年', '-').replace('月', '-').replace('日', '')
         if self.database:
             try:
                 self.database.add_book(name, author, press, release_date, ISBN)
@@ -101,6 +145,45 @@ class Admin:
                 print(e)
             else:
                 self.update_book_table()
+
+    def edit_book(self):
+        try:
+            row = self.mainWin.getSelectedBookInfo()
+        except:
+            QMessageBox.warning(self.mainWin, '警告', '请先选择要编辑的书籍！')
+        else:
+            self.editBookWin.putOldBookInfo(row)
+            self.editBookWin.exec()
+
+    def confirm_edit_book(self):
+        name, author, press, release_date, ISBN = self.editBookWin.getNewBookInfo()
+        if self.database:
+            try:
+                self.database.update_book(name, author, press, release_date, ISBN)
+            except Exception as e:
+                print(e)
+            else:
+                self.update_book_table()
+
+        self.editBookWin.close()
+
+    def delete_book(self):
+        if self.database:
+            reply = QMessageBox.question(self.mainWin,
+                                 '询问',
+                                 '确定要删除该书籍吗？',
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                try:
+                    _, _, _, _, ISBN = self.mainWin.getSelectedBookInfo()
+                except:
+                    QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的书籍！')
+                else:
+                    self.database.delete_book(ISBN)
+                    self.update_book_table()
+            else:
+                pass
 
 
 

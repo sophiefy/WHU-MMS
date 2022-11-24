@@ -1,5 +1,6 @@
 import sqlite3
 
+
 # SECTION: books
 
 class Database:
@@ -25,12 +26,12 @@ class Database:
             except Exception as e:
                 print(e)
 
-
     def delete_book(self, ISBN):
         if self.conn:
             try:
                 self.cursor.execute("delete from Books where ISBN='{}'"
                                     .format(ISBN))
+                self.conn.commit()
             except Exception as e:
                 print(e)
 
@@ -45,8 +46,19 @@ class Database:
                 book_table = self.cursor.fetchall()
                 return book_table
 
-    def update_book(self):
-        pass
+    def update_book(self, name, author, press, release_date, ISBN):
+        # 认为ISBN是不可修改的
+        print('date: ', release_date)
+        if self.conn:
+            try:
+                self.cursor.execute("update Books set "
+                                    "name='{}', author='{}', press='{}', release_date='{}' "
+                                    "where ISBN='{}'"
+                                    .format(name, author, press, release_date, ISBN))
+                self.conn.commit()
+            except Exception as e:
+                print(e)
+
 
 
 if __name__ == '__main__':
