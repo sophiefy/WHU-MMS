@@ -6,110 +6,18 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import sys
 
-from frontend.mainWin import Ui_MainWindow
-from frontend.editBookWin import Ui_FormEditBook
+from frontend.windows import *
 from backend.CRUD import Database
 
-
-class MainWin(QMainWindow, Ui_MainWindow):
-    def __init__(self):
-        super(MainWin, self).__init__()
-
-        self.setupUi(self)
-
-        self.initSignalSlots()
-
-        self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-        self.paperTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-
-    def initSignalSlots(self):
-        # NOTE: CRUD -> Create, Read, Update and Delete
-        self.actionHome.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.actionCbook.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.actionRbook.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        self.actionCpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(3))
-        self.actionRpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(4))
-        self.actionCuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(5))
-        self.actionRuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(6))
-        # self.actionStatBook
-        # self.actionStatBook
-        # self.actionStatPaper
-
-    def getNewBookInfo(self):
-        name = self.bookNameEdit.text()
-        author = self.bookNameEdit.text()
-        press = self.bookPressEdit.text()
-        release_date = self.bookDateEdit.text()
-        ISBN = self.bookISBNEdit.text()
-
-        return name, author, press, release_date, ISBN
-
-    def getSelectedBookInfo(self):
-        row = self.bookTbl.currentRow()
-        name = self.bookTbl.item(row, 0).text()
-        author = self.bookTbl.item(row, 1).text()
-        press = self.bookTbl.item(row, 2).text()
-        release_date = self.bookTbl.item(row, 3).text()
-        ISBN = self.bookTbl.item(row, 4).text()
-
-        return name, author, press, release_date, ISBN
-
-    def updateBookTable(self, table):
-        assert table is not None
-        self.bookTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
-        self.bookTbl.clearContents()
-        try:
-            for i, row in enumerate(table):
-                self.bookTbl.insertRow(i)
-                self.bookTbl.setItem(i, 0, QTableWidgetItem(row[0]))
-                self.bookTbl.setItem(i, 1, QTableWidgetItem(row[1]))
-                self.bookTbl.setItem(i, 2, QTableWidgetItem(row[2]))
-                self.bookTbl.setItem(i, 3, QTableWidgetItem(row[3]))
-                self.bookTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-        except Exception as e:
-            print(e)
-
-    def closeEvent(self, e):
-        reply = QMessageBox.question(self,
-                                     '询问',
-                                     "确定要退出吗？",
-                                     QMessageBox.Yes | QMessageBox.No,
-                                     QMessageBox.No)
-        if reply == QMessageBox.Yes:
-            e.accept()
-            sys.exit(0)
-        else:
-            e.ignore()
-
-
-class EditBookWin(QDialog, Ui_FormEditBook):
-    def __init__(self):
-        super(EditBookWin, self).__init__()
-
-        self.setupUi(self)
-
-    def putOldBookInfo(self, row):
-        name, author, press, release_date, ISBN = row[0], row[1], row[2], row[3], row[4]
-        self.bookNameEdit.setText(name)
-        self.bookAuthorEdit.setText(author)
-        self.bookPressEdit.setText(press)
-        self.bookDateEdit.setText(release_date)
-        self.bookISBNEdit.setText(ISBN)
-
-    def getNewBookInfo(self):
-        name = self.bookNameEdit.text()
-        author = self.bookAuthorEdit.text()
-        press = self.bookPressEdit.text()
-        release_date = self.bookDateEdit.text()
-        ISBN = self.bookISBNEdit.text()
-
-        return name, author, press, release_date, ISBN
 
 
 class Admin:
     def __init__(self):
         self.mainWin = MainWin()
+        self.mainWin.pageSignal.connect(self.turn_page)
         self.editBookWin = EditBookWin()
+        self.editPaperWin = EditPaperWin()
+        self.editUserWin = EditUserWin()
         self.database = None
 
         # initial signal slots
@@ -118,7 +26,7 @@ class Admin:
         self.mainWin.bookEditBtn.clicked.connect(self.edit_book)
         self.mainWin.bookDeleteBtn.clicked.connect(self.delete_book)
 
-        self.editBookWin.bookAddBtn.clicked.connect(self.confirm_edit_book)
+        self.editBookWin.bookEditBtn.clicked.connect(self.confirm_edit_book)
 
         self.create_connection('database/books.db')
 
@@ -129,6 +37,7 @@ class Admin:
     def update_book_table(self):
         if self.database:
             table = self.database.read_book()
+            # TODO: 对数据分页
             print('table: ', table)
             if table:
                 self.mainWin.updateBookTable(table)
@@ -169,22 +78,183 @@ class Admin:
 
     def delete_book(self):
         if self.database:
-            reply = QMessageBox.question(self.mainWin,
-                                 '询问',
-                                 '确定要删除该书籍吗？',
-                                 QMessageBox.Yes | QMessageBox.No,
-                                 QMessageBox.No)
-            if reply == QMessageBox.Yes:
-                try:
-                    _, _, _, _, ISBN = self.mainWin.getSelectedBookInfo()
-                except:
-                    QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的书籍！')
-                else:
+            try:
+                _, _, _, _, ISBN = self.mainWin.getSelectedBookInfo()
+            except:
+                QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的书籍！')
+            else:
+                reply = QMessageBox.question(self.mainWin,
+                                             '询问',
+                                             '确定要删除该书籍吗？',
+                                             QMessageBox.Yes | QMessageBox.No,
+                                             QMessageBox.No)
+                if reply == QMessageBox.Yes:
                     self.database.delete_book(ISBN)
                     self.update_book_table()
-            else:
-                pass
+                else:
+                    pass
 
+
+    def update_paper_table(self):
+        if self.database:
+            table = self.database.read_paper()
+            # TODO: 对数据分页
+            if table:
+                self.mainWin.updatePaperTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
+
+    def add_paper(self):
+        title, author, institute, release_date, conference, DOI = self.mainWin.getNewPaperInfo()
+
+        if self.database:
+            try:
+                self.database.add_paper(title, author, institute, release_date, conference, DOI)
+            except Exception as e:
+                print(e)
+            else:
+                self.update_paper_table()
+
+    def edit_paper(self):
+        try:
+            row = self.mainWin.getSelectedPaperInfo()
+        except:
+            QMessageBox.warning(self.mainWin, '警告', '请先选择要编辑的论文！')
+        else:
+            self.editPaperWin.putOldPaperInfo(row)
+            self.editPaperWin.exec()
+
+    def confirm_edit_paper(self):
+        title, author, institute, release_date, conference, DOI = self.editPaperWin.getNewPaperInfo()
+        if self.database:
+            try:
+                self.database.update_paper(title, author, institute, release_date, conference, DOI)
+            except Exception as e:
+                print(e)
+            else:
+                self.update_paper_table()
+
+        self.editPaperWin.close()
+
+    def delete_paper(self):
+        if self.database:
+            try:
+                _, _, _, _, _, DOI = self.mainWin.getSelectedPaperInfo()
+            except:
+                QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的论文！')
+            else:
+                reply = QMessageBox.question(self.mainWin,
+                                             '询问',
+                                             '确定要删除该书籍吗？',
+                                             QMessageBox.Yes | QMessageBox.No,
+                                             QMessageBox.No)
+                if reply == QMessageBox.Yes:
+                    self.database.delete_paper(DOI)
+                    self.update_paper_table()
+                else:
+                    pass
+
+    def update_user_table(self):
+        if self.database:
+            table = self.database.read_user()
+            # TODO: 对数据分页
+            if table:
+                self.mainWin.updateUserTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
+
+    def add_user(self):
+        name, password, phone, number = self.mainWin.getNewUserInfo()
+
+        if self.database:
+            try:
+                self.database.add_user(name, password, phone, number)
+            except Exception as e:
+                print(e)
+            else:
+                self.update_user_table()
+
+    def edit_user(self):
+        try:
+            row = self.mainWin.getSelectedUserInfo()
+        except:
+            QMessageBox.warning(self.mainWin, '警告', '请先选择要编辑的用户！')
+        else:
+            self.editUserWin.putOldUserInfo(row)
+            self.editUserWin.exec()
+
+    def confirm_edit_user(self):
+        name, password, phone, number = self.editUserWin.getNewUserInfo()
+        if self.database:
+            try:
+                self.database.update_user(name, password, phone, number)
+            except Exception as e:
+                print(e)
+            else:
+                self.update_user_table()
+
+        self.editUserWin.close()
+
+    def delete_user(self):
+        if self.database:
+            try:
+                _, _, _, number = self.mainWin.getSelectedUserInfo()
+            except:
+                QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的用户！')
+            else:
+                reply = QMessageBox.question(self.mainWin,
+                                             '询问',
+                                             '确定要删除该书籍吗？',
+                                             QMessageBox.Yes | QMessageBox.No,
+                                             QMessageBox.No)
+                if reply == QMessageBox.Yes:
+                    self.database.delete_user(number)
+                    self.update_user_table()
+                else:
+                    pass
+
+    # SECTION: 翻页
+    def turn_page(self, signal):
+        type = signal[0]
+        command = signal[1]
+        page = int(signal[2])  # 可以是上一次的current page，也可以是target page
+        total_page = self.mainWin.totalPage(type)
+
+        if command == 'first':
+            cur_page = str(1)
+        elif command == 'pre':
+            if page == 1:  # 当前页面已经是第一页
+                QMessageBox.information(self.mainWin, '提示', '已经是第一页了！')
+                return
+            cur_page = str(page - 1)
+        elif command == 'next':
+            if page == total_page:  # 当前页面已经是最后一页
+                QMessageBox.information(self.mainWin, '提示', '已经是最后一页了！')
+                return
+            cur_page = str(page + 1)
+        elif command == 'last':
+            cur_page = str(total_page)
+        elif command == 'jump':
+            if page < 0 or page > total_page:  # 跳转超出范围
+                QMessageBox.information(self.mainWin, '提示', '跳转页码超出范围！')
+                return
+            cur_page = str(page)
+        else:
+            QMessageBox.critical(self.mainWin, '错误', '未知指令类型！')
+            return
+
+        if type == 'book':
+            self.mainWin.bookPage.setText('{} / {}'.format(cur_page, total_page))
+            # TODO: 刷新表内容
+        elif type == 'paper':
+            self.mainWin.paperPage.setText('{} / {}'.format(cur_page, total_page))
+            # TODO: 刷新表内容
+        elif type == 'user':
+            self.mainWin.userPage.setText('{} / {}'.format(cur_page, total_page))
+            # TODO: 刷新表内容
+        else:
+            QMessageBox.critical(self.mainWin, '错误', '未知数据类型！')
+            return
 
 
 if __name__ == '__main__':

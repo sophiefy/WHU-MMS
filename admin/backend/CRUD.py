@@ -1,8 +1,5 @@
 import sqlite3
 
-
-# SECTION: books
-
 class Database:
     def __init__(self, db_path):
         self.conn = None
@@ -15,6 +12,8 @@ class Database:
             self.cursor = self.conn.cursor()
         except Exception as e:
             print(e)
+
+    # SECTION: books
 
     def add_book(self, name, author, press, release_date, ISBN):
         if self.conn:
@@ -58,6 +57,33 @@ class Database:
                 self.conn.commit()
             except Exception as e:
                 print(e)
+
+    # SECTION: papers
+    def add_paper(self, name, author, press, release_date, ISBN):
+        pass
+
+    def delete_paper(self, ISBN):
+        pass
+
+    def read_paper(self):
+        pass
+
+    def update_paper(self, name, author, press, release_date, ISBN):
+        pass
+
+    # SECTION: users
+
+    def add_user(self):
+        pass
+
+    def delete_user(self):
+        pass
+
+    def read_user(self):
+        pass
+
+    def update_user(self):
+        pass
 
 
 

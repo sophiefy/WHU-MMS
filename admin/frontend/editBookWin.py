@@ -15,6 +15,10 @@ class Ui_FormEditBook(object):
     def setupUi(self, FormEditBook):
         FormEditBook.setObjectName("FormEditBook")
         FormEditBook.resize(957, 702)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(12)
+        FormEditBook.setFont(font)
         self.gridLayout = QtWidgets.QGridLayout(FormEditBook)
         self.gridLayout.setObjectName("gridLayout")
         self.label = QtWidgets.QLabel(FormEditBook)
@@ -138,26 +142,26 @@ class Ui_FormEditBook(object):
         self.gridLayout.addWidget(self.bookCombo, 5, 1, 1, 1)
         spacerItem = QtWidgets.QSpacerItem(737, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem, 5, 2, 1, 1)
-        self.bookAddBtn = QtWidgets.QPushButton(FormEditBook)
+        self.bookEditBtn = QtWidgets.QPushButton(FormEditBook)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
-        self.bookAddBtn.setFont(font)
-        self.bookAddBtn.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
+        self.bookEditBtn.setFont(font)
+        self.bookEditBtn.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "background-color: rgb(85, 255, 127);")
-        self.bookAddBtn.setObjectName("bookAddBtn")
-        self.gridLayout.addWidget(self.bookAddBtn, 6, 0, 1, 1)
+        self.bookEditBtn.setObjectName("bookEditBtn")
+        self.gridLayout.addWidget(self.bookEditBtn, 6, 0, 1, 1)
 
         self.retranslateUi(FormEditBook)
         QtCore.QMetaObject.connectSlotsByName(FormEditBook)
 
     def retranslateUi(self, FormEditBook):
         _translate = QtCore.QCoreApplication.translate
-        FormEditBook.setWindowTitle(_translate("FormEditBook", "Form"))
+        FormEditBook.setWindowTitle(_translate("FormEditBook", "编辑书籍信息"))
         self.label.setText(_translate("FormEditBook", "书名"))
         self.label_2.setText(_translate("FormEditBook", "作者"))
         self.label_3.setText(_translate("FormEditBook", "出版社"))
         self.label_4.setText(_translate("FormEditBook", "出版时间"))
         self.label_5.setText(_translate("FormEditBook", "ISBN"))
         self.label_6.setText(_translate("FormEditBook", "类别"))
-        self.bookAddBtn.setText(_translate("FormEditBook", "确定"))
+        self.bookEditBtn.setText(_translate("FormEditBook", "确定"))
