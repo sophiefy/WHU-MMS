@@ -28,6 +28,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def initSignalSlots(self):
         # NOTE: CRUD -> Create, Read, Update and Delete
+        # menu bar
         self.actionHome.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.actionCbook.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.actionRbook.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(2))
@@ -35,10 +36,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.actionRpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(4))
         self.actionCuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(5))
         self.actionRuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(6))
-        # NOTE: work in progress
-        # self.actionStatBook
-        # self.actionStatBook
-        # self.actionStatPaper
+        self.actionStats.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(7))
+
+        # home page
+        self.bookBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.paperBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+        self.userBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(6))
+        self.statsBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(7))
 
         self.bookFirstBtn.clicked.connect(lambda: self.firstPage('book'))
         self.bookPreBtn.clicked.connect(lambda: self.prePage('book'))

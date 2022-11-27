@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="resources">
+    <file>common/stats.png</file>
+    <file>common/library.png</file>
+    <file>common/books.png</file>
+    <file>common/papers.png</file>
+    <file>common/search.png</file>
+    <file>common/users.png</file>
+    <file>common/home.jpg</file>
+  </qresource>
+</RCC>

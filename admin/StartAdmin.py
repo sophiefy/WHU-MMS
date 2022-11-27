@@ -5,11 +5,10 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import sys
-
+sys.path.append('frontend')
+sys.path.append('backend')
 from frontend.windows import *
 from backend.CRUD import Database
-
-
 
 class Admin:
     def __init__(self):
