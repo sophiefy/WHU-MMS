@@ -47,7 +47,7 @@ class Database:
 
     def update_book(self, name, author, press, category, release_date, ISBN):
         # 认为ISBN是不可修改的
-        print('date: ', release_date)
+
         if self.conn:
             try:
                 self.cursor.execute("update Books set "

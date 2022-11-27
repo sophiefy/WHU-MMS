@@ -37,18 +37,18 @@ class Admin:
         if self.database:
             table = self.database.read_book()
             # TODO: 对数据分页
-            print('table: ', table)
+
             if table:
                 self.mainWin.updateBookTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def add_book(self):
-        name, author, press, release_date, ISBN = self.mainWin.getNewBookInfo()
+        name, author, press, category, release_date, ISBN = self.mainWin.getNewBookInfo()
 
         if self.database:
             try:
-                self.database.add_book(name, author, press, release_date, ISBN)
+                self.database.add_book(name, author, press, category, release_date, ISBN)
             except Exception as e:
                 print(e)
             else:
@@ -57,17 +57,19 @@ class Admin:
     def edit_book(self):
         try:
             row = self.mainWin.getSelectedBookInfo()
+            print('row', row)
         except:
+            print('error')
             QMessageBox.warning(self.mainWin, '警告', '请先选择要编辑的书籍！')
         else:
             self.editBookWin.putOldBookInfo(row)
             self.editBookWin.exec()
 
     def confirm_edit_book(self):
-        name, author, press, release_date, ISBN = self.editBookWin.getNewBookInfo()
+        name, author, press, category, release_date, ISBN = self.editBookWin.getNewBookInfo()
         if self.database:
             try:
-                self.database.update_book(name, author, press, release_date, ISBN)
+                self.database.update_book(name, author, press, category, release_date, ISBN)
             except Exception as e:
                 print(e)
             else:
@@ -78,7 +80,7 @@ class Admin:
     def delete_book(self):
         if self.database:
             try:
-                _, _, _, _, ISBN = self.mainWin.getSelectedBookInfo()
+                _, _, _, _, _, ISBN = self.mainWin.getSelectedBookInfo()
             except:
                 QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的书籍！')
             else:
@@ -104,11 +106,11 @@ class Admin:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def add_paper(self):
-        title, author, institute, release_date, conference, DOI = self.mainWin.getNewPaperInfo()
+        title, author, institute, field, release_date, conference, DOI = self.mainWin.getNewPaperInfo()
 
         if self.database:
             try:
-                self.database.add_paper(title, author, institute, release_date, conference, DOI)
+                self.database.add_paper(title, author, institute, field, release_date, conference, DOI)
             except Exception as e:
                 print(e)
             else:
@@ -124,7 +126,7 @@ class Admin:
             self.editPaperWin.exec()
 
     def confirm_edit_paper(self):
-        title, author, institute, release_date, conference, DOI = self.editPaperWin.getNewPaperInfo()
+        title, author, institute, field, release_date, conference, DOI = self.editPaperWin.getNewPaperInfo()
         if self.database:
             try:
                 self.database.update_paper(title, author, institute, release_date, conference, DOI)
@@ -138,7 +140,7 @@ class Admin:
     def delete_paper(self):
         if self.database:
             try:
-                _, _, _, _, _, DOI = self.mainWin.getSelectedPaperInfo()
+                _, _, _, _, _, _, DOI = self.mainWin.getSelectedPaperInfo()
             except:
                 QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的论文！')
             else:

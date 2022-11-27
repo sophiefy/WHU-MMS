@@ -79,7 +79,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         name = self.bookTbl.item(row, 0).text()
         author = self.bookTbl.item(row, 1).text()
         press = self.bookTbl.item(row, 2).text()
-        category = self.bookTbl.item(row, 3)
+        category = self.bookTbl.item(row, 3).text()
         release_date = self.bookTbl.item(row, 4).text()
         ISBN = self.bookTbl.item(row, 5).text()
 
@@ -254,10 +254,11 @@ class EditBookWin(QDialog, Ui_FormEditBook):
         self.setupUi(self)
 
     def putOldBookInfo(self, row):
-        name, author, press, release_date, ISBN = row[0], row[1], row[2], row[3], row[4]
+        name, author, press, category, release_date, ISBN = row[0], row[1], row[2], row[3], row[4], row[5]
         self.bookNameEdit.setText(name)
         self.bookAuthorEdit.setText(author)
         self.bookPressEdit.setText(press)
+        self.bookCombo.setCurrentText(category)
         self.bookDateEdit.setText(release_date)
         self.bookISBNEdit.setText(ISBN)
 
@@ -265,10 +266,11 @@ class EditBookWin(QDialog, Ui_FormEditBook):
         name = self.bookNameEdit.text()
         author = self.bookAuthorEdit.text()
         press = self.bookPressEdit.text()
+        category = self.bookCombo.currentText()
         release_date = self.bookDateEdit.text()
         ISBN = self.bookISBNEdit.text()
 
-        return name, author, press, release_date, ISBN
+        return name, author, press, category, release_date, ISBN
 
 
 class EditPaperWin(QDialog, Ui_FormEditPaper):
@@ -278,11 +280,12 @@ class EditPaperWin(QDialog, Ui_FormEditPaper):
         self.setupUi(self)
 
     def putOldPaperInfo(self, row):
-        title, author, institute, release_date, conference, DOI = \
-            row[0], row[1], row[2], row[3], row[4], row[5]
+        title, author, institute, field, release_date, conference, DOI = \
+            row[0], row[1], row[2], row[3], row[4], row[5], row[6]
         self.paperTitleEdit.setText(title)
         self.paperAuthorEdit.setText(author)
         self.paperInsEdit.setText(institute)
+        self.paperCombo.setCurrentText(field)
         self.paperDateEdit.setText(release_date)
         self.paperConfEdit.setText(conference)
         self.paperDOIEdit.setText(DOI)
@@ -291,11 +294,12 @@ class EditPaperWin(QDialog, Ui_FormEditPaper):
         title = self.paperTitleEdit.text()
         author = self.paperAuthorEdit.text()
         institute = self.paperInsEdit.text()
+        field = self.paperCombo.currentText()
         release_date = self.paperDateEdit.text()
         conference = self.paperConfEdit.text()
         DOI = self.paperDOIEdit.text()
 
-        return title, author, institute, release_date, conference, DOI
+        return title, author, institute, field, release_date, conference, DOI
 
 
 class EditUserWin(QDialog, Ui_FormEditUser):
