@@ -68,20 +68,22 @@ class MainWin(QMainWindow, Ui_MainWindow):
         name = self.bookNameEdit.text()
         author = self.bookNameEdit.text()
         press = self.bookPressEdit.text()
+        category = self.bookCombo.currentText()
         release_date = self.bookDateEdit.text()
         ISBN = self.bookISBNEdit.text()
 
-        return name, author, press, release_date, ISBN
+        return name, author, press, category, release_date, ISBN
 
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
         name = self.bookTbl.item(row, 0).text()
         author = self.bookTbl.item(row, 1).text()
         press = self.bookTbl.item(row, 2).text()
-        release_date = self.bookTbl.item(row, 3).text()
-        ISBN = self.bookTbl.item(row, 4).text()
+        category = self.bookTbl.item(row, 3)
+        release_date = self.bookTbl.item(row, 4).text()
+        ISBN = self.bookTbl.item(row, 5).text()
 
-        return name, author, press, release_date, ISBN
+        return name, author, press, category, release_date, ISBN
 
     def updateBookTable(self, table):
         assert table is not None
@@ -89,12 +91,14 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.bookTbl.clearContents()
         try:
             for i, row in enumerate(table):
+                # name, author, press, category, release_date, ISBN
                 self.bookTbl.insertRow(i)
                 self.bookTbl.setItem(i, 0, QTableWidgetItem(row[0]))
                 self.bookTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.bookTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.bookTbl.setItem(i, 3, QTableWidgetItem(row[3]))
                 self.bookTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+                self.bookTbl.setItem(i, 5, QTableWidgetItem(row[5]))
         except Exception as e:
             print(e)
 
@@ -102,22 +106,24 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.paperTitleEdit.text()
         author = self.paperAuthorEdit.text()
         institute = self.paperInsEdit.text()
+        field = self.paperCombo.currentText()
         release_date = self.paperDateEdit.text()
         conference = self.paperConfEdit.text()
         DOI = self.paperDOIEdit.text()
 
-        return title, author, institute, release_date, conference, DOI
+        return title, author, institute, field, release_date, conference, DOI
 
     def getSelectedPaperInfo(self):
         row = self.paperTbl.currentRow()
         title = self.paperTbl.item(row, 0).text()
         author = self.paperTbl.item(row, 1).text()
         institute = self.paperTbl.item(row, 2).text()
-        release_date = self.paperTbl.item(row, 3).text()
-        conference = self.paperTbl.item(row, 4).text()
-        DOI = self.paperTbl.item(row, 5).text()
+        field = self.paperTbl.item(row, 3).text()
+        release_date = self.paperTbl.item(row, 4).text()
+        conference = self.paperTbl.item(row, 5).text()
+        DOI = self.paperTbl.item(row, 6).text()
 
-        return title, author, institute, release_date, conference, DOI
+        return title, author, institute, field, release_date, conference, DOI
 
     def updatePaperTable(self, table):
         assert table is not None
@@ -125,13 +131,15 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.paperTbl.clearContents()
         try:
             for i, row in enumerate(table):
+                # title, author, institute, field, release_date, conference, DOI
                 self.paperTbl.insertRow(i)
                 self.paperTbl.setItem(i, 0, QTableWidgetItem(row[0]))
                 self.paperTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.paperTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.paperTbl.setItem(i, 3, QTableWidgetItem(row[3]))
                 self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[4]))
+                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+                self.paperTbl.setItem(i, 6, QTableWidgetItem(row[6]))
         except Exception as e:
             print(e)
 

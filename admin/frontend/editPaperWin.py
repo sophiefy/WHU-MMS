@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FormEditPaper(object):
     def setupUi(self, FormEditPaper):
         FormEditPaper.setObjectName("FormEditPaper")
-        FormEditPaper.resize(976, 644)
+        FormEditPaper.resize(976, 578)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(12)
@@ -149,6 +149,8 @@ class Ui_FormEditPaper(object):
         font.setPointSize(10)
         self.paperCombo.setFont(font)
         self.paperCombo.setObjectName("paperCombo")
+        self.paperCombo.addItem("")
+        self.paperCombo.addItem("")
         self.gridLayout.addWidget(self.paperCombo, 6, 2, 1, 1)
         spacerItem = QtWidgets.QSpacerItem(756, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem, 6, 3, 1, 1)
@@ -184,4 +186,6 @@ class Ui_FormEditPaper(object):
         self.label_11.setText(_translate("FormEditPaper", "会议/期刊"))
         self.label_13.setText(_translate("FormEditPaper", "DIO"))
         self.label_12.setText(_translate("FormEditPaper", "类别"))
+        self.paperCombo.setItemText(0, _translate("FormEditPaper", "社会科学"))
+        self.paperCombo.setItemText(1, _translate("FormEditPaper", "自然科学"))
         self.paperEditBtn.setText(_translate("FormEditPaper", "确定"))

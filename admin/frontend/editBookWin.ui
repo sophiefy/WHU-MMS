@@ -227,6 +227,56 @@
        <pointsize>10</pointsize>
       </font>
      </property>
+     <item>
+      <property name="text">
+       <string>计算机科学、信息与总类</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>哲学与心理学</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>宗教</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>社会科学</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>语言</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>自然科学</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>应用科学</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>艺术与休闲</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>文学</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>历史与地理</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="5" column="2">

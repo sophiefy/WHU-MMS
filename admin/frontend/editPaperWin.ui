@@ -245,6 +245,16 @@
        <pointsize>10</pointsize>
       </font>
      </property>
+     <item>
+      <property name="text">
+       <string>社会科学</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>自然科学</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="6" column="3">
