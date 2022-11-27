@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -722,7 +722,7 @@ background-color: rgb(85, 255, 127);</string>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string>出版社</string>
            </property>
           </column>
           <column>

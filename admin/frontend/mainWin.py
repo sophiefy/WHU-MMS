@@ -1152,7 +1152,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuStats.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1185,6 +1185,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "书名"))
         item = self.bookTbl.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "作者"))
+        item = self.bookTbl.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "出版社"))
         item = self.bookTbl.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "类别"))
         item = self.bookTbl.horizontalHeaderItem(4)
