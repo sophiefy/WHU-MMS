@@ -1,8 +1,5 @@
 import sqlite3
 
-
-# SECTION: books
-
 class Database:
     def __init__(self, db_path):
         self.conn = None
@@ -16,12 +13,14 @@ class Database:
         except Exception as e:
             print(e)
 
-    def add_book(self, name, author, press, release_date, ISBN):
+    # SECTION: books
+
+    def add_book(self, name, author, press, category, release_date, ISBN):
         if self.conn:
             try:
                 self.cursor.execute("insert into Books (name, author, press, release_date, ISBN) "
-                                    "values ('{}', '{}', '{}', '{}', '{}')"
-                                    .format(name, author, press, release_date, ISBN))
+                                    "values ('{}', '{}', '{}', '{}', '{}', '{}')"
+                                    .format(name, author, press, category, release_date, ISBN))
                 self.conn.commit()
             except Exception as e:
                 print(e)
@@ -46,18 +45,45 @@ class Database:
                 book_table = self.cursor.fetchall()
                 return book_table
 
-    def update_book(self, name, author, press, release_date, ISBN):
+    def update_book(self, name, author, press, category, release_date, ISBN):
         # 认为ISBN是不可修改的
-        print('date: ', release_date)
+
         if self.conn:
             try:
                 self.cursor.execute("update Books set "
-                                    "name='{}', author='{}', press='{}', release_date='{}' "
+                                    "name='{}', author='{}', press='{}', category='{}', release_date='{}' "
                                     "where ISBN='{}'"
-                                    .format(name, author, press, release_date, ISBN))
+                                    .format(name, author, press, category,release_date, ISBN))
                 self.conn.commit()
             except Exception as e:
                 print(e)
+
+    # SECTION: papers
+    def add_paper(self, name, author, press, release_date, ISBN):
+        pass
+
+    def delete_paper(self, ISBN):
+        pass
+
+    def read_paper(self):
+        pass
+
+    def update_paper(self, name, author, press, release_date, ISBN):
+        pass
+
+    # SECTION: users
+
+    def add_user(self):
+        pass
+
+    def delete_user(self):
+        pass
+
+    def read_user(self):
+        pass
+
+    def update_user(self):
+        pass
 
 
 
