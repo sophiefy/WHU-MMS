@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="resources">
+    <file>common/books.png</file>
+    <file>common/papers.png</file>
+    <file>common/stats.png</file>
+    <file>common/avatar.jpg</file>
+    <file>common/bg.png</file>
+    <file>common/login.png</file>
+  </qresource>
+</RCC>
