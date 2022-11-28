@@ -23,7 +23,9 @@ class Client:
 
     def log_in(self):
         # TODO: 发送请求至服务端
+        self.loginWin.close_flag = False
         self.loginWin.close()
+        self.loginWin.close_flag = True
         self.mainWin.show()
 
     def log_out(self):

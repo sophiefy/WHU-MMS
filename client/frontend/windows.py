@@ -14,12 +14,19 @@ class LoginWin(QDialog, Ui_FormLogin):
 
         self.setupUi(self)
 
+        self.close_flag = True     # 区分关闭窗体和登录
+
         self.initSignalSlots()
 
     def initSignalSlots(self):
         self.toLoginBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.toRegisterBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
 
+    def closeEvent(self, e):
+        if self.close_flag:
+            sys.exit(0)
+        else:
+            self.close()
 
 class MainWin(QMainWindow, Ui_MainWindow):
     def __init__(self):
