@@ -115,6 +115,9 @@ border-image: url(:/resources/common/avatar.jpg);</string>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(245, 245, 245);</string>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
             <property name="readOnly">
              <bool>true</bool>
             </property>
@@ -130,6 +133,9 @@ border-image: url(:/resources/common/avatar.jpg);</string>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(245, 245, 245);</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
              <bool>true</bool>
@@ -233,7 +239,7 @@ border-image: url(:/resources/common/avatar.jpg);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="pageHome">
         <layout class="QGridLayout" name="gridLayout">
@@ -620,7 +626,7 @@ background-color: rgba(255, 255, 255, 0);</string>
             <widget class="QLineEdit" name="bookJumpEdit">
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>150</width>
                <height>16777215</height>
               </size>
              </property>
@@ -632,6 +638,9 @@ background-color: rgba(255, 255, 255, 0);</string>
              </property>
              <property name="styleSheet">
               <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -673,19 +682,6 @@ background-color: rgba(255, 255, 255, 0);</string>
              </property>
             </widget>
            </item>
-           <item>
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
           </layout>
          </item>
         </layout>
@@ -717,7 +713,7 @@ background-color: rgba(255, 255, 255, 0);</string>
          <item row="5" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_7">
            <item>
-            <widget class="QPushButton" name="paperFirstBtn_2">
+            <widget class="QPushButton" name="paperFirstBtn">
              <property name="font">
               <font>
                <family>微软雅黑</family>
@@ -730,7 +726,7 @@ background-color: rgba(255, 255, 255, 0);</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="paperPreBtn_2">
+            <widget class="QPushButton" name="paperPreBtn">
              <property name="font">
               <font>
                <family>微软雅黑</family>
@@ -743,7 +739,7 @@ background-color: rgba(255, 255, 255, 0);</string>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="paperPage_2">
+            <widget class="QLabel" name="paperPage">
              <property name="font">
               <font>
                <family>微软雅黑</family>
@@ -768,7 +764,7 @@ background-color: rgba(255, 255, 255, 0);</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="paperNextBtn_2">
+            <widget class="QPushButton" name="paperNextBtn">
              <property name="font">
               <font>
                <family>微软雅黑</family>
@@ -781,7 +777,7 @@ background-color: rgba(255, 255, 255, 0);</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="paperLastBtn_2">
+            <widget class="QPushButton" name="paperLastBtn">
              <property name="font">
               <font>
                <family>微软雅黑</family>
@@ -819,10 +815,10 @@ background-color: rgba(255, 255, 255, 0);</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="paperJumpEdit_2">
+            <widget class="QLineEdit" name="paperJumpEdit">
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>150</width>
                <height>16777215</height>
               </size>
              </property>
@@ -834,6 +830,9 @@ background-color: rgba(255, 255, 255, 0);</string>
              </property>
              <property name="styleSheet">
               <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -863,7 +862,7 @@ background-color: rgba(255, 255, 255, 0);</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="paperJumpBtn_2">
+            <widget class="QPushButton" name="paperJumpBtn">
              <property name="font">
               <font>
                <family>微软雅黑</family>
@@ -874,19 +873,6 @@ background-color: rgba(255, 255, 255, 0);</string>
               <string>确定</string>
              </property>
             </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_5">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
           </layout>
          </item>

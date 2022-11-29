@@ -237,7 +237,7 @@ class Admin:
             cur_page = str(total_page)
         elif command == 'jump':
             if page < 0 or page > total_page:  # 跳转超出范围
-                QMessageBox.information(self.mainWin, '提示', '跳转页码超出范围！')
+                QMessageBox.information(self.mainWin, '提示', '非法的跳转页码！')
                 return
             cur_page = str(page)
         else:

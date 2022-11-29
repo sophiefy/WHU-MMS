@@ -9,6 +9,7 @@ from editBookWin import Ui_FormEditBook
 from editPaperWin import Ui_FormEditPaper
 from editUserWin import Ui_FormEditUser
 
+
 # NOTE: work in progress
 
 
@@ -174,7 +175,6 @@ class MainWin(QMainWindow, Ui_MainWindow):
         except Exception as e:
             print(e)
 
-
     # SECTION: 翻页
     def firstPage(self, type):
         self.pageSignal.emit([type, 'first', self.curPage(type)])
@@ -231,7 +231,11 @@ class MainWin(QMainWindow, Ui_MainWindow):
             QMessageBox.critical(self, '错误', '未知数据类型！')
             return
 
-        target_page = int(text)
+        try:
+            target_page = int(text)
+        except:
+            return -1  # 输入了非法页码
+        
         return target_page
 
     def closeEvent(self, e):
