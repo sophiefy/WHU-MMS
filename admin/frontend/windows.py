@@ -235,7 +235,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
             target_page = int(text)
         except:
             return -1  # 输入了非法页码
-        
+
         return target_page
 
     def closeEvent(self, e):

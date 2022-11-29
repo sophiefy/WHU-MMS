@@ -38,7 +38,9 @@ class Client:
                                      QMessageBox.Yes | QMessageBox.No,
                                      QMessageBox.No)
         if reply == QMessageBox.Yes:
+            self.mainWin.close_flag = False
             self.mainWin.close()
+            self.mainWin.close_flag = True
             self.loginWin.loginPasswordEdit.setText('')  # 登录界面密码栏清空
             self.loginWin.exec()
         else:

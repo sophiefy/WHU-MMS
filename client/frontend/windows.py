@@ -37,6 +37,8 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         self.setupUi(self)
 
+        self.close_flag = True
+
         self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.paperTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
@@ -47,6 +49,8 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.toSearchBookBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.toSearchPaperBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         self.aboutBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.bookBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+        self.paperBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
 
         self.bookFirstBtn.clicked.connect(lambda: self.firstPage('book'))
         self.bookPreBtn.clicked.connect(lambda: self.prePage('book'))
@@ -117,3 +121,18 @@ class MainWin(QMainWindow, Ui_MainWindow):
             return -1 # 输入了非法页码
 
         return target_page
+
+    def closeEvent(self, e):
+        if self.close_flag:
+            reply = QMessageBox.question(self,
+                                         '询问',
+                                         "确定要退出吗？",
+                                         QMessageBox.Yes | QMessageBox.No,
+                                         QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                e.accept()
+                sys.exit(0)
+            else:
+                e.ignore()
+        else:
+            self.close()
