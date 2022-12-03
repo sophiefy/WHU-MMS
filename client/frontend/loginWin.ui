@@ -102,12 +102,22 @@
            <property name="styleSheet">
             <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
            </property>
-           <property name="text">
-            <string/>
-           </property>
           </widget>
          </item>
         </layout>
+       </item>
+       <item row="7" column="4">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>36</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item row="5" column="2">
         <spacer name="horizontalSpacer_2">
@@ -334,19 +344,6 @@ background-color: rgb(85, 170, 255);</string>
             <string>登          录</string>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>36</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </item>
