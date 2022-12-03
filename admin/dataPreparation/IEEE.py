@@ -2,14 +2,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-from admin.dataPreparation import save_data
 
-
-def get_paperinfo():
+def get_paperinfo(topic):
     opt = webdriver.ChromeOptions()
     opt.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
     driver = webdriver.Chrome(options=opt)
-    url='https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=(%22Full%20Text%20.AND.%20Metadata%22:Artificial%20Intelligence)'
+    url='https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=(%22Full%20Text%20.AND.%20Metadata%22:{})'.format(topic)
     driver.get(url)
     # 等待3秒，让页面加载，防止爬不到
     time.sleep(3)
@@ -42,4 +40,6 @@ def get_paperinfo():
         time.sleep(3)
     return df
 
-save_data(get_paperinfo())
+
+
+# save_data(get_paperinfo())
