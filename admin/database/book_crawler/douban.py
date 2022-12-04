@@ -3,15 +3,6 @@ from lxml import etree
 import requests
 import csv
 
-
-def save_result(data, save_path):
-    with open(save_path, 'w', newline='') as fp:
-        writer = csv.writer(fp)
-        writer.writerow(['title', 'author', 'press', 'release_date', 'ISBN'])
-        for i, p in enumerate(data):
-            writer.writerow([p])
-
-
 def get_basic_info(page_num: int):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.67"
@@ -66,10 +57,10 @@ def get_ISBN(book_url):
 
 
 if __name__ == '__main__':
-    save_path = 'sample_data/sample.csv'
+    save_path = 'sample_data/douban.csv'
 
     total_page = 3
-    with open(save_path, 'w', newline='') as fp:
+    with open(save_path, 'w', newline='') as fp:    # 如果是追加新的数据，将'w'改为'a'
         writer = csv.writer(fp)
         writer.writerow(['title', 'author', 'press', 'release_date', 'ISBN'])
         for page_num in range(1, (total_page+1)):
