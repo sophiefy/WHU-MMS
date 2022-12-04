@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'loginWin.ui'
+# Form implementation generated from reading ui file 'D:\2022-2023大三上学习笔记\数据库系统\WHU-MMS\client\frontend\loginWin.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
