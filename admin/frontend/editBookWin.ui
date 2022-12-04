@@ -20,29 +20,8 @@
    <string>编辑书籍信息</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-     </property>
-     <property name="text">
-      <string>书名</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookNameEdit">
+   <item row="1" column="1" colspan="2">
+    <widget class="QLineEdit" name="bookAuthorEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -76,8 +55,8 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookAuthorEdit">
+   <item row="3" column="1" colspan="2">
+    <widget class="QLineEdit" name="bookDateEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -111,8 +90,8 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookPressEdit">
+   <item row="0" column="1" colspan="2">
+    <widget class="QLineEdit" name="bookNameEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -146,8 +125,8 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookDateEdit">
+   <item row="4" column="1" colspan="2">
+    <widget class="QLineEdit" name="bookISBNEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -155,8 +134,28 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 150);
+      <string notr="true">background-color: rgba(220, 220, 220, 150);
 </string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QPushButton" name="bookEditBtn">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 0);
+background-color: rgb(85, 255, 127);</string>
+     </property>
+     <property name="text">
+      <string>确定</string>
      </property>
     </widget>
    </item>
@@ -181,25 +180,8 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookISBNEdit">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(220, 220, 220, 150);
-</string>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_6">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -212,71 +194,25 @@
       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
      </property>
      <property name="text">
-      <string>类别</string>
+      <string>书名</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
-    <widget class="QComboBox" name="bookCombo">
+   <item row="2" column="1" colspan="2">
+    <widget class="QLineEdit" name="bookPressEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
        <pointsize>10</pointsize>
       </font>
      </property>
-     <item>
-      <property name="text">
-       <string>计算机科学、信息与总类</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>哲学与心理学</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>宗教</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>社会科学</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>语言</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>自然科学</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>应用科学</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>艺术与休闲</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>文学</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>历史与地理</string>
-      </property>
-     </item>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
+     </property>
     </widget>
    </item>
    <item row="5" column="2">
@@ -286,28 +222,11 @@
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>737</width>
+       <width>40</width>
        <height>20</height>
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="6" column="0">
-    <widget class="QPushButton" name="bookEditBtn">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 0);
-background-color: rgb(85, 255, 127);</string>
-     </property>
-     <property name="text">
-      <string>确定</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
