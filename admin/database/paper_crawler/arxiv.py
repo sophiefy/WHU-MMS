@@ -19,7 +19,8 @@ def get_basic_info(query, page_num):
 
     try:
         page_text = requests.get(url=url, headers=headers).text
-    except:
+    except Exception as e:
+        print(e)
         return None
     else:
         etree_html = etree.HTML(page_text)
@@ -41,12 +42,13 @@ def get_basic_info(query, page_num):
             basic_info.append([title, author, release_date, arxiv_url, arxiv_num])
         return basic_info
 
+
 if __name__ == '__main__':
     queries = ['Physics', 'Mathematics', 'Quantitative Biology', 'Quantitative Finance',
                'Statistics', 'Electrical Engineering and Systems Science', 'Economics']
 
-    save_path = 'sample_data/arxiv.csv'
-    total_page = 8000
+    save_path = f'sample_data/arxiv.csv'
+    total_page = 200
     with open(save_path, 'w', encoding='utf-8', newline='') as fp:
         writer = csv.writer(fp)
         writer.writerow(['title', 'author', 'release_date', 'arxiv_url', 'arxiv_num'])
@@ -57,3 +59,6 @@ if __name__ == '__main__':
                 basic_info = get_basic_info(query, page_num)
                 if basic_info:
                     writer.writerows(basic_info)
+                else:
+                    print('No more data for {}, break!'.format(query))
+                    break
