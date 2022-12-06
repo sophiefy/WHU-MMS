@@ -54,7 +54,8 @@ class Database:
                  u_password CHAR(20),
                  u_age INT,  
                  u_dpt CHAR(20), 
-                 u_grade CHAR(4)
+                 u_grade CHAR(4),
+                 u_perm CHAR(20)
                   )'''
         try:
             self.cursor.execute(sql)
@@ -91,7 +92,7 @@ class Database:
                  d_author CHAR(20),
                  d_release_date DATE,
                  d_platform CHAR(20),
-                 d_url CHAR(100),
+                 d_url CHAR(100)
                   )'''
         try:
             self.cursor.execute(sql)
@@ -140,29 +141,31 @@ class Database:
     # SECTION: books
 
     def add_book(self, name, author, press, category, release_date, ISBN):
+        sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN) " \
+                "VALUES ('{}', '{}', '{}', '{}', '{}')".format(name, author, press, release_date, ISBN)
         if self.conn:
             try:
-                self.cursor.execute("insert into Books (name, author, press, release_date, ISBN) "
-                                    "values ('{}', '{}', '{}', '{}', '{}', '{}')"
-                                    .format(name, author, press, category, release_date, ISBN))
+                self.cursor.execute(sql)
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
 
     def delete_book(self, b_id):
+        sql = "DELETE FROM book WHERE b_id = {}".format(b_id)
         if self.conn:
             try:
-                self.cursor.execute("delete from Books where b_id = {}".format(b_id))
+                self.cursor.execute(sql)
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
 
     def read_book(self):
+        sql = "SELECT * FROM book"
         if self.conn:
             try:
-                self.cursor.execute("select * from Books")
+                self.cursor.execute(sql)
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -171,46 +174,192 @@ class Database:
                 book_table = self.cursor.fetchall()
                 return book_table
 
-    def update_book(self, name, author, press, category, release_date, ISBN):
+    def update_book(self, b_id, name, author, press, category, release_date, ISBN):
+        sql = "UPDATE book SET b_name = '{}', b_author = '{}', b_press = '{}', b_release_date = '{}', b_ISBN = '{}' " \
+              "WHERE b_id = {}"\
+            .format(name, author, press, category, release_date, ISBN, b_id)
         # 认为ISBN是不可修改的
-
         if self.conn:
             try:
-                self.cursor.execute("update Books set "
-                                    "name='{}', author='{}', press='{}', category='{}', release_date='{}' "
-                                    "where ISBN='{}'"
-                                    .format(name, author, press, category, release_date, ISBN))
+                self.cursor.execute(sql)
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
 
-    # SECTION: papers
-    def add_paper(self, name, author, press, release_date, ISBN):
-        pass
+    # SECTION: documents
+    def add_document(self, name, author, press, release_date, ISBN):
+        sql = "INSERT INTO document (d_name, d_author, d_press, d_release_date, d_ISBN) " \
+                "VALUES ('{}', '{}', '{}', '{}', '{}')".format(name, author, press, release_date, ISBN)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
 
-    def delete_paper(self, ISBN):
-        pass
+    def delete_document(self, d_id):
+        sql = "DELETE FROM document WHERE d_id = {}".format(d_id)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
 
-    def read_paper(self):
-        pass
+    def read_document(self):
+        sql = "SELECT * FROM document"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                document_table = self.cursor.fetchall()
+                return document_table
 
-    def update_paper(self, name, author, press, release_date, ISBN):
+
+    def update_document(self, d_id, name, author, press, release_date, ISBN):
+        sql = "UPDATE document SET d_name = '{}', d_author = '{}', d_press = '{}', d_release_date = '{}', d_ISBN = '{}' " \
+                "WHERE d_id = {}"\
+            .format(name, author, press, release_date, ISBN, d_id)
+
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
         pass
 
     # SECTION: users
 
-    def add_user(self):
-        pass
+    def add_user(self, name, password, age, dpt, grade, perm):
+        sql = "INSERT INTO user (u_name, u_password, u_age, u_dpt, u_grade, u_perm) " \
+                "VALUES ('{}', '{}', '{}', '{}', '{}', '{}')".format(name, password, age, dpt, grade, perm)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
 
-    def delete_user(self):
-        pass
+
+    def delete_user(self, u_id):
+        sql = "DELETE FROM user WHERE u_id = {}".format(u_id)
+
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+
 
     def read_user(self):
-        pass
+        sql = "SELECT * FROM user"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                user_table = self.cursor.fetchall()
+                return user_table
 
-    def update_user(self):
-        pass
+    def update_user(self,u_id, name, password, age, dpt, grade, perm):
+        sql = "UPDATE user SET u_name = '{}', u_password = '{}', u_age = '{}', u_dpt = '{}', u_grade = '{}', u_perm = '{}' " \
+                "WHERE u_id = {}"\
+            .format(name, password, age, dpt, grade, perm, u_id)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+
+    # SECTION: buyer
+
+    def add_buyer(self, u_id, b_id, buy_date):
+        sql = "INSERT INTO buyer (u_id, b_id, buy_date) " \
+                "VALUES ('{}', '{}', '{}')".format(u_id, b_id, buy_date)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+
+    def delete_buyer(self, buy_id): # 需要删除购买记录吗？
+        sql = "DELETE FROM buyer WHERE buy_id = {}".format(buy_id)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+
+    def read_buyer(self):
+        sql = "SELECT * FROM buyer"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                buyer_table = self.cursor.fetchall()
+                return buyer_table
+
+    # SECTION: upload
+
+    def add_upload(self, u_id, d_id, upload_date):
+        sql = "INSERT INTO upload (u_id, d_id, upload_date) " \
+                "VALUES ('{}', '{}', '{}')".format(u_id, d_id, upload_date)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+
+    def delete_upload(self, upload_id):  # 需要删除上传记录吗？
+        sql = "DELETE FROM upload WHERE upload_id = {}".format(upload_id)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+
+    def read_upload(self):
+        sql = "SELECT * FROM upload"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                upload_table = self.cursor.fetchall()
+                return upload_table
+
 
 
 if __name__ == '__main__':
