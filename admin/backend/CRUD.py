@@ -72,6 +72,7 @@ class Database:
                  b_name  CHAR(100),
                  b_author CHAR(20),
                  b_press CHAR(100),
+                 b_category CHAR(20),
                  b_release_date DATE,
                  b_ISBN CHAR(13),
                  b_num INT DEFAULT 0
@@ -141,15 +142,14 @@ class Database:
     # SECTION: books
 
     def add_book(self, name, author, press, category, release_date, ISBN):
-        sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN) " \
-                "VALUES ('{}', '{}', '{}', '{}', '{}')".format(name, author, press, release_date, ISBN)
-        if self.conn:
-            try:
-                self.cursor.execute(sql)
-                self.conn.commit()
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
+        sql = "INSERT INTO book (b_name, b_author, b_press, b_category, b_release_date, b_ISBN) VALUES (%s, %s, %s, %s, %s, %s)"
+        try:
+            self.cursor.execute(sql, (name, author, press, category, release_date, ISBN))
+        except Exception as e:
+            print(e)
+            self.conn.rollback()
+        else:
+            self.conn.commit()
 
     def delete_book(self, b_id):
         sql = "DELETE FROM book WHERE b_id = {}".format(b_id)
@@ -160,6 +160,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     def read_book(self):
         sql = "SELECT * FROM book"
@@ -175,9 +177,9 @@ class Database:
                 return book_table
 
     def update_book(self, b_id, name, author, press, category, release_date, ISBN):
-        sql = "UPDATE book SET b_name = '{}', b_author = '{}', b_press = '{}', b_release_date = '{}', b_ISBN = '{}' " \
-              "WHERE b_id = {}"\
-            .format(name, author, press, category, release_date, ISBN, b_id)
+        sql = "UPDATE book SET b_name = '{}', b_author = '{}', b_press = '{}', b_category = '{}', b_release_date = '{" \
+              "}', b_ISBN = '{}' WHERE b_id = {}".format(name, author, press, category, release_date, ISBN, b_id)
+
         # 认为ISBN是不可修改的
         if self.conn:
             try:
@@ -186,6 +188,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     # SECTION: documents
     def add_document(self, name, author, press, release_date, ISBN):
@@ -198,6 +202,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     def delete_document(self, d_id):
         sql = "DELETE FROM document WHERE d_id = {}".format(d_id)
@@ -208,6 +214,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     def read_document(self):
         sql = "SELECT * FROM document"
@@ -235,7 +243,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
-        pass
+            else:
+                self.conn.commit()
 
     # SECTION: users
 
@@ -249,6 +258,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
 
     def delete_user(self, u_id):
@@ -261,6 +272,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
 
     def read_user(self):
@@ -287,6 +300,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     # SECTION: buyer
 
@@ -310,6 +325,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     def read_buyer(self):
         sql = "SELECT * FROM buyer"
@@ -324,6 +341,7 @@ class Database:
                 buyer_table = self.cursor.fetchall()
                 return buyer_table
 
+
     # SECTION: upload
 
     def add_upload(self, u_id, d_id, upload_date):
@@ -336,6 +354,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     def delete_upload(self, upload_id):  # 需要删除上传记录吗？
         sql = "DELETE FROM upload WHERE upload_id = {}".format(upload_id)
@@ -346,6 +366,8 @@ class Database:
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     def read_upload(self):
         sql = "SELECT * FROM upload"
