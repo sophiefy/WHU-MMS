@@ -1,6 +1,7 @@
 import pymysql
 import numpy as np
 
+
 class Database:
     def __init__(self):
         self.conn = None
@@ -10,11 +11,11 @@ class Database:
         try:
             # 打开数据库连接
             self.conn = pymysql.connect(user="DB_USER08",
-                     password="DB_USER08@123",
-                     host="124.70.7.2",
-                     port=3306,
-                     database="user08db",
-                     charset='utf8')
+                                        password="DB_USER08@123",
+                                        host="124.70.7.2",
+                                        port=3306,
+                                        database="user08db",
+                                        charset='utf8')
             self.cursor = self.conn.cursor()
         except Exception as e:
             print(e)
@@ -24,18 +25,17 @@ class Database:
         # 检测表是否存在
         sql = "SHOW TABLES"
         self.cursor.execute(sql)
-        databases =self.cursor.fetchall()
+        databases = self.cursor.fetchall()
 
         databases_arr = np.array(databases)
 
+        databases_list = ('user', 'book', 'document', 'buyer', 'upload')
 
-        databases_list = ('user','book','document','buyer','upload')
-
-        function_mapping={'user':self.create_user_table,
-                          'book':self.create_book_table,
-                          'document':self.create_document_table,
-                          'buyer':self.create_buyer_table,
-                          'upload':self.create_upload_table}
+        function_mapping = {'user': self.create_user_table,
+                            'book': self.create_book_table,
+                            'document': self.create_document_table,
+                            'buyer': self.create_buyer_table,
+                            'upload': self.create_upload_table}
 
         for database in databases_list:
             if database in databases_arr:
@@ -136,6 +136,7 @@ class Database:
             self.conn.rollback()
         else:
             self.conn.commit()
+
     # SECTION: books
 
     def add_book(self, name, author, press, category, release_date, ISBN):
@@ -178,7 +179,7 @@ class Database:
                 self.cursor.execute("update Books set "
                                     "name='{}', author='{}', press='{}', category='{}', release_date='{}' "
                                     "where ISBN='{}'"
-                                    .format(name, author, press, category,release_date, ISBN))
+                                    .format(name, author, press, category, release_date, ISBN))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -210,7 +211,6 @@ class Database:
 
     def update_user(self):
         pass
-
 
 
 if __name__ == '__main__':
