@@ -90,7 +90,8 @@ class Database:
                  d_name  CHAR(100),
                  d_author CHAR(20),
                  d_release_date DATE,
-                 d_DOI CHAR(13)
+                 d_platform CHAR(20),
+                 d_url CHAR(100),
                   )'''
         try:
             self.cursor.execute(sql)
