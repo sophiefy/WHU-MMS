@@ -26,8 +26,13 @@ class Admin:
         self.mainWin.bookAddBtn.clicked.connect(self.add_book)
         self.mainWin.bookEditBtn.clicked.connect(self.edit_book)
         self.mainWin.bookDeleteBtn.clicked.connect(self.delete_book)
-
         self.editBookWin.bookEditBtn.clicked.connect(self.confirm_edit_book)
+
+        self.mainWin.searchPaperBtn.clicked.connect(self.update_paper_table)
+        self.mainWin.paperAddBtn.clicked.connect(self.add_paper)
+        self.mainWin.paperEditBtn.clicked.connect(self.edit_paper)
+        self.mainWin.paperDeleteBtn.clicked.connect(self.delete_paper)
+        self.editPaperWin.paperEditBtn.clicked.connect(self.confirm_edit_paper)
 
         self.create_connection()
 
@@ -37,11 +42,12 @@ class Admin:
 
     def update_book_table(self):
         if self.database:
-            # table = self.database.read_book()
-            # # TODO: 对数据分页
-            # if table:
-            #     self.mainWin.updateBookTable(table)
-            print('update book table!')
+            print('try to update')
+            table = self.database.read_book()
+            print('table', table)
+            # TODO: 对数据分页
+            if table:
+                self.mainWin.updateBookTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
@@ -107,7 +113,8 @@ class Admin:
 
     def update_paper_table(self):
         if self.database:
-            table = self.database.read_paper()
+            table = self.database.read_document()
+            print('paper table', table)
             # TODO: 对数据分页
             if table:
                 self.mainWin.updatePaperTable(table)

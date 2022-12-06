@@ -110,7 +110,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
 
-        id = self.bookTbl.item(row, 0)  # primary key
+        id = self.bookTbl.item(row, 0).text()  # primary key
         name = self.bookTbl.item(row, 1).text()
         author = self.bookTbl.item(row, 2).text()
         press = self.bookTbl.item(row, 3).text()
@@ -128,13 +128,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
             for i, row in enumerate(table):
                 # id, name, author, press, release_date, ISBN, stock
                 self.bookTbl.insertRow(i)
-                self.bookTbl.setItem(i, 0, QTableWidgetItem(row[0]))
+                self.bookTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
                 self.bookTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.bookTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.bookTbl.setItem(i, 3, QTableWidgetItem(row[3]))
                 self.bookTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.bookTbl.setItem(i, 5, QTableWidgetItem(row[4]))
-                self.bookTbl.setItem(i, 6, QTableWidgetItem(row[4]))
+                self.bookTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+                self.bookTbl.setItem(i, 6, QTableWidgetItem(str(row[6])))
         except Exception as e:
             print(e)
 
@@ -177,14 +177,14 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.paperTbl.clearContents()
         try:
             for i, row in enumerate(table):
-                # title, author, release_date, archive, url, primary_key
+                # id, title, author, release_date, archive, url, primary_key
                 self.paperTbl.insertRow(i)
-                self.paperTbl.setItem(i, 0, QTableWidgetItem(row[0]))
+                self.paperTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
                 self.paperTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.paperTbl.setItem(i, 2, QTableWidgetItem(row[2]))
-                self.paperTbl.setItem(i, 3, QTableWidgetItem(row[3]))
+                self.paperTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
                 self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[4]))
+                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
         except Exception as e:
             print(e)
 
@@ -228,14 +228,15 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.userTbl.clearContents()
         try:
             for i, row in enumerate(table):
+                # number, name, password, age, dpt, grade, perm
                 self.userTbl.insertRow(i)
-                self.userTbl.setItem(i, 0, QTableWidgetItem(row[0]))
+                self.userTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
                 self.userTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.userTbl.setItem(i, 2, QTableWidgetItem(row[2]))
-                self.userTbl.setItem(i, 3, QTableWidgetItem(row[3]))
+                self.userTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
                 self.userTbl.setItem(i, 4, QTableWidgetItem(row[4]))
                 self.userTbl.setItem(i, 5, QTableWidgetItem(row[5]))
-                self.userTbl.setItem(i, 6, QTableWidgetItem(row[6]))
+                self.userTbl.setItem(i, 6, QTableWidgetItem(str(row[6])))
         except Exception as e:
             print(e)
 
