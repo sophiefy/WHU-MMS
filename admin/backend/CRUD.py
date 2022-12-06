@@ -149,11 +149,10 @@ class Database:
                 self.conn.rollback()
                 print(e)
 
-    def delete_book(self, ISBN):
+    def delete_book(self, b_id):
         if self.conn:
             try:
-                self.cursor.execute("delete from Books where ISBN='{}'"
-                                    .format(ISBN))
+                self.cursor.execute("delete from Books where b_id = {}".format(b_id))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
