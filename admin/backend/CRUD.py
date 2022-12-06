@@ -6,6 +6,11 @@ class Database:
     def __init__(self):
         self.conn = None
         self.cursor = None
+        self.user_attr = ('u_id', 'u_name', 'u_password', 'u_age', 'u_dpt', 'u_grade', 'u_perm')
+        self.book_attr = ('b_id', 'b_name', 'b_author', 'b_press', 'b_release_date', 'b_ISBN', 'b_num')
+        self.document_attr = ('d_id', 'd_name', 'd_author', 'd_release_date', 'd_platform', 'd_url')
+        self.buyer_attr = ('buy_id', 'b_id', 'u_id', 'buy_date')
+        self.upload_attr = ('upload_id', 'u_id', 'd_id', 'upload_date')
 
     def create_connection(self):
         try:
@@ -19,7 +24,9 @@ class Database:
             self.cursor = self.conn.cursor()
         except Exception as e:
             print(e)
+            return False
         self.check_table()
+        return True
 
     def check_table(self):
         # 检测表是否存在
@@ -72,7 +79,6 @@ class Database:
                  b_name  CHAR(100),
                  b_author CHAR(20),
                  b_press CHAR(100),
-                 b_category CHAR(20),
                  b_release_date DATE,
                  b_ISBN CHAR(13),
                  b_num INT DEFAULT 0
@@ -141,9 +147,9 @@ class Database:
 
     # SECTION: books
 
-    def add_book(self, name, author, press, category, release_date, ISBN, num):
+    def add_book(self, name, author, press,  release_date, ISBN, num):
         sql = "INSERT INTO book (b_name, b_author, b_press, b_category, b_release_date, b_ISBN, b_num) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', {})".format(
-            name, author, press, category, release_date, ISBN, num)
+            name, author, press, release_date, ISBN, num)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -179,11 +185,12 @@ class Database:
                 book_table = self.cursor.fetchall()
                 return book_table
 
-    def update_book(self, b_id, name, author, press, category, release_date, ISBN):
-        sql = "UPDATE book SET b_name = '{}', b_author = '{}', b_press = '{}', b_category = '{}', b_release_date = '{" \
-              "}', b_ISBN = '{}' WHERE b_id = {}".format(name, author, press, category, release_date, ISBN, b_id)
-
-        # 认为ISBN是不可修改的
+    def update_book(self, b_id, **kwargs):
+        sql = "UPDATE book SET "
+        for key, value in kwargs.items():
+            if key in self.book_attr:
+                sql += "{} = '{}', ".format(key, value)
+        sql = sql[:-2] + " WHERE b_id = {}".format(b_id)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -234,11 +241,12 @@ class Database:
                 return document_table
 
 
-    def update_document(self, d_id, name, author, press, release_date, ISBN):
-        sql = "UPDATE document SET d_name = '{}', d_author = '{}', d_press = '{}', d_release_date = '{}', d_ISBN = '{}' " \
-                "WHERE d_id = {}"\
-            .format(name, author, press, release_date, ISBN, d_id)
-
+    def update_document(self, d_id, **kwargs):
+        sql = "UPDATE document SET "
+        for key, value in kwargs.items():
+            if key in self.document_attr:
+                sql += "{} = '{}', ".format(key, value)
+        sql = sql[:-2] + " WHERE d_id = {}".format(d_id)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -292,10 +300,12 @@ class Database:
                 user_table = self.cursor.fetchall()
                 return user_table
 
-    def update_user(self,u_id, name, password, age, dpt, grade, perm):
-        sql = "UPDATE user SET u_name = '{}', u_password = '{}', u_age = '{}', u_dpt = '{}', u_grade = '{}', u_perm = '{}' " \
-                "WHERE u_id = {}"\
-            .format(name, password, age, dpt, grade, perm, u_id)
+    def update_user(self,u_id, **kwargs):
+        sql = "UPDATE user SET "
+        for key, value in kwargs.items():
+            if key in self.user_attr:
+                sql += "{} = '{}', ".format(key, value)
+        sql = sql[:-2] + " WHERE u_id = {}".format(u_id)
         if self.conn:
             try:
                 self.cursor.execute(sql)
