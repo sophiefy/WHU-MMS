@@ -62,7 +62,7 @@ class Database:
                  u_age INT,  
                  u_dpt CHAR(20), 
                  u_grade CHAR(4),
-                 u_perm CHAR(20)
+                 u_perm INT DEFAULT 0
                   )'''
         try:
             self.cursor.execute(sql)

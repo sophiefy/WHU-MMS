@@ -6,7 +6,7 @@ DB.create_connection()
 
 
 try:
-    DB.add_book("朝花夕拾", "鲁迅", "人民教育出版社", "2017-06-13", "9787107316616",3)
+    DB.update_book(b_id=1,b_num=1)
 except Exception as e:
     print(e)
     DB.conn.rollback()
