@@ -14,6 +14,7 @@ class Client:
     def __init__(self):
         self.mainWin = MainWin()
         self.loginWin = LoginWin()
+        self.uploadWin = UploadWin()
 
         self.init_signal_slots()
 
@@ -21,6 +22,8 @@ class Client:
         self.mainWin.pageSignal.connect(self.turn_page)
         self.loginWin.loginBtn.clicked.connect(self.log_in)
         self.mainWin.logoutBtn.clicked.connect(self.log_out)
+        self.mainWin.bookBuyBtn.clicked.connect(self.buy_book)
+        self.mainWin.paperUploadBtn.clicked.connect(self.upload_paper)
 
     def log_in(self):
         # TODO: 发送请求至服务端
@@ -46,7 +49,28 @@ class Client:
         else:
             pass
 
-# SECTION: 翻页
+    def buy_book(self):
+        try:
+            book_info = self.mainWin.getSelectedBookInfo()
+        except:
+            QMessageBox.warning(self.mainWin, '警告', '请先选择要购买的图书！')
+        else:
+            reply = QMessageBox.question(self.mainWin,
+                                         '询问',
+                                         "确定要购买这本书吗？",
+                                         QMessageBox.Yes | QMessageBox.No,
+                                         QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                print('成功购买: ', book_info)
+                # TODO: 后端检查是否可以购买并修改数据库图书信息
+            else:
+                pass
+
+    def upload_paper(self):
+        self.uploadWin.exec()
+
+
+    # SECTION: 翻页
     def turn_page(self, signal):
         type = signal[0]
         command = signal[1]

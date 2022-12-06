@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="resources">
+    <file>common/upload.png</file>
     <file>common/books.png</file>
     <file>common/papers.png</file>
     <file>common/stats.png</file>

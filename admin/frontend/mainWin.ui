@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -630,8 +630,215 @@ background-color: rgb(85, 255, 127);</string>
        </layout>
       </widget>
       <widget class="QWidget" name="pageSearchBook">
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="4" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QLabel" name="label_22">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>图书查询</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="searchBookKeyEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>书号</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchBookNameEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>书名</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchBookAuthorEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>作者</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchBookPressEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>出版社</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchBookDateEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>出版日期</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchBookISBNEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>ISBN</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="searchBookBtn">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>查询</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_13">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="text">
+           <string>查询结果：共0条数据</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="bookTbl">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>书号</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>书名</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>作者</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>出版社</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>出版时间</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ISBN</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>在库</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
            <widget class="QPushButton" name="bookFirstBtn">
@@ -838,127 +1045,6 @@ background-color: rgb(85, 255, 127);</string>
            </widget>
           </item>
          </layout>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_13">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <property name="text">
-           <string>查询结果</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QLineEdit" name="searchBookEdit">
-            <property name="font">
-             <font>
-              <family>微软雅黑</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="searchBookBtn">
-            <property name="font">
-             <font>
-              <family>微软雅黑</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>查询</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_22">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>图书查询</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QTableWidget" name="bookTbl">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
-          </property>
-          <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
-          </property>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>true</bool>
-          </attribute>
-          <column>
-           <property name="text">
-            <string>书号</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>书名</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>作者</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>出版社</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>出版时间</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>ISBN</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>在库</string>
-           </property>
-          </column>
-         </widget>
         </item>
        </layout>
       </widget>
@@ -1190,16 +1276,92 @@ background-color: rgb(85, 255, 127);</string>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>20</number>
+          </property>
           <item>
-           <widget class="QLineEdit" name="searchPaperEdit">
+           <widget class="QLineEdit" name="searchPaperKeyEdit">
             <property name="font">
              <font>
               <family>微软雅黑</family>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="dragEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>论文号</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchPaperTitleEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="dragEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>标题</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchPaperAuthorEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>作者</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchPaperDateEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>发表日期</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchPaperArchiveEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>发表平台</string>
             </property>
            </widget>
           </item>
@@ -1208,7 +1370,7 @@ background-color: rgb(85, 255, 127);</string>
             <property name="font">
              <font>
               <family>微软雅黑</family>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
@@ -1223,7 +1385,7 @@ background-color: rgb(85, 255, 127);</string>
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>10</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -1236,7 +1398,7 @@ background-color: rgb(85, 255, 127);</string>
            <enum>QFrame::Raised</enum>
           </property>
           <property name="text">
-           <string>查询结果</string>
+           <string>查询结果：共0条记录</string>
           </property>
          </widget>
         </item>
@@ -1519,7 +1681,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1" colspan="2">
+        <item row="0" column="1">
          <widget class="QLineEdit" name="userNameEdit">
           <property name="font">
            <font>
@@ -1554,7 +1716,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="1" colspan="2">
+        <item row="1" column="1">
          <widget class="QLineEdit" name="userPasswordEdit">
           <property name="font">
            <font>
@@ -1589,7 +1751,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="2">
+        <item row="2" column="1">
          <widget class="QLineEdit" name="userAgeEdit">
           <property name="font">
            <font>
@@ -1617,14 +1779,14 @@ background-color: rgb(85, 255, 127);</string>
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="text">
-           <string>DPT</string>
+           <string>学院</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
+        <item row="3" column="1">
          <widget class="QLineEdit" name="userDPTEdit">
           <property name="font">
            <font>
@@ -1638,7 +1800,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="0" colspan="2">
+        <item row="4" column="0">
          <widget class="QLabel" name="label_44">
           <property name="font">
            <font>
@@ -1659,7 +1821,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="2">
+        <item row="4" column="1">
          <widget class="QLineEdit" name="userGradeEdit">
           <property name="font">
            <font>
@@ -1674,6 +1836,41 @@ background-color: rgb(85, 255, 127);</string>
          </widget>
         </item>
         <item row="5" column="0">
+         <widget class="QLabel" name="label_45">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="text">
+           <string>权限</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="userPermEdit">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
          <widget class="QPushButton" name="userAddBtn">
           <property name="font">
            <font>
@@ -1710,17 +1907,87 @@ background-color: rgb(85, 255, 127);</string>
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>20</number>
+          </property>
           <item>
-           <widget class="QLineEdit" name="searchUserEdit_2">
+           <widget class="QLineEdit" name="searchUserKeyEdit">
             <property name="font">
              <font>
               <family>微软雅黑</family>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>读者号</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchUserNameEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>用户名</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchUserAgeEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>年龄</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchUserDPTEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>学院</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchUserGradeEdit">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+            </property>
+            <property name="placeholderText">
+             <string>年级</string>
             </property>
            </widget>
           </item>
@@ -1729,7 +1996,7 @@ background-color: rgb(85, 255, 127);</string>
             <property name="font">
              <font>
               <family>微软雅黑</family>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
@@ -1744,7 +2011,7 @@ background-color: rgb(85, 255, 127);</string>
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>10</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -1757,7 +2024,7 @@ background-color: rgb(85, 255, 127);</string>
            <enum>QFrame::Raised</enum>
           </property>
           <property name="text">
-           <string>查询结果</string>
+           <string>查询结果：共0条数据</string>
           </property>
          </widget>
         </item>
@@ -1797,12 +2064,17 @@ background-color: rgb(85, 255, 127);</string>
           </column>
           <column>
            <property name="text">
-            <string>DPT</string>
+            <string>学院</string>
            </property>
           </column>
           <column>
            <property name="text">
             <string>年级</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>权限</string>
            </property>
           </column>
          </widget>
