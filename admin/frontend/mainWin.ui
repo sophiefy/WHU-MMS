@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1519,7 +1519,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1" colspan="2">
+        <item row="0" column="1">
          <widget class="QLineEdit" name="userNameEdit">
           <property name="font">
            <font>
@@ -1554,7 +1554,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="1" colspan="2">
+        <item row="1" column="1">
          <widget class="QLineEdit" name="userPasswordEdit">
           <property name="font">
            <font>
@@ -1589,7 +1589,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="2">
+        <item row="2" column="1">
          <widget class="QLineEdit" name="userAgeEdit">
           <property name="font">
            <font>
@@ -1617,14 +1617,14 @@ background-color: rgb(85, 255, 127);</string>
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="text">
-           <string>DPT</string>
+           <string>学院</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
+        <item row="3" column="1">
          <widget class="QLineEdit" name="userDPTEdit">
           <property name="font">
            <font>
@@ -1638,7 +1638,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="0" colspan="2">
+        <item row="4" column="0">
          <widget class="QLabel" name="label_44">
           <property name="font">
            <font>
@@ -1659,7 +1659,7 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="2">
+        <item row="4" column="1">
          <widget class="QLineEdit" name="userGradeEdit">
           <property name="font">
            <font>
@@ -1674,6 +1674,41 @@ background-color: rgb(85, 255, 127);</string>
          </widget>
         </item>
         <item row="5" column="0">
+         <widget class="QLabel" name="label_45">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="text">
+           <string>权限</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="userPermEdit">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
          <widget class="QPushButton" name="userAddBtn">
           <property name="font">
            <font>
@@ -1797,12 +1832,17 @@ background-color: rgb(85, 255, 127);</string>
           </column>
           <column>
            <property name="text">
-            <string>DPT</string>
+            <string>学院</string>
            </property>
           </column>
           <column>
            <property name="text">
             <string>年级</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>权限</string>
            </property>
           </column>
          </widget>

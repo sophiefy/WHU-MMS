@@ -6,6 +6,7 @@ import sys
 
 from loginWin import Ui_FormLogin
 from mainWin import Ui_MainWindow
+from uploadWin import Ui_FormUpload
 
 
 class LoginWin(QDialog, Ui_FormLogin):
@@ -41,6 +42,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.paperTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.bookTbl.setColumnHidden(0, True)  # 隐藏primary key
 
         self.initSignalSlots()
 
@@ -65,6 +67,18 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.paperJumpBtn.clicked.connect(lambda: self.jumpPage('paper'))
 
         self.bookPage.setText('1 / 10')  # debug use
+
+    def getSelectedBookInfo(self):
+        row = self.bookTbl.currentRow()
+
+        id = self.bookTbl.item(row, 0)  # primary key, hidden
+        name = self.bookTbl.item(row, 1).text()
+        author = self.bookTbl.item(row, 2).text()
+        press = self.bookTbl.item(row, 3).text()
+        release_date = self.bookTbl.item(row, 4).text()
+        ISBN = self.bookTbl.item(row, 5).text()
+
+        return id, name, author, press, release_date, ISBN
 
     # SECTION: 翻页
     def firstPage(self, type):
@@ -118,7 +132,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         try:
             target_page = int(text)
         except:
-            return -1 # 输入了非法页码
+            return -1  # 输入了非法页码
 
         return target_page
 
@@ -136,3 +150,24 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 e.ignore()
         else:
             self.close()
+
+
+class UploadWin(QDialog, Ui_FormUpload):
+    def __init__(self):
+        super(UploadWin, self).__init__()
+
+        self.setupUi(self)
+
+    def getNewPaperInfo(self):
+        title = self.paperTitleEdit.text()
+        author = self.paperAuthorEdit.text()
+        release_date = self.paperDateEdit.text()
+        archive = self.paperArchiveEdit.text()
+        url = self.paperURLEdit.text()
+
+        if title and author and release_date and archive and url:
+            # TODO: 后端要检查是否可以插入，并返回信息给用户
+            return title, author, release_date, archive, url
+        else:
+            self.showWarning('论文信息不全！')
+            return None

@@ -11,6 +11,15 @@ from editUserWin import Ui_FormEditUser
 
 
 # NOTE: work in progress
+class FormatChecker:
+    @staticmethod
+    def check_str_Length(string, max_length, min_length=0):
+        assert max_length > min_length
+        if len(string) > max_length:
+            return -1
+        else:
+            return 0
+
 
 class MainWin(QMainWindow, Ui_MainWindow):
     pageSignal = pyqtSignal(list)
@@ -180,8 +189,9 @@ class MainWin(QMainWindow, Ui_MainWindow):
         age = self.userTbl.item(row, 3).text()
         dpt = self.userTbl.item(row, 4).text()
         grade = self.userTbl.item(row, 5).text()
+        perm = self.userTbl.item(row, 6).text()
 
-        return number, name, password, age, dpt, grade
+        return number, name, password, age, dpt, grade, perm
 
     def updateUserTable(self, table):
         assert table is not None
@@ -196,6 +206,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.userTbl.setItem(i, 3, QTableWidgetItem(row[3]))
                 self.userTbl.setItem(i, 4, QTableWidgetItem(row[4]))
                 self.userTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+                self.userTbl.setItem(i, 6, QTableWidgetItem(row[6]))
         except Exception as e:
             print(e)
 
@@ -374,14 +385,15 @@ class EditUserWin(QDialog, Ui_FormEditUser):
         QMessageBox.critical(self, '错误', msg)
 
     def putOldUserInfo(self, row):
-        number, name, password, age, dpt, grade = \
-            row[0], row[1], row[2], row[3], row[4], row[5]
+        number, name, password, age, dpt, grade, perm= \
+            row[0], row[1], row[2], row[3], row[4], row[5], row[6]
         self.userNumEdit.setText(number)
         self.userNameEdit.setText(name)
         self.userPasswordEdit.setText(password)
         self.userAgeEdit.setText(age)
         self.userDPTEdit.setText(dpt)
         self.userGradeEdit.setText(grade)
+        self.userPermEdit.setText(perm)
 
     def getNewUserInfo(self):
         number = self.userNumEdit.text()
@@ -390,9 +402,10 @@ class EditUserWin(QDialog, Ui_FormEditUser):
         age = self.userAgeEdit.text()
         dpt = self.userDPTEdit.text()
         grade = self.userGradeEdit.text()
+        perm = self.userPermEdit.text()
 
-        if number and name and password and age and dpt and grade:
-            return number, name, password, age, dpt, grade
+        if number and name and password and age and dpt and grade and perm:
+            return number, name, password, age, dpt, grade, perm
         else:
             self.showWarning('用户信息不全！')
             return None
