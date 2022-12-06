@@ -45,6 +45,14 @@ class Admin:
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
+    def search_book(self):
+        # id, name, author, press, release_date, ISBN
+        # 可以为空
+        keys = self.mainWin.getBookSearchKey()
+        print('search books by keys:', keys)
+
+        # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
+
     def add_book(self):
         new_book_info = self.mainWin.getNewBookInfo()
 
@@ -82,7 +90,7 @@ class Admin:
         if self.database:
             try:
                 old_book_info = self.mainWin.getSelectedBookInfo()
-                id = old_book_info[0]   # primary key
+                id = old_book_info[0]  # primary key
             except:
                 QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的书籍！')
             else:
@@ -105,6 +113,12 @@ class Admin:
                 self.mainWin.updatePaperTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
+
+    def search_paper(self):
+        keys = self.mainWin.getPaperSearchKey()
+        print('search papers by keys:', keys)
+
+        # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
 
     def add_paper(self):
         new_paper_info = self.mainWin.getNewPaperInfo()
@@ -166,6 +180,12 @@ class Admin:
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
+    def search_user(self):
+        keys = self.mainWin.getUserSearchKey()
+        print('search users by keys:', keys)
+
+        # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
+
     def add_user(self):
         new_user_info = self.mainWin.getNewUserInfo()
 
@@ -202,7 +222,7 @@ class Admin:
         if self.database:
             try:
                 old_user_info = self.mainWin.getSelectedUserInfo()
-                id = old_user_info[0]   # primary key
+                id = old_user_info[0]  # primary key
             except:
                 QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的用户！')
             else:

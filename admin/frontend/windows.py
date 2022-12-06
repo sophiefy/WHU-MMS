@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import sys
+import jieba
 
 from mainWin import Ui_MainWindow
 from editBookWin import Ui_FormEditBook
@@ -96,6 +97,16 @@ class MainWin(QMainWindow, Ui_MainWindow):
             self.showWarning('书本信息不完整!')
             return None
 
+    def getBookSearchKey(self):
+        id = self.searchBookKeyEdit.text()
+        name = self.searchBookNameEdit.text()
+        author = self.searchBookAuthorEdit.text()
+        press = self.searchBookPressEdit.text()
+        release_date = self.searchBookDateEdit.text()
+        ISBN = self.searchBookISBNEdit.text()
+
+        return id, name, author, press, release_date, ISBN
+
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
 
@@ -139,6 +150,15 @@ class MainWin(QMainWindow, Ui_MainWindow):
             self.showWarning('论文信息不全！')
             return None
 
+    def getPaperSearchKey(self):
+        id = self.searchPaperKeyEdit.text()
+        title = self.searchPaperTitleEdit.text()
+        author = self.searchPaperAuthorEdit.text()
+        release_date = self.searchPaperDateEdit.text()
+        archive = self.searchPaperArchiveEdit.text()
+
+        return id, title, author, release_date, archive
+
     def getSelectedPaperInfo(self):
         row = self.paperTbl.currentRow()
 
@@ -179,6 +199,15 @@ class MainWin(QMainWindow, Ui_MainWindow):
             return name, password, age, dpt, grade
         else:
             self.showWarning('用户信息不全！')
+
+    def getUserSearchKey(self):
+        number = self.searchUserKeyEdit.text()
+        name = self.searchUserNameEdit.text()
+        age = self.searchUserAgeEdit.text()
+        dpt = self.searchUserDPTEdit.text()
+        grade = self.searchUserGradeEdit.text()
+
+        return number, name, age, dpt, grade
 
     def getSelectedUserInfo(self):
         row = self.userTbl.currentRow()
