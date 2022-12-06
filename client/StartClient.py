@@ -22,6 +22,7 @@ class Client:
         self.mainWin.pageSignal.connect(self.turn_page)
         self.loginWin.loginBtn.clicked.connect(self.log_in)
         self.mainWin.logoutBtn.clicked.connect(self.log_out)
+        self.mainWin.bookBuyBtn.clicked.connect(self.buy_book)
         self.mainWin.paperUploadBtn.clicked.connect(self.upload_paper)
 
     def log_in(self):

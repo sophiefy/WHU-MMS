@@ -319,7 +319,7 @@ class Ui_FormLogin(object):
         self.verticalLayout.addWidget(self.stackedWidget)
 
         self.retranslateUi(FormLogin)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(FormLogin)
 
     def retranslateUi(self, FormLogin):
