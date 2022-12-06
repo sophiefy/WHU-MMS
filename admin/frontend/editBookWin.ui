@@ -20,40 +20,48 @@
    <string>编辑书籍信息</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-<<<<<<< HEAD
-=======
-   <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookPressEdit">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
-     </property>
-    </widget>
-   </item>
->>>>>>> 21b83a83cba77e67f4c54f5d01b7c3eb6954d113
-   <item row="1" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookAuthorEdit">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
-     </property>
-    </widget>
-   </item>
-<<<<<<< HEAD
-=======
    <item row="0" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+     </property>
+     <property name="text">
+      <string>书号</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="bookKeyEdit">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(230, 230, 230);
+</string>
+     </property>
+     <property name="frame">
+      <bool>true</bool>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
@@ -74,8 +82,21 @@
      </property>
     </widget>
    </item>
->>>>>>> 21b83a83cba77e67f4c54f5d01b7c3eb6954d113
-   <item row="1" column="0">
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="bookNameEdit">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
     <widget class="QLabel" name="label_2">
      <property name="font">
       <font>
@@ -96,9 +117,8 @@
      </property>
     </widget>
    </item>
-<<<<<<< HEAD
-   <item row="3" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookDateEdit">
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="bookAuthorEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -111,7 +131,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="0">
     <widget class="QLabel" name="label_3">
      <property name="font">
       <font>
@@ -132,8 +152,8 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookNameEdit">
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="bookPressEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -146,9 +166,7 @@
      </property>
     </widget>
    </item>
-=======
->>>>>>> 21b83a83cba77e67f4c54f5d01b7c3eb6954d113
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="label_4">
      <property name="font">
       <font>
@@ -169,8 +187,8 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookISBNEdit">
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="bookDateEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -178,32 +196,12 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(220, 220, 220, 150);
+      <string notr="true">background-color: rgba(255, 255, 255, 150);
 </string>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
      </property>
     </widget>
    </item>
    <item row="5" column="0">
-    <widget class="QPushButton" name="bookEditBtn">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 0);
-background-color: rgb(85, 255, 127);</string>
-     </property>
-     <property name="text">
-      <string>确定</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
     <widget class="QLabel" name="label_5">
      <property name="font">
       <font>
@@ -224,11 +222,7 @@ background-color: rgb(85, 255, 127);</string>
      </property>
     </widget>
    </item>
-<<<<<<< HEAD
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-=======
-   <item row="4" column="1" colspan="2">
+   <item row="5" column="1">
     <widget class="QLineEdit" name="bookISBNEdit">
      <property name="font">
       <font>
@@ -237,17 +231,19 @@ background-color: rgb(85, 255, 127);</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(220, 220, 220, 150);
+      <string notr="true">background-color: rgba(255, 255, 255, 150);
 </string>
      </property>
-     <property name="readOnly">
+     <property name="frame">
       <bool>true</bool>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_3">
->>>>>>> 21b83a83cba77e67f4c54f5d01b7c3eb6954d113
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_7">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -260,24 +256,15 @@ background-color: rgb(85, 255, 127);</string>
       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
      </property>
      <property name="text">
-<<<<<<< HEAD
-      <string>书名</string>
-=======
-      <string>出版社</string>
->>>>>>> 21b83a83cba77e67f4c54f5d01b7c3eb6954d113
+      <string>在库</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
-<<<<<<< HEAD
-   <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="bookPressEdit">
-=======
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="bookNameEdit">
->>>>>>> 21b83a83cba77e67f4c54f5d01b7c3eb6954d113
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="bookStockEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -288,23 +275,15 @@ background-color: rgb(85, 255, 127);</string>
       <string notr="true">background-color: rgba(255, 255, 255, 150);
 </string>
      </property>
+     <property name="frame">
+      <bool>true</bool>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
-<<<<<<< HEAD
-   <item row="5" column="2">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-=======
-   <item row="6" column="1" alignment="Qt::AlignHCenter">
+   <item row="7" column="0">
     <widget class="QPushButton" name="bookEditBtn">
      <property name="font">
       <font>
@@ -320,7 +299,19 @@ background-color: rgb(85, 255, 127);</string>
       <string>确定</string>
      </property>
     </widget>
->>>>>>> 21b83a83cba77e67f4c54f5d01b7c3eb6954d113
+   </item>
+   <item row="7" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>737</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
