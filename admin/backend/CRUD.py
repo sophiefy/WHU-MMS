@@ -148,8 +148,8 @@ class Database:
     # SECTION: books
 
     def add_book(self, name, author, press,  release_date, ISBN, num):
-        sql = "INSERT INTO book (b_name, b_author, b_press, b_category, b_release_date, b_ISBN, b_num) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', {})".format(
-            name, author, press, release_date, ISBN, num)
+        sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN, b_num) VALUES ('{}', '{}', '{}', '{}', " \
+              "'{}', '{}')".format(name, author, press, release_date, ISBN, num)
         if self.conn:
             try:
                 self.cursor.execute(sql)
