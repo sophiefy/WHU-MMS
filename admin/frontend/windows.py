@@ -11,6 +11,14 @@ from editUserWin import Ui_FormEditUser
 
 
 # NOTE: work in progress
+class FormatChecker:
+    @staticmethod
+    def check_str_Length(string, max_length, min_length=0):
+        assert max_length > min_length
+        if len(string) > max_length:
+            return -1
+        else:
+            return 0
 
 
 class MainWin(QMainWindow, Ui_MainWindow):
@@ -65,26 +73,41 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         self.bookPage.setText('1 / 10')  # debug use
 
+    def showInfo(self, msg):
+        QMessageBox.information(self, '提示', msg)
+
+    def showWarning(self, msg):
+        QMessageBox.warning(self, '警告', msg)
+
+    def showError(self, msg):
+        QMessageBox.critical(self, '错误', msg)
+
     def getNewBookInfo(self):
         name = self.bookNameEdit.text()
         author = self.bookNameEdit.text()
         press = self.bookPressEdit.text()
-        category = self.bookCombo.currentText()
         release_date = self.bookDateEdit.text()
         ISBN = self.bookISBNEdit.text()
-
-        return name, author, press, category, release_date, ISBN
+        stock = self.bookStockEdit.text()
+        if name and author and press and release_date and ISBN and stock:
+            # TODO: 可以加入格式检查
+            return name, author, press, release_date, ISBN
+        else:
+            self.showWarning('书本信息不完整!')
+            return None
 
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
-        name = self.bookTbl.item(row, 0).text()
-        author = self.bookTbl.item(row, 1).text()
-        press = self.bookTbl.item(row, 2).text()
-        category = self.bookTbl.item(row, 3).text()
+
+        id = self.bookTbl.item(row, 0)  # primary key
+        name = self.bookTbl.item(row, 1).text()
+        author = self.bookTbl.item(row, 2).text()
+        press = self.bookTbl.item(row, 3).text()
         release_date = self.bookTbl.item(row, 4).text()
         ISBN = self.bookTbl.item(row, 5).text()
+        stock = self.bookTbl.item(row, 6).text()  # 在库
 
-        return name, author, press, category, release_date, ISBN
+        return id, name, author, press, release_date, ISBN, stock
 
     def updateBookTable(self, table):
         assert table is not None
@@ -92,39 +115,41 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.bookTbl.clearContents()
         try:
             for i, row in enumerate(table):
-                # name, author, press, category, release_date, ISBN
+                # id, name, author, press, release_date, ISBN, stock
                 self.bookTbl.insertRow(i)
                 self.bookTbl.setItem(i, 0, QTableWidgetItem(row[0]))
                 self.bookTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.bookTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.bookTbl.setItem(i, 3, QTableWidgetItem(row[3]))
                 self.bookTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.bookTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+                self.bookTbl.setItem(i, 5, QTableWidgetItem(row[4]))
+                self.bookTbl.setItem(i, 6, QTableWidgetItem(row[4]))
         except Exception as e:
             print(e)
 
     def getNewPaperInfo(self):
-        title = self.paperTitleEdit.text()
-        author = self.paperAuthorEdit.text()
-        institute = self.paperInsEdit.text()
-        field = self.paperCombo.currentText()
-        release_date = self.paperDateEdit.text()
-        conference = self.paperConfEdit.text()
-        DOI = self.paperDOIEdit.text()
-
-        return title, author, institute, field, release_date, conference, DOI
+        title = self.paperTitleEdit.text()  # 论文标题
+        author = self.paperAuthorEdit.text()  # 论文作者
+        release_date = self.paperDateEdit.text()  # 发表日期
+        archive = self.paperArchiveEdit.text()  # 发表平台
+        url = self.paperURLEdit.text()  # 论文地址
+        if title and author and release_date and archive and url:
+            return title, author, release_date, archive, url
+        else:
+            self.showWarning('论文信息不全！')
+            return None
 
     def getSelectedPaperInfo(self):
         row = self.paperTbl.currentRow()
-        title = self.paperTbl.item(row, 0).text()
-        author = self.paperTbl.item(row, 1).text()
-        institute = self.paperTbl.item(row, 2).text()
-        field = self.paperTbl.item(row, 3).text()
-        release_date = self.paperTbl.item(row, 4).text()
-        conference = self.paperTbl.item(row, 5).text()
-        DOI = self.paperTbl.item(row, 6).text()
 
-        return title, author, institute, field, release_date, conference, DOI
+        id = self.paperTbl.item(row, 0).text()  # primary_key
+        title = self.paperTbl.item(row, 1).text()
+        author = self.paperTbl.item(row, 2).text()
+        release_date = self.paperTbl.item(row, 3).text()
+        archive = self.paperTbl.item(row, 4).text()
+        url = self.paperTbl.item(row, 5).text()
+
+        return id, title, author, release_date, archive, url
 
     def updatePaperTable(self, table):
         assert table is not None
@@ -132,34 +157,41 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.paperTbl.clearContents()
         try:
             for i, row in enumerate(table):
-                # title, author, institute, field, release_date, conference, DOI
+                # title, author, release_date, archive, url, primary_key
                 self.paperTbl.insertRow(i)
                 self.paperTbl.setItem(i, 0, QTableWidgetItem(row[0]))
                 self.paperTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.paperTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.paperTbl.setItem(i, 3, QTableWidgetItem(row[3]))
                 self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
-                self.paperTbl.setItem(i, 6, QTableWidgetItem(row[6]))
+                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[4]))
         except Exception as e:
             print(e)
 
     def getNewUserInfo(self):
         name = self.userNameEdit.text()
-        number = self.userNumEdit.text()
         password = self.userPasswordEdit.text()
-        phone = self.userTelEdit.text()
+        age = self.userAgeEdit.text()
+        dpt = self.userDPTEdit.text()
+        grade = self.userGradeEdit.text()
 
-        return name, number, password, phone
+        if name and password and age and dpt and grade:
+            return name, password, age, dpt, grade
+        else:
+            self.showWarning('用户信息不全！')
 
     def getSelectedUserInfo(self):
         row = self.userTbl.currentRow()
-        name = self.userTbl.item(row, 0).text()
-        number = self.userTbl.item(row, 1).text()
-        password = self.userTbl.item(row, 3).text()
-        phone = self.userTbl.item(row, 4).text()
 
-        return name, number, password, phone
+        number = self.userTbl.item(row, 0).text()
+        name = self.userTbl.item(row, 1).text()
+        password = self.userTbl.item(row, 2).text()
+        age = self.userTbl.item(row, 3).text()
+        dpt = self.userTbl.item(row, 4).text()
+        grade = self.userTbl.item(row, 5).text()
+        perm = self.userTbl.item(row, 6).text()
+
+        return number, name, password, age, dpt, grade, perm
 
     def updateUserTable(self, table):
         assert table is not None
@@ -172,6 +204,9 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.userTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.userTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.userTbl.setItem(i, 3, QTableWidgetItem(row[3]))
+                self.userTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+                self.userTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+                self.userTbl.setItem(i, 6, QTableWidgetItem(row[6]))
         except Exception as e:
             print(e)
 
@@ -257,24 +292,40 @@ class EditBookWin(QDialog, Ui_FormEditBook):
 
         self.setupUi(self)
 
+    def showInfo(self, msg):
+        QMessageBox.information(self, '提示', msg)
+
+    def showWarning(self, msg):
+        QMessageBox.warning(self, '警告', msg)
+
+    def showError(self, msg):
+        QMessageBox.critical(self, '错误', msg)
+
     def putOldBookInfo(self, row):
-        name, author, press, category, release_date, ISBN = row[0], row[1], row[2], row[3], row[4], row[5]
+        id, name, author, press, release_date, ISBN, stock = \
+            row[0], row[1], row[2], row[3], row[4], row[5], row[6]
+
+        self.bookKeyEdit.setText(id)
         self.bookNameEdit.setText(name)
         self.bookAuthorEdit.setText(author)
         self.bookPressEdit.setText(press)
-        self.bookCombo.setCurrentText(category)
         self.bookDateEdit.setText(release_date)
         self.bookISBNEdit.setText(ISBN)
+        self.bookStockEdit.setText(stock)
 
     def getNewBookInfo(self):
+        id = self.bookKeyEdit.text()
         name = self.bookNameEdit.text()
         author = self.bookAuthorEdit.text()
         press = self.bookPressEdit.text()
-        category = self.bookCombo.currentText()
         release_date = self.bookDateEdit.text()
         ISBN = self.bookISBNEdit.text()
-
-        return name, author, press, category, release_date, ISBN
+        stock = self.bookStockEdit.text()
+        if id and name and author and press and release_date and ISBN and stock:
+            return id, name, author, press, release_date, ISBN, stock
+        else:
+            self.showWarning('书本信息不完整!')
+            return None
 
 
 class EditPaperWin(QDialog, Ui_FormEditPaper):
@@ -283,27 +334,39 @@ class EditPaperWin(QDialog, Ui_FormEditPaper):
 
         self.setupUi(self)
 
+    def showInfo(self, msg):
+        QMessageBox.information(self, '提示', msg)
+
+    def showWarning(self, msg):
+        QMessageBox.warning(self, '警告', msg)
+
+    def showError(self, msg):
+        QMessageBox.critical(self, '错误', msg)
+
     def putOldPaperInfo(self, row):
-        title, author, institute, field, release_date, conference, DOI = \
+        id, title, author, release_date, archive, url, primary_key = \
             row[0], row[1], row[2], row[3], row[4], row[5], row[6]
+
+        self.paperKeyEdit.setText(id)
         self.paperTitleEdit.setText(title)
         self.paperAuthorEdit.setText(author)
-        self.paperInsEdit.setText(institute)
-        self.paperCombo.setCurrentText(field)
         self.paperDateEdit.setText(release_date)
-        self.paperConfEdit.setText(conference)
-        self.paperDOIEdit.setText(DOI)
+        self.paperArchiveEdit.setText(archive)
+        self.paperURLEdit.setText(url)
 
     def getNewPaperInfo(self):
+        id = self.paperKeyEdit.text()
         title = self.paperTitleEdit.text()
         author = self.paperAuthorEdit.text()
-        institute = self.paperInsEdit.text()
-        field = self.paperCombo.currentText()
         release_date = self.paperDateEdit.text()
-        conference = self.paperConfEdit.text()
-        DOI = self.paperDOIEdit.text()
+        archive = self.paperArchiveEdit.text()
+        url = self.paperURLEdit.text()
 
-        return title, author, institute, field, release_date, conference, DOI
+        if id and title and author and release_date and archive and url:
+            return id, title, author, release_date, archive, url
+        else:
+            self.showWarning('论文信息不全！')
+            return None
 
 
 class EditUserWin(QDialog, Ui_FormEditUser):
@@ -312,17 +375,37 @@ class EditUserWin(QDialog, Ui_FormEditUser):
 
         self.setupUi(self)
 
+    def showInfo(self, msg):
+        QMessageBox.information(self, '提示', msg)
+
+    def showWarning(self, msg):
+        QMessageBox.warning(self, '警告', msg)
+
+    def showError(self, msg):
+        QMessageBox.critical(self, '错误', msg)
+
     def putOldUserInfo(self, row):
-        name, password, phone, number = row[0], row[1], row[2], row[3]
+        number, name, password, age, dpt, grade, perm= \
+            row[0], row[1], row[2], row[3], row[4], row[5], row[6]
+        self.userNumEdit.setText(number)
         self.userNameEdit.setText(name)
         self.userPasswordEdit.setText(password)
-        self.userTelEdit.setText(phone)
-        self.userNameEdit.setText(number)
+        self.userAgeEdit.setText(age)
+        self.userDPTEdit.setText(dpt)
+        self.userGradeEdit.setText(grade)
+        self.userPermEdit.setText(perm)
 
     def getNewUserInfo(self):
+        number = self.userNumEdit.text()
         name = self.userNameEdit.text()
         password = self.userPasswordEdit.text()
-        phone = self.userTelEdit.text()
-        number = self.userNumEdit.text()
+        age = self.userAgeEdit.text()
+        dpt = self.userDPTEdit.text()
+        grade = self.userGradeEdit.text()
+        perm = self.userPermEdit.text()
 
-        return name, password, phone, number
+        if number and name and password and age and dpt and grade and perm:
+            return number, name, password, age, dpt, grade, perm
+        else:
+            self.showWarning('用户信息不全！')
+            return None

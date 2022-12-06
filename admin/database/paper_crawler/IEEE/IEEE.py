@@ -13,7 +13,7 @@ def get_paperinfo(topic):
     time.sleep(3)
     df=[]
     print(url + '&pageNumber=1')
-    for i in range(1,11):
+    for i in range(1, 3):
         elements=driver.find_elements(By.XPATH,'//div[@class=\'List-results-items\']')
         for j in range(0,len(elements)):
             element=elements[j]
@@ -43,3 +43,6 @@ def get_paperinfo(topic):
 
 
 # save_data(get_paperinfo())
+
+if __name__ == '__main__':
+    pass

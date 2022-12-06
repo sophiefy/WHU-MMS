@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'editPaperWin.ui'
+# Form implementation generated from reading ui file 'uploadWin.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -11,37 +11,17 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_FormEditPaper(object):
-    def setupUi(self, FormEditPaper):
-        FormEditPaper.setObjectName("FormEditPaper")
-        FormEditPaper.resize(976, 606)
+class Ui_FormUpload(object):
+    def setupUi(self, FormUpload):
+        FormUpload.setObjectName("FormUpload")
+        FormUpload.resize(969, 635)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
-        font.setPointSize(12)
-        FormEditPaper.setFont(font)
-        self.gridLayout = QtWidgets.QGridLayout(FormEditPaper)
+        font.setPointSize(10)
+        FormUpload.setFont(font)
+        self.gridLayout = QtWidgets.QGridLayout(FormUpload)
         self.gridLayout.setObjectName("gridLayout")
-        self.label_14 = QtWidgets.QLabel(FormEditPaper)
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_14.setFont(font)
-        self.label_14.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
-        self.label_14.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_14.setObjectName("label_14")
-        self.gridLayout.addWidget(self.label_14, 0, 0, 1, 1)
-        self.paperKeyEdit = QtWidgets.QLineEdit(FormEditPaper)
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(10)
-        self.paperKeyEdit.setFont(font)
-        self.paperKeyEdit.setStyleSheet("background-color: rgb(230, 230, 230);\n"
-"")
-        self.paperKeyEdit.setObjectName("paperKeyEdit")
-        self.gridLayout.addWidget(self.paperKeyEdit, 0, 1, 1, 1)
-        self.label_7 = QtWidgets.QLabel(FormEditPaper)
+        self.label_7 = QtWidgets.QLabel(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -51,8 +31,8 @@ class Ui_FormEditPaper(object):
         self.label_7.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setObjectName("label_7")
-        self.gridLayout.addWidget(self.label_7, 1, 0, 1, 1)
-        self.paperTitleEdit = QtWidgets.QLineEdit(FormEditPaper)
+        self.gridLayout.addWidget(self.label_7, 0, 0, 1, 1)
+        self.paperTitleEdit = QtWidgets.QLineEdit(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -60,8 +40,8 @@ class Ui_FormEditPaper(object):
         self.paperTitleEdit.setStyleSheet("background-color: rgba(255, 255, 255, 150);\n"
 "")
         self.paperTitleEdit.setObjectName("paperTitleEdit")
-        self.gridLayout.addWidget(self.paperTitleEdit, 1, 1, 1, 1)
-        self.label_8 = QtWidgets.QLabel(FormEditPaper)
+        self.gridLayout.addWidget(self.paperTitleEdit, 0, 1, 1, 1)
+        self.label_8 = QtWidgets.QLabel(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -71,8 +51,8 @@ class Ui_FormEditPaper(object):
         self.label_8.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.label_8.setAlignment(QtCore.Qt.AlignCenter)
         self.label_8.setObjectName("label_8")
-        self.gridLayout.addWidget(self.label_8, 2, 0, 1, 1)
-        self.paperAuthorEdit = QtWidgets.QLineEdit(FormEditPaper)
+        self.gridLayout.addWidget(self.label_8, 1, 0, 1, 1)
+        self.paperAuthorEdit = QtWidgets.QLineEdit(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -80,8 +60,8 @@ class Ui_FormEditPaper(object):
         self.paperAuthorEdit.setStyleSheet("background-color: rgba(255, 255, 255, 150);\n"
 "")
         self.paperAuthorEdit.setObjectName("paperAuthorEdit")
-        self.gridLayout.addWidget(self.paperAuthorEdit, 2, 1, 1, 1)
-        self.label_10 = QtWidgets.QLabel(FormEditPaper)
+        self.gridLayout.addWidget(self.paperAuthorEdit, 1, 1, 1, 1)
+        self.label_10 = QtWidgets.QLabel(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -91,8 +71,8 @@ class Ui_FormEditPaper(object):
         self.label_10.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.label_10.setAlignment(QtCore.Qt.AlignCenter)
         self.label_10.setObjectName("label_10")
-        self.gridLayout.addWidget(self.label_10, 3, 0, 1, 1)
-        self.paperDateEdit = QtWidgets.QLineEdit(FormEditPaper)
+        self.gridLayout.addWidget(self.label_10, 2, 0, 1, 1)
+        self.paperDateEdit = QtWidgets.QLineEdit(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -100,8 +80,8 @@ class Ui_FormEditPaper(object):
         self.paperDateEdit.setStyleSheet("background-color: rgba(255, 255, 255, 150);\n"
 "")
         self.paperDateEdit.setObjectName("paperDateEdit")
-        self.gridLayout.addWidget(self.paperDateEdit, 3, 1, 1, 1)
-        self.label_11 = QtWidgets.QLabel(FormEditPaper)
+        self.gridLayout.addWidget(self.paperDateEdit, 2, 1, 1, 1)
+        self.label_11 = QtWidgets.QLabel(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -111,8 +91,8 @@ class Ui_FormEditPaper(object):
         self.label_11.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.label_11.setAlignment(QtCore.Qt.AlignCenter)
         self.label_11.setObjectName("label_11")
-        self.gridLayout.addWidget(self.label_11, 4, 0, 1, 1)
-        self.paperArchiveEdit = QtWidgets.QLineEdit(FormEditPaper)
+        self.gridLayout.addWidget(self.label_11, 3, 0, 1, 1)
+        self.paperArchiveEdit = QtWidgets.QLineEdit(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -120,8 +100,8 @@ class Ui_FormEditPaper(object):
         self.paperArchiveEdit.setStyleSheet("background-color: rgba(255, 255, 255, 150);\n"
 "")
         self.paperArchiveEdit.setObjectName("paperArchiveEdit")
-        self.gridLayout.addWidget(self.paperArchiveEdit, 4, 1, 1, 1)
-        self.label_13 = QtWidgets.QLabel(FormEditPaper)
+        self.gridLayout.addWidget(self.paperArchiveEdit, 3, 1, 1, 1)
+        self.label_13 = QtWidgets.QLabel(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -131,8 +111,8 @@ class Ui_FormEditPaper(object):
         self.label_13.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.label_13.setAlignment(QtCore.Qt.AlignCenter)
         self.label_13.setObjectName("label_13")
-        self.gridLayout.addWidget(self.label_13, 5, 0, 1, 1)
-        self.paperURLEdit = QtWidgets.QLineEdit(FormEditPaper)
+        self.gridLayout.addWidget(self.label_13, 4, 0, 1, 1)
+        self.paperURLEdit = QtWidgets.QLineEdit(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -140,8 +120,8 @@ class Ui_FormEditPaper(object):
         self.paperURLEdit.setStyleSheet("background-color: rgba(255, 255, 255, 150);\n"
 "")
         self.paperURLEdit.setObjectName("paperURLEdit")
-        self.gridLayout.addWidget(self.paperURLEdit, 5, 1, 1, 1)
-        self.paperEditBtn = QtWidgets.QPushButton(FormEditPaper)
+        self.gridLayout.addWidget(self.paperURLEdit, 4, 1, 1, 1)
+        self.paperEditBtn = QtWidgets.QPushButton(FormUpload)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -149,30 +129,29 @@ class Ui_FormEditPaper(object):
         self.paperEditBtn.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "background-color: rgb(85, 255, 127);")
         self.paperEditBtn.setObjectName("paperEditBtn")
-        self.gridLayout.addWidget(self.paperEditBtn, 6, 0, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(856, 29, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem, 6, 1, 1, 1)
+        self.gridLayout.addWidget(self.paperEditBtn, 5, 0, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(849, 29, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem, 5, 1, 1, 1)
 
-        self.retranslateUi(FormEditPaper)
-        QtCore.QMetaObject.connectSlotsByName(FormEditPaper)
+        self.retranslateUi(FormUpload)
+        QtCore.QMetaObject.connectSlotsByName(FormUpload)
 
-    def retranslateUi(self, FormEditPaper):
+    def retranslateUi(self, FormUpload):
         _translate = QtCore.QCoreApplication.translate
-        FormEditPaper.setWindowTitle(_translate("FormEditPaper", "编辑论文信息"))
-        self.label_14.setText(_translate("FormEditPaper", "论文号"))
-        self.label_7.setText(_translate("FormEditPaper", "标题"))
-        self.label_8.setText(_translate("FormEditPaper", "作者"))
-        self.label_10.setText(_translate("FormEditPaper", "发表日期"))
-        self.label_11.setText(_translate("FormEditPaper", "发表平台"))
-        self.label_13.setText(_translate("FormEditPaper", "URL"))
-        self.paperEditBtn.setText(_translate("FormEditPaper", "确定"))
+        FormUpload.setWindowTitle(_translate("FormUpload", "Upload"))
+        self.label_7.setText(_translate("FormUpload", "标题"))
+        self.label_8.setText(_translate("FormUpload", "作者"))
+        self.label_10.setText(_translate("FormUpload", "发表日期"))
+        self.label_11.setText(_translate("FormUpload", "发表平台"))
+        self.label_13.setText(_translate("FormUpload", "URL"))
+        self.paperEditBtn.setText(_translate("FormUpload", "确定"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    FormEditPaper = QtWidgets.QWidget()
-    ui = Ui_FormEditPaper()
-    ui.setupUi(FormEditPaper)
-    FormEditPaper.show()
+    FormUpload = QtWidgets.QWidget()
+    ui = Ui_FormUpload()
+    ui.setupUi(FormUpload)
+    FormUpload.show()
     sys.exit(app.exec_())
