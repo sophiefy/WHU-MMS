@@ -141,15 +141,18 @@ class Database:
 
     # SECTION: books
 
-    def add_book(self, name, author, press, category, release_date, ISBN):
-        sql = "INSERT INTO book (b_name, b_author, b_press, b_category, b_release_date, b_ISBN) VALUES (%s, %s, %s, %s, %s, %s)"
-        try:
-            self.cursor.execute(sql, (name, author, press, category, release_date, ISBN))
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit()
+    def add_book(self, name, author, press, category, release_date, ISBN, num):
+        sql = "INSERT INTO book (b_name, b_author, b_press, b_category, b_release_date, b_ISBN, b_num) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', {})".format(
+            name, author, press, category, release_date, ISBN, num)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+                self.conn.commit()
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+            else:
+                self.conn.commit()
 
     def delete_book(self, b_id):
         sql = "DELETE FROM book WHERE b_id = {}".format(b_id)
