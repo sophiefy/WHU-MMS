@@ -82,7 +82,8 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.toHomeBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.toSearchBookBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.toSearchPaperBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        self.aboutBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.toProfileBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.toAboutBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
         self.bookBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.paperBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
 

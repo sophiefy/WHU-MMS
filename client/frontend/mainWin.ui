@@ -107,9 +107,6 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
-        <property name="spacing">
-         <number>20</number>
-        </property>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
@@ -169,6 +166,19 @@ border-image: url(:/resources/common/avatar.jpg);</string>
            <number>5</number>
           </property>
           <item>
+           <widget class="QLabel" name="label_3">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>用户名</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLineEdit" name="nameEdit">
             <property name="font">
              <font>
@@ -184,6 +194,19 @@ border-image: url(:/resources/common/avatar.jpg);</string>
             </property>
             <property name="readOnly">
              <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>UID</string>
             </property>
            </widget>
           </item>
@@ -254,7 +277,22 @@ border-image: url(:/resources/common/avatar.jpg);</string>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="aboutBtn">
+         <widget class="QPushButton" name="toProfileBtn">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>个人资料</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="toAboutBtn">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -303,7 +341,7 @@ border-image: url(:/resources/common/avatar.jpg);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>5</number>
        </property>
        <widget class="QWidget" name="pageHome">
         <layout class="QGridLayout" name="gridLayout">
@@ -1225,6 +1263,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        </widget>
        <widget class="QWidget" name="pageStats"/>
        <widget class="QWidget" name="pageAbout"/>
+       <widget class="QWidget" name="pageProfile"/>
       </widget>
      </widget>
     </item>
