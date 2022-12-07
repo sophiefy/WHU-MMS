@@ -10,6 +10,7 @@ raw_dpt = raw_dpt.split(' ')
 departments = []
 
 for dpt in raw_dpt:
+    dpt = dpt.replace('\t', '')
     dpt = dpt.replace('　	', '')
     dpt = dpt.replace(' ', '')
     if dpt:
@@ -26,8 +27,9 @@ length_first_names_female = len(first_names_female)
 length_first_names_male = len(first_names_male)
 length_departments = len(departments)
 
+
 def generate_name():
-    rand1 = random.randint(0, length_last_names-1)
+    rand1 = random.randint(0, length_last_names - 1)
     last_name = last_names[rand1]
 
     rand2 = random.randint(0, 1)
@@ -37,31 +39,37 @@ def generate_name():
 
     if rand2 == 0:  # 女
         for i in range(rand3):
-            rand4 = random.randint(0, length_first_names_female-1)
+            rand4 = random.randint(0, length_first_names_female - 1)
             first_name += first_names_female[rand4]
-    else: # 男
+    else:  # 男
         for i in range(rand3):
-            rand4 = random.randint(0, length_first_names_male-1)
+            rand4 = random.randint(0, length_first_names_male - 1)
             first_name += first_names_male[rand4]
     name = last_name + first_name
 
     return name
 
-def generate_age():
-    age = random.randint(18, 22)
 
-    return age
+def generate_age_grade():
+    age = random.randint(18, 22)
+    if age == 18:
+        grade = 2022
+    elif age == 19:
+        grade = 2021
+    elif age == 20:
+        grade = 2020
+    else:
+        grade = 2019
+
+    return age, grade
+
 
 def generate_dpt():
-    rand = random.randint(0, length_departments-1)
+    rand = random.randint(0, length_departments - 1)
     department = departments[rand]
 
     return department
 
-def generate_grade():
-    grade = random.randint(2019, 2022)
-
-    return str(grade)
 
 
 with open('sample_data/user.csv', 'w', encoding='utf-8', newline='') as fp:
@@ -70,10 +78,7 @@ with open('sample_data/user.csv', 'w', encoding='utf-8', newline='') as fp:
     for i in range(1000000):
         name = generate_name()
         password = '123456'
-        age = generate_age()
+        age, grade = generate_age_grade()
         dpt = generate_dpt()
-        grade = generate_grade()
-        perm = 1    # 注册用户
+        perm = 1  # 注册用户
         writer.writerow([name, password, age, dpt, grade, perm])
-
-

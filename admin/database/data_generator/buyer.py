@@ -10,10 +10,12 @@ def uid_generator():
 
     return uid
 
+
 def bid_generator():
     bid = random.randint(1, max_bid)
 
     return bid
+
 
 def date_generator():
     month = random.randint(1, 12)
@@ -24,6 +26,7 @@ def date_generator():
     date = f'2022-{month}-{day}'
 
     return date
+
 
 with open('sample_data/buyer.csv', 'w', encoding='utf-8', newline='') as fp:
     writer = csv.writer(fp)
