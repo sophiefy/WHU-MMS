@@ -148,10 +148,10 @@ class Database:
     # SECTION: books
 
     def add_book(self, name, author, press,  release_date, ISBN, num):
-        sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN, b_num) VALUES (?, ?, ?, ?, ?, ?)"
+        sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN, b_num) VALUES (%s, %s, %s, %s, %s, %s)"
         if self.conn:
             try:
-                self.cursor.execute(sql, (name, author, press, release_date, ISBN, num))
+                self.cursor.execute(sql,(name, author, press, release_date, ISBN, num))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -160,7 +160,7 @@ class Database:
                 self.conn.commit()
 
     def delete_book(self, b_id):
-        sql = "DELETE FROM book WHERE b_id = ?"
+        sql = "DELETE FROM book WHERE b_id = %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (b_id,))
@@ -172,10 +172,10 @@ class Database:
                 self.conn.commit()
 
     def read_book(self,limit,offset=0):
-        sql = "SELECT * FROM book LIMIT ? OFFSET ?"
+        sql = "SELECT * FROM book LIMIT %d OFFSET %d" % (limit,offset)
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql)
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -202,7 +202,7 @@ class Database:
 
     # SECTION: documents
     def add_document(self, name, author, press, release_date, ISBN):
-        sql = "INSERT INTO document (d_name, d_author, d_press, d_release_date, d_ISBN) VALUES (?, ?, ?, ?, ?)"
+        sql = "INSERT INTO document (d_name, d_author, d_press, d_release_date, d_ISBN) VALUES (%s, %s, %s, %s, %s)"
         if self.conn:
             try:
                 self.cursor.execute(sql, (name, author, press, release_date, ISBN))
@@ -214,7 +214,7 @@ class Database:
                 self.conn.commit()
 
     def delete_document(self, d_id):
-        sql = "DELETE FROM document WHERE d_id = ?"
+        sql = "DELETE FROM document WHERE d_id = %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (d_id,))
@@ -225,8 +225,8 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_document(self,limit,offset=0):
-        sql = "SELECT * FROM document LIMIT ? OFFSET ?"
+    def read_document(self,limit,offset="0"):
+        sql = "SELECT * FROM document LIMIT %s OFFSET %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (limit,offset))
@@ -258,7 +258,7 @@ class Database:
     # SECTION: users
 
     def add_user(self, name, password, age, dpt, grade, perm):
-        sql = "INSERT INTO user (u_name, u_password, u_age, u_dpt, u_grade, u_perm) VALUES (?, ?, ?, ?, ?, ?)"
+        sql = "INSERT INTO user (u_name, u_password, u_age, u_dpt, u_grade, u_perm) VALUES (%s, %s, %s, %s, %s, %s)"
         if self.conn:
             try:
                 self.cursor.execute(sql, (name, password, age, dpt, grade, perm))
@@ -271,7 +271,7 @@ class Database:
 
 
     def delete_user(self, u_id):
-        sql = "DELETE FROM user WHERE u_id = ?"
+        sql = "DELETE FROM user WHERE u_id = %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id,))
@@ -283,8 +283,8 @@ class Database:
                 self.conn.commit()
 
 
-    def read_user(self,limit,offset=0):
-        sql = "SELECT * FROM user LIMIT ? OFFSET ?"
+    def read_user(self,limit,offset="0"):
+        sql = "SELECT * FROM user LIMIT %s OFFSET %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (limit,offset))
@@ -315,7 +315,7 @@ class Database:
     # SECTION: buyer
 
     def add_buyer(self, u_id, b_id, buy_date):
-        sql = "INSERT INTO buyer (u_id, b_id, buy_date) VALUES (?, ?, ?)"
+        sql = "INSERT INTO buyer (u_id, b_id, buy_date) VALUES (%s, %s, %s)"
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id, b_id, buy_date))
@@ -325,7 +325,7 @@ class Database:
                 print(e)
 
     def delete_buyer(self, buy_id): # 需要删除购买记录吗？
-        sql = "DELETE FROM buyer WHERE buy_id = ?"
+        sql = "DELETE FROM buyer WHERE buy_id = %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (buy_id,))
@@ -336,8 +336,8 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_buyer(self,limit,offset=0):
-        sql = "SELECT * FROM buyer LIMIT ? OFFSET ?"
+    def read_buyer(self,limit,offset="0"):
+        sql = "SELECT * FROM buyer LIMIT %s OFFSET %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (limit,offset))
@@ -353,7 +353,7 @@ class Database:
     # SECTION: upload
 
     def add_upload(self, u_id, d_id, upload_date):
-        sql = "INSERT INTO upload (u_id, d_id, upload_date) VALUES (?, ?, ?)"
+        sql = "INSERT INTO upload (u_id, d_id, upload_date) VALUES (%s, %s, %s)"
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id, d_id, upload_date))
@@ -365,7 +365,7 @@ class Database:
                 self.conn.commit()
 
     def delete_upload(self, upload_id):  # 需要删除上传记录吗？
-        sql = "DELETE FROM upload WHERE upload_id = ?"
+        sql = "DELETE FROM upload WHERE upload_id = %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (upload_id,))
@@ -376,8 +376,8 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_upload(self,limit,offset=0):
-        sql = "SELECT * FROM upload LIMIT ? OFFSET ?"
+    def read_upload(self,limit,offset="0"):
+        sql = "SELECT * FROM upload LIMIT %s OFFSET %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (limit,offset))
