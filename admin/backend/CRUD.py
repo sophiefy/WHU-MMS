@@ -375,6 +375,19 @@ class Database:
                 buyer_table = self.cursor.fetchall()
                 return buyer_table
 
+    def get_buyer_num(self):
+        sql = "SELECT COUNT(*) FROM buyer"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
 
     # SECTION: upload
 
@@ -415,7 +428,18 @@ class Database:
                 upload_table = self.cursor.fetchall()
                 return upload_table
 
-
+    def get_upload_num(self):
+        sql = "SELECT COUNT(*) FROM upload"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
 
 if __name__ == '__main__':
     database = Database()
