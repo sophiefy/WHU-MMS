@@ -148,11 +148,10 @@ class Database:
     # SECTION: books
 
     def add_book(self, name, author, press,  release_date, ISBN, num):
-        sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN, b_num) VALUES ('{}', '{}', '{}', '{}', " \
-              "'{}', '{}')".format(name, author, press, release_date, ISBN, num)
+        sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN, b_num) VALUES (?, ?, ?, ?, ?, ?)"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (name, author, press, release_date, ISBN, num))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -161,10 +160,10 @@ class Database:
                 self.conn.commit()
 
     def delete_book(self, b_id):
-        sql = "DELETE FROM book WHERE b_id = {}".format(b_id)
+        sql = "DELETE FROM book WHERE b_id = ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (b_id,))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -173,10 +172,10 @@ class Database:
                 self.conn.commit()
 
     def read_book(self,limit,offset=0):
-        sql = "SELECT * FROM book LIMIT {} OFFSET {}".format(limit,offset)
+        sql = "SELECT * FROM book LIMIT ? OFFSET ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (limit,offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -189,11 +188,11 @@ class Database:
         sql = "UPDATE book SET "
         for key, value in kwargs.items():
             if key in self.book_attr:
-                sql += "{} = '{}', ".format(key, value)
-        sql = sql[:-2] + " WHERE b_id = {}".format(b_id)
+                sql += "{} = :{}, ".format(key, key)
+        sql = sql[:-2] + " WHERE b_id = :b_id"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, {"b_id": b_id, **kwargs})
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -203,11 +202,10 @@ class Database:
 
     # SECTION: documents
     def add_document(self, name, author, press, release_date, ISBN):
-        sql = "INSERT INTO document (d_name, d_author, d_press, d_release_date, d_ISBN) " \
-                "VALUES ('{}', '{}', '{}', '{}', '{}')".format(name, author, press, release_date, ISBN)
+        sql = "INSERT INTO document (d_name, d_author, d_press, d_release_date, d_ISBN) VALUES (?, ?, ?, ?, ?)"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (name, author, press, release_date, ISBN))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -216,10 +214,10 @@ class Database:
                 self.conn.commit()
 
     def delete_document(self, d_id):
-        sql = "DELETE FROM document WHERE d_id = {}".format(d_id)
+        sql = "DELETE FROM document WHERE d_id = ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (d_id,))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -228,10 +226,10 @@ class Database:
                 self.conn.commit()
 
     def read_document(self,limit,offset=0):
-        sql = "SELECT * FROM document LIMIT {} OFFSET {}".format(limit,offset)
+        sql = "SELECT * FROM document LIMIT ? OFFSET ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (limit,offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -245,11 +243,11 @@ class Database:
         sql = "UPDATE document SET "
         for key, value in kwargs.items():
             if key in self.document_attr:
-                sql += "{} = '{}', ".format(key, value)
-        sql = sql[:-2] + " WHERE d_id = {}".format(d_id)
+                sql += "{} = :{}, ".format(key, key)
+        sql = sql[:-2] + " WHERE d_id = :d_id"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, {"d_id": d_id, **kwargs})
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -260,11 +258,10 @@ class Database:
     # SECTION: users
 
     def add_user(self, name, password, age, dpt, grade, perm):
-        sql = "INSERT INTO user (u_name, u_password, u_age, u_dpt, u_grade, u_perm) " \
-                "VALUES ('{}', '{}', '{}', '{}', '{}', '{}')".format(name, password, age, dpt, grade, perm)
+        sql = "INSERT INTO user (u_name, u_password, u_age, u_dpt, u_grade, u_perm) VALUES (?, ?, ?, ?, ?, ?)"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (name, password, age, dpt, grade, perm))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -274,11 +271,10 @@ class Database:
 
 
     def delete_user(self, u_id):
-        sql = "DELETE FROM user WHERE u_id = {}".format(u_id)
-
+        sql = "DELETE FROM user WHERE u_id = ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (u_id,))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -288,10 +284,10 @@ class Database:
 
 
     def read_user(self,limit,offset=0):
-        sql = "SELECT * FROM user LIMIT {} OFFSET {}".format(limit,offset)
+        sql = "SELECT * FROM user LIMIT ? OFFSET ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (limit,offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -304,11 +300,11 @@ class Database:
         sql = "UPDATE user SET "
         for key, value in kwargs.items():
             if key in self.user_attr:
-                sql += "{} = '{}', ".format(key, value)
-        sql = sql[:-2] + " WHERE u_id = {}".format(u_id)
+                sql += "{} = :{}, ".format(key, key)
+        sql = sql[:-2] + " WHERE u_id = :u_id"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, {"u_id": u_id, **kwargs})
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -319,21 +315,20 @@ class Database:
     # SECTION: buyer
 
     def add_buyer(self, u_id, b_id, buy_date):
-        sql = "INSERT INTO buyer (u_id, b_id, buy_date) " \
-                "VALUES ('{}', '{}', '{}')".format(u_id, b_id, buy_date)
+        sql = "INSERT INTO buyer (u_id, b_id, buy_date) VALUES (?, ?, ?)"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (u_id, b_id, buy_date))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
 
     def delete_buyer(self, buy_id): # 需要删除购买记录吗？
-        sql = "DELETE FROM buyer WHERE buy_id = {}".format(buy_id)
+        sql = "DELETE FROM buyer WHERE buy_id = ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (buy_id,))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -342,10 +337,10 @@ class Database:
                 self.conn.commit()
 
     def read_buyer(self,limit,offset=0):
-        sql = "SELECT * FROM buyer LIMIT {} OFFSET {}".format(limit,offset)
+        sql = "SELECT * FROM buyer LIMIT ? OFFSET ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (limit,offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -358,11 +353,10 @@ class Database:
     # SECTION: upload
 
     def add_upload(self, u_id, d_id, upload_date):
-        sql = "INSERT INTO upload (u_id, d_id, upload_date) " \
-                "VALUES ('{}', '{}', '{}')".format(u_id, d_id, upload_date)
+        sql = "INSERT INTO upload (u_id, d_id, upload_date) VALUES (?, ?, ?)"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (u_id, d_id, upload_date))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -371,10 +365,10 @@ class Database:
                 self.conn.commit()
 
     def delete_upload(self, upload_id):  # 需要删除上传记录吗？
-        sql = "DELETE FROM upload WHERE upload_id = {}".format(upload_id)
+        sql = "DELETE FROM upload WHERE upload_id = ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (upload_id,))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -383,10 +377,10 @@ class Database:
                 self.conn.commit()
 
     def read_upload(self,limit,offset=0):
-        sql = "SELECT * FROM upload LIMIT {} OFFSET {}".format(limit,offset)
+        sql = "SELECT * FROM upload LIMIT ? OFFSET ?"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (limit,offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
