@@ -374,8 +374,8 @@ class EditPaperWin(QDialog, Ui_FormEditPaper):
         QMessageBox.critical(self, '错误', msg)
 
     def putOldPaperInfo(self, row):
-        id, title, author, release_date, archive, url, primary_key = \
-            row[0], row[1], row[2], row[3], row[4], row[5], row[6]
+        id, title, author, release_date, archive, url = \
+            row[0], row[1], row[2], row[3], row[4], row[5]
 
         self.paperKeyEdit.setText(id)
         self.paperTitleEdit.setText(title)
