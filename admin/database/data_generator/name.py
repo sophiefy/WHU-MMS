@@ -66,7 +66,7 @@ def generate_grade():
 with open('sample_data/user.csv', 'w', encoding='utf-8', newline='') as fp:
     writer = csv.writer(fp)
     writer.writerow(['name', 'password', 'age', 'dpt', 'grade', 'perm'])
-    for i in range(1000000):
+    for i in range(100):
         name = generate_name()
         password = '123456'
         age = generate_age()
