@@ -43,7 +43,7 @@ class Admin:
     def update_book_table(self):
         if self.database:
             print('try to update')
-            table = self.database.read_book()
+            table = self.database.read_book(20)
             print('table', table)
             # TODO: 对数据分页
             if table:
@@ -64,7 +64,7 @@ class Admin:
 
         if self.database and new_book_info:
             try:
-                # self.database.add_book(new_book_info)
+                self.database.add_book(*new_book_info)
                 print('add book: ', new_book_info)
             except Exception as e:
                 print(e)
@@ -84,7 +84,7 @@ class Admin:
         new_book_info = self.editBookWin.getNewBookInfo()
         if self.database:
             try:
-                self.database.update_book(new_book_info)
+                self.database.update_book(*new_book_info)
             except Exception as e:
                 print(e)
             else:
