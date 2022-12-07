@@ -701,6 +701,7 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.paperTbl.setFont(font)
         self.paperTbl.setStyleSheet("background-color: rgba(255, 255, 255, 150);")
+        self.paperTbl.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.paperTbl.setObjectName("paperTbl")
         self.paperTbl.setColumnCount(6)
         self.paperTbl.setRowCount(0)
