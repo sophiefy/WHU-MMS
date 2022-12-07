@@ -132,7 +132,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.bookTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.bookTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.bookTbl.setItem(i, 3, QTableWidgetItem(row[3]))
-                self.bookTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+                self.bookTbl.setItem(i, 4, QTableWidgetItem(str(row[4])))
                 self.bookTbl.setItem(i, 5, QTableWidgetItem(row[5]))
                 self.bookTbl.setItem(i, 6, QTableWidgetItem(str(row[6])))
         except Exception as e:
