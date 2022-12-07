@@ -151,7 +151,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql,(name, author, press, release_date, ISBN, num))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -163,7 +162,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (b_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -188,7 +186,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (b_name, b_author, b_press, b_release_date, b_ISBN, b_num, b_id))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -214,7 +211,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (name, author, press, release_date, ISBN))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -226,7 +222,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (d_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -252,7 +247,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (d_name, d_author, d_press, d_release_date, d_platform, d_url, d_id))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -279,7 +273,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (name, password, age, dpt, grade, perm))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -292,7 +285,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -318,7 +310,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_name, u_password, u_age, u_dpt, u_grade, u_perm, u_id))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -345,17 +336,17 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id, b_id, buy_date))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
+            else:
+                self.conn.commit()
 
     def delete_buyer(self, buy_id): # 需要删除购买记录吗？
         sql = "DELETE FROM buyer WHERE buy_id = %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (buy_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -396,7 +387,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id, d_id, upload_date))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -408,7 +398,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (upload_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
