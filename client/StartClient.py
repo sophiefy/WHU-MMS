@@ -17,8 +17,6 @@ class Client:
         self.uploadWin = UploadWin()
 
         self.registered = False
-        self.mainWin.bookBuyBtn.setDisabled(True)
-        self.mainWin.paperUploadBtn.setDisabled(True)
 
         self.init_signal_slots()
 
@@ -50,8 +48,6 @@ class Client:
             # pass or not
 
             self.registered = True  # 是注册用户
-            self.mainWin.bookBuyBtn.setEnabled(True)
-            self.mainWin.paperUploadBtn.setEnabled(True)
             self.loginWin.close_flag = False
             self.loginWin.close()
             self.loginWin.close_flag = True
@@ -103,20 +99,38 @@ class Client:
         # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
 
     def buy_book(self):
-        try:
-            # id, name, author, press, release_date, ISBN, stock
-            book_info = self.mainWin.getSelectedBookInfo()
-        except:
-            QMessageBox.warning(self.mainWin, '警告', '请先选择要购买的图书！')
+        if self.registered:
+            try:
+                # id, name, author, press, release_date, ISBN, stock
+                book_info = self.mainWin.getSelectedBookInfo()
+            except:
+                QMessageBox.warning(self.mainWin, '警告', '请先选择要购买的图书！')
+            else:
+                reply = QMessageBox.question(self.mainWin,
+                                             '询问',
+                                             "确定要购买这本书吗？",
+                                             QMessageBox.Yes | QMessageBox.No,
+                                             QMessageBox.No)
+                if reply == QMessageBox.Yes:
+                    print('成功购买: ', book_info)
+                    # TODO: 后端检查是否可以购买并修改数据库图书信息
+                else:
+                    pass
         else:
             reply = QMessageBox.question(self.mainWin,
                                          '询问',
-                                         "确定要购买这本书吗？",
+                                         "游客无法购买图书！\n"
+                                         "是否前往注册？",
                                          QMessageBox.Yes | QMessageBox.No,
                                          QMessageBox.No)
             if reply == QMessageBox.Yes:
-                print('成功购买: ', book_info)
-                # TODO: 后端检查是否可以购买并修改数据库图书信息
+                self.mainWin.close_flag = False
+                self.mainWin.close()
+                self.mainWin.close_flag = True
+                self.loginWin.stackedWidget.setCurrentIndex(1)
+                self.loginWin.close_flag = False
+                self.loginWin.exec()
+                self.loginWin.close_flag = True
             else:
                 pass
 
@@ -133,7 +147,25 @@ class Client:
         print('search papers by keys:', keys)
 
     def upload_paper(self):
-        self.uploadWin.exec()
+        if self.registered:
+            self.uploadWin.exec()
+        else:
+            reply = QMessageBox.question(self.mainWin,
+                                         '询问',
+                                         "游客无法上传论文！\n"
+                                         "是否前往注册？",
+                                         QMessageBox.Yes | QMessageBox.No,
+                                         QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                self.mainWin.close_flag = False
+                self.mainWin.close()
+                self.mainWin.close_flag = True
+                self.loginWin.stackedWidget.setCurrentIndex(1)
+                self.loginWin.close_flag = False
+                self.loginWin.exec()
+                self.loginWin.close_flag = True
+            else:
+                pass
 
     def confirm_upload_paper(self):
         try:
