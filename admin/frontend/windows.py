@@ -92,7 +92,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         stock = self.bookStockEdit.text()
         if name and author and press and release_date and ISBN and stock:
             # TODO: 可以加入格式检查
-            return name, author, press, release_date, ISBN
+            return name, author, press, release_date, ISBN, stock
         else:
             self.showWarning('书本信息不完整!')
             return None

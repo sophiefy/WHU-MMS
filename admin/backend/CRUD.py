@@ -172,8 +172,8 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_book(self):
-        sql = "SELECT * FROM book"
+    def read_book(self,limit,offset=0):
+        sql = "SELECT * FROM book LIMIT {} OFFSET {}".format(limit,offset)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -227,8 +227,8 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_document(self):
-        sql = "SELECT * FROM document"
+    def read_document(self,limit,offset=0):
+        sql = "SELECT * FROM document LIMIT {} OFFSET {}".format(limit,offset)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -287,8 +287,8 @@ class Database:
                 self.conn.commit()
 
 
-    def read_user(self):
-        sql = "SELECT * FROM user"
+    def read_user(self,limit,offset=0):
+        sql = "SELECT * FROM user LIMIT {} OFFSET {}".format(limit,offset)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -341,8 +341,8 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_buyer(self):
-        sql = "SELECT * FROM buyer"
+    def read_buyer(self,limit,offset=0):
+        sql = "SELECT * FROM buyer LIMIT {} OFFSET {}".format(limit,offset)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -382,8 +382,8 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_upload(self):
-        sql = "SELECT * FROM upload"
+    def read_upload(self,limit,offset=0):
+        sql = "SELECT * FROM upload LIMIT {} OFFSET {}".format(limit,offset)
         if self.conn:
             try:
                 self.cursor.execute(sql)
