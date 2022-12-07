@@ -97,7 +97,6 @@ class Database:
                  d_name  CHAR(100),
                  d_author CHAR(20),
                  d_release_date DATE,
-                 d_platform CHAR(20),
                  d_url CHAR(100)
                   )'''
         try:
@@ -206,11 +205,11 @@ class Database:
                 return num[0]
 
     # SECTION: documents
-    def add_document(self, name, author, press, release_date, ISBN):
-        sql = "INSERT INTO document (d_name, d_author, d_press, d_release_date, d_ISBN) VALUES (%s, %s, %s, %s, %s)"
+    def add_document(self, name, author, release_date, url):
+        sql = "INSERT INTO document (d_name, d_author, d_release_date, d_url) VALUES (%s, %s, %s, %s)"
         if self.conn:
             try:
-                self.cursor.execute(sql, (name, author, press, release_date, ISBN))
+                self.cursor.execute(sql, (name, author, release_date, url))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -242,11 +241,11 @@ class Database:
                 return document_table
 
 
-    def update_document(self, d_id, d_name, d_author, d_press, d_release_date, d_platform, d_url):
-        sql = "UPDATE document SET d_name = %s, d_author = %s, d_press = %s, d_release_date = %s, d_platform = %s, d_url = %s WHERE d_id = %s"
+    def update_document(self, d_id, d_name, d_author, d_release_date, d_url):
+        sql = "UPDATE document SET d_name = %s, d_author = %s, d_release_date = %s, d_url = %s WHERE d_id = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (d_name, d_author, d_press, d_release_date, d_platform, d_url, d_id))
+                self.cursor.execute(sql, (d_name, d_author, d_release_date, d_url, d_id))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
