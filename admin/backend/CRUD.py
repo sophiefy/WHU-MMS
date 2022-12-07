@@ -195,6 +195,19 @@ class Database:
             else:
                 self.conn.commit()
 
+    def get_book_num(self):
+        sql = "SELECT COUNT(*) FROM book"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
     # SECTION: documents
     def add_document(self, name, author, press, release_date, ISBN):
         sql = "INSERT INTO document (d_name, d_author, d_press, d_release_date, d_ISBN) VALUES (%s, %s, %s, %s, %s)"
@@ -220,7 +233,7 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_document(self,limit,offset="0"):
+    def read_document(self,limit,offset=0):
         sql = "SELECT * FROM document LIMIT %s OFFSET %s"
         if self.conn:
             try:
@@ -245,6 +258,19 @@ class Database:
                 print(e)
             else:
                 self.conn.commit()
+
+    def get_document_num(self):
+        sql = "SELECT COUNT(*) FROM document"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
 
     # SECTION: users
 
@@ -274,7 +300,7 @@ class Database:
                 self.conn.commit()
 
 
-    def read_user(self,limit,offset="0"):
+    def read_user(self,limit,offset=0):
         sql = "SELECT * FROM user LIMIT %s OFFSET %s"
         if self.conn:
             try:
@@ -298,6 +324,19 @@ class Database:
                 print(e)
             else:
                 self.conn.commit()
+
+    def get_user_num(self):
+        sql = "SELECT COUNT(*) FROM user"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
 
     # SECTION: buyer
 
@@ -323,7 +362,7 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_buyer(self,limit,offset="0"):
+    def read_buyer(self,limit,offset=0):
         sql = "SELECT * FROM buyer LIMIT %s OFFSET %s"
         if self.conn:
             try:
@@ -363,7 +402,7 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_upload(self,limit,offset="0"):
+    def read_upload(self,limit,offset=0):
         sql = "SELECT * FROM upload LIMIT %s OFFSET %s"
         if self.conn:
             try:
