@@ -2,11 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-
 def get_paperinfo(topic):
-    opt = webdriver.ChromeOptions()
+    opt = webdriver.EdgeOptions()
     opt.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
-    driver = webdriver.Chrome(options=opt)
+    driver = webdriver.Edge(options=opt)
     url='https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=(%22Full%20Text%20.AND.%20Metadata%22:{})'.format(topic)
     driver.get(url)
     # 等待3秒，让页面加载，防止爬不到
@@ -15,6 +14,7 @@ def get_paperinfo(topic):
     print(url + '&pageNumber=1')
     for i in range(1, 3):
         elements=driver.find_elements(By.XPATH,'//div[@class=\'List-results-items\']')
+        print(len(elements))
         for j in range(0,len(elements)):
             element=elements[j]
             papername=element.find_element(By.CLASS_NAME,'text-md-md-lh')
@@ -39,7 +39,6 @@ def get_paperinfo(topic):
         # print(url+'&pageNumber={}'.format(i+1))
         time.sleep(3)
     return df
-
 
 
 # save_data(get_paperinfo())

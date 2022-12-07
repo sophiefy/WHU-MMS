@@ -3,12 +3,12 @@ from lxml import etree
 import requests
 import csv
 
-def get_basic_info(page_num: int):
+def get_basic_info(topic, page_num: int):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.67"
     }
 
-    url = 'https://book.douban.com/tag/%E5%B0%8F%E8%AF%B4?start={}&type=T'.format(page_num)
+    url = 'https://book.douban.com/tag/{}?start={}&type=T'.format(topic, page_num)
     page_text = requests.get(url=url, headers=headers).text
     etree_html = etree.HTML(page_text)
     info_list = etree_html.xpath('//ul[@class="subject-list"]/li[@class="subject-item"]')
