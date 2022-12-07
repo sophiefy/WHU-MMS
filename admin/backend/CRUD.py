@@ -183,15 +183,11 @@ class Database:
                 book_table = self.cursor.fetchall()
                 return book_table
 
-    def update_book(self, b_id, **kwargs):
-        sql = "UPDATE book SET "
-        for key, value in kwargs.items():
-            if key in self.book_attr:
-                sql += "{} = %({})s, ".format(key, key)
-        sql = sql[:-2] + " WHERE b_id = %(b_id)s"
+    def update_book(self, b_id, b_name, b_author, b_press, b_release_date, b_ISBN, b_num):
+        sql = "UPDATE book SET b_name = %s, b_author = %s, b_press = %s, b_release_date = %s, b_ISBN = %s, b_num = %s WHERE b_id = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, {"b_id": b_id, **kwargs})
+                self.cursor.execute(sql, (b_name, b_author, b_press, b_release_date, b_ISBN, b_num, b_id))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -238,15 +234,11 @@ class Database:
                 return document_table
 
 
-    def update_document(self, d_id, **kwargs):
-        sql = "UPDATE document SET "
-        for key, value in kwargs.items():
-            if key in self.document_attr:
-                sql += "{} = %({})s, ".format(key, key)
-        sql = sql[:-2] + " WHERE d_id = %(d_id)s"
+    def update_document(self, d_id, d_name, d_author, d_press, d_release_date, d_platform, d_url):
+        sql = "UPDATE document SET d_name = %s, d_author = %s, d_press = %s, d_release_date = %s, d_platform = %s, d_url = %s WHERE d_id = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, {"d_id": d_id, **kwargs})
+                self.cursor.execute(sql, (d_name, d_author, d_press, d_release_date, d_platform, d_url, d_id))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
@@ -295,15 +287,11 @@ class Database:
                 user_table = self.cursor.fetchall()
                 return user_table
 
-    def update_user(self,u_id, **kwargs):
-        sql = "UPDATE user SET "
-        for key, value in kwargs.items():
-            if key in self.user_attr:
-                sql += "{} = %({})s, ".format(key, key)
-        sql = sql[:-2] + " WHERE u_id = %(u_id)s"
+    def update_user(self,u_id, u_name, u_password, u_age, u_dpt, u_grade, u_perm):
+        sql = "UPDATE user SET u_name = %s, u_password = %s, u_age = %s, u_dpt = %s, u_grade = %s, u_perm = %s WHERE u_id = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, {"u_id": u_id, **kwargs})
+                self.cursor.execute(sql, (u_name, u_password, u_age, u_dpt, u_grade, u_perm, u_id))
                 self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
