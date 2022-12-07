@@ -1,7 +1,6 @@
 import pymysql
 import numpy as np
 
-
 class Database:
     def __init__(self):
         self.conn = None
@@ -188,8 +187,8 @@ class Database:
         sql = "UPDATE book SET "
         for key, value in kwargs.items():
             if key in self.book_attr:
-                sql += "{} = :{}, ".format(key, key)
-        sql = sql[:-2] + " WHERE b_id = :b_id"
+                sql += "{} = %({})s, ".format(key, key)
+        sql = sql[:-2] + " WHERE b_id = %(b_id)s"
         if self.conn:
             try:
                 self.cursor.execute(sql, {"b_id": b_id, **kwargs})
@@ -243,8 +242,8 @@ class Database:
         sql = "UPDATE document SET "
         for key, value in kwargs.items():
             if key in self.document_attr:
-                sql += "{} = :{}, ".format(key, key)
-        sql = sql[:-2] + " WHERE d_id = :d_id"
+                sql += "{} = %({})s, ".format(key, key)
+        sql = sql[:-2] + " WHERE d_id = %(d_id)s"
         if self.conn:
             try:
                 self.cursor.execute(sql, {"d_id": d_id, **kwargs})
@@ -300,8 +299,8 @@ class Database:
         sql = "UPDATE user SET "
         for key, value in kwargs.items():
             if key in self.user_attr:
-                sql += "{} = :{}, ".format(key, key)
-        sql = sql[:-2] + " WHERE u_id = :u_id"
+                sql += "{} = %({})s, ".format(key, key)
+        sql = sql[:-2] + " WHERE u_id = %(u_id)s"
         if self.conn:
             try:
                 self.cursor.execute(sql, {"u_id": u_id, **kwargs})
