@@ -22,6 +22,37 @@ class LoginWin(QDialog, Ui_FormLogin):
     def initSignalSlots(self):
         self.toLoginBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.toRegisterBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+    def showInfo(self, msg):
+        QMessageBox.information(self, '提示', msg)
+
+    def showWarning(self, msg):
+        QMessageBox.warning(self, '警告', msg)
+
+    def showError(self, msg):
+        QMessageBox.critical(self, '错误', msg)
+
+    def getLoginInfo(self):
+        number = self.loginNumEdit.text()
+        password = self.loginPasswordEdit.text()
+
+        if number and password:
+            return number, password
+        else:
+            return None
+
+    def getRegisterInfo(self):
+        name = self.regNameEdit.text()
+        password = self.regPasswordEdit.text()
+        age = self.regAgeEdit.text()
+        dpt = self.regDPTEdit.text()
+        grade = self.regGradeEdit.text()
+
+        if name and password and age and dpt and grade:
+            return name, password, age, dpt, grade
+        else:
+            self.showWarning('注册信息不全！')
+            return None
+
 
     def closeEvent(self, e):
         if self.close_flag:
@@ -43,6 +74,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.paperTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.bookTbl.setColumnHidden(0, True)  # 隐藏primary key
+        self.paperTbl.setColumnHidden(0, True)  # 隐藏primary key
 
         self.initSignalSlots()
 
@@ -68,6 +100,25 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         self.bookPage.setText('1 / 10')  # debug use
 
+    def showInfo(self, msg):
+        QMessageBox.information(self, '提示', msg)
+
+    def showWarning(self, msg):
+        QMessageBox.warning(self, '警告', msg)
+
+    def showError(self, msg):
+        QMessageBox.critical(self, '错误', msg)
+
+
+    def getBookSearchKey(self):
+        name = self.searchBookNameEdit.text()
+        author = self.searchBookAuthorEdit.text()
+        press = self.searchBookPressEdit.text()
+        release_date = self.searchBookDateEdit.text()
+        ISBN = self.searchBookISBNEdit.text()
+
+        return name, author, press, release_date, ISBN
+
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
 
@@ -77,8 +128,77 @@ class MainWin(QMainWindow, Ui_MainWindow):
         press = self.bookTbl.item(row, 3).text()
         release_date = self.bookTbl.item(row, 4).text()
         ISBN = self.bookTbl.item(row, 5).text()
+        stock = self.bookTbl.item(row, 6).text()
 
-        return id, name, author, press, release_date, ISBN
+        return id, name, author, press, release_date, ISBN, stock
+
+    def updateBookTable(self, table):
+        assert table is not None
+        self.bookTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.bookTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # id, name, author, press, release_date, ISBN, stock
+                self.bookTbl.insertRow(i)
+                self.bookTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.bookTbl.setItem(i, 1, QTableWidgetItem(row[1]))
+                self.bookTbl.setItem(i, 2, QTableWidgetItem(row[2]))
+                self.bookTbl.setItem(i, 3, QTableWidgetItem(row[3]))
+                self.bookTbl.setItem(i, 4, QTableWidgetItem(str(row[4])))
+                self.bookTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+                self.bookTbl.setItem(i, 6, QTableWidgetItem(str(row[6])))
+        except Exception as e:
+            print(e)
+
+    def getNewPaperInfo(self):
+        title = self.paperTitleEdit.text()  # 论文标题
+        author = self.paperAuthorEdit.text()  # 论文作者
+        release_date = self.paperDateEdit.text()  # 发表日期
+        archive = self.paperArchiveEdit.text()  # 发表平台
+        url = self.paperURLEdit.text()  # 论文地址
+        if title and author and release_date and archive and url:
+            return title, author, release_date, archive, url
+        else:
+            self.showWarning('论文信息不全！')
+            return None
+
+    def getPaperSearchKey(self):
+        title = self.searchPaperTitleEdit.text()
+        author = self.searchPaperAuthorEdit.text()
+        release_date = self.searchPaperDateEdit.text()
+        archive = self.searchPaperArchiveEdit.text()
+
+        return title, author, release_date, archive
+
+    def getSelectedPaperInfo(self):
+        row = self.paperTbl.currentRow()
+
+        id = self.paperTbl.item(row, 0).text()  # primary_key
+        title = self.paperTbl.item(row, 1).text()
+        author = self.paperTbl.item(row, 2).text()
+        release_date = self.paperTbl.item(row, 3).text()
+        archive = self.paperTbl.item(row, 4).text()
+        url = self.paperTbl.item(row, 5).text()
+
+        return id, title, author, release_date, archive, url
+
+    def updatePaperTable(self, table):
+        assert table is not None
+        self.paperTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.paperTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # id, title, author, release_date, archive, url
+                self.paperTbl.insertRow(i)
+                self.paperTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.paperTbl.setItem(i, 1, QTableWidgetItem(row[1]))
+                self.paperTbl.setItem(i, 2, QTableWidgetItem(row[2]))
+                self.paperTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
+                self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+        except Exception as e:
+            print(e)
+
 
     # SECTION: 翻页
     def firstPage(self, type):
@@ -150,6 +270,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 e.ignore()
         else:
             self.close()
+
 
 
 class UploadWin(QDialog, Ui_FormUpload):

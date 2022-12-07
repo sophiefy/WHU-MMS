@@ -303,7 +303,7 @@ border-image: url(:/resources/common/avatar.jpg);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="pageHome">
         <layout class="QGridLayout" name="gridLayout">
@@ -650,6 +650,11 @@ background-color: rgba(255, 255, 255, 0);</string>
              <string>ISBN</string>
             </property>
            </column>
+           <column>
+            <property name="text">
+             <string>在库</string>
+            </property>
+           </column>
           </widget>
          </item>
          <item>
@@ -989,6 +994,11 @@ background-color: rgba(255, 255, 255, 0);</string>
            <attribute name="horizontalHeaderStretchLastSection">
             <bool>true</bool>
            </attribute>
+           <column>
+            <property name="text">
+             <string>论文号</string>
+            </property>
+           </column>
            <column>
             <property name="text">
              <string>标题</string>

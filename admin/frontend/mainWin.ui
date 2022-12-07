@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -471,7 +471,7 @@ background-color: rgba(255, 255, 255, 0);</string>
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="text">
-           <string>出版时间</string>
+           <string>出版社</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -506,7 +506,7 @@ background-color: rgba(255, 255, 255, 0);</string>
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="text">
-           <string>出版社</string>
+           <string>出版时间</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -2324,7 +2324,7 @@ background-color: rgb(85, 255, 127);</string>
     </property>
     <addaction name="actionCbook"/>
     <addaction name="actionRbook"/>
-    <addaction name="separator"/>
+    <addaction name="actionBuy"/>
    </widget>
    <widget class="QMenu" name="menuPaper">
     <property name="font">
@@ -2338,6 +2338,7 @@ background-color: rgb(85, 255, 127);</string>
     </property>
     <addaction name="actionCpaper"/>
     <addaction name="actionRpaper"/>
+    <addaction name="actionUpload"/>
    </widget>
    <widget class="QMenu" name="menuUser">
     <property name="font">
@@ -2496,6 +2497,37 @@ background-color: rgb(85, 255, 127);</string>
      <family>微软雅黑</family>
      <pointsize>12</pointsize>
     </font>
+   </property>
+  </action>
+  <action name="actionBuyer">
+   <property name="text">
+    <string>Buyer</string>
+   </property>
+  </action>
+  <action name="actionBuyer_2">
+   <property name="text">
+    <string>Buyer</string>
+   </property>
+  </action>
+  <action name="actionBuyer_3">
+   <property name="text">
+    <string>Buyer</string>
+   </property>
+  </action>
+  <action name="actionBuy">
+   <property name="text">
+    <string>买书统计</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionUpload">
+   <property name="text">
+    <string>上传统计</string>
    </property>
   </action>
  </widget>
