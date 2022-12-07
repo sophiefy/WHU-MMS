@@ -10,6 +10,7 @@ raw_dpt = raw_dpt.split(' ')
 departments = []
 
 for dpt in raw_dpt:
+    dpt = dpt.replace('　	', '')
     dpt = dpt.replace(' ', '')
     if dpt:
         departments.append(dpt)
