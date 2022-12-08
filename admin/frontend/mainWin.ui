@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1575,7 +1575,7 @@ background-color: rgb(85, 255, 127);</string>
                </widget>
               </item>
               <item>
-               <widget class="QTableWidget" name="bookFanTbl_2">
+               <widget class="QTableWidget" name="bestSellerTbl">
                 <property name="font">
                  <font>
                   <family>微软雅黑</family>
@@ -2341,7 +2341,7 @@ background-color: rgb(85, 255, 127);</string>
                  <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="placeholderText">
-                 <string>买书号</string>
+                 <string>上传号</string>
                 </property>
                </widget>
               </item>
@@ -2357,7 +2357,7 @@ background-color: rgb(85, 255, 127);</string>
                  <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="placeholderText">
-                 <string>书号</string>
+                 <string>论文号</string>
                 </property>
                </widget>
               </item>
@@ -2373,7 +2373,7 @@ background-color: rgb(85, 255, 127);</string>
                  <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="placeholderText">
-                 <string>书名</string>
+                 <string>标题</string>
                 </property>
                </widget>
               </item>
@@ -2450,7 +2450,7 @@ background-color: rgb(85, 255, 127);</string>
              </widget>
             </item>
             <item>
-             <widget class="QTableWidget" name="buyerTbl_2">
+             <widget class="QTableWidget" name="uploadTbl">
               <property name="font">
                <font>
                 <family>微软雅黑</family>
@@ -2695,7 +2695,7 @@ background-color: rgb(85, 255, 127);</string>
              </widget>
             </item>
             <item>
-             <widget class="QTableWidget" name="uploadTbl">
+             <widget class="QTableWidget" name="contributorTbl">
               <property name="minimumSize">
                <size>
                 <width>360</width>

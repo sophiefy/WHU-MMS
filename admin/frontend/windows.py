@@ -130,7 +130,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def updateBookTable(self, table):
         assert table is not None
-        self.bookTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.bookTbl.setRowCount(0)
         self.bookTbl.clearContents()
         try:
             for i, row in enumerate(table):
@@ -145,6 +145,66 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.bookTbl.setItem(i, 6, QTableWidgetItem(str(row[6])))
         except Exception as e:
             print(e)
+
+    def getBuyerSearchKey(self):
+        id = self.searchBuyerKeyEdit.text()
+        book_id = self.searchBuyerBookKeyEdit.text()
+        book_name = self.searchBookNameEdit.text()
+        user_id = self.searchBuyerUserKeyEdit.text()
+        user_name = self.searchBuyerUserNameEdit.text()
+
+        return id, book_id, book_name, user_id, user_name
+
+    def showBuyerNum(self, num):
+        if num:
+            self.buyerNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.buyerNumLbl.setText(f'查询结果：共0条数据')
+
+    def updateBuyerTable(self, table):
+        assert table is not None
+        self.buyerTbl.setRowCount(0)
+        self.buyerTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # id, book_id, book_name, user_id, user_name
+                self.buyerTbl.insertRow(i)
+                self.buyerTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.buyerTbl.setItem(i, 1, QTableWidgetItem(str(row[1])))
+                self.buyerTbl.setItem(i, 2, QTableWidgetItem(row[2]))
+                self.buyerTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
+                self.buyerTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+        except Exception as e:
+            print(e)
+
+    def updateBookFanTable(self, table):
+        assert table is not None
+        self.bookFanTbl.setRowCount(0)
+        self.bookFanTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # user_id, user_name, buy_num
+                self.bookFanTbl.insertRow(i)
+                self.bookFanTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
+                self.bookFanTbl.setItem(row, 1, QTableWidgetItem(row[1]))
+                self.bookFanTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
+        except Exception as e:
+            print(e)
+
+    def updateBestSellerTable(self, table):
+        assert table is not None
+        self.bestSellerTbl.setRowCount(0)
+        self.bestSellerTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # book_id, book_name, sold_num
+                self.bestSellerTbl.insertRow(i)
+                self.bestSellerTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
+                self.bestSellerTbl.setItem(row, 1, QTableWidgetItem(row[1]))
+                self.bestSellerTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
+        except Exception as e:
+            print(e)
+
 
     def getNewPaperInfo(self):
         title = self.paperTitleEdit.text()  # 论文标题
@@ -187,7 +247,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def updatePaperTable(self, table):
         assert table is not None
-        self.paperTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.paperTbl.setRowCount(0)
         self.paperTbl.clearContents()
         try:
             for i, row in enumerate(table):
@@ -199,6 +259,51 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.paperTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
                 self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
                 self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+        except Exception as e:
+            print(e)
+
+    def getUploadSearchKey(self):
+        id = self.searchUploadKeyEdit.text()
+        paper_id = self.searchUploadPaperKeyEdit.text()
+        paper_title = self.searchUploadPaperTitleEdit.text()
+        user_id = self.searchUploadUserKeyEdit.text()
+        user_name = self.searchUploadUserNameEdit.text()
+
+        return id, paper_id, paper_title, user_id, user_name
+
+    def showUploadNum(self, num):
+        if num:
+            self.uploadNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.uploadNumLbl.setText(f'查询结果：共0条数据')
+
+    def updateUploadTable(self, table):
+        assert table is not None
+        self.uploadTbl.setRowCount(0)
+        self.uploadTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # id, paper_id, paper_title, user_id, user_name
+                self.uploadTbl.insertRow(i)
+                self.uploadTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.uploadTbl.setItem(i, 1, QTableWidgetItem(str(row[1])))
+                self.uploadTbl.setItem(i, 2, QTableWidgetItem(row[2]))
+                self.uploadTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
+                self.uploadTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+        except Exception as e:
+            print(e)
+
+    def updateContributorTbl(self, table):
+        assert table is not None
+        self.contributorTbl.setRowCount(0)
+        self.contributorTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # user_id, user_name, upload_num
+                self.contributorTbl.insertRow(i)
+                self.contributorTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
+                self.contributorTbl.setItem(row, 1, QTableWidgetItem(row[1]))
+                self.contributorTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
         except Exception as e:
             print(e)
 
@@ -244,7 +349,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def updateUserTable(self, table):
         assert table is not None
-        self.userTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.userTbl.setRowCount(0)
         self.userTbl.clearContents()
         try:
             for i, row in enumerate(table):
@@ -284,6 +389,10 @@ class MainWin(QMainWindow, Ui_MainWindow):
             text = self.paperPage.text()
         elif type == 'user':
             text = self.userPage.text()
+        elif type == 'buyer':
+            text = self.buyerPage.text()
+        elif type == 'upload':
+            text = self.uploadPage.text()
         else:
             QMessageBox.critical(self, '错误', '未知数据类型！')
             return
@@ -298,6 +407,10 @@ class MainWin(QMainWindow, Ui_MainWindow):
             text = self.paperPage.text()
         elif type == 'user':
             text = self.userPage.text()
+        elif type == 'buyer':
+            text = self.buyerPage.text()
+        elif type == 'upload':
+            text = self.uploadPage.text()
         else:
             QMessageBox.critical(self, '错误', '未知数据类型！')
             return
@@ -312,6 +425,10 @@ class MainWin(QMainWindow, Ui_MainWindow):
             text = self.paperJumpEdit.text()
         elif type == 'user':
             text = self.userJumpEdit.text()
+        elif type == 'buyer':
+            text = self.buyerJumpEdit.text()
+        elif type == 'upload':
+            text = self.uploadJumpEdit.text()
         else:
             QMessageBox.critical(self, '错误', '未知数据类型！')
             return

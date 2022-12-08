@@ -118,10 +118,25 @@ class Admin:
                 else:
                     pass
 
+    def update_buyer_table(self):
+        if self.database:
+            table = self.database.read_buyer(20)
+            if table:
+                self.mainWin.updateBuyerTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
+
+    def search_buyer(self):
+        keys = self.mainWin.getBuyerSearchKey()
+
+        total_num = self.database.get_buyer_num()
+        self.mainWin.showBuyerNum(total_num)
+        self.update_buyer_table()
+
+
     def update_paper_table(self):
         if self.database:
             table = self.database.read_document(20)
-            # TODO: 对数据分页
             if table:
                 self.mainWin.updatePaperTable(table)
         else:
@@ -185,6 +200,21 @@ class Admin:
                     self.update_paper_table()
                 else:
                     pass
+
+    def update_upload_table(self):
+        if self.database:
+            table = self.database.read_upload(20)
+            if table:
+                self.mainWin.updateUploadTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
+
+    def search_upload(self):
+        keys = self.mainWin.getUploadSearchKey()
+
+        total_num = self.database.get_upload_num()
+        self.mainWin.showUploadNum(total_num)
+        self.update_upload_table()
 
     def update_user_table(self):
         if self.database:
@@ -291,6 +321,12 @@ class Admin:
             # TODO: 刷新表内容
         elif type == 'user':
             self.mainWin.userPage.setText('{} / {}'.format(cur_page, total_page))
+            # TODO: 刷新表内容
+        elif type == 'buyer':
+            self.mainWin.buyerPage.setText('{} / {}'.format(cur_page, total_page))
+            # TODO: 刷新表内容
+        elif type == 'upload':
+            self.mainWin.uploadPage.setText('{} / {}'.format(cur_page, total_page))
             # TODO: 刷新表内容
         else:
             QMessageBox.critical(self.mainWin, '错误', '未知数据类型！')
