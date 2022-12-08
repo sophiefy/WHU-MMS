@@ -107,7 +107,19 @@ class MainWin(QMainWindow, Ui_MainWindow):
         release_date = self.searchBookDateEdit.text()
         ISBN = self.searchBookISBNEdit.text()
 
-        return id, name, author, press, release_date, ISBN
+        if not id:
+            id = 0
+        try:
+            id = int(id)
+        except:
+            self.showWarning('书号格式不正确！')
+            return None
+        else:
+            if id < 0:
+                self.showWarning('书号格式不正确！')
+                return None
+
+            return id, name, author, press, release_date, ISBN
 
     def showBookNum(self, num):
         if num:
@@ -152,6 +164,18 @@ class MainWin(QMainWindow, Ui_MainWindow):
         book_name = self.searchBookNameEdit.text()
         user_id = self.searchBuyerUserKeyEdit.text()
         user_name = self.searchBuyerUserNameEdit.text()
+
+        if not id:
+            id = 0
+        try:
+            id = int(id)
+        except:
+            self.showWarning('买书号格式不正确！')
+            return None
+        else:
+            if id < 0:
+                self.showWarning('买书号格式不正确！')
+                return None
 
         return id, book_id, book_name, user_id, user_name
 
@@ -225,6 +249,18 @@ class MainWin(QMainWindow, Ui_MainWindow):
         release_date = self.searchPaperDateEdit.text()
         archive = self.searchPaperArchiveEdit.text()
 
+        if not id:
+            id = 0
+        try:
+            id = int(id)
+        except:
+            self.showWarning('论文号格式不正确！')
+            return None
+        else:
+            if id < 0:
+                self.showWarning('论文号格式不正确！')
+                return None
+
         return id, title, author, release_date, archive
 
     def showPaperNum(self, num):
@@ -268,6 +304,18 @@ class MainWin(QMainWindow, Ui_MainWindow):
         paper_title = self.searchUploadPaperTitleEdit.text()
         user_id = self.searchUploadUserKeyEdit.text()
         user_name = self.searchUploadUserNameEdit.text()
+
+        if not id:
+            id = 0
+        try:
+            id = int(id)
+        except:
+            self.showWarning('上传号格式不正确！')
+            return None
+        else:
+            if id < 0:
+                self.showWarning('上传号格式不正确！')
+                return None
 
         return id, paper_id, paper_title, user_id, user_name
 
@@ -325,6 +373,18 @@ class MainWin(QMainWindow, Ui_MainWindow):
         age = self.searchUserAgeEdit.text()
         dpt = self.searchUserDPTEdit.text()
         grade = self.searchUserGradeEdit.text()
+
+        if not number:
+            number = 0
+        try:
+            numberi = int(number)
+        except:
+            self.showWarning('读者号格式不正确！')
+            return None
+        else:
+            if number < 0:
+                self.showWarning('读者号格式不正确！')
+                return None
 
         return number, name, age, dpt, grade
 

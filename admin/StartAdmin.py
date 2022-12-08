@@ -41,16 +41,22 @@ class Admin:
         self.mainWin.userDeleteBtn.clicked.connect(self.delete_user)
         self.editUserWin.userEditBtn.clicked.connect(self.confirm_edit_user)
 
+        self.book_search_keys = self.mainWin.getBookSearchKey()
+        self.paper_search_keys = self.mainWin.getPaperSearchKey()
+        self.user_search_keys = self.mainWin.getUserSearchKey()
+        self.buyer_search_keys = self.mainWin.getBuyerSearchKey()
+        self.upload_search_keys = self.mainWin.getBuyerSearchKey()
+
         self.create_connection()
 
     def create_connection(self):
         self.database = Database()
         self.database.create_connection()
 
-    def update_book_table(self, page_num=1):
+    def update_book_table(self, keys, page_num=1):
         if self.database:
-            offset = (page_num-1) * 20
-            table = self.database.read_book(limit=20, offset=offset)  # TODO: 分页
+            offset = (page_num - 1) * 20
+            table = self.database.search_book(*keys, limit=20, offset=offset)  # TODO: 分页
             if table:
                 self.mainWin.updateBookTable(table)
         else:
@@ -59,15 +65,17 @@ class Admin:
     def search_book(self):
         # id, name, author, press, release_date, ISBN
         # 可以为空
-        keys = self.mainWin.getBookSearchKey()
+        self.book_search_keys = self.mainWin.getBookSearchKey()
+        if not self.book_search_keys:
+            return
 
-        total_num = self.database.get_book_num()
+        total_num = self.database.get_book_num(*self.book_search_keys)
         total_page = math.ceil(total_num / 20)
         self.mainWin.setTotalPage('book', total_page)
         self.mainWin.showBookNum(total_num)
-        self.update_book_table()
+        self.update_book_table(keys=self.book_search_keys)
 
-        # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
+        return
 
     def add_book(self):
         new_book_info = self.mainWin.getNewBookInfo()
@@ -121,43 +129,43 @@ class Admin:
                 else:
                     pass
 
-    def update_buyer_table(self, page_num=1):
+    def update_buyer_table(self, keys, page_num=1):
         if self.database:
-            offset = (page_num-1) * 20
-            table = self.database.read_buyer(limit=20, offset=offset)
+            offset = (page_num - 1) * 20
+            table = self.database.search_buyer(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updateBuyerTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def search_buyer(self):
-        keys = self.mainWin.getBuyerSearchKey()
-
-        total_num = self.database.get_buyer_num()
+        self.buyer_search_keys = self.mainWin.getBuyerSearchKey()
+        if not self.buyer_search_keys:
+            return
+        total_num = self.database.get_buyer_num(*self.buyer_search_keys)
         total_page = math.ceil(total_num / 20)
-        self.mainWin.setTotalPage(total_page)
+        self.mainWin.setTotalPage('buyer', total_page)
         self.mainWin.showBuyerNum(total_num)
-        self.update_buyer_table()
+        self.update_buyer_table(keys=self.buyer_search_keys)
 
-
-    def update_paper_table(self, page_num=1):
+    def update_paper_table(self, keys, page_num=1):
         if self.database:
-            offset = (page_num-1) * 20
-            table = self.database.read_document(limit=20, offset=offset)
+            offset = (page_num - 1) * 20
+            table = self.database.search_document(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updatePaperTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def search_paper(self):
-        keys = self.mainWin.getPaperSearchKey()
-
-        total_num = self.database.get_document_num()
+        self.paper_search_keys = self.mainWin.getPaperSearchKey()
+        if not self.paper_search_keys:
+            return
+        total_num = self.database.get_document_num(*self.paper_search_keys)
         total_page = math.ceil(total_num / 20)
         self.mainWin.setTotalPage('paper', total_page)
         self.mainWin.showPaperNum(total_num)
-        self.update_paper_table()
-
+        self.update_paper_table(keys=self.paper_search_keys)
 
     def add_paper(self):
         new_paper_info = self.mainWin.getNewPaperInfo()
@@ -210,42 +218,43 @@ class Admin:
                 else:
                     pass
 
-    def update_upload_table(self, page_num=1):
+    def update_upload_table(self, keys, page_num=1):
         if self.database:
-            offset = (page_num-1) * 20
-            table = self.database.read_upload(limit=20, offset=offset)
+            offset = (page_num - 1) * 20
+            table = self.database.search_upload(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updateUploadTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def search_upload(self):
-        keys = self.mainWin.getUploadSearchKey()
-
-        total_num = self.database.get_upload_num()
+        self.upload_search_keys = self.mainWin.getUploadSearchKey()
+        if not self.upload_search_keys:
+            return
+        total_num = self.database.get_upload_num(*self.upload_search_keys)
         total_page = math.ceil(total_num / 20)
-        self.mainWin.setTotalPage(total_page)
+        self.mainWin.setTotalPage('upload', total_page)
         self.mainWin.showUploadNum(total_num)
-        self.update_upload_table()
+        self.update_upload_table(keys=self.upload_search_keys)
 
-    def update_user_table(self, page_num=1):
+    def update_user_table(self, keys, page_num=1):
         if self.database:
-            offset = (page_num-1) * 20
-            table = self.database.read_user(limit=20, offset=offset)
-            # TODO: 对数据分页
+            offset = (page_num - 1) * 20
+            table = self.database.search_user(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updateUserTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def search_user(self):
-        keys = self.mainWin.getUserSearchKey()
-
-        total_num = self.database.get_user_num()
+        self.user_search_keys = self.mainWin.getUserSearchKey()
+        if not self.user_search_keys:
+            return
+        total_num = self.database.get_user_num(*self.user_search_keys)
         total_page = math.ceil(total_num / 20)
         self.mainWin.setTotalPage('user', total_page)
         self.mainWin.showUserNum(total_num)
-        self.update_user_table()
+        self.update_user_table(keys=self.user_search_keys)
 
     def add_user(self):
         new_user_info = self.mainWin.getNewUserInfo()
@@ -330,7 +339,7 @@ class Admin:
 
         if type == 'book':
             self.mainWin.bookPage.setText('{} / {}'.format(cur_page, total_page))
-            self.update_book_table(page_num=int(cur_page))
+            self.update_book_table(keys=self.book_search_keys, page_num=int(cur_page))
         elif type == 'paper':
             self.mainWin.paperPage.setText('{} / {}'.format(cur_page, total_page))
             self.update_paper_table(page_num=int(cur_page))

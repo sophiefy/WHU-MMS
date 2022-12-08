@@ -257,7 +257,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
         return total_page
 
     def setTotalPage(self, total_page):
-
+        if type == 'book':
+            self.bookPage.setText('1 / {}'.format(total_page))
+        elif type == 'paper':
+            self.paperPage.setText('1 / {}'.format(total_page))
+        else:
+            QMessageBox.critical(self, '错误', '未知数据类型！')
+            return
 
     def targetPage(self, type):
         if type == 'book':

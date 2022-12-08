@@ -98,11 +98,7 @@ class Client:
         self.database.create_connection()
 
     def update_book_table(self):
-        print('try to update')
-        # TODO: 从数据库获取表项
         table = self.database.read_book(20)
-        print('table', table)
-        # TODO: 对数据分页
         if table:
             self.mainWin.updateBookTable(table)
 
@@ -110,7 +106,8 @@ class Client:
         # name, author, press, release_date, ISBN
         # 可以为空
         keys = self.mainWin.getBookSearchKey()
-        print('search books by keys:', keys)
+
+        total_num = self.database.get_book_num()
         table = self.database.search_book(*keys, limit=20)
         if table:
             self.mainWin.updateBookTable(table)

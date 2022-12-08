@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1084,7 +1084,7 @@ background-color: rgb(85, 255, 127);</string>
                <number>20</number>
               </property>
               <item>
-               <widget class="QLineEdit" name="searchBuyerkKeyEdit">
+               <widget class="QLineEdit" name="searchBuyerKeyEdit">
                 <property name="font">
                  <font>
                   <family>微软雅黑</family>
