@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1260,6 +1260,9 @@ background-color: rgb(85, 255, 127);</string>
                   <pointsize>10</pointsize>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
                 <property name="text">
                  <string>首页</string>
                 </property>
@@ -1272,6 +1275,9 @@ background-color: rgb(85, 255, 127);</string>
                   <family>微软雅黑</family>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="text">
                  <string>上一页</string>
@@ -1311,6 +1317,9 @@ background-color: rgb(85, 255, 127);</string>
                   <pointsize>10</pointsize>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
                 <property name="text">
                  <string>下一页</string>
                 </property>
@@ -1323,6 +1332,9 @@ background-color: rgb(85, 255, 127);</string>
                   <family>微软雅黑</family>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="text">
                  <string>尾页</string>
@@ -1405,6 +1417,9 @@ background-color: rgb(85, 255, 127);</string>
                   <family>微软雅黑</family>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="text">
                  <string>确定</string>
@@ -2506,6 +2521,9 @@ background-color: rgb(85, 255, 127);</string>
                   <pointsize>10</pointsize>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
                 <property name="text">
                  <string>首页</string>
                 </property>
@@ -2518,6 +2536,9 @@ background-color: rgb(85, 255, 127);</string>
                   <family>微软雅黑</family>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="text">
                  <string>上一页</string>
@@ -2569,6 +2590,9 @@ background-color: rgb(85, 255, 127);</string>
                   <family>微软雅黑</family>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="text">
                  <string>尾页</string>
@@ -2651,6 +2675,9 @@ background-color: rgb(85, 255, 127);</string>
                   <family>微软雅黑</family>
                   <pointsize>10</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
                 </property>
                 <property name="text">
                  <string>确定</string>
