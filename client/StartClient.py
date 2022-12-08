@@ -111,6 +111,9 @@ class Client:
         # 可以为空
         keys = self.mainWin.getBookSearchKey()
         print('search books by keys:', keys)
+        table = self.database.search_book(*keys, limit=20)
+        if table:
+            self.mainWin.updateBookTable(table)
 
         # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
 
@@ -161,6 +164,9 @@ class Client:
     def search_paper(self):
         keys = self.mainWin.getPaperSearchKey()
         print('search papers by keys:', keys)
+        table = self.database.search_paper(*keys, limit=20)
+        if table:
+            self.mainWin.updatePaperTable(table)
 
     def upload_paper(self):
         if self.registered:
