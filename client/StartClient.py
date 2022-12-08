@@ -160,7 +160,7 @@ class Client:
     def search_paper(self):
         keys = self.mainWin.getPaperSearchKey()
         print('search papers by keys:', keys)
-        table = self.database.search_paper(*keys, limit=20)
+        table = self.database.search_document(*keys, limit=20)
         if table:
             self.mainWin.updatePaperTable(table)
 
