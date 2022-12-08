@@ -204,11 +204,13 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
-    def search_book(self, b_name):
-        sql = "SELECT * FROM book WHERE b_name LIKE %s"
+    def search_book(self, b_name='', b_author='', b_press='', b_release_date='', b_ISBN='', limit=10, offset=0):
+        sql = "SELECT * FROM book WHERE b_name LIKE %s AND b_author LIKE %s AND b_press LIKE %s AND b_release_date LIKE %s AND b_ISBN LIKE %s"
+        sql = sql % ("'%"+b_name+"%'","'%"+b_author+"%'","'%"+b_press+"%'","'%"+b_release_date+"%'","'%"+b_ISBN+"%'")
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:
-                self.cursor.execute(sql, ('%'+b_name+'%',))
+                self.cursor.execute(sql)
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -278,6 +280,21 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
+    def search_document(self, d_name='', d_author='', d_release_date='', d_url='', limit=10, offset=0):
+        sql = "SELECT * FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
+        sql = sql % ("'%"+d_name+"%'","'%"+d_author+"%'","'%"+d_release_date+"%'","'%"+d_url+"%'")
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                document_table = self.cursor.fetchall()
+                return document_table
+
     # SECTION: users
 
     def add_user(self, name, password, age, dpt, grade, perm):
@@ -340,6 +357,21 @@ class Database:
             else:
                 num = self.cursor.fetchone()
                 return num[0]
+
+    def search_user(self, u_name='', u_password='', u_age='', u_dpt='', u_grade='', u_perm='', limit=10, offset=0):
+        sql = "SELECT * FROM user WHERE u_name LIKE %s AND u_password LIKE %s AND u_age LIKE %s AND u_dpt LIKE %s AND u_grade LIKE %s AND u_perm LIKE %s"
+        sql = sql % ("'%"+u_name+"%'","'%"+u_password+"%'","'%"+u_age+"%'","'%"+u_dpt+"%'","'%"+u_grade+"%'","'%"+u_perm+"%'")
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                user_table = self.cursor.fetchall()
+                return user_table
 
     # SECTION: buyer
 
