@@ -204,6 +204,19 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
+    def search_book(self, b_name):
+        sql = "SELECT * FROM book WHERE b_name LIKE %s"
+        if self.conn:
+            try:
+                self.cursor.execute(sql, ('%'+b_name+'%',))
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                book_table = self.cursor.fetchall()
+                return book_table
+
     # SECTION: documents
     def add_document(self, name, author, release_date, url):
         sql = "INSERT INTO document (d_name, d_author, d_release_date, d_url) VALUES (%s, %s, %s, %s)"
