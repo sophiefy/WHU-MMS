@@ -431,7 +431,8 @@ class Database:
             book_sql = "SELECT b_id,b_name FROM book WHERE b_name LIKE %s" % ("'%" + b_name + "%'")
         buyer_sql += " buy_date LIKE %s" % ("'%" + buy_date + "%'")
 
-        sql = "SELECT * FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id JOIN (%s) AS book ON " \
+        sql = "SELECT buyer.buy_id, buyer.buy_date, book.b_id, book.b_name, user.u_id, user.u_name" \
+              " FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id JOIN (%s) AS book ON " \
               "buyer.b_id = book.b_id" % (buyer_sql,user_sql, book_sql)
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
@@ -444,6 +445,36 @@ class Database:
             else:
                 buyer_table = self.cursor.fetchall()
                 return buyer_table
+
+    def get_top_buyers(self):
+        buyer_sql = "SELECT u_id, COUNT(*) AS num FROM buyer GROUP BY u_id ORDER BY num DESC LIMIT 10"
+        user_sql = "SELECT u_id,u_name FROM user"
+        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id" % (buyer_sql, user_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
+
+    def get_top_books(self):
+        buyer_sql = "SELECT b_id, COUNT(*) AS num FROM buyer GROUP BY b_id ORDER BY num DESC LIMIT 10"
+        book_sql = "SELECT b_id,b_name FROM book"
+        sql = "SELECT book.b_id,book.b_name,num FROM (%s) AS buyer JOIN (%s) AS book ON buyer.b_id = book.b_id" % (buyer_sql, book_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
 
     # SECTION: upload
 
@@ -502,7 +533,8 @@ class Database:
             doc_sql = "SELECT d_id,d_name FROM document WHERE d_name LIKE %s" % ("'%" + d_name + "%'")
         upload_sql += " upload_date LIKE %s" % ("'%" + upload_date + "%'")
 
-        sql = "SELECT * FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (user_sql, doc_sql)
+        sql = "SELECT upload.upload_id, upload.upload_date, document.d_id, document.d_name, user.u_id, user.u_name" \
+              " FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (user_sql, doc_sql)
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:
@@ -514,6 +546,21 @@ class Database:
             else:
                 upload_table = self.cursor.fetchall()
                 return upload_table
+
+    def get_top_uploaders(self):
+        upload_sql = "SELECT u_id, COUNT(*) AS num FROM upload GROUP BY u_id ORDER BY num DESC LIMIT 10"
+        user_sql = "SELECT u_id,u_name FROM user"
+        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS upload JOIN (%s) AS user ON upload.u_id = user.u_id" % (upload_sql, user_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
 
 
 
