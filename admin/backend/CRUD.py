@@ -97,7 +97,7 @@ class Database:
                  d_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
                  d_name  CHAR(100),
                  d_author CHAR(20),
-                 d_release_date DATE,
+                 d_release_date CHAR(20),
                  d_url CHAR(100)
                   )'''
         try:
