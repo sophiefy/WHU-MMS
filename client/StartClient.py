@@ -72,6 +72,8 @@ class Client:
                 self.loginWin.close_flag = False
                 self.loginWin.close()
                 self.loginWin.close_flag = True
+                self.mainWin.numEdit.setText('游客')
+                self.mainWin.nameEdit.setText('游客')
                 self.mainWin.show()
             else:
                 pass
