@@ -98,6 +98,7 @@ class Database:
                  d_name  CHAR(100),
                  d_author CHAR(20),
                  d_release_date DATE,
+                 d_platform CHAR(20),
                  d_url CHAR(100)
                   )'''
         try:
