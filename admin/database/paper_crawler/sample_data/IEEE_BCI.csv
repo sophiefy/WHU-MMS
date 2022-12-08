@@ -1,0 +1,876 @@
+article,author,url,DOI,year
+Interfacing brain and computer in neurorehabilitation,"Donatella Mattia;
+Laura Astolfi;
+Jlenia Toppi;
+Manuela Petti;
+Floriana Pichiorri;
+Febo Cincotti",https://ieeexplore.ieee.org/document/7457446/,10.1109/IWW-BCI.2016.7457446,Year: 2016
+“Eyes-closed” SSVEP-based BCI for binary communication of individuals with impaired oculomotor function,"Jeong-Hwan Lim;
+Han-Jeong Hwang;
+Chang-Hwan Im",https://ieeexplore.ieee.org/document/6506637/,10.1109/IWW-BCI.2013.6506637,Year: 2013
+Motor trajectory decoding based on fMRI-based BCI — A simulation study,"Seungkyu Nam;
+Kyung Hwan Kim;
+Dae-Shik Kim",https://ieeexplore.ieee.org/document/6506641/,10.1109/IWW-BCI.2013.6506641,Year: 2013
+Power consumption of wireless EEG device for BCI application: Portable EEG system for BCI,"Hoyeoul Park;
+Boram Myung;
+Sun K. Yoo",https://ieeexplore.ieee.org/document/6506645/,10.1109/IWW-BCI.2013.6506645,Year: 2013
+A SSVEP-BCI with random moving stimuli in simulation environment,"Nannan Zhang;
+Yadong Liu;
+Zongtan Zhou",https://ieeexplore.ieee.org/document/7858170/,10.1109/IWW-BCI.2017.7858170,Year: 2017
+Towards non-invasive EEG-based arm/hand-control in users with spinal cord injury,"Gernot R. Müller-Putz;
+Patrick Ofner;
+Andreas Schwarz;
+Joana Pereira;
+Andreas Pinegger;
+Catarina Lopes Dias;
+Lea Hehenberger;
+Reinmar Kobler;
+Andreea Ioana Sburlea",https://ieeexplore.ieee.org/document/7858160/,10.1109/IWW-BCI.2017.7858160,Year: 2017
+Meta BCI : Hippocampus-striatum network inspired architecture towards flexible BCI,"Minryung R. Song;
+Sang Wan Lee",https://ieeexplore.ieee.org/document/8311488/,10.1109/IWW-BCI.2018.8311488,Year: 2018
+A novel P300-based BCI system for words typing,"Faraz Akram;
+Mohamed K. Metwally;
+Hee-Sok Han;
+Hyun-Jae Jeon;
+Tae-Seong Kim",https://ieeexplore.ieee.org/document/6506617/,10.1109/IWW-BCI.2013.6506617,Year: 2013
+Detecting and tracking multiple directional movements in EEG based BCI,"Cuntai Guan;
+Neethu Robinson;
+Vikram Shenoy Handiru;
+Vinod A Prasad",https://ieeexplore.ieee.org/document/7858154/,10.1109/IWW-BCI.2017.7858154,Year: 2017
+A novel tactile stimulation system for BCI feedback,"Kiuk Gwak;
+Robert Leeb;
+José del R. Millán;
+Dae-Shik Kim",https://ieeexplore.ieee.org/document/6506619/,10.1109/IWW-BCI.2013.6506619,Year: 2013
+"Multimodal imaging, non-stationarity and BCI",Klaus-Robert Müller,https://ieeexplore.ieee.org/document/6782555/,10.1109/iww-BCI.2014.6782555,Year: 2014
+Exploration of the brain for optimal placement of BCI implants in paralyzed people,Nicolas F Ramsey,https://ieeexplore.ieee.org/document/6782543/,10.1109/iww-BCI.2014.6782543,Year: 2014
+A study on reducing training time of BCI system based on an SSVEP dynamic model,"Xu Han;
+Shangen Zhang;
+Xiaorong Gao",https://ieeexplore.ieee.org/document/8737318/,10.1109/IWW-BCI.2019.8737318,Year: 2019
+The Elusive Goal of BCI-based Communication with CLIS-ALS Patients,Moritz Grosse-Wentrup,https://ieeexplore.ieee.org/document/8737310/,10.1109/IWW-BCI.2019.8737310,Year: 2019
+Reliable predictors of SMR BCI performance — Do they exist?,"Loic Botrel;
+Andrea Kübler",https://ieeexplore.ieee.org/document/8311490/,10.1109/IWW-BCI.2018.8311490,Year: 2018
+An empirical suggestion for collaborative learning in motor imagery-based BCIs,"Eun Song Kang;
+Bum-Chae Kim;
+Heung-Il Suk",https://ieeexplore.ieee.org/document/7457450/,10.1109/IWW-BCI.2016.7457450,Year: 2016
+A comparsion of artifact rejection methods for a BCI using event related potentials,"Minju Kim;
+Sung-Phil Kim",https://ieeexplore.ieee.org/document/8311530/,10.1109/IWW-BCI.2018.8311530,Year: 2018
+The effect of selective attention on multiple ASSRs for future BCI application,"Netiwit Kaongoen;
+Sungho Jo",https://ieeexplore.ieee.org/document/7858144/,10.1109/IWW-BCI.2017.7858144,Year: 2017
+Machine learning for BCI: towards analysing cognition,Klaus-Robert Müller,https://ieeexplore.ieee.org/document/7457453/,10.1109/IWW-BCI.2016.7457453,Year: 2016
+A hybrid EOG-P300 BCI with dual monitors,"Bonkon Koo;
+Yunjun Nam;
+Seungjin Choi",https://ieeexplore.ieee.org/document/6782566/,10.1109/iww-BCI.2014.6782566,Year: 2014
+Optimal channel selection using covariance matrix and cross-combining region in EEG-based BCI,"Yongkoo Park;
+Wonzoo Chung",https://ieeexplore.ieee.org/document/8737257/,10.1109/IWW-BCI.2019.8737257,Year: 2019
+High engagement in BCI action observation game by relevant character’s movement,"Hyunmi Lim;
+Jeonghun Ku",https://ieeexplore.ieee.org/document/8737252/,10.1109/IWW-BCI.2019.8737252,Year: 2019
+Quo vadis P300 BCI?,Andrea Kübler,https://ieeexplore.ieee.org/document/7858151/,10.1109/IWW-BCI.2017.7858151,Year: 2017
+A Bayesian approach for spatio-spectral filter optimization in BCI,"Heung-Il Suk;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6506616/,10.1109/IWW-BCI.2013.6506616,Year: 2013
+Optimization method of error-related potentials to improve MI-BCI performance,"Seul-Kee Kim;
+Da-Hye Kim;
+Laehyun Kim",https://ieeexplore.ieee.org/document/8737341/,10.1109/IWW-BCI.2019.8737341,Year: 2019
+Classification of mental arithmetic and resting-state based on Ear-EEG,"Soo-In Choi;
+Ga-Young Choi;
+Hyung-Tak Lee;
+Han-Jeong Hwang;
+Jaeyoung Shin",https://ieeexplore.ieee.org/document/8311525/,10.1109/IWW-BCI.2018.8311525,Year: 2018
+BCI based hybrid interface for 3D object control in virtual reality,"Jinsung Chun;
+Byeonguk Bae;
+Sungho Jo",https://ieeexplore.ieee.org/document/7457461/,10.1109/IWW-BCI.2016.7457461,Year: 2016
+Dry electrode design and performance evaluation for EEG based BCI systems,"Seungchan Lee;
+Younghak Shin;
+Soogil Woo;
+Kiseon Kim;
+Heung-No Lee",https://ieeexplore.ieee.org/document/6506627/,10.1109/IWW-BCI.2013.6506627,Year: 2013
+The design and implementation of visual braincomputer interfaces,"Shangkai Gao;
+Xiaorong Gao",https://ieeexplore.ieee.org/document/6782548/,10.1109/iww-BCI.2014.6782548,Year: 2014
+Novel BCI classification method using cross-channel-region CSP features,"Yongkoo Park;
+Wonzoo Chung",https://ieeexplore.ieee.org/document/8311528/,10.1109/IWW-BCI.2018.8311528,Year: 2018
+Deep recurrent spatio-temporal neural network for motor imagery based BCI,"Wonjun Ko;
+Jeeseok Yoon;
+Eunsong Kang;
+Eunji Jun;
+Jun-Sik Choi;
+Heung-Il Suk",https://ieeexplore.ieee.org/document/8311535/,10.1109/IWW-BCI.2018.8311535,Year: 2018
+Development BCI for individuals with severely disability using EMOTIV EEG headset and robot,"Won Ang Jang;
+Sang Min Lee;
+Do Hoon Lee",https://ieeexplore.ieee.org/document/6782576/,10.1109/iww-BCI.2014.6782576,Year: 2014
+BCI classification using locally generated CSP features,"Yongkoo Park;
+Wonzoo Chung",https://ieeexplore.ieee.org/document/8311492/,10.1109/IWW-BCI.2018.8311492,Year: 2018
+Movement state classification for bimanual BCI from non-human primate's epidural ECoG using three-dimensional convolutional neural network,"Hoseok Choi;
+Jeyeon Lee;
+Jinsick Park;
+Baek Hwan Cho;
+Kyoung-Min Lee;
+Dong Pyo Jang",https://ieeexplore.ieee.org/document/8311534/,10.1109/IWW-BCI.2018.8311534,Year: 2018
+Investigating colour’s effect in stimulating brain oscillations for BCI systems,"Artur Szalowski;
+Dorel Picovici",https://ieeexplore.ieee.org/document/7457449/,10.1109/IWW-BCI.2016.7457449,Year: 2016
+A study on information transfer rate by brain-computer interface (BCI) using functional near-infrared spectroscopy (fNIRS),"Jaeyoung Shin;
+Sungyong Kang;
+Minkyu Sung;
+Joohwan Kim;
+Yongjung Kim;
+Jihyun Kim;
+Jichai Jeong",https://ieeexplore.ieee.org/document/6506620/,10.1109/IWW-BCI.2013.6506620,Year: 2013
+Design of an asynchronous brain-computer interface for control of a virtual Avatar,"Hye-Soo An;
+Jeong-Woo Kim;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/7457463/,10.1109/IWW-BCI.2016.7457463,Year: 2016
+Changes in Fatigue and EEG Amplitude during a Longtime Use of Brain-Computer Interface,"Seung-Pyo Seo;
+Min-Ho Lee;
+John Williamson;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/8737306/,10.1109/IWW-BCI.2019.8737306,Year: 2019
+Brain-controlled devices: the perception-action closed loop,J. d. R. Millan,https://ieeexplore.ieee.org/document/7457451/,10.1109/IWW-BCI.2016.7457451,Year: 2016
+An online self-paced brain-computer interface onset detection based on sound-production imagery applied to real-life scenarios,"YoungJae Song;
+Francisco Sepulveda",https://ieeexplore.ieee.org/document/7858155/,10.1109/IWW-BCI.2017.7858155,Year: 2017
+Decoding both intention and learning strategies from EEG signals,"Dongjae Kim;
+Sang Wan Lee",https://ieeexplore.ieee.org/document/8737346/,10.1109/IWW-BCI.2019.8737346,Year: 2019
+A brain-computer interface speller using peripheral stimulus-based SSVEP and P300,"Ji-Young Hwang;
+Min-Ho Lee;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/7858164/,10.1109/IWW-BCI.2017.7858164,Year: 2017
+An electrode selection approach in P300-based BCIs to address inter- and intra-subject variability,"Vinicio Changoluisa;
+Pablo Varona;
+Francisco B. Rodríguez",https://ieeexplore.ieee.org/document/8311497/,10.1109/IWW-BCI.2018.8311497,Year: 2018
+Approaches to large scale neural recording by chronic implants for mobile BCIs,Arto V. Nurmikko,https://ieeexplore.ieee.org/document/8311503/,10.1109/IWW-BCI.2018.8311503,Year: 2018
+Modulation of Cortical Excitability with BCI for Stroke Rehabilitation,"Natalie Mrachacz-Kersting;
+Dario Farina",https://ieeexplore.ieee.org/document/8737264/,10.1109/IWW-BCI.2019.8737264,Year: 2019
+Hybrid brain-computer interface based on EEG and NIRS modalities,"Min-Ho Lee;
+Siamac Fazli;
+Jan Mehnert;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6782577/,10.1109/iww-BCI.2014.6782577,Year: 2014
+Adaptation in motor imagery brain-computer interfaces and its implication in rehabilitation,Cuntai Guan,https://ieeexplore.ieee.org/document/7457447/,10.1109/IWW-BCI.2016.7457447,Year: 2016
+Frequency-wise optimal duty-cycle selection in steady state visual evoked potentials: A pilot study,"Dong-Ok Won;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6782568/,10.1109/iww-BCI.2014.6782568,Year: 2014
+The effectiveness of epidural ECoG on brain computer interface in primate,"Jeyeon Lee;
+Hosuk Choi;
+Taekyung Kim;
+Hojong Lee;
+In Young Kim;
+Dong Pvo Jang;
+SunKyue Kim;
+JeongEun Lee;
+Kyung-Ha Ahn;
+Kyoung-Min Lee",https://ieeexplore.ieee.org/document/6506647/,10.1109/IWW-BCI.2013.6506647,Year: 2013
+Data augmentation effects using borderline-SMOTE on classification of a P300-based BCI,"Taejun Lee;
+Minju Kim;
+Sung-Phil Kim",https://ieeexplore.ieee.org/document/9061656/,10.1109/BCI48061.2020.9061656,Year: 2020
+Multimodal imaging technique for rapid response brain-computer interface feedback,"Seul-Ki Yeom;
+Siamac Fazli;
+Jan Mehnert;
+Benjamin Blankcrtz;
+Jens Steinbrink;
+Klaus-Robert Müller;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6506642/,10.1109/IWW-BCI.2013.6506642,Year: 2013
+Identification of Attention State for Menu-Selection using In-Ear EEG Recording,"Dong-Hwa Jeong;
+Jaeseung Jeong;
+YongWook Chae;
+HyeonYoung Choi",https://ieeexplore.ieee.org/document/7858176/,10.1109/IWW-BCI.2017.7858176,Year: 2017
+Classifying ECoG signals prior to voluntary movement onset,"Sang Hun Lee;
+Kyungin Choi;
+Sehyoon Jeong;
+Jun Sic Kim;
+Chun Kee Chung",https://ieeexplore.ieee.org/document/6506622/,10.1109/IWW-BCI.2013.6506622,Year: 2013
+Real-time motion artifact detection and removal for ambulatory BCI,"Byung Hyung Kim;
+Sungho Jo",https://ieeexplore.ieee.org/document/7073050/,10.1109/IWW-BCI.2015.7073050,Year: 2015
+Optimal channel selection based on statistical analysis in high dimensional NIRS data,"Min-Ho Lee;
+Siamac Fazli;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6506643/,10.1109/IWW-BCI.2013.6506643,Year: 2013
+Evaluation of feature extraction methods for motor imagery-based bcis in terms of robustness to slight changes of electrode locations,"Han-Jeong Hwang;
+Chang-Hwan Im;
+Sun-Ae Park",https://ieeexplore.ieee.org/document/6506636/,10.1109/IWW-BCI.2013.6506636,Year: 2013
+Bimanual Arm Movements Decoding using Hybrid Method,"Hoseok Choi;
+Dong Pyo Jang;
+Kyoung-Min Lee",https://ieeexplore.ieee.org/document/7858159/,10.1109/IWW-BCI.2017.7858159,Year: 2017
+Probe Configuration Design for Closed-loop Multi-Channel fNIRS-tDCS BCI,"Junmo Yang;
+Seunghui Cha;
+Dongwon Yun;
+Jinung An",https://ieeexplore.ieee.org/document/9061630/,10.1109/BCI48061.2020.9061630,Year: 2020
+Application of High-accuracy Silent Speech BCI to Biometrics using Deep Learning,"Nobuaki Kobayashi;
+Takahiro Morooka",https://ieeexplore.ieee.org/document/9385338/,10.1109/BCI51272.2021.9385338,Year: 2021
+Non-homogeneous spatial filter optimization for EEG-based brain-computer interfaces,"Tae-Eui Kam;
+Heung-Il Suk;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6506618/,10.1109/IWW-BCI.2013.6506618,Year: 2013
+Reconstruction of hand movements from EEG signals based on non-linear regression,"Jeong-Hun Kim;
+Felix Bießmann;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6782572/,10.1109/iww-BCI.2014.6782572,Year: 2014
+Development of Brain Computer Interface based Action Observation Program with Functional Electrical Stimulation device(FES),"Jieun Son;
+Jeonghun Ku",https://ieeexplore.ieee.org/document/8737253/,10.1109/IWW-BCI.2019.8737253,Year: 2019
+Robust Semi-synchronous BCI Controller for Brain-Actuated Exoskeleton System,"Junhyuk Choi;
+Keun-Tae Kim;
+Jaehyung Lee;
+Song Joo Lee;
+Hyungmin Kim",https://ieeexplore.ieee.org/document/9061658/,10.1109/BCI48061.2020.9061658,Year: 2020
+Hybrid MI-SSSEP Paradigm for classifying left and right movement toward BCI for exoskeleton control,"Jaehyung Lee;
+Kabmun Cha;
+Hyungmin Kim;
+Junhyuk Choi;
+Choonghyun Kim;
+Songjoo Lee",https://ieeexplore.ieee.org/document/8737319/,10.1109/IWW-BCI.2019.8737319,Year: 2019
+The Effect of Neurofeedback Training in Virtual and Real Environments based on BCI,"Dong-Kyun Han;
+Min-Ho Lee;
+John Williamson;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/8737323/,10.1109/IWW-BCI.2019.8737323,Year: 2019
+Towards an architecture of a hybrid BCI based on SSVEP-BCI and passive-BCI,"Anibal Cotrina;
+Alessandro Benevides;
+Andre Ferreira;
+Teodiano Bastos;
+Javier Castillo;
+Maria Luiza Menezes;
+Carlos Pereira",https://ieeexplore.ieee.org/document/6943847/,10.1109/EMBC.2014.6943847,Year: 2014
+Hand motion reconstruction using EEG and EMG,"Jacobo Fernández-Vargas;
+Tapio V. J. Tarvainen;
+Kahori Kita;
+Wenwei Yu",https://ieeexplore.ieee.org/document/7457457/,10.1109/IWW-BCI.2016.7457457,Year: 2016
+Brain computer interface approach using sensor covariance matrix with forced whitening,"Hyuksoo Shin;
+Wonzoo Chung",https://ieeexplore.ieee.org/document/7858161/,10.1109/IWW-BCI.2017.7858161,Year: 2017
+Clinical applications of BCI,Andrea Kübler,https://ieeexplore.ieee.org/document/7073033/,10.1109/IWW-BCI.2015.7073033,Year: 2015
+From measurement to machine learning: Towards analysing cognition,K.-R. Müller,https://ieeexplore.ieee.org/document/7858157/,10.1109/IWW-BCI.2017.7858157,Year: 2017
+Augmenting a SSVEP BCI through single cycle analysis and phase weighting,"John J. Wilson;
+Ramaswamy Palaniappan",https://ieeexplore.ieee.org/document/5109310/,10.1109/NER.2009.5109310,Year: 2009
+Pseudo-BCI filters and subalgebras in pseudo-BCI algebras,Xiaohong Zhang,https://ieeexplore.ieee.org/document/5687414/,10.1109/PIC.2010.5687414,Year: 2010
+High performance with tactile P300 BCIs,"Andreas Herweg;
+Andrea Kübler",https://ieeexplore.ieee.org/document/7457442/,10.1109/IWW-BCI.2016.7457442,Year: 2016
+"Transparent electroencephalography? : Exploring ear-EEG for long-term, mobile electrophysiology","Stefan Debener;
+Martin G. Bleichner",https://ieeexplore.ieee.org/document/8737309/,10.1109/IWW-BCI.2019.8737309,Year: 2019
+Towards robust machine learning methods for the analysis of brain data,K.-R Müller,https://ieeexplore.ieee.org/document/8311495/,10.1109/IWW-BCI.2018.8311495,Year: 2018
+Selective Subject Pooling Strategy to Achieve Subject-Independent Motor Imagery BCI,"Kyungho Won;
+Moonyoung Kwon;
+Minkyu Ahn;
+Sung Chan Jun",https://ieeexplore.ieee.org/document/9385292/,10.1109/BCI51272.2021.9385292,Year: 2021
+Movement prediction with sensory feedback and environmental interaction,"Chun Kee Chung;
+Hong Gi Yeom;
+Hyeongrae Lee;
+Seokyun Ryun;
+June Sic Kim",https://ieeexplore.ieee.org/document/6782546/,10.1109/iww-BCI.2014.6782546,Year: 2014
+Domain Adaptation with Source Selection for Motor-Imagery based BCI,"Eunjin Jeon;
+Wonjun Ko;
+Heung-Il Suk",https://ieeexplore.ieee.org/document/8737340/,10.1109/IWW-BCI.2019.8737340,Year: 2019
+Effective approach to character input for novice BCI users,"Yuma Koizumi;
+Yuki Ijichi;
+Hisaya Tanaka;
+Ayumi Otera;
+Kayoko Takahashi;
+Michinari Fukuda;
+Noriyoshi Asai",https://ieeexplore.ieee.org/document/7217083/,10.1109/APSITT.2015.7217083,Year: 2015
+Commutative pseudo-BCI algebras and commutative pseudo-BCI filters,"Yinfeng Lu;
+Xiaohong Zhang",https://ieeexplore.ieee.org/document/5646322/,10.1109/KAM.2010.5646322,Year: 2010
+Shifting stimuli for brain computer interface based on rapid serial visual presentation,"Dong-Ok Won;
+Han-Jeong Hwang;
+Klaus-Robert Müller;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/7858152/,10.1109/IWW-BCI.2017.7858152,Year: 2017
+An Improved Five Class MI Based BCI Scheme for Drone Control Using Filter Bank CSP,"S⊘ren M⊘ller Christensen;
+Nicklas Stubkjær Holm;
+Sadasivan Puthusserypady",https://ieeexplore.ieee.org/document/8737263/,10.1109/IWW-BCI.2019.8737263,Year: 2019
+Steady-State Somatosensory Evoked Potential based Brain-Computer Interface for Sit-to-Stand Movement Intention,"Kabmun Cha;
+Jaehyung Lee;
+Hyungmin Kim;
+Choonghyun Kim;
+Songjoo Lee",https://ieeexplore.ieee.org/document/8737335/,10.1109/IWW-BCI.2019.8737335,Year: 2019
+Toward BCI Wizard - best BCI approach for each user,"Ivan Volosyak;
+Christoph Guger;
+Axel Gräser",https://ieeexplore.ieee.org/document/5627390/,10.1109/IEMBS.2010.5627390,Year: 2010
+BMFLC with neural network and DE for better event classification,"Yubo Wang;
+Venkateswarlu Gonuguntla;
+Ghufran Shafiq;
+Kalyana C. Veluvolu",https://ieeexplore.ieee.org/document/6506621/,10.1109/IWW-BCI.2013.6506621,Year: 2013
+Tutorial on multimodal neuroimaging for brain-computer interfacing,"Siamac Fazli;
+Klaus-Robert Müller;
+Seong-Whan Lee;
+Benjamin Blankertz",https://ieeexplore.ieee.org/document/6506605/,10.1109/IWW-BCI.2013.6506605,Year: 2013
+Feasibility of hybrid BCI using ERD- and SSSEP- BCI,"Sangtae Ahn;
+Sung Chan Jun",https://ieeexplore.ieee.org/document/6393191/,,Year: 2012
+Classification of motor imagery for Ear-EEG based brain-computer interface,"Yong-Jeong Kim;
+No-Sang Kwak;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/8311517/,10.1109/IWW-BCI.2018.8311517,Year: 2018
+Design of a video feedback SSVEP-BCI system for car control based on improved MUSIC method,"Chang Liu;
+Songyun Xie;
+Xinzhou Xie;
+Xu Duan;
+Wei Wang;
+Klaus Obermayer",https://ieeexplore.ieee.org/document/8311499/,10.1109/IWW-BCI.2018.8311499,Year: 2018
+Immediate effect of neurofeedback in passive BCI for alertness control,"Alexander Hramov;
+Vladimir Maksimenko;
+Maxim Zhuravlev;
+Alexander Pisarchik",https://ieeexplore.ieee.org/document/8737325/,10.1109/IWW-BCI.2019.8737325,Year: 2019
+Implementation of a mental spelling system based on steady-state visual evoked potential (SSVEP),"Han-Jeong Hwang;
+Jeong-Hwan Lim;
+Jun-Hak Lee;
+Chang-Hwan Im",https://ieeexplore.ieee.org/document/6506638/,10.1109/IWW-BCI.2013.6506638,Year: 2013
+Three-dimensional upper limb movement decoding from EEG signals,"Jeong-Hun Kim;
+Ricardo Chavarriaga;
+José del R. Millán;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6506648/,10.1109/IWW-BCI.2013.6506648,Year: 2013
+ERS differences between stroke patients and healthy controls after hand movement,"Suji Kim;
+Jonghwan Lee;
+Laehyun Kim",https://ieeexplore.ieee.org/document/7457455/,10.1109/IWW-BCI.2016.7457455,Year: 2016
+High-speed EEG-Based Brain-Computer Interface with Wide Dynamic-range ADC,"Ming Gu;
+Fang Yuan;
+Jun Yan;
+Mingyi Chen",https://ieeexplore.ieee.org/document/9613936/,10.1109/ISOCC53507.2021.9613936,Year: 2021
+EEG-based brain-computer interface for real-time communication of patients in completely locked-in state,"Chang-Hee Han;
+Chang-Hwan Im",https://ieeexplore.ieee.org/document/8311509/,10.1109/IWW-BCI.2018.8311509,Year: 2018
+Classification of left and right foot movement intention based on steady-state somatosensory evoked potentials,"Young-Jin Kee;
+Dong-Ok Won;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/7858174/,10.1109/IWW-BCI.2017.7858174,Year: 2017
+Exploring the Number of Repetitions in Trials for the Performance Convergence of Classification in Motor Imagery Task with Hand-Grasping,"Young-Tak Kim;
+Seung-Bo Lee;
+Hakseung Kim;
+Ji-Hoon Jeong;
+Seong-Whan Lee;
+Dong-Joo Kim",https://ieeexplore.ieee.org/document/8737308/,10.1109/IWW-BCI.2019.8737308,Year: 2019
+Brain-computer interface for neurorehabilitation: Looking beyond upper limbs,"Cuntai Guan;
+Huijuan Yang;
+Kai Keng Ang;
+Kok Soon Phua;
+Juanhong Yu;
+Chuanchu Wang;
+Karen Chua;
+Effie Chew",https://ieeexplore.ieee.org/document/6782556/,10.1109/iww-BCI.2014.6782556,Year: 2014
+The wadsworth BCI research and development program: at home with BCI,"T.M. Vaughan;
+D.J. McFarland;
+G. Schalk;
+W.A. Sarnacki;
+D.J. Krusienski;
+E.W. Sellers;
+J.R. Wolpaw",https://ieeexplore.ieee.org/document/1642776/,10.1109/TNSRE.2006.875577,Year: 2006
+"BCI Illiteracy: It’s Us, Not Them. Optimizing BCIs for Individual Brains","Suzanna Becker;
+Kiret Dhindsa;
+Leila Mousapour;
+Yar Al Dabagh",https://ieeexplore.ieee.org/document/9735007/,10.1109/BCI53720.2022.9735007,Year: 2022
+Machine learning and BCI,Klaus-Robert Müller,https://ieeexplore.ieee.org/document/7073023/,10.1109/IWW-BCI.2015.7073023,Year: 2015
+EEG-based Brain-Computer Interface to support post-stroke motor rehabilitation of the upper limb,"F. Cincotti;
+F. Pichiorri;
+P. Aricò;
+F. Aloise;
+F. Leotta;
+F. de Vico Fallani;
+J. del R. Millán;
+M. Molinari;
+D. Mattia",https://ieeexplore.ieee.org/document/6346871/,10.1109/EMBC.2012.6346871,Year: 2012
+BCI classification based on signal plots and SIFT descriptors,"R. Ramele;
+A.J. Villar;
+J.M. Santos",https://ieeexplore.ieee.org/document/7457454/,10.1109/IWW-BCI.2016.7457454,Year: 2016
+BCI Demographics II: How Many (and What Kinds of) People Can Use a High-Frequency SSVEP BCI?,"Ivan Volosyak;
+Diana Valbuena;
+Thorsten Luth;
+Tatsiana Malechka;
+Axel Graser",https://ieeexplore.ieee.org/document/5733429/,10.1109/TNSRE.2011.2121919,Year: 2011
+CNN-Based Prognosis of BCI Rehabilitation Using EEG From First Session BCI Training,"Ping-Ju Lin;
+Tianyu Jia;
+Chong Li;
+Tianyi Li;
+Chao Qian;
+Zhibin Li;
+Yu Pan;
+Linhong Ji",https://ieeexplore.ieee.org/document/9536584/,10.1109/TNSRE.2021.3112167,Year: 2021
+Development of an In-Car Environment Control System Using an SSVEP-based BCI with Visual Stimuli Presented on a Head-Up Display,"Seonghun Park;
+Min-Su Kim;
+Hyerin Nam;
+Chang-Hwan Im",https://ieeexplore.ieee.org/document/9734982/,10.1109/BCI53720.2022.9734982,Year: 2022
+An auditory P300-based brain-computer interface using Ear-EEG,"Netiwit Kaongoen;
+Sungho Jo",https://ieeexplore.ieee.org/document/8311519/,10.1109/IWW-BCI.2018.8311519,Year: 2018
+P300 speller using a new stimulus presentation paradigm,"Jin-Sup Eom;
+Hye-Ryeon Yang;
+Mi-Sook Park;
+Jin-Hun Sohn",https://ieeexplore.ieee.org/document/6506644/,10.1109/IWW-BCI.2013.6506644,Year: 2013
+Feature selection for brain-computer interface using nearest neighbor information,"Yung-Kyun Noh;
+Byoung-Kyong Min",https://ieeexplore.ieee.org/document/6782553/,10.1109/iww-BCI.2014.6782553,Year: 2014
+Simultaneous monitoring of hemodynamic changes from brain and spinal cord during visual sexual stimulation,"Evgenii Kim;
+V. Zephaniah Phillips;
+Songhyun Lee;
+Jae Gwan Kim",https://ieeexplore.ieee.org/document/6782573/,10.1109/iww-BCI.2014.6782573,Year: 2014
+BCI: A historical analysis and technology comparison,"O. A. Padierna Sosa;
+Y. Quijano;
+M. Doniz;
+J. E. Chong-Quero",https://ieeexplore.ieee.org/document/5871883/,10.1109/PAHCE.2011.5871883,Year: 2011
+Adaptive CSP with subspace alignment for subject-to-subject transfer in motor imagery brain-computer interfaces,"Yiming Jin;
+Mahta Mousavi;
+Virginia R. de Sa",https://ieeexplore.ieee.org/document/8311494/,10.1109/IWW-BCI.2018.8311494,Year: 2018
+Towards sign language recognition using EEG-based motor imagery brain computer interface,"Duaa AlQattan;
+Francisco Sepulveda",https://ieeexplore.ieee.org/document/7858143/,10.1109/IWW-BCI.2017.7858143,Year: 2017
+Real-time Decoding of EEG Gait Intention for Controlling a Lower-limb Exoskeleton System,"Junhyuk Choi;
+Hyungmin Kim",https://ieeexplore.ieee.org/document/8737311/,10.1109/IWW-BCI.2019.8737311,Year: 2019
+Steady-state somatosensory evoked potentials for brain-controlled wheelchair,"Keun-Tae Kim;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6782570/,10.1109/iww-BCI.2014.6782570,Year: 2014
+Protection of EEG Data using Blockchain Platform,"SuJin Bak;
+Yeon Pyo;
+Jichai Jeong",https://ieeexplore.ieee.org/document/8737260/,10.1109/IWW-BCI.2019.8737260,Year: 2019
+P300 visual speller based on random set presentation,"Seul-Ki Yeom;
+Siamac Fazli;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6782567/,10.1109/iww-BCI.2014.6782567,Year: 2014
+An online top-down SSVEP-BMI for augmented reality,"Ji-Wan Kim;
+Maeng-Nam Kim;
+Dong-Hyeon Kang;
+Min-Hee Ahn;
+Hyun-Seok Kim;
+Byoung-Kyong Min",https://ieeexplore.ieee.org/document/8737348/,10.1109/IWW-BCI.2019.8737348,Year: 2019
+Common spatial patterns based on generalized norms,"Jangwoo Park;
+Wonzoo Chung",https://ieeexplore.ieee.org/document/6506623/,10.1109/IWW-BCI.2013.6506623,Year: 2013
+Time domain EEG analysis for evaluating the effects of driver's mental work load during simulated driving,"Jong-Pil Kim;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/7858165/,10.1109/IWW-BCI.2017.7858165,Year: 2017
+Navigational/informational intent discrimination based on Phase Locking Value(PLV),"Ukeob Park;
+Kalyana C. Veluvolu;
+Minho Lee",https://ieeexplore.ieee.org/document/6782560/,10.1109/iww-BCI.2014.6782560,Year: 2014
+Quantification of Motion Artifacts in fNIRS Data by Monitoring Sensor Attachment,"Jinwoo Park;
+Sunghee Dong;
+Yuseong Hong;
+Jichai Jeong",https://ieeexplore.ieee.org/document/8737342/,10.1109/IWW-BCI.2019.8737342,Year: 2019
+An empirical study on effect of physiological asymmetry for affective stimuli,"Hyung Kim Byung;
+Sungho Jo",https://ieeexplore.ieee.org/document/7858173/,10.1109/IWW-BCI.2017.7858173,Year: 2017
+Design and evaluation of a P300-ERP based BCI system for real-time control of a mobile robot,"Damir Nurseitov;
+Abzal Serekov;
+Almas Shintemirov;
+Berdakh Abibullaev",https://ieeexplore.ieee.org/document/7858177/,10.1109/IWW-BCI.2017.7858177,Year: 2017
+A Hybrid MI-SSVEP based Brain Computer Interface for Potential Upper Limb Neurorehabilitation: A Pilot Study,"Ciarán McGeady;
+Aleksandra Vučković;
+Sadasivan Puthusserypady",https://ieeexplore.ieee.org/document/8737333/,10.1109/IWW-BCI.2019.8737333,Year: 2019
+Design of a robotic wheelchair with a motor imagery based brain-computer interface,"Keun-Tae Kim;
+Tom Carlson;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/6506625/,10.1109/IWW-BCI.2013.6506625,Year: 2013
+Dimensionality reduction with isomap algorithm for EEG covariance matrices,"Egor Krivov;
+Mikhail Belyaev",https://ieeexplore.ieee.org/document/7457448/,10.1109/IWW-BCI.2016.7457448,Year: 2016
+EEG-based Gait State and Gait Intention Recognition Using Spatio-Spectral Convolutional Neural Network,"Sangwoo Park;
+Frank C. Park;
+Junhyuk Choi;
+Hyungmin Kim",https://ieeexplore.ieee.org/document/8737259/,10.1109/IWW-BCI.2019.8737259,Year: 2019
+Effective motor imagery training with visual feedback for non-invasive brain computer interface,"Sungho Jo;
+Jin Woo Choi",https://ieeexplore.ieee.org/document/8311524/,10.1109/IWW-BCI.2018.8311524,Year: 2018
+Prediction of motor and somatosensory function from human ECoG,"Seokyun Ryun;
+June Sic Kim;
+Donghyuk Lee;
+Chun Kee Chung",https://ieeexplore.ieee.org/document/8311505/,10.1109/IWW-BCI.2018.8311505,Year: 2018
+Steady-state visual evoked potential based brain-computer interface with viewing distance changes,"Hee-Jin Park;
+Keun-Tae Kim;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/7457466/,10.1109/IWW-BCI.2016.7457466,Year: 2016
+Explainable Deep Learning for Analysing Brain Data,K.-R. Müller,https://ieeexplore.ieee.org/document/8737321/,10.1109/IWW-BCI.2019.8737321,Year: 2019
+Eeg/sonication-based brain-brain interfacing,Byoung-Kyong Min,https://ieeexplore.ieee.org/document/6506614/,10.1109/IWW-BCI.2013.6506614,Year: 2013
+EEG-based continuous control of a game using a 3 channel motor imagery BCI: BCI game,"Damien Coyle;
+Jhonatan Garcia;
+Abdul R Satti;
+T Martin McGinnity",https://ieeexplore.ieee.org/document/5952128/,10.1109/CCMB.2011.5952128,Year: 2011
+A novel BCI based on 3D stereo stimuli and its application for clinical object recognition assessment,"Fei Wang;
+Yalin Liu;
+Yuan Cao;
+Jun Qu;
+Yanbin He;
+Ronghao Yu;
+Yuanqing Li",https://ieeexplore.ieee.org/document/8309105/,10.1109/GlobalSIP.2017.8309105,Year: 2017
+Robot Control Using an Inexpensive P300 Based BCI,"Shafie Bahman;
+Mohammad B. Shamsollahi",https://ieeexplore.ieee.org/document/9030408/,10.1109/ICBME49163.2019.9030408,Year: 2019
+Experimental VALidation of findings using BCI in Autistic kids- (EVAL BCI),"Reshmi Ravindranathan;
+Robin Tommy;
+Athira Krishnan R",https://ieeexplore.ieee.org/document/9293905/,10.1109/TENCON50793.2020.9293905,Year: 2020
+Hybrid EEG-EOG-based BCI system for Vehicle Control,"Simon Dahl Thorsager Olesen;
+Rig Das;
+Mathias Dizon Olsson;
+Muhammad Ahmed Khan;
+Sadasivan Puthusserypady",https://ieeexplore.ieee.org/document/9385300/,10.1109/BCI51272.2021.9385300,Year: 2021
+A four-class BCI based on motor imagination of the right and the left hand wrist,"A. Vuckovic;
+F. Sepulveda",https://ieeexplore.ieee.org/document/4712628/,10.1109/ISABEL.2008.4712628,Year: 2008
+BCI meeting 2005-workshop on BCI signal processing: feature extraction and translation,"D.J. McFarland;
+C.W. Anderson;
+K.-R. Muller;
+A. Schlogl;
+D.J. Krusienski",https://ieeexplore.ieee.org/document/1642753/,10.1109/TNSRE.2006.875637,Year: 2006
+BCI Demographics: How Many (and What Kinds of) People Can Use an SSVEP BCI?,"Brendan Allison;
+Thorsten Luth;
+Diana Valbuena;
+Amir Teymourian;
+Ivan Volosyak;
+Axel Graser",https://ieeexplore.ieee.org/document/5382578/,10.1109/TNSRE.2009.2039495,Year: 2010
+Towards improved BCI based on human learning principles,"Fabien Lotte;
+Camille Jeunet",https://ieeexplore.ieee.org/document/7073024/,10.1109/IWW-BCI.2015.7073024,Year: 2015
+Hybrid-BCI: Classification of auditory and visual related potentials,"Gaochao Cui;
+Qibin Zhao;
+Jianting Cao;
+Andrzej Cichocki",https://ieeexplore.ieee.org/document/7044768/,10.1109/SCIS-ISIS.2014.7044768,Year: 2014
+Learning suite of kernel feature spaces enhances SMR-based EEG-BCI classification,Berdakh Abibullaev,https://ieeexplore.ieee.org/document/7858158/,10.1109/IWW-BCI.2017.7858158,Year: 2017
+Trained by demonstration humanoid robot controlled via a BCI system for telepresence,"Batyrkhan Saduanov;
+Tohid Alizadeh;
+Jinung An;
+Berdakh Abibullaev",https://ieeexplore.ieee.org/document/8311508/,10.1109/IWW-BCI.2018.8311508,Year: 2018
+A Novel P300-BCI with Virtual Stimulus Continuous Motion,"Nannan Zhang;
+Jingsheng Tang;
+Yaru Liu;
+Yadong Liu;
+Zongtan Zhou",https://ieeexplore.ieee.org/document/7783868/,10.1109/IHMSC.2016.222,Year: 2016
+A fully on-line adaptive BCI,"C. Vidaurre;
+A. Schlogl;
+R. Cabeza;
+R. Scherer;
+G. Pfurtscheller",https://ieeexplore.ieee.org/document/1634519/,10.1109/TBME.2006.873542,Year: 2006
+Classifying siren-sound mental rehearsal and covert production vs. idle state towards onset detection in brain-computer interfaces,"Young Jae Song;
+Francisco Sepulveda",https://ieeexplore.ieee.org/document/7073020/,10.1109/IWW-BCI.2015.7073020,Year: 2015
+Implementation of a closed-loop BCI system for real-time speech synthesis under clinical constraints,"Kevin Meng;
+EuiYoung Kim;
+Simon Vogrin;
+Mark J. Cook;
+Farhad Goodarzy;
+David B. Grayden;
+Chun Kee Chung",https://ieeexplore.ieee.org/document/9735011/,10.1109/BCI53720.2022.9735011,Year: 2022
+"Individual Differences in Motor Imagery BCIs: a Study of Gender, Mental States and Mu Suppression","Maryam Alimardani;
+Diana-Eliza Gherman",https://ieeexplore.ieee.org/document/9735067/,10.1109/BCI53720.2022.9735067,Year: 2022
+Vision Combined with MI-Based BCI in Soft Robotic Glove Control,"Haram Kwon;
+Chaeeun Hwang;
+Sungho Jo",https://ieeexplore.ieee.org/document/9734988/,10.1109/BCI53720.2022.9734988,Year: 2022
+Macroscopic Aspects of Bi-directional BCI in Human,"Seokyun Ryun;
+Yu Jin Yang;
+Jii Kwon;
+June Sic Kim;
+Chun Kee Chung",https://ieeexplore.ieee.org/document/9061620/,10.1109/BCI48061.2020.9061620,Year: 2020
+Identifying error features in a MI-BCI system using microstates,"Seul-Kee Kim;
+Laehyun Kim",https://ieeexplore.ieee.org/document/9061613/,10.1109/BCI48061.2020.9061613,Year: 2020
+Investigating Visual Imagery as a BCI Control Strategy: A Pilot Study,"Justin Kilmarx;
+Hannes Gamper;
+Dimitra Emmanouilidou;
+David Johnston;
+Ed Cutrell;
+Andrew Wilson;
+Ivan Tashev",https://ieeexplore.ieee.org/document/9734919/,10.1109/BCI53720.2022.9734919,Year: 2022
+P300-BCI-based authentication system,"Moonwon Yu;
+Netiwit Kaongoen;
+Sungho Jo",https://ieeexplore.ieee.org/document/7457443/,10.1109/IWW-BCI.2016.7457443,Year: 2016
+Information geometry meets BCI spatial filtering using divergences,"Wojciech Samek;
+Klaus-Robert Müller",https://ieeexplore.ieee.org/document/6782545/,10.1109/iww-BCI.2014.6782545,Year: 2014
+A 3-class Asynchronous BCI Controlling A Simulated Mobile Robot,"Tao Geng;
+Matthew Dyson;
+Chun SL Tsui;
+John Q. Gan",https://ieeexplore.ieee.org/document/4352842/,10.1109/IEMBS.2007.4352842,Year: 2007
+Somatosensory evoked potentials elicited by stimulating two fingers from one hand — Usable for BCI?,"Christian Breitwieser;
+Christoph Pokorny;
+Christa Neuper;
+Gernot R. Müller-Putz",https://ieeexplore.ieee.org/document/6091573/,10.1109/IEMBS.2011.6091573,Year: 2011
+POSTECH BCIs with machine learning,Seungjin Choi,https://ieeexplore.ieee.org/document/6782554/,10.1109/iww-BCI.2014.6782554,Year: 2014
+Hybrid SSVEP/ ERD BCI for humanoid navigation,"Bong-Jae Choi;
+Sung-Ho Jo",https://ieeexplore.ieee.org/document/6704195/,10.1109/ICCAS.2013.6704195,Year: 2013
+Reducing the Calibration Time in Somatosensory BCI by Using Tactile ERD,"Lin Yao;
+Ning Jiang;
+Natalie Mrachacz-Kersting;
+Xiangyang Zhu;
+Dario Farina;
+Yueming Wang",https://ieeexplore.ieee.org/document/9810279/,10.1109/TNSRE.2022.3184402,Year: 2022
+Motor imagery questionnaire as a method to detect BCI illiteracy,Aleksandra Vučković,https://ieeexplore.ieee.org/document/5702803/,10.1109/ISABEL.2010.5702803,Year: 2010
+Pseudo-BCK part and anti-grouped part of pseudo-BCI algebras,Xiaohong Zhang,https://ieeexplore.ieee.org/document/5687423/,10.1109/PIC.2010.5687423,Year: 2010
+An experimental analysis of the effects of wiring harness during bulk current injection (BCI) test,"Jinlong Li;
+Zeng Gong;
+Shanyi Jin;
+Heqing Tian;
+Shiping Ma",https://ieeexplore.ieee.org/document/8260476/,10.1109/EMC-B.2017.8260476,Year: 2017
+Deep transfer learning for error decoding from non-invasive EEG,"Martin Völker;
+Robin T. Schirrmeister;
+Lukas D. J. Fiederer;
+Wolfram Burgard;
+Tonio Ball",https://ieeexplore.ieee.org/document/8311491/,10.1109/IWW-BCI.2018.8311491,Year: 2018
+Assessing The Relevance Of Neurophysiological Patterns To Predict Motor Imagery-based BCI Users’ Performance,"Eidan Tzdaka;
+Camille Benaroch;
+Camille Jeunet;
+Fabien Lotte",https://ieeexplore.ieee.org/document/9283307/,10.1109/SMC42975.2020.9283307,Year: 2020
+How big is BCI fragment of BCK logic,"Katarzyna Grygiel;
+Paweł M. Idziak;
+Marek Zaionc",https://ieeexplore.ieee.org/document/8133330/,10.1093/logcom/exs017,Year: 2013
+High Aptitude Motor-Imagery BCI Users Have Better Visuospatial Memory,"Nikki Leeuwis;
+Maryam Alimardani",https://ieeexplore.ieee.org/document/9283259/,10.1109/SMC42975.2020.9283259,Year: 2020
+Visual Versus Kinesthetic Motor Imagery for BCI Control of Robotic Arms (Mercury 2.0),"G. Arfaras;
+A. Athanasiou;
+N. Pandria;
+K.R. Kavazidi;
+P. Kartsidis;
+A. Astaras;
+P. D. Bamidis",https://ieeexplore.ieee.org/document/8104234/,10.1109/CBMS.2017.34,Year: 2017
+Motor-Imagery BCI with Low-Count of Optically Pumped Magnetometers,"Nikita Fedosov;
+Oleg Shevtsov;
+Alexey Ossadtchi",https://ieeexplore.ieee.org/document/9580251/,10.1109/CNN53494.2021.9580251,Year: 2021
+Implementable Spike Sorting techniques for VLSI wireless BCI/BMI implants: A survey,"Zaghloul Saad Zaghloul;
+Magdy Bayoumi",https://ieeexplore.ieee.org/document/7352206/,10.1109/ICEAC.2015.7352206,Year: 2015
+A New Object-oriented SSVEP-based BCI Paradigm Using Continuous Action Scene,"Liming Zhang;
+Xiaodong Zhang;
+Zhufeng Lu;
+Rui Li",https://ieeexplore.ieee.org/document/8446089/,10.1109/CYBER.2017.8446089,Year: 2017
+Transcranial Direct-Current Stimulation Effect on a Speech-Imagery-based BCI,"Netiwit Kaongoen;
+Jaehoon Choi;
+Sungho Jo",https://ieeexplore.ieee.org/document/9385310/,10.1109/BCI51272.2021.9385310,Year: 2021
+A Dynamically Optimized SSVEP Brain–Computer Interface (BCI) Speller,"Erwei Yin;
+Zongtan Zhou;
+Jun Jiang;
+Yang Yu;
+Dewen Hu",https://ieeexplore.ieee.org/document/6807693/,10.1109/TBME.2014.2320948,Year: 2015
+Alpha Frequency Intervention by Electrical Stimulation to Improve Performance in Mu-Based BCI,"Xiangzi Zhang;
+Yaqiu Guo;
+Boyu Gao;
+Jinyi Long",https://ieeexplore.ieee.org/document/9064827/,10.1109/TNSRE.2020.2987529,Year: 2020
+Design of an EEG-based Drone Swarm Control System using Endogenous BCI Paradigms,"Dae-Hyeok Lee;
+Ji-Hoon Jeong;
+Hyung-Ju Ahn;
+Seong-Whan Lee",https://ieeexplore.ieee.org/document/9385356/,10.1109/BCI51272.2021.9385356,Year: 2021
+Design of RF power delivery system for wireless BCI devices,"M. Durairaj;
+M. Ramakrishnan",https://ieeexplore.ieee.org/document/6726756/,10.1109/ICCCNT.2013.6726756,Year: 2013
+EEG-based BCI system via arithmetic and emotional imagery,"Yunuong Punsawad;
+Juthamat Uengamphon;
+Yodchanan Wongsawat",https://ieeexplore.ieee.org/document/7017434/,10.1109/BMEiCON.2014.7017434,Year: 2014
+"Comparative Analysis of NIRS-EEG Motor Imagery Data Using Features from Spatial, Spectral and Temporal Domain","Hyun-Ji Kim;
+In-Nea Wang;
+Young-Tak Kim;
+Hakseung Kim;
+Dong-Joo Kim",https://ieeexplore.ieee.org/document/9061636/,10.1109/BCI48061.2020.9061636,Year: 2020
+Proprioceptive feedback in BCI,"A. Ramos;
+S. Halder;
+N. Birbaumer",https://ieeexplore.ieee.org/document/5109287/,10.1109/NER.2009.5109287,Year: 2009
+A multivariate empirical mode decomposition based filtering for subject independent BCI,"Pramod Gaur;
+Ram Bilas Pachori;
+Hui Wang;
+Girijesh Prasad",https://ieeexplore.ieee.org/document/7528480/,10.1109/ISSC.2016.7528480,Year: 2016
+Self-Paced Operation of an SSVEP-Based Orthosis With and Without an Imagery-Based “Brain Switch:” A Feasibility Study Towards a Hybrid BCI,"Gert Pfurtscheller;
+Teodoro Solis-Escalante;
+Rupert Ortner;
+Patricia Linortner;
+Gernot R. Muller-Putz",https://ieeexplore.ieee.org/document/5409627/,10.1109/TNSRE.2010.2040837,Year: 2010
+Exploring a Deeper Convolutional Neural Network Architecture with high dropout for Motor Imagery BCI Decoding,"Ramtin Alami;
+Andi Partovi;
+Farhad Goodarzy",https://ieeexplore.ieee.org/document/9385323/,10.1109/BCI51272.2021.9385323,Year: 2021
+Importance of Reliable EEG Data in Motor Imagery Classification: Attention Level-based Approach,"Seho Lee;
+Young-Tak Kim;
+Seung-Ouk Hwang;
+Hakseung Kim;
+Dong-Joo Kim",https://ieeexplore.ieee.org/document/9061647/,10.1109/BCI48061.2020.9061647,Year: 2020
+On 1-type positive implicative pseudo-BCK/BCI algebras,"Xiaohong Zhang;
+Yinfeng Lu;
+Xiaoyan Mao",https://ieeexplore.ieee.org/document/5646326/,10.1109/KAM.2010.5646326,Year: 2010
+Motor imagery detection with wavelet analysis for NIRS-based BCI,"Bonkon Koo;
+Hanh Vu;
+Hwan-Gon Lee;
+Hyung-Cheul Shin;
+Seungjin Choi",https://ieeexplore.ieee.org/document/7457441/,10.1109/IWW-BCI.2016.7457441,Year: 2016
+Testing performance of multicolour checkerboard flickers against their greyscale versions for SSVEP-based BCI,"Artur Szalowski;
+Dorel Picovici",https://ieeexplore.ieee.org/document/8737261/,10.1109/IWW-BCI.2019.8737261,Year: 2019
+BCI-based control of electric wheelchair,"Nobuaki Kobayashi;
+Masahiro Nakagawa",https://ieeexplore.ieee.org/document/7398718/,10.1109/GCCE.2015.7398718,Year: 2015
+Wisdom of the Crowd: Using Multi-human Few-shot Learning to Improve Cross- User Generalization for Error Potentials in BCI Systems,"Ekansh Gupta;
+Raghupathy Sivakumar",https://ieeexplore.ieee.org/document/9892115/,10.1109/IJCNN55064.2022.9892115,Year: 2022
+A Tactile Brain-Computer Interface for Virtual Wheelchair Control at Home,"Matthias Eidel;
+Wolfgang Tröger;
+Martin Winterholler;
+Thomas Giesler;
+Andrea Kübler",https://ieeexplore.ieee.org/document/9385341/,10.1109/BCI51272.2021.9385341,Year: 2021
+The BCI competition III: validating alternative approaches to actual BCI problems,"B. Blankertz;
+K.-R. Muller;
+D.J. Krusienski;
+G. Schalk;
+J.R. Wolpaw;
+A. Schlogl;
+G. Pfurtscheller;
+Jd.R. Millan;
+M. Schroder;
+N. Birbaumer",https://ieeexplore.ieee.org/document/1642757/,10.1109/TNSRE.2006.875642,Year: 2006
+Using Mixed Linear Programming to Classify BCI Signals Submission,"Georgi P. Dimitrov;
+Iva S. Kostadinova;
+Galina Panayotova;
+Pepa Petrova;
+Kristian V. Aleksiev;
+Bychkov Oleksii;
+Viktor Shevchenko",https://ieeexplore.ieee.org/document/8982368/,10.1109/RTUCON48111.2019.8982368,Year: 2019
+Investigating the Influence of Background Music on the Performance of an SSVEP-based BCI,"Liza Psotta;
+Aya Rezeika;
+Ivan Volosyak",https://ieeexplore.ieee.org/document/8913855/,10.1109/SMC.2019.8913855,Year: 2019
+Comparison of Classification Algorithms Towards Subject-Specific and Subject-Independent BCI,"Parisa Ghane;
+Narges Zarnaghinaghsh;
+Ulisses Braga-Neto",https://ieeexplore.ieee.org/document/9385339/,10.1109/BCI51272.2021.9385339,Year: 2021
+Using Brain Network Features to Increase the Classification Accuracy of MI-BCI Inefficiency Subject,"Rui Zhang;
+Xianpeng Li;
+Yinwang Wang;
+Bo Liu;
+Li Shi;
+Mingming Chen;
+Lipeng Zhang;
+Yuxia Hu",https://ieeexplore.ieee.org/document/8718003/,10.1109/ACCESS.2019.2917327,Year: 2019
+Navigation path differences for dichotic listening BCI in virtual environments,"Ashish Dhital;
+Amy Banic",https://ieeexplore.ieee.org/document/6786184/,10.1109/VAAT.2013.6786184,Year: 2013
+Altering MOR-based BCI CTMs into Delphi-like BCI CTMs,"Lorenzo Codecasa;
+Vincenzo d'Alessandro;
+Dario D'Amore",https://ieeexplore.ieee.org/document/9420528/,10.1109/THERMINIC49743.2020.9420528,Year: 2020
+An RFID-Based BCI System for Emotion Detection Using EEG patterns,"Anju Mishra;
+Archana Singh;
+Amit Ujlayan",https://ieeexplore.ieee.org/document/9617423/,10.1109/RFID-TA53372.2021.9617423,Year: 2021
+Hardware-Simulation Correlation of BCI failures in Capacitive Touch Sensing Application using ICIM,"Anant Devi;
+Shiva S. Veluri;
+Bibhu P. Nayak;
+Shantanu Prabhudesai",https://ieeexplore.ieee.org/document/8704635/,10.1109/INCEMIC.2018.8704635,Year: 2018
+Application of Hybrid Brain-Computer Interface with Augmented Reality on Quadcopter Control,"Jaehoon Choi;
+Sungho Jo",https://ieeexplore.ieee.org/document/9061659/,10.1109/BCI48061.2020.9061659,Year: 2020
+Controlling a Tactile ERP–BCI in a Dual Task,"Marieke E. Thurlings;
+Jan B. F. Van Erp;
+Anne-Marie Brouwer;
+Peter Werkhoven",https://ieeexplore.ieee.org/document/6461930/,10.1109/TCIAIG.2013.2239294,Year: 2013
+A collaborative BCI system based on P300 signals as a new tool for life log indexing,Hideaki Touyama,https://ieeexplore.ieee.org/document/6974360/,10.1109/SMC.2014.6974360,Year: 2014
+Identification of multiple-tasks-induced-EEG by heuristic BCI with learning type fuzzy-template-matching method,"Teruo Oda;
+Suguru N. Kudoh",https://ieeexplore.ieee.org/document/8023260/,10.1109/IFSA-SCIS.2017.8023260,Year: 2017
+Classification methods in EEG based motor imagery BCI systems,"Kadir HALTAŞ;
+Atilla ERGÜZEN;
+Erdal ERDAL",https://ieeexplore.ieee.org/document/8932947/,10.1109/ISMSIT.2019.8932947,Year: 2019
+A Spectrally-Dense Encoding Method for Designing a High-Speed SSVEP-BCI With 120 Stimuli,"Xiaogang Chen;
+Bingchuan Liu;
+Yijun Wang;
+Xiaorong Gao",https://ieeexplore.ieee.org/document/9899472/,10.1109/TNSRE.2022.3208717,Year: 2022
+Trials and tribulations of BCI control applications,"Najwa Al-Ghamdi;
+Ghada Al-Hudhud;
+Mai Alzamel;
+Areej Al-Wabil",https://ieeexplore.ieee.org/document/6661741/,,Year: 2013
+Object Movement Motor Imagery for EEG based BCI System using Convolutional Neural Networks,"Eneo Petoku;
+Genci Capi",https://ieeexplore.ieee.org/document/9385319/,10.1109/BCI51272.2021.9385319,Year: 2021
+EEG reactivity changes captured via mobile BCI device following tDCS intervention – a pilot-study in disorders of consciousness (DOC) patients,"Neta B. Maimon;
+Lior Molcho;
+Efraim Jaul;
+Nathan Intrator;
+Jeremy Barron;
+Oded Meiron",https://ieeexplore.ieee.org/document/9734839/,10.1109/BCI53720.2022.9734839,Year: 2022
+An approach for assessing stroke motor function ability using the similarity between electroencephalographic power spectral densities on both motor cortices,"Jihyeon Ha;
+Da-Hye Kim;
+Laehyun Kim",https://ieeexplore.ieee.org/document/8311510/,10.1109/IWW-BCI.2018.8311510,Year: 2018
+Modified pattern-reversal visual checkerboard stimuli with dual alternating frequencies for multi-class ssvep-based brain-computer interfaces,"Chang-Hee Han;
+Han-Jeong Hwang;
+Chang-Hwan Im",https://ieeexplore.ieee.org/document/6506640/,10.1109/IWW-BCI.2013.6506640,Year: 2013
+The Design of an Algorithmic Modal Music Platform for Eliciting and Detecting Emotion,"Eduardo J. Santos González;
+Kyla McMullen",https://ieeexplore.ieee.org/document/9061664/,10.1109/BCI48061.2020.9061664,Year: 2020
+SSVEP response on Oculus Rift,"Bonkon Koo;
+Seungjin Choi",https://ieeexplore.ieee.org/document/7073028/,10.1109/IWW-BCI.2015.7073028,Year: 2015
+Brain-computer interface and its applications in cognitive training,"Cuntai Guan;
+Tih Shih Lee;
+Choon Guan Lim;
+Daniel Fung;
+Ranga Krishnan",https://ieeexplore.ieee.org/document/7073018/,10.1109/IWW-BCI.2015.7073018,Year: 2015
+Concentrate your mind by counting the flashing point: A new P300 pattern in BCI,"Hanhan Zhang;
+Huiping Hu;
+Sijie Zhou;
+Xingyu Wang;
+Jing Jin",https://ieeexplore.ieee.org/document/7483382/,10.1109/ICIST.2016.7483382,Year: 2016
+The Study on Online SSVEP based BCI system using CCA method,"Yingqiong Yong;
+Boyu Zang;
+Jia Yang;
+Shengjia Li",https://ieeexplore.ieee.org/document/9482138/,10.1109/IMCEC51613.2021.9482138,Year: 2021
+A Leveled Evaluation Method Using BCI Probe,"Noboru Maeda;
+Makoto Jomoto",https://ieeexplore.ieee.org/document/8893757/,10.23919/EMCTokyo.2019.8893757,Year: 2019
+Research on event-related potentials in motor imagery BCI,"Zhifeng Lin;
+Zhihua Huang",https://ieeexplore.ieee.org/document/8302267/,10.1109/CISP-BMEI.2017.8302267,Year: 2017
+Towards improvement of MI-BCI performance of subjects with BCI deficiency,"Atieh Bamdadian;
+Cuntai Guan;
+Kai Keng Ang;
+Jianxin Xu",https://ieeexplore.ieee.org/document/7146549/,10.1109/NER.2015.7146549,Year: 2015
+Tactile Stimulation Improves Sensorimotor Rhythm-Based BCI Performance in Stroke Patients,"Xiaokang Shu;
+Shugeng Chen;
+Jianjun Meng;
+Lin Yao;
+Xinjun Sheng;
+Jie Jia;
+Dario Farina;
+Xiangyang Zhu",https://ieeexplore.ieee.org/document/8540066/,10.1109/TBME.2018.2882075,Year: 2019
+Eye-Blink artifact Detection and Removal Approaches for BCI using EEG,"Megha M. Wankhade;
+Suvarna. S. Chorage",https://ieeexplore.ieee.org/document/9574024/,10.1109/RTEICT52294.2021.9574024,Year: 2021
+Endomorphisms and Order Relations of Sub-BCI-algebras,Lu Chen,https://ieeexplore.ieee.org/document/5954548/,10.1109/ICIC.2011.60,Year: 2011
+Rough 3-valued Lukasiewicz algebras and BCI-algebras,Jianhua Dai,https://ieeexplore.ieee.org/document/5255151/,10.1109/GRC.2009.5255151,Year: 2009
+Study of wavelet-based performance enhancement for motor imagery brain-computer interface,"Mukhtar Alansari;
+Mahmoud Kamel;
+Bandar Hakim;
+Yasser Kadah",https://ieeexplore.ieee.org/document/8311520/,10.1109/IWW-BCI.2018.8311520,Year: 2018
+Describing relevant indices from the resting state electrophysiological networks,"J. Toppi;
+M. Petti;
+F. De Vico Fallani;
+G. Vecchiato;
+A. G. Maglione;
+F. Cincotti;
+S. Salinari;
+D. Mattia;
+F. Babiloni;
+L. Astolfi",https://ieeexplore.ieee.org/document/6346483/,10.1109/EMBC.2012.6346483,Year: 2012
+The effect of video distraction on a visual P300 BCI,"Minju Kim;
+Yun Joo Choi;
+Jongsu Kim;
+Sung-Phil Kim",https://ieeexplore.ieee.org/document/9385298/,10.1109/BCI51272.2021.9385298,Year: 2021
+Performance Variation of a Somatosensory BCI Based on Imagined Sensation: A Large Population Study,"Lin Yao;
+Ning Jiang;
+Natalie Mrachacz-Kersting;
+Xiangyang Zhu;
+Dario Farina;
+Yueming Wang",https://ieeexplore.ieee.org/document/9857938/,10.1109/TNSRE.2022.3198970,Year: 2022
+BCI Facilitates the Improvement of Cognitive Functions in Children and Elderly,"Cuntai Guan;
+Choon Guan Lim;
+Daniel Fung;
+Helen Juan Zhou;
+Ranga Krishnan;
+Tih Shih Lee",https://ieeexplore.ieee.org/document/9061625/,10.1109/BCI48061.2020.9061625,Year: 2020
+Generic BCI Classifiers for Discrimination of Motor Imagery of Left/Right Steps and Forward Walking,"Bilal Alchalabi;
+Jocelyn Faubert;
+David Labbé",https://ieeexplore.ieee.org/document/9385324/,10.1109/BCI51272.2021.9385324,Year: 2021
+Hybrid Zero-Training BCI based on Convolutional Neural Network for Lower-limb Motor-Imagery,"Ji Hyeok Jeong;
+Dong-Joo Kim;
+Hyungmin Kim",https://ieeexplore.ieee.org/document/9385316/,10.1109/BCI51272.2021.9385316,Year: 2021
+Meta-BCI: Perspectives on a role of self-supervised learning in meta brain computer interface,"Young Ho Kang;
+Dongjae Kim;
+Sang Wan Lee",https://ieeexplore.ieee.org/document/9734995/,10.1109/BCI53720.2022.9734995,Year: 2022
+The Effect of Harmonics Count on SSVEP-Based BCI Results,"Murat Kancaoglu;
+Mehmet Kuntalp",https://ieeexplore.ieee.org/document/8946362/,10.1109/ASYU48272.2019.8946362,Year: 2019
+Effect of transcranial magnetic stimulation on changes in cortical structures activity during BCI motory-imagery performance,"Andrey Savosenkov;
+Nikita Grigorev;
+Anna Udoratina;
+Maxim Lukoyanov;
+Semyon Kurkin;
+Susanna Gordleeva",https://ieeexplore.ieee.org/document/9912523/,10.1109/CNN56452.2022.9912523,Year: 2022
+Application of the Bluetooth Protocol for Data Transfer from Computer to the Brain in Active BCI-Interfaces and Development of the Small Bluetooth Neural Stimulation Device,"Daniil Berezhnoy;
+Timur Bergaliyev;
+Sergey Sakhno",https://ieeexplore.ieee.org/document/9431244/,10.1109/EnT50437.2020.9431244,Year: 2020
+Design of a BCI System for Piloting a Wheelchair Using Five Class MI Based EEG,"G. Reshmi;
+A. Amal",https://ieeexplore.ieee.org/document/6686330/,10.1109/ICACC.2013.12,Year: 2013
+Development of a mind-controlled Android racing game using a brain computer interface (BCI),"Guobin Wu;
+Zheng Xie;
+Xin'an Wang",https://ieeexplore.ieee.org/document/6920562/,10.1109/ICIST.2014.6920562,Year: 2014
+Synchronous P300 based BCI to control home appliances,"Nebia Bentabet;
+Nasr-Eddine Berrached",https://ieeexplore.ieee.org/document/7804230/,10.1109/ICMIC.2016.7804230,Year: 2016
+Circuit models for Bulk Current Injection (BCI) clamps with multiple cables,"Bibhu Prasad Nayak;
+Arkaprovo Das;
+Sreenivasulu Reddy Vedicherla;
+Dipanjan Gope",https://ieeexplore.ieee.org/document/8393970/,10.1109/ISEMC.2018.8393970,Year: 2018
+TL-Subalgebras and TL-Ideals of Sub-BCI-Algebras,"Shaoquan Sun;
+Liu Guozhu",https://ieeexplore.ieee.org/document/5403370/,10.1109/WCSE.2009.758,Year: 2009
+Efficient use of circuit & 3D-EM simulation to optimize the automotive Bulk Current Injection (BCI) performance of Ultrasonic Sensors,"Chakrapani Nandyala;
+Harry Litz;
+Bastian Hafner;
+Raffi Kalayciyan",https://ieeexplore.ieee.org/document/9245651/,10.1109/EMCEUROPE48519.2020.9245651,Year: 2020
+Dynamic optimization of mental workload in fNIRS-BCI system for cognitive rehabilitation,"W. C. Ung;
+T. B. Tang;
+F. Meriaudeau;
+E. G. M. Ebenezer",https://ieeexplore.ieee.org/document/8120629/,10.1109/ICSIPA.2017.8120629,Year: 2017
+Development of NIRS-BCI system using perceptron,"Kazuki Yanagisawa;
+Hideyuki Sawai;
+Hitoshi Tsunashima",https://ieeexplore.ieee.org/document/6393081/,,Year: 2012
+An Investigation into the Functional Connectivity Based on a Time Production for BCI,"Ryosuke Hayasaka;
+Keita Mitani;
+Yukinobu Hoshino",https://ieeexplore.ieee.org/document/8716157/,10.1109/SCIS-ISIS.2018.00189,Year: 2018
+Cross-target transfer algorithm based on the volterra model of SSVEP-BCI,"Jiajun Lin;
+Liyan Liang;
+Xu Han;
+Chen Yang;
+Xiaogang Chen;
+Xiaorong Gao",https://ieeexplore.ieee.org/document/9312779/,10.26599/TST.2020.9010015,Year: 2021
+User performance evaluation with visual stimulator regulation of SSVEP-based BCI system,"Yunyong Punsawad;
+Yodchanan Wongsawat",https://ieeexplore.ieee.org/document/7041797/,10.1109/APSIPA.2014.7041797,Year: 2014
+Mind Controlled Drone: An Innovative Multiclass SSVEP based Brain Computer Interface,"Andrei Chiuzbaian;
+Jakob Jakobsen;
+Sadasivan Puthusserypady",https://ieeexplore.ieee.org/document/8737327/,10.1109/IWW-BCI.2019.8737327,Year: 2019
+Prediction of item familiarity based on ERPs,"Tanja Krumpe;
+Wolfgang Rosenstiel;
+Martin Spüler",https://ieeexplore.ieee.org/document/8737330/,10.1109/IWW-BCI.2019.8737330,Year: 2019
+Semiasynchronous BCI Using Wearable Two-Channel EEG,"Yubing Jiang;
+Nguyen Trung Hau;
+Wan-Young Chung",https://ieeexplore.ieee.org/document/7954675/,10.1109/TCDS.2017.2716973,Year: 2018
+A new descriptor of neuroelectrical activity during BCI-assisted motor imagery-based training in stroke patients,"M Petti;
+D Mattia;
+F Pichiorri;
+J Toppi;
+S Salinari;
+F Babiloni;
+L. Astolfi;
+F Cincotti",https://ieeexplore.ieee.org/document/6943828/,10.1109/EMBC.2014.6943828,Year: 2014
+A comparison of navigation system based on P300 BCI and SSVEP BCI,"Lijing Meng;
+Jing Jin;
+Xingyu Wang",https://ieeexplore.ieee.org/document/6244593/,10.1109/CCDC.2012.6244593,Year: 2012
+T-type Pseudo-BCI Algebras and T-type Pseudo-BCI Filters,"Xiaohong Zhang;
+Yinfeng Lu;
+Xiaoyan Mao",https://ieeexplore.ieee.org/document/5576099/,10.1109/GrC.2010.63,Year: 2010
