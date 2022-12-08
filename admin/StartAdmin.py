@@ -22,17 +22,23 @@ class Admin:
         self.database = None
 
         # initial signal slots
-        self.mainWin.searchBookBtn.clicked.connect(self.update_book_table)
+        self.mainWin.searchBookBtn.clicked.connect(self.search_book)
         self.mainWin.bookAddBtn.clicked.connect(self.add_book)
         self.mainWin.bookEditBtn.clicked.connect(self.edit_book)
         self.mainWin.bookDeleteBtn.clicked.connect(self.delete_book)
         self.editBookWin.bookEditBtn.clicked.connect(self.confirm_edit_book)
 
-        self.mainWin.searchPaperBtn.clicked.connect(self.update_paper_table)
+        self.mainWin.searchPaperBtn.clicked.connect(self.search_paper)
         self.mainWin.paperAddBtn.clicked.connect(self.add_paper)
         self.mainWin.paperEditBtn.clicked.connect(self.edit_paper)
         self.mainWin.paperDeleteBtn.clicked.connect(self.delete_paper)
         self.editPaperWin.paperEditBtn.clicked.connect(self.confirm_edit_paper)
+
+        self.mainWin.searchUserBtn.clicked.connect(self.search_user)
+        self.mainWin.userAddBtn.clicked.connect(self.add_user)
+        self.mainWin.userEditBtn.clicked.connect(self.edit_user)
+        self.mainWin.userDeleteBtn.clicked.connect(self.delete_user)
+        self.editUserWin.userEditBtn.clicked.connect(self.confirm_edit_user)
 
         self.create_connection()
 
@@ -42,9 +48,7 @@ class Admin:
 
     def update_book_table(self):
         if self.database:
-            print('try to update')
             table = self.database.read_book(20)  # TODO: 分页
-            print('table', table)
             # TODO: 对数据分页
             if table:
                 self.mainWin.updateBookTable(table)
@@ -55,7 +59,10 @@ class Admin:
         # id, name, author, press, release_date, ISBN
         # 可以为空
         keys = self.mainWin.getBookSearchKey()
-        print('search books by keys:', keys)
+
+        total_num = self.database.get_book_num()
+        self.mainWin.showBookNum(total_num)
+        self.update_book_table()
 
         # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
 
@@ -114,7 +121,6 @@ class Admin:
     def update_paper_table(self):
         if self.database:
             table = self.database.read_document(20)
-            print('paper table', table)
             # TODO: 对数据分页
             if table:
                 self.mainWin.updatePaperTable(table)
@@ -123,9 +129,11 @@ class Admin:
 
     def search_paper(self):
         keys = self.mainWin.getPaperSearchKey()
-        print('search papers by keys:', keys)
 
-        # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
+        total_num = self.database.get_document_num()
+        self.mainWin.showPaperNum(total_num)
+        self.update_paper_table()
+
 
     def add_paper(self):
         new_paper_info = self.mainWin.getNewPaperInfo()
@@ -189,9 +197,10 @@ class Admin:
 
     def search_user(self):
         keys = self.mainWin.getUserSearchKey()
-        print('search users by keys:', keys)
 
-        # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
+        total_num = self.database.get_user_num()
+        self.mainWin.showUserNum(total_num)
+        self.update_user_table()
 
     def add_user(self):
         new_user_info = self.mainWin.getNewUserInfo()

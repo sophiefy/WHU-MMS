@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -763,7 +763,7 @@ background-color: rgb(85, 255, 127);</string>
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="label_13">
+         <widget class="QLabel" name="bookNumLbl">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -794,6 +794,9 @@ background-color: rgb(85, 255, 127);</string>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
           </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
@@ -1381,7 +1384,7 @@ background-color: rgb(85, 255, 127);</string>
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="label_14">
+         <widget class="QLabel" name="paperNumLbl">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -1412,6 +1415,9 @@ background-color: rgb(85, 255, 127);</string>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
           </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
@@ -1995,7 +2001,7 @@ background-color: rgb(85, 255, 127);</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="searchUserBtn_2">
+           <widget class="QPushButton" name="searchUserBtn">
             <property name="font">
              <font>
               <family>微软雅黑</family>
@@ -2010,7 +2016,7 @@ background-color: rgb(85, 255, 127);</string>
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="label_26">
+         <widget class="QLabel" name="userNumLbl">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -2041,6 +2047,12 @@ background-color: rgb(85, 255, 127);</string>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>

@@ -72,7 +72,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.userLastBtn.clicked.connect(lambda: self.lastPage('user'))
         self.userJumpBtn.clicked.connect(lambda: self.jumpPage('user'))
 
-        self.bookPage.setText('1 / 10')  # debug use
+        # self.bookPage.setText('1 / 10')  # debug use
 
     def showInfo(self, msg):
         QMessageBox.information(self, '提示', msg)
@@ -106,6 +106,12 @@ class MainWin(QMainWindow, Ui_MainWindow):
         ISBN = self.searchBookISBNEdit.text()
 
         return id, name, author, press, release_date, ISBN
+
+    def showBookNum(self, num):
+        if num:
+            self.bookNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.bookNumLbl.setText(f'查询结果：共0条数据')
 
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
@@ -159,6 +165,12 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         return id, title, author, release_date, archive
 
+    def showPaperNum(self, num):
+        if num:
+            self.paperNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.paperNumLbl.setText(f'查询结果：共0条数据')
+
     def getSelectedPaperInfo(self):
         row = self.paperTbl.currentRow()
 
@@ -208,6 +220,12 @@ class MainWin(QMainWindow, Ui_MainWindow):
         grade = self.searchUserGradeEdit.text()
 
         return number, name, age, dpt, grade
+
+    def showUserNum(self, num):
+        if num:
+            self.userNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.userNumLbl.setText(f'查询结果：共0条数据')
 
     def getSelectedUserInfo(self):
         row = self.userTbl.currentRow()
