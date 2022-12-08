@@ -564,8 +564,6 @@ class Database:
                 return top_table
 
 
-
-
 if __name__ == '__main__':
     database = Database()
     database.create_connection()

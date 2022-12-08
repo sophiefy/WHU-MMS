@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1315</width>
-    <height>786</height>
+    <height>780</height>
    </rect>
   </property>
   <property name="font">
@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1164,6 +1164,22 @@ background-color: rgb(85, 255, 127);</string>
                </widget>
               </item>
               <item>
+               <widget class="QLineEdit" name="searchBuyerDateEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>日期</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QPushButton" name="searchBuyerBtn">
                 <property name="font">
                  <font>
@@ -1246,6 +1262,11 @@ background-color: rgb(85, 255, 127);</string>
               <column>
                <property name="text">
                 <string>用户名</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>日期</string>
                </property>
               </column>
              </widget>
@@ -2425,6 +2446,22 @@ background-color: rgb(85, 255, 127);</string>
                </widget>
               </item>
               <item>
+               <widget class="QLineEdit" name="searchUploadDateEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>日期</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QPushButton" name="searchUploadBtn">
                 <property name="font">
                  <font>
@@ -2507,6 +2544,11 @@ background-color: rgb(85, 255, 127);</string>
               <column>
                <property name="text">
                 <string>用户名</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>日期</string>
                </property>
               </column>
              </widget>

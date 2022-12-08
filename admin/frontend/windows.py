@@ -164,6 +164,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         book_name = self.searchBookNameEdit.text()
         user_id = self.searchBuyerUserKeyEdit.text()
         user_name = self.searchBuyerUserNameEdit.text()
+        date = self.searchBuyerDateEdit.text()
 
         if not id:
             id = 0
@@ -177,7 +178,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.showWarning('买书号格式不正确！')
                 return None
 
-        return id, book_id, book_name, user_id, user_name
+        return id, book_id, book_name, user_id, user_name, date
 
     def showBuyerNum(self, num):
         if num:
@@ -198,6 +199,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.buyerTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.buyerTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
                 self.buyerTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+                self.buyerTbl.setItem(i, 5, QTableWidgetItem(str(row[5])))
         except Exception as e:
             print(e)
 
@@ -304,6 +306,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         paper_title = self.searchUploadPaperTitleEdit.text()
         user_id = self.searchUploadUserKeyEdit.text()
         user_name = self.searchUploadUserNameEdit.text()
+        date = self.searchUploadDateEdit.text()
 
         if not id:
             id = 0
@@ -317,7 +320,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.showWarning('上传号格式不正确！')
                 return None
 
-        return id, paper_id, paper_title, user_id, user_name
+        return id, paper_id, paper_title, user_id, user_name, date
 
     def showUploadNum(self, num):
         if num:
@@ -338,6 +341,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.uploadTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.uploadTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
                 self.uploadTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+                self.uploadTbl.setItem(i, 5, QTableWidgetItem(str(row[5])))
         except Exception as e:
             print(e)
 
