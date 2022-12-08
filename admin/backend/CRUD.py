@@ -115,6 +115,7 @@ class Database:
                  b_id  INT NOT NULL,
                  u_id  INT NOT NULL,
                  buy_date DATE,
+                 buy_num INT DEFAULT 1,
                  CONSTRAINT FOREIGN KEY (b_id) REFERENCES book(b_id) ON DELETE NO ACTION ON UPDATE CASCADE,
                  CONSTRAINT FOREIGN KEY (u_id) REFERENCES user(u_id) ON DELETE NO ACTION ON UPDATE CASCADE
                   )'''
@@ -447,7 +448,7 @@ class Database:
                 return buyer_table
 
     def get_top_buyers(self):
-        buyer_sql = "SELECT u_id, COUNT(*) AS num FROM buyer GROUP BY u_id ORDER BY num DESC LIMIT 10"
+        buyer_sql = "SELECT u_id, SUM(buy_num) AS num FROM buyer GROUP BY u_id ORDER BY num DESC LIMIT 10"
         user_sql = "SELECT u_id,u_name FROM user"
         sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id" % (buyer_sql, user_sql)
         if self.conn:
@@ -462,7 +463,7 @@ class Database:
                 return top_table
 
     def get_top_books(self):
-        buyer_sql = "SELECT b_id, COUNT(*) AS num FROM buyer GROUP BY b_id ORDER BY num DESC LIMIT 10"
+        buyer_sql = "SELECT b_id, SUM(buy_num) AS num FROM buyer GROUP BY b_id ORDER BY num DESC LIMIT 10"
         book_sql = "SELECT b_id,b_name FROM book"
         sql = "SELECT book.b_id,book.b_name,num FROM (%s) AS buyer JOIN (%s) AS book ON buyer.b_id = book.b_id" % (buyer_sql, book_sql)
         if self.conn:
