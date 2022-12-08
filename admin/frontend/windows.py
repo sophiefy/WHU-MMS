@@ -29,7 +29,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         super(MainWin, self).__init__()
 
         self.setupUi(self)
-
+        self.stackedWidget.setCurrentIndex(0)
         self.initSignalSlots()
 
         self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
@@ -42,11 +42,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.actionHome.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.actionCbook.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.actionRbook.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        self.actionCpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(3))
-        self.actionRpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(4))
-        self.actionCuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(5))
-        self.actionRuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(6))
-        self.actionStats.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(7))
+        self.actionBuy.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.actionCpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+        self.actionRpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.actionUpload.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(6))
+        self.actionCuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(7))
+        self.actionRuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(8))
+        self.actionStats.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(9))
 
         # home page
         self.bookBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))

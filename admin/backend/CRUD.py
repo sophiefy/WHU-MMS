@@ -1,6 +1,7 @@
 import pymysql
 import numpy as np
 
+
 class Database:
     def __init__(self):
         self.conn = None
@@ -145,11 +146,11 @@ class Database:
 
     # SECTION: books
 
-    def add_book(self, name, author, press,  release_date, ISBN, num):
+    def add_book(self, name, author, press, release_date, ISBN, num):
         sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN, b_num) VALUES (%s, %s, %s, %s, %s, %s)"
         if self.conn:
             try:
-                self.cursor.execute(sql,(name, author, press, release_date, ISBN, num))
+                self.cursor.execute(sql, (name, author, press, release_date, ISBN, num))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -167,8 +168,8 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_book(self,limit,offset=0):
-        sql = "SELECT * FROM book LIMIT %d OFFSET %d" % (limit,offset)
+    def read_book(self, limit, offset=0):
+        sql = "SELECT * FROM book LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -227,11 +228,11 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_document(self,limit,offset=0):
+    def read_document(self, limit, offset=0):
         sql = "SELECT * FROM document LIMIT %s OFFSET %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql, (limit, offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -239,7 +240,6 @@ class Database:
             else:
                 document_table = self.cursor.fetchall()
                 return document_table
-
 
     def update_document(self, d_id, d_name, d_author, d_release_date, d_url):
         sql = "UPDATE document SET d_name = %s, d_author = %s, d_release_date = %s, d_url = %s WHERE d_id = %s"
@@ -278,7 +278,6 @@ class Database:
             else:
                 self.conn.commit()
 
-
     def delete_user(self, u_id):
         sql = "DELETE FROM user WHERE u_id = %s"
         if self.conn:
@@ -290,12 +289,11 @@ class Database:
             else:
                 self.conn.commit()
 
-
-    def read_user(self,limit,offset=0):
+    def read_user(self, limit, offset=0):
         sql = "SELECT * FROM user LIMIT %s OFFSET %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql, (limit, offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -304,7 +302,7 @@ class Database:
                 user_table = self.cursor.fetchall()
                 return user_table
 
-    def update_user(self,u_id, u_name, u_password, u_age, u_dpt, u_grade, u_perm):
+    def update_user(self, u_id, u_name, u_password, u_age, u_dpt, u_grade, u_perm):
         sql = "UPDATE user SET u_name = %s, u_password = %s, u_age = %s, u_dpt = %s, u_grade = %s, u_perm = %s WHERE u_id = %s"
         if self.conn:
             try:
@@ -341,7 +339,7 @@ class Database:
             else:
                 self.conn.commit()
 
-    def delete_buyer(self, buy_id): # 需要删除购买记录吗？
+    def delete_buyer(self, buy_id):  # 需要删除购买记录吗？
         sql = "DELETE FROM buyer WHERE buy_id = %s"
         if self.conn:
             try:
@@ -352,11 +350,11 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_buyer(self,limit,offset=0):
+    def read_buyer(self, limit, offset=0):
         sql = "SELECT * FROM buyer LIMIT %s OFFSET %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql, (limit, offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -377,7 +375,6 @@ class Database:
             else:
                 num = self.cursor.fetchone()
                 return num[0]
-
 
     # SECTION: upload
 
@@ -403,11 +400,11 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_upload(self,limit,offset=0):
+    def read_upload(self, limit, offset=0):
         sql = "SELECT * FROM upload LIMIT %s OFFSET %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql, (limit, offset))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -428,6 +425,7 @@ class Database:
             else:
                 num = self.cursor.fetchone()
                 return num[0]
+
 
 if __name__ == '__main__':
     database = Database()
