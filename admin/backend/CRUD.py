@@ -514,7 +514,6 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
-    def search_upload(self):
 
 
 
