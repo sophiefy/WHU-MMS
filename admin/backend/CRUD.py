@@ -464,6 +464,36 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
+    def search_buyer(self, u_id=0, b_id=0, buy_date='',b_name='',u_name='', limit=10, offset=0):
+        buyer_sql = "SELECT * FROM buyer WHERE"
+        if u_id != 0:
+            buyer_sql += " u_id = %d" % u_id
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_id = %d" % u_id
+
+            buyer_sql += " AND"
+        else:
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_name LIKE %s" % ("'%" + u_name + "%'")
+        if b_id != 0:
+            buyer_sql += " b_id = %d" % b_id
+            book_sql = "SELECT b_id,b_name FROM book WHERE b_id = %d" % b_id
+            buyer_sql += " AND"
+        else:
+            book_sql = "SELECT b_id,b_name FROM book WHERE b_name LIKE %s" % ("'%" + b_name + "%'")
+        buyer_sql += " buy_date LIKE %s" % ("'%" + buy_date + "%'")
+
+        sql = "SELECT * FROM buyer JOIN (%s) AS user ON buyer.u_id = user.u_id JOIN (%s) AS book ON buyer.b_id = book.b_id" % (user_sql, book_sql)
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                buyer_table = self.cursor.fetchall()
+                return buyer_table
+
     # SECTION: upload
 
     def add_upload(self, u_id, d_id, upload_date):
@@ -513,6 +543,36 @@ class Database:
             else:
                 num = self.cursor.fetchone()
                 return num[0]
+
+    def search_upload(self, u_id=0, d_id=0, upload_date='',d_name='',u_name='', limit=10, offset=0):
+        upload_sql = "SELECT * FROM upload WHERE"
+        if u_id != 0:
+            upload_sql += " u_id = %d" % u_id
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_id = %d" % u_id
+
+            upload_sql += " AND"
+        else:
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_name LIKE %s" % ("'%" + u_name + "%'")
+        if d_id != 0:
+            upload_sql += " d_id = %d" % d_id
+            doc_sql = "SELECT d_id,d_name FROM document WHERE d_id = %d" % d_id
+            upload_sql += " AND"
+        else:
+            doc_sql = "SELECT d_id,d_name FROM document WHERE d_name LIKE %s" % ("'%" + d_name + "%'")
+        upload_sql += " upload_date LIKE %s" % ("'%" + upload_date + "%'")
+
+        sql = "SELECT * FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (user_sql, doc_sql)
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                upload_table = self.cursor.fetchall()
+                return upload_table
 
 
 
