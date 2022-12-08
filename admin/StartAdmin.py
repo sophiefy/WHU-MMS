@@ -1,3 +1,4 @@
+import math
 import traceback
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtWidgets import *
@@ -46,10 +47,10 @@ class Admin:
         self.database = Database()
         self.database.create_connection()
 
-    def update_book_table(self):
+    def update_book_table(self, page_num=1):
         if self.database:
-            table = self.database.read_book(20)  # TODO: 分页
-            # TODO: 对数据分页
+            offset = (page_num-1) * 20
+            table = self.database.read_book(limit=20, offset=offset)  # TODO: 分页
             if table:
                 self.mainWin.updateBookTable(table)
         else:
@@ -61,6 +62,8 @@ class Admin:
         keys = self.mainWin.getBookSearchKey()
 
         total_num = self.database.get_book_num()
+        total_page = math.ceil(total_num / 20)
+        self.mainWin.setTotalPage('book', total_page)
         self.mainWin.showBookNum(total_num)
         self.update_book_table()
 
@@ -118,9 +121,10 @@ class Admin:
                 else:
                     pass
 
-    def update_buyer_table(self):
+    def update_buyer_table(self, page_num=1):
         if self.database:
-            table = self.database.read_buyer(20)
+            offset = (page_num-1) * 20
+            table = self.database.read_buyer(limit=20, offset=offset)
             if table:
                 self.mainWin.updateBuyerTable(table)
         else:
@@ -130,13 +134,16 @@ class Admin:
         keys = self.mainWin.getBuyerSearchKey()
 
         total_num = self.database.get_buyer_num()
+        total_page = math.ceil(total_num / 20)
+        self.mainWin.setTotalPage(total_page)
         self.mainWin.showBuyerNum(total_num)
         self.update_buyer_table()
 
 
-    def update_paper_table(self):
+    def update_paper_table(self, page_num=1):
         if self.database:
-            table = self.database.read_document(20)
+            offset = (page_num-1) * 20
+            table = self.database.read_document(limit=20, offset=offset)
             if table:
                 self.mainWin.updatePaperTable(table)
         else:
@@ -146,6 +153,8 @@ class Admin:
         keys = self.mainWin.getPaperSearchKey()
 
         total_num = self.database.get_document_num()
+        total_page = math.ceil(total_num / 20)
+        self.mainWin.setTotalPage('paper', total_page)
         self.mainWin.showPaperNum(total_num)
         self.update_paper_table()
 
@@ -201,9 +210,10 @@ class Admin:
                 else:
                     pass
 
-    def update_upload_table(self):
+    def update_upload_table(self, page_num=1):
         if self.database:
-            table = self.database.read_upload(20)
+            offset = (page_num-1) * 20
+            table = self.database.read_upload(limit=20, offset=offset)
             if table:
                 self.mainWin.updateUploadTable(table)
         else:
@@ -213,12 +223,15 @@ class Admin:
         keys = self.mainWin.getUploadSearchKey()
 
         total_num = self.database.get_upload_num()
+        total_page = math.ceil(total_num / 20)
+        self.mainWin.setTotalPage(total_page)
         self.mainWin.showUploadNum(total_num)
         self.update_upload_table()
 
-    def update_user_table(self):
+    def update_user_table(self, page_num=1):
         if self.database:
-            table = self.database.read_user(20)
+            offset = (page_num-1) * 20
+            table = self.database.read_user(limit=20, offset=offset)
             # TODO: 对数据分页
             if table:
                 self.mainWin.updateUserTable(table)
@@ -229,6 +242,8 @@ class Admin:
         keys = self.mainWin.getUserSearchKey()
 
         total_num = self.database.get_user_num()
+        total_page = math.ceil(total_num / 20)
+        self.mainWin.setTotalPage('user', total_page)
         self.mainWin.showUserNum(total_num)
         self.update_user_table()
 
@@ -315,19 +330,19 @@ class Admin:
 
         if type == 'book':
             self.mainWin.bookPage.setText('{} / {}'.format(cur_page, total_page))
-            # TODO: 刷新表内容
+            self.update_book_table(page_num=int(cur_page))
         elif type == 'paper':
             self.mainWin.paperPage.setText('{} / {}'.format(cur_page, total_page))
-            # TODO: 刷新表内容
+            self.update_paper_table(page_num=int(cur_page))
         elif type == 'user':
             self.mainWin.userPage.setText('{} / {}'.format(cur_page, total_page))
-            # TODO: 刷新表内容
+            self.update_user_table(page_num=int(cur_page))
         elif type == 'buyer':
             self.mainWin.buyerPage.setText('{} / {}'.format(cur_page, total_page))
-            # TODO: 刷新表内容
+            self.update_buyer_table(page_num=int(cur_page))
         elif type == 'upload':
             self.mainWin.uploadPage.setText('{} / {}'.format(cur_page, total_page))
-            # TODO: 刷新表内容
+            self.update_upload_table(page_num=int(cur_page))
         else:
             QMessageBox.critical(self.mainWin, '错误', '未知数据类型！')
             return

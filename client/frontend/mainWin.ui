@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1483</width>
-    <height>807</height>
+    <width>1072</width>
+    <height>659</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -341,7 +341,7 @@ border-image: url(:/resources/common/avatar.jpg);</string>
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="currentIndex">
-        <number>5</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="pageHome">
         <layout class="QGridLayout" name="gridLayout">
@@ -620,7 +620,7 @@ background-color: rgba(255, 255, 255, 0);</string>
           </layout>
          </item>
          <item>
-          <widget class="QLabel" name="label_13">
+          <widget class="QLabel" name="bookNumLbl">
            <property name="font">
             <font>
              <family>微软雅黑</family>
@@ -997,7 +997,7 @@ background-color: rgba(255, 255, 255, 0);</string>
           </layout>
          </item>
          <item>
-          <widget class="QLabel" name="label_14">
+          <widget class="QLabel" name="paperNumLbl">
            <property name="font">
             <font>
              <family>微软雅黑</family>
@@ -1261,9 +1261,8 @@ background-color: rgba(255, 255, 255, 0);</string>
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="pageStats"/>
-       <widget class="QWidget" name="pageAbout"/>
        <widget class="QWidget" name="pageProfile"/>
+       <widget class="QWidget" name="pageAbout"/>
       </widget>
      </widget>
     </item>

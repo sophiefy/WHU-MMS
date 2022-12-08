@@ -418,6 +418,19 @@ class MainWin(QMainWindow, Ui_MainWindow):
         total_page = int(text.split('/')[1].strip(' '))
         return total_page
 
+    def setTotalPage(self, type, total_page):
+        if type == 'book':
+            self.bookPage.setText('1 / {}'.format(total_page))
+        elif type == 'paper':
+            self.paperPage.setText('1 / {}'.format(total_page))
+        elif type == 'buyer':
+            self.buyerPage.setText('1 / {}'.format(total_page))
+        elif type == 'upload':
+            self.uploadPage.setText('1 / {}'.format(total_page))
+        else:
+            QMessageBox.critical(self, '错误', '未知数据类型！')
+            return
+
     def targetPage(self, type):
         if type == 'book':
             text = self.bookJumpEdit.text()

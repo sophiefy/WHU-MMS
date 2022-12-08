@@ -115,7 +115,6 @@ class Client:
         if table:
             self.mainWin.updateBookTable(table)
 
-        # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
 
     def buy_book(self):
         if self.registered:
