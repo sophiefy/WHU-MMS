@@ -43,7 +43,7 @@ class Admin:
     def update_book_table(self):
         if self.database:
             print('try to update')
-            table = self.database.read_book(20)
+            table = self.database.read_book(20)  # TODO: 分页
             print('table', table)
             # TODO: 对数据分页
             if table:
@@ -113,7 +113,7 @@ class Admin:
 
     def update_paper_table(self):
         if self.database:
-            table = self.database.read_document()
+            table = self.database.read_document(20)
             print('paper table', table)
             # TODO: 对数据分页
             if table:
@@ -151,7 +151,7 @@ class Admin:
         new_paper_info = self.editPaperWin.getNewPaperInfo()
         if self.database:
             try:
-                self.database.update_paper(new_paper_info)
+                self.database.update_paper(*new_paper_info)
             except Exception as e:
                 print(e)
             else:
@@ -180,7 +180,7 @@ class Admin:
 
     def update_user_table(self):
         if self.database:
-            table = self.database.read_user()
+            table = self.database.read_user(20)
             # TODO: 对数据分页
             if table:
                 self.mainWin.updateUserTable(table)
@@ -217,7 +217,7 @@ class Admin:
         new_user_info = self.editUserWin.getNewUserInfo()
         if self.database:
             try:
-                self.database.update_user(new_user_info)
+                self.database.update_user(*new_user_info)
             except Exception as e:
                 print(e)
             else:

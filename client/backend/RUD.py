@@ -37,111 +37,12 @@ class Database:
 
         databases_list = ('user', 'book', 'document', 'buyer', 'upload')
 
-        function_mapping = {'user': self.create_user_table,
-                            'book': self.create_book_table,
-                            'document': self.create_document_table,
-                            'buyer': self.create_buyer_table,
-                            'upload': self.create_upload_table}
-
         for database in databases_list:
             if database in databases_arr:
                 print("database {} exists".format(database))
             else:
                 # 提示数据库不存在
                 print("database {} not exists".format(database))
-                # 创建数据库
-                function_mapping[database]()
-
-    def create_user_table(self):
-        # 创建用户表
-        sql = '''CREATE TABLE user (
-                 u_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                 u_name  CHAR(20),
-                 u_password CHAR(20),
-                 u_age INT,  
-                 u_dpt CHAR(20), 
-                 u_grade CHAR(4),
-                 u_perm INT DEFAULT 0
-                  )'''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit()
-
-    def create_book_table(self):
-        # 创建书籍表
-        sql = '''CREATE TABLE book (
-                 b_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                 b_name  CHAR(100),
-                 b_author CHAR(20),
-                 b_press CHAR(100),
-                 b_release_date DATE,
-                 b_ISBN CHAR(13),
-                 b_num INT DEFAULT 0
-                  )'''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit()
-
-    def create_document_table(self):
-        # 创建文档表
-        sql = '''CREATE TABLE document (
-                 d_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                 d_name  CHAR(100),
-                 d_author CHAR(20),
-                 d_release_date DATE,
-                 d_url CHAR(100)
-                  )'''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit()
-
-    def create_buyer_table(self):
-        # 创建购买表
-        sql = '''CREATE TABLE buyer (
-                 buy_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                 b_id  INT NOT NULL,
-                 u_id  INT NOT NULL,
-                 buy_date DATE,
-                 CONSTRAINT FOREIGN KEY (b_id) REFERENCES book(b_id) ON DELETE NO ACTION ON UPDATE CASCADE,
-                 CONSTRAINT FOREIGN KEY (u_id) REFERENCES user(u_id) ON DELETE NO ACTION ON UPDATE CASCADE
-                  )'''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit()
-
-    def create_upload_table(self):
-        # 创建上传表
-        sql = '''CREATE TABLE upload (
-                 upload_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                 u_id  INT NOT NULL,
-                 d_id  INT NOT NULL,
-                 upload_date DATE,
-                 CONSTRAINT FOREIGN KEY (u_id) REFERENCES user(u_id) ON DELETE NO ACTION ON UPDATE CASCADE, 
-                 CONSTRAINT FOREIGN KEY (d_id) REFERENCES document(d_id) ON DELETE NO ACTION ON UPDATE CASCADE
-                  )'''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit()
 
     # SECTION: books
 
@@ -150,17 +51,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql,(name, author, press, release_date, ISBN, num))
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-            else:
-                self.conn.commit()
-
-    def delete_book(self, b_id):
-        sql = "DELETE FROM book WHERE b_id = %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (b_id,))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -210,17 +100,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (name, author, release_date, url))
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-            else:
-                self.conn.commit()
-
-    def delete_document(self, d_id):
-        sql = "DELETE FROM document WHERE d_id = %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (d_id,))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -278,19 +157,6 @@ class Database:
             else:
                 self.conn.commit()
 
-
-    def delete_user(self, u_id):
-        sql = "DELETE FROM user WHERE u_id = %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (u_id,))
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-            else:
-                self.conn.commit()
-
-
     def read_user(self,limit,offset=0):
         sql = "SELECT * FROM user LIMIT %s OFFSET %s"
         if self.conn:
@@ -315,18 +181,19 @@ class Database:
             else:
                 self.conn.commit()
 
-    def get_user_num(self):
-        sql = "SELECT COUNT(*) FROM user"
+    def user_login(self, id, password):
+        sql = "SELECT * FROM user WHERE u_id = %s AND u_password = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql)
+                self.cursor.execute(sql, (id, password))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
                 return None
             else:
-                num = self.cursor.fetchone()
-                return num[0]
+                user = self.cursor.fetchone()
+                print(user)
+                return user
 
     # SECTION: buyer
 
