@@ -74,9 +74,9 @@ class Database:
         else:
             self.conn.commit()
 
-    def book_trigger(self):
+    def book_buyer_trigger(self):
         sql= '''
-                drop  trigger buyerBookTrigger
+                drop trigger buyerBookTrigger
             '''
         try:
             self.cursor.execute(sql)
@@ -119,7 +119,6 @@ class Database:
             self.conn.rollback()
         else:
             self.conn.commit()
-            self.book_trigger()
 
     def create_document_table(self):
         # 创建文档表
@@ -156,6 +155,7 @@ class Database:
             self.conn.rollback()
         else:
             self.conn.commit()
+            self.book_buyer_trigger()
 
     def create_upload_table(self):
         # 创建上传表
