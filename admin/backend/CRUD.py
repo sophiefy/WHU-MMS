@@ -499,9 +499,7 @@ class Database:
                 return top_table
 
     def get_top_books(self):
-        buyer_sql = "SELECT b_id, SUM(buy_num) AS num FROM buyer GROUP BY b_id ORDER BY num DESC LIMIT 10"
-        book_sql = "SELECT b_id,b_name FROM book"
-        sql = "SELECT book.b_id,book.b_name,num FROM (%s) AS buyer JOIN (%s) AS book ON buyer.b_id = book.b_id" % (buyer_sql, book_sql)
+        sql = "SELECT b_id,b_name,b_sold FROM book ORDER BY b_sold DESC LIMIT 10"
         if self.conn:
             try:
                 self.cursor.execute(sql)
