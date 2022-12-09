@@ -2003,22 +2003,6 @@ background-color: rgb(85, 255, 127);</string>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="searchPaperDateEdit">
-            <property name="font">
-             <font>
-              <family>微软雅黑</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
-            </property>
-            <property name="placeholderText">
-             <string>发表日期</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QLineEdit" name="searchPaperArchiveEdit">
             <property name="font">
              <font>
