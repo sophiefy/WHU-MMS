@@ -46,11 +46,11 @@ class Database:
 
     # SECTION: books
 
-    def add_book(self, name, author, press,  release_date, ISBN, num):
+    def add_book(self, name, author, press, release_date, ISBN, num):
         sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN, b_num) VALUES (%s, %s, %s, %s, %s, %s)"
         if self.conn:
             try:
-                self.cursor.execute(sql,(name, author, press, release_date, ISBN, num))
+                self.cursor.execute(sql, (name, author, press, release_date, ISBN, num))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -94,9 +94,16 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
-    def search_book(self, b_name='', b_author='', b_press='', b_release_date='', b_ISBN='', limit=10, offset=0):
-        sql = "SELECT * FROM book WHERE b_name LIKE %s AND b_author LIKE %s AND b_press LIKE %s AND b_release_date LIKE %s AND b_ISBN LIKE %s"
-        sql = sql % ("'%"+b_name+"%'","'%"+b_author+"%'","'%"+b_press+"%'","'%"+b_release_date+"%'","'%"+b_ISBN+"%'")
+    def search_book(self, b_id=0, b_name='', b_author='', b_press='', b_release_date='', b_ISBN='', limit=10, offset=0):
+        if b_id == 0:
+            sql = "SELECT * FROM book WHERE b_name LIKE %s AND b_author LIKE %s AND b_press LIKE %s AND b_release_date LIKE %s AND b_ISBN LIKE %s"
+            sql = sql % (
+            "'%" + b_name + "%'", "'%" + b_author + "%'", "'%" + b_press + "%'", "'%" + b_release_date + "%'",
+            "'%" + b_ISBN + "%'")
+        else:
+            sql = "SELECT * FROM book WHERE b_id = %u"
+            sql = sql % (b_id)
+
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:
@@ -146,8 +153,15 @@ class Database:
             else:
                 self.conn.commit()
 
-    def get_document_num(self):
-        sql = "SELECT COUNT(*) FROM document"
+    def get_document_num(self, d_id=0, d_name='', d_author='', d_release_date='', d_url=''):
+        if d_id == 0:
+            sql = "SELECT COUNT(*) FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
+            sql = sql % (
+            "'%" + d_name + "%'", "'%" + d_author + "%'", "'%" + d_release_date + "%'", "'%" + d_url + "%'")
+        else:
+            sql = "SELECT COUNT(*) FROM document WHERE d_id = %u"
+            sql = sql % (d_id)
+
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -159,9 +173,14 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
-    def search_document(self, d_name='', d_author='', d_release_date='', d_url='', limit=10, offset=0):
-        sql = "SELECT * FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
-        sql = sql % ("'%"+d_name+"%'","'%"+d_author+"%'","'%"+d_release_date+"%'","'%"+d_url+"%'")
+    def search_document(self, d_id=0, d_name='', d_author='', d_release_date='', d_url='', limit=10, offset=0):
+        if d_id == 0:
+            sql = "SELECT * FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
+            sql = sql % ("'%" + d_name + "%'", "'%" + d_author + "%'", "'%" + d_release_date + "%'", "'%" + d_url + "%'")
+        else:
+            sql = "SELECT * FROM document WHERE d_id = %u"
+            sql = sql % (d_id)
+
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:

@@ -28,8 +28,6 @@ class Database:
         self.check_table()
         return True
 
-
-
     def check_table(self):
         # 检测表是否存在
         sql = "SHOW TABLES"
