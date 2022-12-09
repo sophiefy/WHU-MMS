@@ -59,8 +59,11 @@ class Client:
                 self.loginWin.close()
                 self.loginWin.close_flag = True
                 self.mainWin.numEdit.setText(login_info[0])
-                self.mainWin.nameEdit.setText(login_info[1])
-                self.set_user_info()
+                self.mainWin.nameEdit.setText(user_info[1])
+                self.mainWin.textBrowserUserName.setText(user_info[1])
+                self.mainWin.textBrowserAge.setText(str(user_info[3]))
+                self.mainWin.textBrowserDepartment.setText(user_info[4])
+                self.mainWin.textBrowserGrade.setText(user_info[5])
                 self.mainWin.show()
             else:
                 QMessageBox.warning(self.loginWin,
@@ -240,14 +243,7 @@ class Client:
             QMessageBox.critical(self.mainWin, '错误', '未知数据类型！')
             return
 
-    def set_user_info(self):
-        user_name = self.mainWin.nameEdit.text()
-        user_id = self.mainWin.numEdit.text()
-        user_info = self.database.user_login(user_id, user_name)
-        self.mainWin.textBrowserUserName.setText(user_info[1])
-        self.mainWin.textBrowserAge.setText(user_info[3])
-        self.mainWin.textBrowserDepartment.setText(user_info[4])
-        self.mainWin.textBrowserGrade.setText(user_info[5])
+
 
 
 if __name__ == '__main__':
