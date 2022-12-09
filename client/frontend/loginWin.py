@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'loginWin.ui'
+# Form implementation generated from reading ui file 'D:\2022-2023大三上学习笔记\数据库系统\WHU-MMS\client\frontend\loginWin.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -319,8 +319,18 @@ class Ui_FormLogin(object):
         self.verticalLayout.addWidget(self.stackedWidget)
 
         self.retranslateUi(FormLogin)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(FormLogin)
+        FormLogin.setTabOrder(self.loginNumEdit, self.loginPasswordEdit)
+        FormLogin.setTabOrder(self.loginPasswordEdit, self.toRegisterBtn)
+        FormLogin.setTabOrder(self.toRegisterBtn, self.loginBtn)
+        FormLogin.setTabOrder(self.loginBtn, self.regNameEdit)
+        FormLogin.setTabOrder(self.regNameEdit, self.regPasswordEdit)
+        FormLogin.setTabOrder(self.regPasswordEdit, self.regAgeEdit)
+        FormLogin.setTabOrder(self.regAgeEdit, self.regDPTEdit)
+        FormLogin.setTabOrder(self.regDPTEdit, self.regGradeEdit)
+        FormLogin.setTabOrder(self.regGradeEdit, self.toLoginBtn)
+        FormLogin.setTabOrder(self.toLoginBtn, self.registerBtn)
 
     def retranslateUi(self, FormLogin):
         _translate = QtCore.QCoreApplication.translate
@@ -338,13 +348,3 @@ class Ui_FormLogin(object):
         self.toLoginBtn.setText(_translate("FormLogin", "返回登录界面"))
         self.registerBtn.setText(_translate("FormLogin", "注          册"))
 import resources_rc
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    FormLogin = QtWidgets.QWidget()
-    ui = Ui_FormLogin()
-    ui.setupUi(FormLogin)
-    FormLogin.show()
-    sys.exit(app.exec_())

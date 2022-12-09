@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainWin.ui'
+# Form implementation generated from reading ui file 'D:\2022-2023大三上学习笔记\数据库系统\WHU-MMS\client\frontend\mainWin.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -42,8 +42,8 @@ class Ui_MainWindow(object):
         MainWindow.setFont(font)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.splitter = QtWidgets.QSplitter(self.centralwidget)
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
         self.splitter.setObjectName("splitter")
@@ -170,10 +170,6 @@ class Ui_MainWindow(object):
         self.pageHome.setObjectName("pageHome")
         self.gridLayout = QtWidgets.QGridLayout(self.pageHome)
         self.gridLayout.setObjectName("gridLayout")
-        spacerItem3 = QtWidgets.QSpacerItem(20, 230, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem3, 0, 1, 1, 1)
-        spacerItem4 = QtWidgets.QSpacerItem(185, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem4, 1, 0, 1, 1)
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.bookBtn = QtWidgets.QPushButton(self.pageHome)
@@ -195,8 +191,10 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.verticalLayout_6.addWidget(self.label)
         self.gridLayout.addLayout(self.verticalLayout_6, 1, 1, 1, 1)
-        spacerItem5 = QtWidgets.QSpacerItem(184, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem5, 1, 2, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(184, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem3, 1, 2, 1, 1)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 230, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem4, 0, 1, 1, 1)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.paperBtn = QtWidgets.QPushButton(self.pageHome)
@@ -218,10 +216,12 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.verticalLayout_5.addWidget(self.label_2)
         self.gridLayout.addLayout(self.verticalLayout_5, 1, 3, 1, 1)
-        spacerItem6 = QtWidgets.QSpacerItem(185, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem6, 1, 4, 1, 1)
-        spacerItem7 = QtWidgets.QSpacerItem(20, 229, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem7, 2, 1, 1, 1)
+        spacerItem5 = QtWidgets.QSpacerItem(185, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem5, 1, 4, 1, 1)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 229, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem6, 2, 1, 1, 1)
+        spacerItem7 = QtWidgets.QSpacerItem(185, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem7, 1, 0, 1, 1)
         self.stackedWidget.addWidget(self.pageHome)
         self.pageSearchBook = QtWidgets.QWidget()
         self.pageSearchBook.setObjectName("pageSearchBook")
@@ -599,18 +599,99 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.pageSearchPaper)
         self.pageStats = QtWidgets.QWidget()
         self.pageStats.setObjectName("pageStats")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.pageStats)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.formLayout = QtWidgets.QFormLayout()
+        self.formLayout.setObjectName("formLayout")
+        self.label_5 = QtWidgets.QLabel(self.pageStats)
+        self.label_5.setMaximumSize(QtCore.QSize(16777215, 30))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(14)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_5)
+        self.textBrowserUserName = QtWidgets.QTextBrowser(self.pageStats)
+        self.textBrowserUserName.setMaximumSize(QtCore.QSize(16777215, 41))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(12)
+        self.textBrowserUserName.setFont(font)
+        self.textBrowserUserName.setObjectName("textBrowserUserName")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.textBrowserUserName)
+        self.label_6 = QtWidgets.QLabel(self.pageStats)
+        self.label_6.setMaximumSize(QtCore.QSize(16777215, 30))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(14)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_6)
+        self.textBrowserAge = QtWidgets.QTextBrowser(self.pageStats)
+        self.textBrowserAge.setMaximumSize(QtCore.QSize(16777215, 41))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(12)
+        self.textBrowserAge.setFont(font)
+        self.textBrowserAge.setObjectName("textBrowserAge")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.textBrowserAge)
+        self.label_7 = QtWidgets.QLabel(self.pageStats)
+        self.label_7.setMaximumSize(QtCore.QSize(16777215, 41))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(14)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_7)
+        self.textBrowserDepartment = QtWidgets.QTextBrowser(self.pageStats)
+        self.textBrowserDepartment.setEnabled(True)
+        self.textBrowserDepartment.setMaximumSize(QtCore.QSize(16777215, 41))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(12)
+        self.textBrowserDepartment.setFont(font)
+        self.textBrowserDepartment.setObjectName("textBrowserDepartment")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.textBrowserDepartment)
+        self.label_8 = QtWidgets.QLabel(self.pageStats)
+        self.label_8.setMaximumSize(QtCore.QSize(16777215, 30))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(14)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label_8")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_8)
+        self.textBrowserGrade = QtWidgets.QTextBrowser(self.pageStats)
+        self.textBrowserGrade.setMaximumSize(QtCore.QSize(16777215, 41))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        font.setPointSize(12)
+        self.textBrowserGrade.setFont(font)
+        self.textBrowserGrade.setObjectName("textBrowserGrade")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.textBrowserGrade)
+        self.horizontalLayout_7.addLayout(self.formLayout)
         self.stackedWidget.addWidget(self.pageStats)
         self.pageAbout = QtWidgets.QWidget()
         self.pageAbout.setObjectName("pageAbout")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.pageAbout)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.label_9 = QtWidgets.QLabel(self.pageAbout)
+        self.label_9.setText("")
+        self.label_9.setTextFormat(QtCore.Qt.PlainText)
+        self.label_9.setPixmap(QtGui.QPixmap(":/resources/common/校名校徽组合.png"))
+        self.label_9.setObjectName("label_9")
+        self.verticalLayout_4.addWidget(self.label_9, 0, QtCore.Qt.AlignHCenter)
+        self.textBrowser = QtWidgets.QTextBrowser(self.pageAbout)
+        self.textBrowser.setObjectName("textBrowser")
+        self.verticalLayout_4.addWidget(self.textBrowser)
         self.stackedWidget.addWidget(self.pageAbout)
         self.pageProfile = QtWidgets.QWidget()
         self.pageProfile.setObjectName("pageProfile")
         self.stackedWidget.addWidget(self.pageProfile)
-        self.verticalLayout_4.addWidget(self.splitter)
+        self.horizontalLayout_8.addWidget(self.splitter)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -685,14 +766,39 @@ class Ui_MainWindow(object):
         self.label_30.setText(_translate("MainWindow", "页"))
         self.paperJumpBtn.setText(_translate("MainWindow", "确定"))
         self.paperUploadBtn.setText(_translate("MainWindow", "上传论文"))
+        self.label_5.setText(_translate("MainWindow", "用户名:"))
+        self.textBrowserUserName.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Microsoft YaHei UI\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.label_6.setText(_translate("MainWindow", "年龄:"))
+        self.label_7.setText(_translate("MainWindow", "学院:"))
+        self.label_8.setText(_translate("MainWindow", "年级:"))
+        self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">我们是来自武汉大学计算机学院的开发团队。</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">团队成员:</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">胡 瑞</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">陈胤良</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">王清正</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; text-decoration: underline; color:#0000ff;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">张铄琦</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
 import resources_rc
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())

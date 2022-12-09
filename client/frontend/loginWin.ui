@@ -41,7 +41,7 @@
       <string notr="true">background-color: rgba(245, 245, 245, 100);</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="pageLogin">
       <layout class="QGridLayout" name="gridLayout">
@@ -756,6 +756,19 @@ background-color: rgb(85, 170, 255);</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>loginNumEdit</tabstop>
+  <tabstop>loginPasswordEdit</tabstop>
+  <tabstop>toRegisterBtn</tabstop>
+  <tabstop>loginBtn</tabstop>
+  <tabstop>regNameEdit</tabstop>
+  <tabstop>regPasswordEdit</tabstop>
+  <tabstop>regAgeEdit</tabstop>
+  <tabstop>regDPTEdit</tabstop>
+  <tabstop>regGradeEdit</tabstop>
+  <tabstop>toLoginBtn</tabstop>
+  <tabstop>registerBtn</tabstop>
+ </tabstops>
  <resources>
   <include location="resources/resources.qrc"/>
  </resources>

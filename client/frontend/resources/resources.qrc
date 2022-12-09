@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="resources">
+    <file>common/校名校徽组合.png</file>
+    <file>common/校名.png</file>
+    <file>common/2.1.1-标准校名-横向-标准版.png</file>
     <file>common/upload.png</file>
     <file>common/books.png</file>
     <file>common/papers.png</file>
