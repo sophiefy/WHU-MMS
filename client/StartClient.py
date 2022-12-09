@@ -10,6 +10,7 @@ sys.path.append('backend')
 from frontend.windows import *
 from backend.RUD import Database
 import threading
+import math
 
 class Client:
     def __init__(self):
@@ -20,6 +21,10 @@ class Client:
         self.registered = False
         self.database = None
         self.init_signal_slots()
+
+        self.book_search_keys = self.mainWin.getBookSearchKey()
+        self.paper_search_keys = self.mainWin.getPaperSearchKey()
+
         self.create_connection()
 
     def init_signal_slots(self):
@@ -105,20 +110,29 @@ class Client:
         self.database = Database()
         self.database.create_connection()
 
-    def update_book_table(self):
-        table = self.database.read_book(20)
-        if table:
-            self.mainWin.updateBookTable(table)
+    def update_book_table(self, keys, page_num=1):
+        if self.database:
+            offset = (page_num - 1) * 20
+            table = self.database.search_book(*keys, limit=20, offset=offset)
+            if table:
+                self.mainWin.updateBookTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def search_book(self):
-        # name, author, press, release_date, ISBN
+        # id, name, author, press, release_date, ISBN
         # 可以为空
-        keys = self.mainWin.getBookSearchKey()
+        self.book_search_keys = self.mainWin.getBookSearchKey()
+        if not self.book_search_keys:
+            return
 
-        total_num = self.database.get_book_num()
-        table = self.database.search_book(*keys, limit=20)
-        if table:
-            self.mainWin.updateBookTable(table)
+        total_num = self.database.get_book_num(*self.book_search_keys)
+        total_page = math.ceil(total_num / 20)
+        self.mainWin.setTotalPage('book', total_page)
+        self.mainWin.showBookNum(total_num)
+        self.update_book_table(keys=self.book_search_keys)
+
+        return
 
 
     def buy_book(self):
@@ -157,20 +171,24 @@ class Client:
             else:
                 pass
 
-    def update_paper_table(self):
-        # TODO: 从数据库获取表项
-        table = ()
-        print('paper table', table)
-        # TODO: 对数据分页
-        if table:
-            self.mainWin.updatePaperTable(table)
+    def update_paper_table(self, keys, page_num=1):
+        if self.database:
+            offset = (page_num - 1) * 20
+            table = self.database.search_document(*keys, limit=20, offset=offset)
+            if table:
+                self.mainWin.updatePaperTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
     def search_paper(self):
-        keys = self.mainWin.getPaperSearchKey()
-        print('search papers by keys:', keys)
-        table = self.database.search_document(*keys, limit=20)
-        if table:
-            self.mainWin.updatePaperTable(table)
+        self.paper_search_keys = self.mainWin.getPaperSearchKey()
+        if not self.paper_search_keys:
+            return
+        total_num = self.database.get_document_num(*self.paper_search_keys)
+        total_page = math.ceil(total_num / 20)
+        self.mainWin.setTotalPage('paper', total_page)
+        self.mainWin.showPaperNum(total_num)
+        self.update_paper_table(keys=self.paper_search_keys)
 
     def upload_paper(self):
         if self.registered:
@@ -235,10 +253,10 @@ class Client:
 
         if type == 'book':
             self.mainWin.bookPage.setText('{} / {}'.format(cur_page, total_page))
-            # TODO: 刷新表内容
+            self.update_book_table(keys=self.book_search_keys, page_num=int(cur_page))
         elif type == 'paper':
             self.mainWin.paperPage.setText('{} / {}'.format(cur_page, total_page))
-            # TODO: 刷新表内容
+            self.update_paper_table(keys=self.paper_search_keys, page_num=int(cur_page))
         else:
             QMessageBox.critical(self.mainWin, '错误', '未知数据类型！')
             return

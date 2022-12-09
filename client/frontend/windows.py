@@ -77,8 +77,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.paperTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-        self.bookTbl.setColumnHidden(0, True)  # 隐藏primary key
-        self.paperTbl.setColumnHidden(0, True)  # 隐藏primary key
+
 
         self.initSignalSlots()
 
@@ -144,7 +143,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def updateBookTable(self, table):
         assert table is not None
-        self.bookTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.bookTbl.setRowCount(0)
         self.bookTbl.clearContents()
         try:
             for i, row in enumerate(table):
@@ -176,9 +175,8 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.searchPaperTitleEdit.text()
         author = self.searchPaperAuthorEdit.text()
         release_date = self.searchPaperDateEdit.text()
-        archive = self.searchPaperArchiveEdit.text()
 
-        return title, author, release_date, archive
+        return title, author, release_date
 
     def getSelectedPaperInfo(self):
         row = self.paperTbl.currentRow()
@@ -200,18 +198,17 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def updatePaperTable(self, table):
         assert table is not None
-        self.paperTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.paperTbl.setRowCount(0)
         self.paperTbl.clearContents()
         try:
             for i, row in enumerate(table):
-                # id, title, author, release_date, archive, url
+                # id, title, author, release_date,  url
                 self.paperTbl.insertRow(i)
                 self.paperTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
                 self.paperTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.paperTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.paperTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
                 self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
         except Exception as e:
             print(e)
 
@@ -256,7 +253,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         total_page = int(text.split('/')[1].strip(' '))
         return total_page
 
-    def setTotalPage(self, total_page):
+    def setTotalPage(self, type, total_page):
         if type == 'book':
             self.bookPage.setText('1 / {}'.format(total_page))
         elif type == 'paper':

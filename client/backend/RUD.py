@@ -81,8 +81,12 @@ class Database:
             else:
                 self.conn.commit()
 
-    def get_book_num(self):
-        sql = "SELECT COUNT(*) FROM book"
+    def get_book_num(self, b_name='', b_author='', b_press='', b_release_date='', b_ISBN=''):
+        sql = "SELECT COUNT(*) FROM book WHERE b_name LIKE %s AND b_author LIKE %s AND b_press LIKE %s AND b_release_date LIKE %s AND b_ISBN LIKE %s"
+        sql = sql % (
+            "'%" + b_name + "%'", "'%" + b_author + "%'", "'%" + b_press + "%'", "'%" + b_release_date + "%'",
+            "'%" + b_ISBN + "%'")
+
         if self.conn:
             try:
                 self.cursor.execute(sql)
