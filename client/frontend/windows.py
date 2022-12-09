@@ -15,6 +15,8 @@ class LoginWin(QDialog, Ui_FormLogin):
 
         self.setupUi(self)
 
+        self.stackedWidget.setCurrentIndex(0)
+
         self.close_flag = True  # 区分关闭窗体和登录
 
         self.initSignalSlots()
@@ -22,6 +24,7 @@ class LoginWin(QDialog, Ui_FormLogin):
     def initSignalSlots(self):
         self.toLoginBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.toRegisterBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+
     def showInfo(self, msg):
         QMessageBox.information(self, '提示', msg)
 
@@ -53,7 +56,6 @@ class LoginWin(QDialog, Ui_FormLogin):
             self.showWarning('注册信息不全！')
             return None
 
-
     def closeEvent(self, e):
         if self.close_flag:
             sys.exit(0)
@@ -68,6 +70,8 @@ class MainWin(QMainWindow, Ui_MainWindow):
         super(MainWin, self).__init__()
 
         self.setupUi(self)
+
+        self.stackedWidget.setCurrentIndex(0)
 
         self.close_flag = True
 
@@ -110,7 +114,6 @@ class MainWin(QMainWindow, Ui_MainWindow):
     def showError(self, msg):
         QMessageBox.critical(self, '错误', msg)
 
-
     def getBookSearchKey(self):
         name = self.searchBookNameEdit.text()
         author = self.searchBookAuthorEdit.text()
@@ -132,6 +135,12 @@ class MainWin(QMainWindow, Ui_MainWindow):
         stock = self.bookTbl.item(row, 6).text()
 
         return id, name, author, press, release_date, ISBN, stock
+
+    def showBookNum(self, num):
+        if num:
+            self.bookNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.bookNumLbl.setText(f'查询结果：共0条数据')
 
     def updateBookTable(self, table):
         assert table is not None
@@ -183,6 +192,12 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         return id, title, author, release_date, archive, url
 
+    def showPaperNum(self, num):
+        if num:
+            self.paperNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.paperNumLbl.setText(f'查询结果：共0条数据')
+
     def updatePaperTable(self, table):
         assert table is not None
         self.paperTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
@@ -199,7 +214,6 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
         except Exception as e:
             print(e)
-
 
     # SECTION: 翻页
     def firstPage(self, type):
@@ -242,6 +256,15 @@ class MainWin(QMainWindow, Ui_MainWindow):
         total_page = int(text.split('/')[1].strip(' '))
         return total_page
 
+    def setTotalPage(self, total_page):
+        if type == 'book':
+            self.bookPage.setText('1 / {}'.format(total_page))
+        elif type == 'paper':
+            self.paperPage.setText('1 / {}'.format(total_page))
+        else:
+            QMessageBox.critical(self, '错误', '未知数据类型！')
+            return
+
     def targetPage(self, type):
         if type == 'book':
             text = self.bookJumpEdit.text()
@@ -271,7 +294,6 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 e.ignore()
         else:
             self.close()
-
 
 
 class UploadWin(QDialog, Ui_FormUpload):

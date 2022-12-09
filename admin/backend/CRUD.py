@@ -1,6 +1,7 @@
 import pymysql
 import numpy as np
 
+
 class Database:
     def __init__(self):
         self.conn = None
@@ -96,8 +97,7 @@ class Database:
                  d_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
                  d_name  CHAR(100),
                  d_author CHAR(20),
-                 d_release_date DATE,
-                 d_platform CHAR(20),
+                 d_release_date CHAR(20),
                  d_url CHAR(100)
                   )'''
         try:
@@ -115,6 +115,7 @@ class Database:
                  b_id  INT NOT NULL,
                  u_id  INT NOT NULL,
                  buy_date DATE,
+                 buy_num INT DEFAULT 1,
                  CONSTRAINT FOREIGN KEY (b_id) REFERENCES book(b_id) ON DELETE NO ACTION ON UPDATE CASCADE,
                  CONSTRAINT FOREIGN KEY (u_id) REFERENCES user(u_id) ON DELETE NO ACTION ON UPDATE CASCADE
                   )'''
@@ -146,12 +147,11 @@ class Database:
 
     # SECTION: books
 
-    def add_book(self, name, author, press,  release_date, ISBN, num):
+    def add_book(self, name, author, press, release_date, ISBN, num):
         sql = "INSERT INTO book (b_name, b_author, b_press, b_release_date, b_ISBN, b_num) VALUES (%s, %s, %s, %s, %s, %s)"
         if self.conn:
             try:
-                self.cursor.execute(sql,(name, author, press, release_date, ISBN, num))
-                self.conn.commit()
+                self.cursor.execute(sql, (name, author, press, release_date, ISBN, num))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -163,15 +163,55 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (b_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
             else:
                 self.conn.commit()
 
-    def read_book(self,limit,offset=0):
-        sql = "SELECT * FROM book LIMIT %d OFFSET %d" % (limit,offset)
+    def update_book(self, b_id, b_name, b_author, b_press, b_release_date, b_ISBN, b_num):
+        sql = "UPDATE book SET b_name = %s, b_author = %s, b_press = %s, b_release_date = %s, b_ISBN = %s, b_num = %s WHERE b_id = %s"
+        if self.conn:
+            try:
+                self.cursor.execute(sql, (b_name, b_author, b_press, b_release_date, b_ISBN, b_num, b_id))
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+            else:
+                self.conn.commit()
+
+    def get_book_num(self, b_id=0, b_name='', b_author='', b_press='', b_release_date='', b_ISBN=''):
+        if b_id == 0:
+            sql = "SELECT COUNT(*) FROM book WHERE b_name LIKE %s AND b_author LIKE %s AND b_press LIKE %s AND b_release_date LIKE %s AND b_ISBN LIKE %s"
+            sql = sql % (
+                "'%" + b_name + "%'", "'%" + b_author + "%'", "'%" + b_press + "%'", "'%" + b_release_date + "%'",
+                "'%" + b_ISBN + "%'")
+        else:
+            sql = "SELECT COUNT(*) FROM book WHERE b_id = %u"
+            sql = sql % (b_id)
+
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
+    def search_book(self, b_id=0, b_name='', b_author='', b_press='', b_release_date='', b_ISBN='', limit=10, offset=0):
+        if b_id == 0:
+            sql = "SELECT * FROM book WHERE b_name LIKE %s AND b_author LIKE %s AND b_press LIKE %s AND b_release_date LIKE %s AND b_ISBN LIKE %s"
+            sql = sql % (
+            "'%" + b_name + "%'", "'%" + b_author + "%'", "'%" + b_press + "%'", "'%" + b_release_date + "%'",
+            "'%" + b_ISBN + "%'")
+        else:
+            sql = "SELECT * FROM book WHERE b_id = %u"
+            sql = sql % (b_id)
+
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -183,25 +223,12 @@ class Database:
                 book_table = self.cursor.fetchall()
                 return book_table
 
-    def update_book(self, b_id, b_name, b_author, b_press, b_release_date, b_ISBN, b_num):
-        sql = "UPDATE book SET b_name = %s, b_author = %s, b_press = %s, b_release_date = %s, b_ISBN = %s, b_num = %s WHERE b_id = %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (b_name, b_author, b_press, b_release_date, b_ISBN, b_num, b_id))
-                self.conn.commit()
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-            else:
-                self.conn.commit()
-
     # SECTION: documents
-    def add_document(self, name, author, press, release_date, ISBN):
-        sql = "INSERT INTO document (d_name, d_author, d_press, d_release_date, d_ISBN) VALUES (%s, %s, %s, %s, %s)"
+    def add_document(self, name, author, release_date, url):
+        sql = "INSERT INTO document (d_name, d_author, d_release_date, d_url) VALUES (%s, %s, %s, %s)"
         if self.conn:
             try:
-                self.cursor.execute(sql, (name, author, press, release_date, ISBN))
-                self.conn.commit()
+                self.cursor.execute(sql, (name, author, release_date, url))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -213,18 +240,55 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (d_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
             else:
                 self.conn.commit()
 
-    def read_document(self,limit,offset="0"):
-        sql = "SELECT * FROM document LIMIT %s OFFSET %s"
+    def update_document(self, d_id, d_name, d_author, d_release_date, d_url):
+        sql = "UPDATE document SET d_name = %s, d_author = %s, d_release_date = %s, d_url = %s WHERE d_id = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql, (d_name, d_author, d_release_date, d_url, d_id))
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+            else:
+                self.conn.commit()
+
+    def get_document_num(self, d_id=0, d_name='', d_author='', d_release_date='', d_url=''):
+        if d_id == 0:
+            sql = "SELECT COUNT(*) FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
+            sql = sql % (
+            "'%" + d_name + "%'", "'%" + d_author + "%'", "'%" + d_release_date + "%'", "'%" + d_url + "%'")
+        else:
+            sql = "SELECT COUNT(*) FROM document WHERE d_id = %u"
+            sql = sql % (d_id)
+
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
+    def search_document(self, d_id=0, d_name='', d_author='', d_release_date='', d_url='', limit=10, offset=0):
+        if d_id == 0:
+            sql = "SELECT * FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
+            sql = sql % ("'%" + d_name + "%'", "'%" + d_author + "%'", "'%" + d_release_date + "%'", "'%" + d_url + "%'")
+        else:
+            sql = "SELECT * FROM document WHERE d_id = %u"
+            sql = sql % (d_id)
+
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -233,19 +297,6 @@ class Database:
                 document_table = self.cursor.fetchall()
                 return document_table
 
-
-    def update_document(self, d_id, d_name, d_author, d_press, d_release_date, d_platform, d_url):
-        sql = "UPDATE document SET d_name = %s, d_author = %s, d_press = %s, d_release_date = %s, d_platform = %s, d_url = %s WHERE d_id = %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (d_name, d_author, d_press, d_release_date, d_platform, d_url, d_id))
-                self.conn.commit()
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-            else:
-                self.conn.commit()
-
     # SECTION: users
 
     def add_user(self, name, password, age, dpt, grade, perm):
@@ -253,32 +304,70 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (name, password, age, dpt, grade, perm))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
             else:
                 self.conn.commit()
-
 
     def delete_user(self, u_id):
         sql = "DELETE FROM user WHERE u_id = %s"
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
             else:
                 self.conn.commit()
 
-
-    def read_user(self,limit,offset="0"):
-        sql = "SELECT * FROM user LIMIT %s OFFSET %s"
+    def update_user(self, u_id, u_name, u_password, u_age, u_dpt, u_grade, u_perm):
+        sql = "UPDATE user SET u_name = %s, u_password = %s, u_age = %s, u_dpt = %s, u_grade = %s, u_perm = %s WHERE u_id = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql, (u_name, u_password, u_age, u_dpt, u_grade, u_perm, u_id))
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+            else:
+                self.conn.commit()
+
+    def get_user_num(self, u_id=0, u_name='', u_password='', u_age='', u_dpt='', u_grade='', u_perm=''):
+        if u_id == 0:
+            sql = "SELECT COUNT(*) FROM user WHERE u_name LIKE %s AND u_password LIKE %s AND u_age LIKE %s AND u_dpt LIKE %s AND u_grade LIKE %s AND u_perm LIKE %s"
+            sql = sql % (
+                "'%" + u_name + "%'", "'%" + u_password + "%'", "'%" + u_age + "%'", "'%" + u_dpt + "%'",
+                "'%" + u_grade + "%'",
+                "'%" + u_perm + "%'")
+        else:
+            sql = "SELECT COUNT(*) FROM user WHERE u_id = %u"
+            sql = sql % (u_id)
+
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
+    def search_user(self, u_id=0, u_name='', u_password='', u_age='', u_dpt='', u_grade='', u_perm='', limit=10, offset=0):
+        if u_id == 0:
+            sql = "SELECT * FROM user WHERE u_name LIKE %s AND u_password LIKE %s AND u_age LIKE %s AND u_dpt LIKE %s AND u_grade LIKE %s AND u_perm LIKE %s"
+            sql = sql % (
+            "'%" + u_name + "%'", "'%" + u_password + "%'", "'%" + u_age + "%'", "'%" + u_dpt + "%'", "'%" + u_grade + "%'",
+            "'%" + u_perm + "%'")
+        else:
+            sql = "SELECT * FROM user WHERE u_id = %u"
+            sql = sql % (u_id)
+
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -287,18 +376,6 @@ class Database:
                 user_table = self.cursor.fetchall()
                 return user_table
 
-    def update_user(self,u_id, u_name, u_password, u_age, u_dpt, u_grade, u_perm):
-        sql = "UPDATE user SET u_name = %s, u_password = %s, u_age = %s, u_dpt = %s, u_grade = %s, u_perm = %s WHERE u_id = %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (u_name, u_password, u_age, u_dpt, u_grade, u_perm, u_id))
-                self.conn.commit()
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-            else:
-                self.conn.commit()
-
     # SECTION: buyer
 
     def add_buyer(self, u_id, b_id, buy_date):
@@ -306,28 +383,62 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id, b_id, buy_date))
-                self.conn.commit()
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-
-    def delete_buyer(self, buy_id): # 需要删除购买记录吗？
-        sql = "DELETE FROM buyer WHERE buy_id = %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (buy_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
             else:
                 self.conn.commit()
 
-    def read_buyer(self,limit,offset="0"):
-        sql = "SELECT * FROM buyer LIMIT %s OFFSET %s"
+    def delete_buyer(self, buy_id):  # 需要删除购买记录吗？
+        sql = "DELETE FROM buyer WHERE buy_id = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql, (buy_id,))
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+            else:
+                self.conn.commit()
+
+    def get_buyer_num(self):
+        sql = "SELECT COUNT(*) FROM buyer"
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
+    def search_buyer(self, buy_id=0, u_id=0, b_id=0, buy_date='',b_name='',u_name='', limit=10, offset=0):
+        buyer_sql = "SELECT * FROM buyer WHERE"
+        if buy_id != 0:
+            buyer_sql += " buy_id = %d" % buy_id
+            buyer_sql += " AND"
+        if u_id != 0:
+            buyer_sql += " u_id = %d" % u_id
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_id = %d" % u_id
+            buyer_sql += " AND"
+        else:
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_name LIKE %s" % ("'%" + u_name + "%'")
+        if b_id != 0:
+            buyer_sql += " b_id = %d" % b_id
+            book_sql = "SELECT b_id,b_name FROM book WHERE b_id = %d" % b_id
+            buyer_sql += " AND"
+        else:
+            book_sql = "SELECT b_id,b_name FROM book WHERE b_name LIKE %s" % ("'%" + b_name + "%'")
+        buyer_sql += " buy_date LIKE %s" % ("'%" + buy_date + "%'")
+
+        sql = "SELECT buyer.buy_id, buyer.buy_date, book.b_id, book.b_name, user.u_id, user.u_name" \
+              " FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id JOIN (%s) AS book ON " \
+              "buyer.b_id = book.b_id" % (buyer_sql,user_sql, book_sql)
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -336,6 +447,35 @@ class Database:
                 buyer_table = self.cursor.fetchall()
                 return buyer_table
 
+    def get_top_buyers(self):
+        buyer_sql = "SELECT u_id, SUM(buy_num) AS num FROM buyer GROUP BY u_id ORDER BY num DESC LIMIT 10"
+        user_sql = "SELECT u_id,u_name FROM user"
+        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id" % (buyer_sql, user_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
+
+    def get_top_books(self):
+        buyer_sql = "SELECT b_id, SUM(buy_num) AS num FROM buyer GROUP BY b_id ORDER BY num DESC LIMIT 10"
+        book_sql = "SELECT b_id,b_name FROM book"
+        sql = "SELECT book.b_id,book.b_name,num FROM (%s) AS buyer JOIN (%s) AS book ON buyer.b_id = book.b_id" % (buyer_sql, book_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
 
     # SECTION: upload
 
@@ -344,7 +484,6 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (u_id, d_id, upload_date))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -356,18 +495,51 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (upload_id,))
-                self.conn.commit()
             except Exception as e:
                 self.conn.rollback()
                 print(e)
             else:
                 self.conn.commit()
 
-    def read_upload(self,limit,offset="0"):
-        sql = "SELECT * FROM upload LIMIT %s OFFSET %s"
+    def get_upload_num(self):
+        sql = "SELECT COUNT(*) FROM upload"
         if self.conn:
             try:
-                self.cursor.execute(sql, (limit,offset))
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
+    def search_upload(self,upload_id=0,u_id=0, d_id=0, upload_date='',d_name='',u_name='', limit=10, offset=0):
+        upload_sql = "SELECT * FROM upload WHERE"
+        if upload_id != 0:
+            upload_sql += " upload_id = %d" % upload_id
+            upload_sql += " AND"
+        if u_id != 0:
+            upload_sql += " u_id = %d" % u_id
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_id = %d" % u_id
+
+            upload_sql += " AND"
+        else:
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_name LIKE %s" % ("'%" + u_name + "%'")
+        if d_id != 0:
+            upload_sql += " d_id = %d" % d_id
+            doc_sql = "SELECT d_id,d_name FROM document WHERE d_id = %d" % d_id
+            upload_sql += " AND"
+        else:
+            doc_sql = "SELECT d_id,d_name FROM document WHERE d_name LIKE %s" % ("'%" + d_name + "%'")
+        upload_sql += " upload_date LIKE %s" % ("'%" + upload_date + "%'")
+
+        sql = "SELECT upload.upload_id, upload.upload_date, document.d_id, document.d_name, user.u_id, user.u_name" \
+              " FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (user_sql, doc_sql)
+        sql += " LIMIT %d OFFSET %d" % (limit, offset)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -376,6 +548,20 @@ class Database:
                 upload_table = self.cursor.fetchall()
                 return upload_table
 
+    def get_top_uploaders(self):
+        upload_sql = "SELECT u_id, COUNT(*) AS num FROM upload GROUP BY u_id ORDER BY num DESC LIMIT 10"
+        user_sql = "SELECT u_id,u_name FROM user"
+        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS upload JOIN (%s) AS user ON upload.u_id = user.u_id" % (upload_sql, user_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
 
 
 if __name__ == '__main__':

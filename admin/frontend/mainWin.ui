@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1208</width>
-    <height>764</height>
+    <width>1315</width>
+    <height>780</height>
    </rect>
   </property>
   <property name="font">
@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -763,7 +763,7 @@ background-color: rgb(85, 255, 127);</string>
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="label_13">
+         <widget class="QLabel" name="bookNumLbl">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -794,6 +794,9 @@ background-color: rgb(85, 255, 127);</string>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
           </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
@@ -1045,6 +1048,672 @@ background-color: rgb(85, 255, 127);</string>
            </widget>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageBuyer">
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QWidget" name="">
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_26">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>买书查询</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <property name="spacing">
+               <number>20</number>
+              </property>
+              <item>
+               <widget class="QLineEdit" name="searchBuyerKeyEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>买书号</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchBuyerBookKeyEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>书号</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchBuyerBookNameEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>书名</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchBuyerUserKeyEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>读者号</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchBuyerUserNameEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>用户名</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchBuyerDateEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>日期</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="searchBuyerBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>查询</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="buyerNumLbl">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="text">
+               <string>查询结果：共0条数据</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="buyerTbl">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>买书号</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>书号</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>书名</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>读者号</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>用户名</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>日期</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QPushButton" name="buyerFirstBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>首页</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buyerPreBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>上一页</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="buyerPage">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="text">
+                 <string>1 / 1</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buyerNextBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>下一页</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buyerLastBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>尾页</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_46">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="text">
+                 <string>跳转至第</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="buyerJumpEdit">
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_47">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="text">
+                 <string>页</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buyerJumpBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>确定</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_9">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="">
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <widget class="QLabel" name="label_48">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>买书榜</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="bookFanTbl">
+                <property name="minimumSize">
+                 <size>
+                  <width>360</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectRows</enum>
+                </property>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>true</bool>
+                </attribute>
+                <row>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/resources.qrc">
+                   <normaloff>:/resources/common/first.png</normaloff>:/resources/common/first.png</iconset>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/resources.qrc">
+                   <normaloff>:/resources/common/second.png</normaloff>:/resources/common/second.png</iconset>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/resources.qrc">
+                   <normaloff>:/resources/common/third.png</normaloff>:/resources/common/third.png</iconset>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     4</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     5</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     6</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     7</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     8</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     9</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     10</string>
+                 </property>
+                </row>
+                <column>
+                 <property name="text">
+                  <string>读者号</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>用户名</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>买书数</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QLabel" name="label_49">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>销量榜</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="bestSellerTbl">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectRows</enum>
+                </property>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>true</bool>
+                </attribute>
+                <row>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/resources.qrc">
+                   <normaloff>:/resources/common/first.png</normaloff>:/resources/common/first.png</iconset>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/resources.qrc">
+                   <normaloff>:/resources/common/second.png</normaloff>:/resources/common/second.png</iconset>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/resources.qrc">
+                   <normaloff>:/resources/common/third.png</normaloff>:/resources/common/third.png</iconset>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     4</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     5</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     6</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     7</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     8</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     9</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>     10</string>
+                 </property>
+                </row>
+                <column>
+                 <property name="text">
+                  <string>书号</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>书名</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>卖出数</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -1350,22 +2019,6 @@ background-color: rgb(85, 255, 127);</string>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="searchPaperArchiveEdit">
-            <property name="font">
-             <font>
-              <family>微软雅黑</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
-            </property>
-            <property name="placeholderText">
-             <string>发表平台</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QPushButton" name="searchPaperBtn">
             <property name="font">
              <font>
@@ -1381,7 +2034,7 @@ background-color: rgb(85, 255, 127);</string>
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="label_14">
+         <widget class="QLabel" name="paperNumLbl">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -1413,6 +2066,9 @@ background-color: rgb(85, 255, 127);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
           </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
@@ -1437,11 +2093,6 @@ background-color: rgb(85, 255, 127);</string>
           <column>
            <property name="text">
             <string>发表日期</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>发表平台</string>
            </property>
           </column>
           <column>
@@ -1658,6 +2309,560 @@ background-color: rgb(85, 255, 127);</string>
            </widget>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageUpload">
+       <layout class="QHBoxLayout" name="horizontalLayout_15">
+        <item>
+         <widget class="QSplitter" name="splitter_2">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QWidget" name="">
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <item>
+             <widget class="QLabel" name="label_50">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>上传查询</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_13">
+              <property name="spacing">
+               <number>20</number>
+              </property>
+              <item>
+               <widget class="QLineEdit" name="searchUploadKeyEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>上传号</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchUploadPaperKeyEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>论文号</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchUploadPaperTitleEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>标题</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchUploadUserKeyEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>读者号</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchUploadUserNameEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>用户名</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="searchUploadDateEdit">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="placeholderText">
+                 <string>日期</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="searchUploadBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>查询</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="uploadNumLbl">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="text">
+               <string>查询结果：共0条数据</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="uploadTbl">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>上传号</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>论文号</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>标题</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>读者号</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>用户名</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>日期</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_14">
+              <item>
+               <widget class="QPushButton" name="uploadFirstBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>首页</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="uploadPreBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>上一页</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="uploadPage">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="text">
+                 <string>1 / 1</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="uploadNextBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>下一页</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="uploadLastBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>尾页</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_51">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="text">
+                 <string>跳转至第</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="uploadJumpEdit">
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_52">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="text">
+                 <string>页</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="uploadJumpBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>确定</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_10">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="">
+           <layout class="QVBoxLayout" name="verticalLayout_12">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_53">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>上传榜</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="contributorTbl">
+              <property name="minimumSize">
+               <size>
+                <width>360</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <row>
+               <property name="text">
+                <string>1</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources/resources.qrc">
+                 <normaloff>:/resources/common/first.png</normaloff>:/resources/common/first.png</iconset>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>2</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources/resources.qrc">
+                 <normaloff>:/resources/common/second.png</normaloff>:/resources/common/second.png</iconset>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>3</string>
+               </property>
+               <property name="icon">
+                <iconset resource="resources/resources.qrc">
+                 <normaloff>:/resources/common/third.png</normaloff>:/resources/common/third.png</iconset>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>     4</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>     5</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>     6</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>     7</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>     8</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>     9</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>     10</string>
+               </property>
+              </row>
+              <column>
+               <property name="text">
+                <string>读者号</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>用户名</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>上传数</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -1995,7 +3200,7 @@ background-color: rgb(85, 255, 127);</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="searchUserBtn_2">
+           <widget class="QPushButton" name="searchUserBtn">
             <property name="font">
              <font>
               <family>微软雅黑</family>
@@ -2010,7 +3215,7 @@ background-color: rgb(85, 255, 127);</string>
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="label_26">
+         <widget class="QLabel" name="userNumLbl">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -2041,6 +3246,12 @@ background-color: rgb(85, 255, 127);</string>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
@@ -2302,7 +3513,7 @@ background-color: rgb(85, 255, 127);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1208</width>
+     <width>1315</width>
      <height>33</height>
     </rect>
    </property>

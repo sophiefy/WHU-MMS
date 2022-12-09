@@ -8,7 +8,8 @@ import sys
 sys.path.append('frontend')
 sys.path.append('backend')
 from frontend.windows import *
-
+from backend.RUD import Database
+import threading
 
 class Client:
     def __init__(self):
@@ -17,8 +18,9 @@ class Client:
         self.uploadWin = UploadWin()
 
         self.registered = False
-
+        self.database = None
         self.init_signal_slots()
+        self.create_connection()
 
     def init_signal_slots(self):
         self.loginWin.loginBtn.clicked.connect(self.log_in)
@@ -46,13 +48,20 @@ class Client:
         login_info = self.loginWin.getLoginInfo()   # number, password
         if login_info:
             # pass or not
-
-            self.registered = True  # 是注册用户
-            self.loginWin.close_flag = False
-            self.loginWin.close()
-            self.loginWin.close_flag = True
-            self.mainWin.numEdit.setText(login_info[0])
-            self.mainWin.show()
+            user_info = self.database.user_login(*login_info)
+            if user_info:
+                self.registered = True  # 是注册用户
+                self.loginWin.close_flag = False
+                self.loginWin.close()
+                self.loginWin.close_flag = True
+                self.mainWin.numEdit.setText(login_info[0])
+                self.mainWin.nameEdit.setText(user_info[1])
+                self.mainWin.show()
+            else:
+                QMessageBox.warning(self.loginWin,
+                                    '警告',
+                                    "用户名或密码错误！",
+                                    QMessageBox.Yes)
         else:
             reply = QMessageBox.question(self.mainWin,
                                          '询问',
@@ -63,9 +72,12 @@ class Client:
                 self.loginWin.close_flag = False
                 self.loginWin.close()
                 self.loginWin.close_flag = True
+                self.mainWin.numEdit.setText('游客')
+                self.mainWin.nameEdit.setText('游客')
                 self.mainWin.show()
             else:
                 pass
+
     def log_out(self):
         reply = QMessageBox.question(self.mainWin,
                                      '询问',
@@ -81,12 +93,12 @@ class Client:
         else:
             pass
 
+    def create_connection(self):
+        self.database = Database()
+        self.database.create_connection()
+
     def update_book_table(self):
-        print('try to update')
-        # TODO: 从数据库获取表项
-        table = ()
-        print('table', table)
-        # TODO: 对数据分页
+        table = self.database.read_book(20)
         if table:
             self.mainWin.updateBookTable(table)
 
@@ -94,9 +106,12 @@ class Client:
         # name, author, press, release_date, ISBN
         # 可以为空
         keys = self.mainWin.getBookSearchKey()
-        print('search books by keys:', keys)
 
-        # TODO: 1.用线程获取数据库的表；2.将表分页显示；3.统计查询结果数量并显示
+        total_num = self.database.get_book_num()
+        table = self.database.search_book(*keys, limit=20)
+        if table:
+            self.mainWin.updateBookTable(table)
+
 
     def buy_book(self):
         if self.registered:
@@ -145,6 +160,9 @@ class Client:
     def search_paper(self):
         keys = self.mainWin.getPaperSearchKey()
         print('search papers by keys:', keys)
+        table = self.database.search_document(*keys, limit=20)
+        if table:
+            self.mainWin.updatePaperTable(table)
 
     def upload_paper(self):
         if self.registered:

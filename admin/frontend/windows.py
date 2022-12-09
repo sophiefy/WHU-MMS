@@ -29,7 +29,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         super(MainWin, self).__init__()
 
         self.setupUi(self)
-
+        self.stackedWidget.setCurrentIndex(0)
         self.initSignalSlots()
 
         self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
@@ -42,11 +42,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.actionHome.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.actionCbook.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.actionRbook.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        self.actionCpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(3))
-        self.actionRpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(4))
-        self.actionCuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(5))
-        self.actionRuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(6))
-        self.actionStats.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(7))
+        self.actionBuy.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.actionCpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+        self.actionRpaper.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.actionUpload.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(6))
+        self.actionCuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(7))
+        self.actionRuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(8))
+        self.actionStats.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(9))
 
         # home page
         self.bookBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
@@ -72,7 +74,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.userLastBtn.clicked.connect(lambda: self.lastPage('user'))
         self.userJumpBtn.clicked.connect(lambda: self.jumpPage('user'))
 
-        self.bookPage.setText('1 / 10')  # debug use
+        # self.bookPage.setText('1 / 10')  # debug use
 
     def showInfo(self, msg):
         QMessageBox.information(self, '提示', msg)
@@ -105,7 +107,25 @@ class MainWin(QMainWindow, Ui_MainWindow):
         release_date = self.searchBookDateEdit.text()
         ISBN = self.searchBookISBNEdit.text()
 
-        return id, name, author, press, release_date, ISBN
+        if not id:
+            id = 0
+        try:
+            id = int(id)
+        except:
+            self.showWarning('书号格式不正确！')
+            return None
+        else:
+            if id < 0:
+                self.showWarning('书号格式不正确！')
+                return None
+
+            return id, name, author, press, release_date, ISBN
+
+    def showBookNum(self, num):
+        if num:
+            self.bookNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.bookNumLbl.setText(f'查询结果：共0条数据')
 
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
@@ -122,7 +142,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def updateBookTable(self, table):
         assert table is not None
-        self.bookTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.bookTbl.setRowCount(0)
         self.bookTbl.clearContents()
         try:
             for i, row in enumerate(table):
@@ -138,14 +158,87 @@ class MainWin(QMainWindow, Ui_MainWindow):
         except Exception as e:
             print(e)
 
+    def getBuyerSearchKey(self):
+        id = self.searchBuyerKeyEdit.text()
+        book_id = self.searchBuyerBookKeyEdit.text()
+        book_name = self.searchBookNameEdit.text()
+        user_id = self.searchBuyerUserKeyEdit.text()
+        user_name = self.searchBuyerUserNameEdit.text()
+        date = self.searchBuyerDateEdit.text()
+
+        if not id:
+            id = 0
+        try:
+            id = int(id)
+        except:
+            self.showWarning('买书号格式不正确！')
+            return None
+        else:
+            if id < 0:
+                self.showWarning('买书号格式不正确！')
+                return None
+
+        return id, book_id, book_name, user_id, user_name, date
+
+    def showBuyerNum(self, num):
+        if num:
+            self.buyerNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.buyerNumLbl.setText(f'查询结果：共0条数据')
+
+    def updateBuyerTable(self, table):
+        assert table is not None
+        self.buyerTbl.setRowCount(0)
+        self.buyerTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # id, book_id, book_name, user_id, user_name
+                self.buyerTbl.insertRow(i)
+                self.buyerTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.buyerTbl.setItem(i, 1, QTableWidgetItem(str(row[1])))
+                self.buyerTbl.setItem(i, 2, QTableWidgetItem(row[2]))
+                self.buyerTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
+                self.buyerTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+                self.buyerTbl.setItem(i, 5, QTableWidgetItem(str(row[5])))
+        except Exception as e:
+            print(e)
+
+    def updateBookFanTable(self, table):
+        assert table is not None
+        self.bookFanTbl.setRowCount(0)
+        self.bookFanTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # user_id, user_name, buy_num
+                self.bookFanTbl.insertRow(i)
+                self.bookFanTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
+                self.bookFanTbl.setItem(row, 1, QTableWidgetItem(row[1]))
+                self.bookFanTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
+        except Exception as e:
+            print(e)
+
+    def updateBestSellerTable(self, table):
+        assert table is not None
+        self.bestSellerTbl.setRowCount(0)
+        self.bestSellerTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # book_id, book_name, sold_num
+                self.bestSellerTbl.insertRow(i)
+                self.bestSellerTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
+                self.bestSellerTbl.setItem(row, 1, QTableWidgetItem(row[1]))
+                self.bestSellerTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
+        except Exception as e:
+            print(e)
+
+
     def getNewPaperInfo(self):
         title = self.paperTitleEdit.text()  # 论文标题
         author = self.paperAuthorEdit.text()  # 论文作者
         release_date = self.paperDateEdit.text()  # 发表日期
-        archive = self.paperArchiveEdit.text()  # 发表平台
         url = self.paperURLEdit.text()  # 论文地址
-        if title and author and release_date and archive and url:
-            return title, author, release_date, archive, url
+        if title and author and release_date and url:
+            return title, author, release_date, url
         else:
             self.showWarning('论文信息不全！')
             return None
@@ -155,9 +248,25 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.searchPaperTitleEdit.text()
         author = self.searchPaperAuthorEdit.text()
         release_date = self.searchPaperDateEdit.text()
-        archive = self.searchPaperArchiveEdit.text()
 
-        return id, title, author, release_date, archive
+        if not id:
+            id = 0
+        try:
+            id = int(id)
+        except:
+            self.showWarning('论文号格式不正确！')
+            return None
+        else:
+            if id < 0:
+                self.showWarning('论文号格式不正确！')
+                return None
+
+        return id, title, author, release_date
+    def showPaperNum(self, num):
+        if num:
+            self.paperNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.paperNumLbl.setText(f'查询结果：共0条数据')
 
     def getSelectedPaperInfo(self):
         row = self.paperTbl.currentRow()
@@ -166,25 +275,82 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.paperTbl.item(row, 1).text()
         author = self.paperTbl.item(row, 2).text()
         release_date = self.paperTbl.item(row, 3).text()
-        archive = self.paperTbl.item(row, 4).text()
-        url = self.paperTbl.item(row, 5).text()
+        url = self.paperTbl.item(row, 4).text()
 
-        return id, title, author, release_date, archive, url
+        return id, title, author, release_date, url
 
     def updatePaperTable(self, table):
         assert table is not None
-        self.paperTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.paperTbl.setRowCount(0)
         self.paperTbl.clearContents()
         try:
             for i, row in enumerate(table):
-                # id, title, author, release_date, archive, url, primary_key
+                # id, title, author, release_date, url
                 self.paperTbl.insertRow(i)
                 self.paperTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
                 self.paperTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.paperTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.paperTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
                 self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
+        except Exception as e:
+            print(e)
+
+    def getUploadSearchKey(self):
+        id = self.searchUploadKeyEdit.text()
+        paper_id = self.searchUploadPaperKeyEdit.text()
+        paper_title = self.searchUploadPaperTitleEdit.text()
+        user_id = self.searchUploadUserKeyEdit.text()
+        user_name = self.searchUploadUserNameEdit.text()
+        date = self.searchUploadDateEdit.text()
+
+        if not id:
+            id = 0
+        try:
+            id = int(id)
+        except:
+            self.showWarning('上传号格式不正确！')
+            return None
+        else:
+            if id < 0:
+                self.showWarning('上传号格式不正确！')
+                return None
+
+        return id, paper_id, paper_title, user_id, user_name, date
+
+    def showUploadNum(self, num):
+        if num:
+            self.uploadNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.uploadNumLbl.setText(f'查询结果：共0条数据')
+
+    def updateUploadTable(self, table):
+        assert table is not None
+        self.uploadTbl.setRowCount(0)
+        self.uploadTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # id, paper_id, paper_title, user_id, user_name
+                self.uploadTbl.insertRow(i)
+                self.uploadTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.uploadTbl.setItem(i, 1, QTableWidgetItem(str(row[1])))
+                self.uploadTbl.setItem(i, 2, QTableWidgetItem(row[2]))
+                self.uploadTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
+                self.uploadTbl.setItem(i, 4, QTableWidgetItem(row[4]))
+                self.uploadTbl.setItem(i, 5, QTableWidgetItem(str(row[5])))
+        except Exception as e:
+            print(e)
+
+    def updateContributorTbl(self, table):
+        assert table is not None
+        self.contributorTbl.setRowCount(0)
+        self.contributorTbl.clearContents()
+        try:
+            for i, row in enumerate(table):
+                # user_id, user_name, upload_num
+                self.contributorTbl.insertRow(i)
+                self.contributorTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
+                self.contributorTbl.setItem(row, 1, QTableWidgetItem(row[1]))
+                self.contributorTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
         except Exception as e:
             print(e)
 
@@ -207,7 +373,25 @@ class MainWin(QMainWindow, Ui_MainWindow):
         dpt = self.searchUserDPTEdit.text()
         grade = self.searchUserGradeEdit.text()
 
+        if not number:
+            number = 0
+        try:
+            numberi = int(number)
+        except:
+            self.showWarning('读者号格式不正确！')
+            return None
+        else:
+            if number < 0:
+                self.showWarning('读者号格式不正确！')
+                return None
+
         return number, name, age, dpt, grade
+
+    def showUserNum(self, num):
+        if num:
+            self.userNumLbl.setText(f'查询结果：共{num}条数据')
+        else:
+            self.userNumLbl.setText(f'查询结果：共0条数据')
 
     def getSelectedUserInfo(self):
         row = self.userTbl.currentRow()
@@ -224,7 +408,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def updateUserTable(self, table):
         assert table is not None
-        self.userTbl.setRowCount(0)  # TODO: 全部刷新太费资源，考虑按照一定顺序插入
+        self.userTbl.setRowCount(0)
         self.userTbl.clearContents()
         try:
             for i, row in enumerate(table):
@@ -264,6 +448,10 @@ class MainWin(QMainWindow, Ui_MainWindow):
             text = self.paperPage.text()
         elif type == 'user':
             text = self.userPage.text()
+        elif type == 'buyer':
+            text = self.buyerPage.text()
+        elif type == 'upload':
+            text = self.uploadPage.text()
         else:
             QMessageBox.critical(self, '错误', '未知数据类型！')
             return
@@ -278,12 +466,31 @@ class MainWin(QMainWindow, Ui_MainWindow):
             text = self.paperPage.text()
         elif type == 'user':
             text = self.userPage.text()
+        elif type == 'buyer':
+            text = self.buyerPage.text()
+        elif type == 'upload':
+            text = self.uploadPage.text()
         else:
             QMessageBox.critical(self, '错误', '未知数据类型！')
             return
 
         total_page = int(text.split('/')[1].strip(' '))
         return total_page
+
+    def setTotalPage(self, type, total_page):
+        if type == 'book':
+            self.bookPage.setText('1 / {}'.format(total_page))
+        elif type == 'paper':
+            self.paperPage.setText('1 / {}'.format(total_page))
+        elif type == 'user':
+            self.userPage.setText('1 / {}'.format(total_page))
+        elif type == 'buyer':
+            self.buyerPage.setText('1 / {}'.format(total_page))
+        elif type == 'upload':
+            self.uploadPage.setText('1 / {}'.format(total_page))
+        else:
+            QMessageBox.critical(self, '错误', '未知数据类型！')
+            return
 
     def targetPage(self, type):
         if type == 'book':
@@ -292,6 +499,10 @@ class MainWin(QMainWindow, Ui_MainWindow):
             text = self.paperJumpEdit.text()
         elif type == 'user':
             text = self.userJumpEdit.text()
+        elif type == 'buyer':
+            text = self.buyerJumpEdit.text()
+        elif type == 'upload':
+            text = self.uploadJumpEdit.text()
         else:
             QMessageBox.critical(self, '错误', '未知数据类型！')
             return
@@ -374,14 +585,13 @@ class EditPaperWin(QDialog, Ui_FormEditPaper):
         QMessageBox.critical(self, '错误', msg)
 
     def putOldPaperInfo(self, row):
-        id, title, author, release_date, archive, url = \
-            row[0], row[1], row[2], row[3], row[4], row[5]
+        id, title, author, release_date, url = \
+            row[0], row[1], row[2], row[3], row[4]
 
         self.paperKeyEdit.setText(id)
         self.paperTitleEdit.setText(title)
         self.paperAuthorEdit.setText(author)
         self.paperDateEdit.setText(release_date)
-        self.paperArchiveEdit.setText(archive)
         self.paperURLEdit.setText(url)
 
     def getNewPaperInfo(self):
@@ -389,11 +599,10 @@ class EditPaperWin(QDialog, Ui_FormEditPaper):
         title = self.paperTitleEdit.text()
         author = self.paperAuthorEdit.text()
         release_date = self.paperDateEdit.text()
-        archive = self.paperArchiveEdit.text()
         url = self.paperURLEdit.text()
 
-        if id and title and author and release_date and archive and url:
-            return id, title, author, release_date, archive, url
+        if id and title and author and release_date and url:
+            return id, title, author, release_date, url
         else:
             self.showWarning('论文信息不全！')
             return None

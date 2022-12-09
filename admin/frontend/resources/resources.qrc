@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="resources">
+    <file>common/first.png</file>
+    <file>common/second.png</file>
+    <file>common/third.png</file>
     <file>common/stats.png</file>
     <file>common/library.png</file>
     <file>common/books.png</file>
