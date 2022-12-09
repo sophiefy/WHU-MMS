@@ -97,7 +97,7 @@ class Database:
                  d_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
                  d_name  CHAR(100),
                  d_author CHAR(20),
-                 d_release_date DATE,
+                 d_release_date CHAR(20),
                  d_url CHAR(100)
                   )'''
         try:
@@ -115,6 +115,7 @@ class Database:
                  b_id  INT NOT NULL,
                  u_id  INT NOT NULL,
                  buy_date DATE,
+                 buy_num INT DEFAULT 1,
                  CONSTRAINT FOREIGN KEY (b_id) REFERENCES book(b_id) ON DELETE NO ACTION ON UPDATE CASCADE,
                  CONSTRAINT FOREIGN KEY (u_id) REFERENCES user(u_id) ON DELETE NO ACTION ON UPDATE CASCADE
                   )'''
@@ -167,19 +168,6 @@ class Database:
                 print(e)
             else:
                 self.conn.commit()
-
-    def read_book(self, limit, offset=0):
-        sql = "SELECT * FROM book LIMIT %d OFFSET %d" % (limit, offset)
-        if self.conn:
-            try:
-                self.cursor.execute(sql)
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-                return None
-            else:
-                book_table = self.cursor.fetchall()
-                return book_table
 
     def update_book(self, b_id, b_name, b_author, b_press, b_release_date, b_ISBN, b_num):
         sql = "UPDATE book SET b_name = %s, b_author = %s, b_press = %s, b_release_date = %s, b_ISBN = %s, b_num = %s WHERE b_id = %s"
@@ -258,19 +246,6 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_document(self, limit, offset=0):
-        sql = "SELECT * FROM document LIMIT %s OFFSET %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (limit, offset))
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-                return None
-            else:
-                document_table = self.cursor.fetchall()
-                return document_table
-
     def update_document(self, d_id, d_name, d_author, d_release_date, d_url):
         sql = "UPDATE document SET d_name = %s, d_author = %s, d_release_date = %s, d_url = %s WHERE d_id = %s"
         if self.conn:
@@ -345,19 +320,6 @@ class Database:
                 print(e)
             else:
                 self.conn.commit()
-
-    def read_user(self, limit, offset=0):
-        sql = "SELECT * FROM user LIMIT %s OFFSET %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (limit, offset))
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-                return None
-            else:
-                user_table = self.cursor.fetchall()
-                return user_table
 
     def update_user(self, u_id, u_name, u_password, u_age, u_dpt, u_grade, u_perm):
         sql = "UPDATE user SET u_name = %s, u_password = %s, u_age = %s, u_dpt = %s, u_grade = %s, u_perm = %s WHERE u_id = %s"
@@ -438,19 +400,6 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_buyer(self, limit, offset=0):
-        sql = "SELECT * FROM buyer LIMIT %s OFFSET %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (limit, offset))
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-                return None
-            else:
-                buyer_table = self.cursor.fetchall()
-                return buyer_table
-
     def get_buyer_num(self):
         sql = "SELECT COUNT(*) FROM buyer"
         if self.conn:
@@ -464,12 +413,14 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
-    def search_buyer(self, u_id=0, b_id=0, buy_date='',b_name='',u_name='', limit=10, offset=0):
+    def search_buyer(self, buy_id=0, u_id=0, b_id=0, buy_date='',b_name='',u_name='', limit=10, offset=0):
         buyer_sql = "SELECT * FROM buyer WHERE"
+        if buy_id != 0:
+            buyer_sql += " buy_id = %d" % buy_id
+            buyer_sql += " AND"
         if u_id != 0:
             buyer_sql += " u_id = %d" % u_id
             user_sql = "SELECT u_id,u_name FROM user WHERE u_id = %d" % u_id
-
             buyer_sql += " AND"
         else:
             user_sql = "SELECT u_id,u_name FROM user WHERE u_name LIKE %s" % ("'%" + u_name + "%'")
@@ -481,7 +432,9 @@ class Database:
             book_sql = "SELECT b_id,b_name FROM book WHERE b_name LIKE %s" % ("'%" + b_name + "%'")
         buyer_sql += " buy_date LIKE %s" % ("'%" + buy_date + "%'")
 
-        sql = "SELECT * FROM buyer JOIN (%s) AS user ON buyer.u_id = user.u_id JOIN (%s) AS book ON buyer.b_id = book.b_id" % (user_sql, book_sql)
+        sql = "SELECT buyer.buy_id, buyer.buy_date, book.b_id, book.b_name, user.u_id, user.u_name" \
+              " FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id JOIN (%s) AS book ON " \
+              "buyer.b_id = book.b_id" % (buyer_sql,user_sql, book_sql)
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:
@@ -493,6 +446,36 @@ class Database:
             else:
                 buyer_table = self.cursor.fetchall()
                 return buyer_table
+
+    def get_top_buyers(self):
+        buyer_sql = "SELECT u_id, SUM(buy_num) AS num FROM buyer GROUP BY u_id ORDER BY num DESC LIMIT 10"
+        user_sql = "SELECT u_id,u_name FROM user"
+        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id" % (buyer_sql, user_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
+
+    def get_top_books(self):
+        buyer_sql = "SELECT b_id, SUM(buy_num) AS num FROM buyer GROUP BY b_id ORDER BY num DESC LIMIT 10"
+        book_sql = "SELECT b_id,b_name FROM book"
+        sql = "SELECT book.b_id,book.b_name,num FROM (%s) AS buyer JOIN (%s) AS book ON buyer.b_id = book.b_id" % (buyer_sql, book_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
 
     # SECTION: upload
 
@@ -518,19 +501,6 @@ class Database:
             else:
                 self.conn.commit()
 
-    def read_upload(self, limit, offset=0):
-        sql = "SELECT * FROM upload LIMIT %s OFFSET %s"
-        if self.conn:
-            try:
-                self.cursor.execute(sql, (limit, offset))
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-                return None
-            else:
-                upload_table = self.cursor.fetchall()
-                return upload_table
-
     def get_upload_num(self):
         sql = "SELECT COUNT(*) FROM upload"
         if self.conn:
@@ -544,8 +514,11 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
-    def search_upload(self, u_id=0, d_id=0, upload_date='',d_name='',u_name='', limit=10, offset=0):
+    def search_upload(self,upload_id=0,u_id=0, d_id=0, upload_date='',d_name='',u_name='', limit=10, offset=0):
         upload_sql = "SELECT * FROM upload WHERE"
+        if upload_id != 0:
+            upload_sql += " upload_id = %d" % upload_id
+            upload_sql += " AND"
         if u_id != 0:
             upload_sql += " u_id = %d" % u_id
             user_sql = "SELECT u_id,u_name FROM user WHERE u_id = %d" % u_id
@@ -561,7 +534,8 @@ class Database:
             doc_sql = "SELECT d_id,d_name FROM document WHERE d_name LIKE %s" % ("'%" + d_name + "%'")
         upload_sql += " upload_date LIKE %s" % ("'%" + upload_date + "%'")
 
-        sql = "SELECT * FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (user_sql, doc_sql)
+        sql = "SELECT upload.upload_id, upload.upload_date, document.d_id, document.d_name, user.u_id, user.u_name" \
+              " FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (user_sql, doc_sql)
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:
@@ -573,6 +547,21 @@ class Database:
             else:
                 upload_table = self.cursor.fetchall()
                 return upload_table
+
+    def get_top_uploaders(self):
+        upload_sql = "SELECT u_id, COUNT(*) AS num FROM upload GROUP BY u_id ORDER BY num DESC LIMIT 10"
+        user_sql = "SELECT u_id,u_name FROM user"
+        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS upload JOIN (%s) AS user ON upload.u_id = user.u_id" % (upload_sql, user_sql)
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                top_table = self.cursor.fetchall()
+                return top_table
 
 
 if __name__ == '__main__':
