@@ -237,10 +237,12 @@ class Database:
                 self.cursor.execute(sql, (id, password))
             except Exception as e:
                 self.conn.rollback()
+                print(4)
                 print(e)
                 return None
             else:
                 user = self.cursor.fetchone()
+                print(5)
                 print(user)
                 return user
 
