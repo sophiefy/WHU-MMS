@@ -103,6 +103,7 @@ class Database:
             print(e)
             self.conn.rollback()
         else:
+            print("trigger buyerBookTrigger created")
             self.conn.commit()
 
     def create_book_table(self):
