@@ -15,51 +15,18 @@ class Database:
     def create_connection(self):
         try:
             # 打开数据库连接
-            # self.conn = pymysql.connect(user="DB_USER08",
-            #                             password="DB_USER08@123",
-            #                             host="124.70.7.2",
-            #                             port=3306,
-            #                             database="user08db",
-            #                             charset='utf8')
-            self.conn = pymysql.connect(user="root",
-                                        password="admin",
-                                        host="127.0.0.1",
+            self.conn = pymysql.connect(user="DB_USER08",
+                                        password="DB_USER08@123",
+                                        host="124.70.7.2",
                                         port=3306,
-                                        database="book",
-                                        charset='utf8')        
+                                        database="user08db",
+                                        charset='utf8')
             self.cursor = self.conn.cursor()
         except Exception as e:
             print(e)
             return False
         self.check_table()
         return True
-    
-    def trigger(self):
-        sql= '''
-                drop  trigger buyerBookTrigger
-            '''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit() 
-        sql = '''
-                create trigger buyerBookTrigger after insert on buyer 
-                for each row
-                begin
-                    update book set b_sold=b_sold+1 where b_id=new.b_id;
-                end 
-                '''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit()
-
 
     def check_table(self):
         # 检测表是否存在
@@ -103,6 +70,38 @@ class Database:
             print(e)
             self.conn.rollback()
         else:
+            self.conn.commit()
+
+    def book_buyer_trigger(self):
+        sql= '''
+                drop trigger buyerBookTrigger
+            '''
+        try:
+            self.cursor.execute(sql)
+        except Exception as e:
+            print(e)
+            self.conn.rollback()
+        else:
+            self.conn.commit()
+        sql = '''
+                create trigger buyerBookTrigger 
+                BEFORE insert on buyer 
+                for each row
+                begin
+                    if new.buy_num > 0 AND new.buy_num <= (select b_num from book where b_id = new.b_id) then
+                        update book set b_num = b_num - new.buy_num, b_sold = b_sold + new.buy_num where b_id = new.b_id;
+                    else
+                        signal sqlstate '45000' set message_text = '购买数量不合法';
+                    end if;
+                end
+                '''
+        try:
+            self.cursor.execute(sql)
+        except Exception as e:
+            print(e)
+            self.conn.rollback()
+        else:
+            print("trigger buyerBookTrigger created")
             self.conn.commit()
 
     def create_book_table(self):
@@ -160,6 +159,7 @@ class Database:
             self.conn.rollback()
         else:
             self.conn.commit()
+            self.book_buyer_trigger()
 
     def create_upload_table(self):
         # 创建上传表
@@ -497,9 +497,7 @@ class Database:
                 return top_table
 
     def get_top_books(self):
-        buyer_sql = "SELECT b_id, SUM(buy_num) AS num FROM buyer GROUP BY b_id ORDER BY num DESC LIMIT 10"
-        book_sql = "SELECT b_id,b_name FROM book"
-        sql = "SELECT book.b_id,book.b_name,num FROM (%s) AS buyer JOIN (%s) AS book ON buyer.b_id = book.b_id" % (buyer_sql, book_sql)
+        sql = "SELECT b_id,b_name,b_sold FROM book ORDER BY b_sold DESC LIMIT 10"
         if self.conn:
             try:
                 self.cursor.execute(sql)
