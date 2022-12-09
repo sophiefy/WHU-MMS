@@ -7,7 +7,7 @@ class Database:
         self.conn = None
         self.cursor = None
         self.user_attr = ('u_id', 'u_name', 'u_password', 'u_age', 'u_dpt', 'u_grade', 'u_perm')
-        self.book_attr = ('b_id', 'b_name', 'b_author', 'b_press', 'b_release_date', 'b_ISBN', 'b_num')
+        self.book_attr = ('b_id', 'b_name', 'b_author', 'b_press', 'b_release_date', 'b_ISBN', 'b_num','b_sold')
         self.document_attr = ('d_id', 'd_name', 'd_author', 'd_release_date', 'd_platform', 'd_url')
         self.buyer_attr = ('buy_id', 'b_id', 'u_id', 'buy_date')
         self.upload_attr = ('upload_id', 'u_id', 'd_id', 'upload_date')
@@ -15,18 +15,51 @@ class Database:
     def create_connection(self):
         try:
             # 打开数据库连接
-            self.conn = pymysql.connect(user="DB_USER08",
-                                        password="DB_USER08@123",
-                                        host="124.70.7.2",
+            # self.conn = pymysql.connect(user="DB_USER08",
+            #                             password="DB_USER08@123",
+            #                             host="124.70.7.2",
+            #                             port=3306,
+            #                             database="user08db",
+            #                             charset='utf8')
+            self.conn = pymysql.connect(user="root",
+                                        password="admin",
+                                        host="127.0.0.1",
                                         port=3306,
-                                        database="user08db",
-                                        charset='utf8')
+                                        database="book",
+                                        charset='utf8')        
             self.cursor = self.conn.cursor()
         except Exception as e:
             print(e)
             return False
         self.check_table()
         return True
+    
+    def trigger(self):
+        sql= '''
+                drop  trigger buyerBookTrigger
+            '''
+        try:
+            self.cursor.execute(sql)
+        except Exception as e:
+            print(e)
+            self.conn.rollback()
+        else:
+            self.conn.commit() 
+        sql = '''
+                create trigger buyerBookTrigger after insert on buyer 
+                for each row
+                begin
+                    update book set b_sold=b_sold+1 where b_id=new.b_id;
+                end 
+                '''
+        try:
+            self.cursor.execute(sql)
+        except Exception as e:
+            print(e)
+            self.conn.rollback()
+        else:
+            self.conn.commit()
+
 
     def check_table(self):
         # 检测表是否存在
@@ -81,7 +114,8 @@ class Database:
                  b_press CHAR(100),
                  b_release_date DATE,
                  b_ISBN CHAR(13),
-                 b_num INT DEFAULT 0
+                 b_num INT DEFAULT 0,
+                 b_sold int DEFAULT 0
                   )'''
         try:
             self.cursor.execute(sql)
@@ -567,3 +601,4 @@ class Database:
 if __name__ == '__main__':
     database = Database()
     database.create_connection()
+    database.trigger()
