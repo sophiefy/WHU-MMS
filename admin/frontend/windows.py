@@ -482,6 +482,8 @@ class MainWin(QMainWindow, Ui_MainWindow):
             self.bookPage.setText('1 / {}'.format(total_page))
         elif type == 'paper':
             self.paperPage.setText('1 / {}'.format(total_page))
+        elif type == 'user':
+            self.userPage.setText('1 / {}'.format(total_page))
         elif type == 'buyer':
             self.buyerPage.setText('1 / {}'.format(total_page))
         elif type == 'upload':
