@@ -86,11 +86,16 @@ class Database:
         else:
             self.conn.commit()
         sql = '''
-                create trigger buyerBookTrigger after insert on buyer 
+                create trigger buyerBookTrigger 
+                BEFORE insert on buyer 
                 for each row
                 begin
-                    update book set b_sold=b_sold+new.buy_num where b_id=new.b_id;
-                end 
+                    if new.buy_num > 0 AND new.buy_num <= (select b_num from book where b_id = new.b_id) then
+                        update book set b_num = b_num - new.buy_num, b_sold = b_sold + new.buy_num where b_id = new.b_id;
+                    else
+                        signal sqlstate '45000' set message_text = '购买数量不合法';
+                    end if;
+                end
                 '''
         try:
             self.cursor.execute(sql)
