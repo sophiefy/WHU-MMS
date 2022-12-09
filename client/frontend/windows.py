@@ -296,6 +296,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
             self.close()
 
 
+
 class UploadWin(QDialog, Ui_FormUpload):
     def __init__(self):
         super(UploadWin, self).__init__()

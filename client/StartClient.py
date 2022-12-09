@@ -34,12 +34,16 @@ class Client:
         self.mainWin.paperUploadBtn.clicked.connect(self.upload_paper)
 
 
+
+
     def register(self):
         # name, password, age, dpt, grade
         reg_info = self.loginWin.getRegisterInfo()
         if reg_info:
             # TODO: 数据库检查是否可以注册
             print('register: ', reg_info)
+            self.database.add_user(reg_info[0], reg_info[1], reg_info[2], reg_info[3], reg_info[4])
+            print("注册成功")
         else:
             pass
 
@@ -55,7 +59,8 @@ class Client:
                 self.loginWin.close()
                 self.loginWin.close_flag = True
                 self.mainWin.numEdit.setText(login_info[0])
-                self.mainWin.nameEdit.setText(user_info[1])
+                self.mainWin.nameEdit.setText(login_info[1])
+                self.set_user_info()
                 self.mainWin.show()
             else:
                 QMessageBox.warning(self.loginWin,
@@ -234,6 +239,15 @@ class Client:
         else:
             QMessageBox.critical(self.mainWin, '错误', '未知数据类型！')
             return
+
+    def set_user_info(self):
+        user_name = self.mainWin.nameEdit.text()
+        user_id = self.mainWin.numEdit.text()
+        user_info = self.database.user_login(user_id, user_name)
+        self.mainWin.textBrowserUserName.setText(user_info[1])
+        self.mainWin.textBrowserAge.setText(user_info[3])
+        self.mainWin.textBrowserDepartment.setText(user_info[4])
+        self.mainWin.textBrowserGrade.setText(user_info[5])
 
 
 if __name__ == '__main__':
