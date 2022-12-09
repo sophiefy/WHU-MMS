@@ -1032,7 +1032,7 @@ class Ui_MainWindow(object):
         self.paperTbl.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.paperTbl.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.paperTbl.setObjectName("paperTbl")
-        self.paperTbl.setColumnCount(6)
+        self.paperTbl.setColumnCount(5)
         self.paperTbl.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.paperTbl.setHorizontalHeaderItem(0, item)
@@ -1044,8 +1044,6 @@ class Ui_MainWindow(object):
         self.paperTbl.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.paperTbl.setHorizontalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.paperTbl.setHorizontalHeaderItem(5, item)
         self.paperTbl.horizontalHeader().setStretchLastSection(True)
         self.verticalLayout.addWidget(self.paperTbl)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
@@ -1872,7 +1870,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuStats.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -2029,8 +2027,6 @@ class Ui_MainWindow(object):
         item = self.paperTbl.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "发表日期"))
         item = self.paperTbl.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "发表平台"))
-        item = self.paperTbl.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "URL"))
         self.paperFirstBtn.setText(_translate("MainWindow", "首页"))
         self.paperPreBtn.setText(_translate("MainWindow", "上一页"))

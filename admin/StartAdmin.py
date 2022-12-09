@@ -342,16 +342,16 @@ class Admin:
             self.update_book_table(keys=self.book_search_keys, page_num=int(cur_page))
         elif type == 'paper':
             self.mainWin.paperPage.setText('{} / {}'.format(cur_page, total_page))
-            self.update_paper_table(page_num=int(cur_page))
+            self.update_paper_table(keys=self.paper_search_keys, page_num=int(cur_page))
         elif type == 'user':
             self.mainWin.userPage.setText('{} / {}'.format(cur_page, total_page))
-            self.update_user_table(page_num=int(cur_page))
+            self.update_user_table(keys=self.user_search_keys, page_num=int(cur_page))
         elif type == 'buyer':
             self.mainWin.buyerPage.setText('{} / {}'.format(cur_page, total_page))
-            self.update_buyer_table(page_num=int(cur_page))
+            self.update_buyer_table(keys=self.buyer_search_keys, page_num=int(cur_page))
         elif type == 'upload':
             self.mainWin.uploadPage.setText('{} / {}'.format(cur_page, total_page))
-            self.update_upload_table(page_num=int(cur_page))
+            self.update_upload_table(keys=self.upload_search_keys, page_num=int(cur_page))
         else:
             QMessageBox.critical(self.mainWin, '错误', '未知数据类型！')
             return

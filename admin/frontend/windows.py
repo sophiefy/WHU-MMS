@@ -236,10 +236,9 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.paperTitleEdit.text()  # 论文标题
         author = self.paperAuthorEdit.text()  # 论文作者
         release_date = self.paperDateEdit.text()  # 发表日期
-        archive = self.paperArchiveEdit.text()  # 发表平台
         url = self.paperURLEdit.text()  # 论文地址
-        if title and author and release_date and archive and url:
-            return title, author, release_date, archive, url
+        if title and author and release_date and url:
+            return title, author, release_date, url
         else:
             self.showWarning('论文信息不全！')
             return None
@@ -249,7 +248,6 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.searchPaperTitleEdit.text()
         author = self.searchPaperAuthorEdit.text()
         release_date = self.searchPaperDateEdit.text()
-        archive = self.searchPaperArchiveEdit.text()
 
         if not id:
             id = 0
@@ -263,8 +261,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.showWarning('论文号格式不正确！')
                 return None
 
-        return id, title, author, release_date, archive
-
+        return id, title, author, release_date
     def showPaperNum(self, num):
         if num:
             self.paperNumLbl.setText(f'查询结果：共{num}条数据')
@@ -278,10 +275,9 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.paperTbl.item(row, 1).text()
         author = self.paperTbl.item(row, 2).text()
         release_date = self.paperTbl.item(row, 3).text()
-        archive = self.paperTbl.item(row, 4).text()
-        url = self.paperTbl.item(row, 5).text()
+        url = self.paperTbl.item(row, 4).text()
 
-        return id, title, author, release_date, archive, url
+        return id, title, author, release_date, url
 
     def updatePaperTable(self, table):
         assert table is not None
@@ -289,14 +285,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.paperTbl.clearContents()
         try:
             for i, row in enumerate(table):
-                # id, title, author, release_date, archive, url, primary_key
+                # id, title, author, release_date, url
                 self.paperTbl.insertRow(i)
                 self.paperTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
                 self.paperTbl.setItem(i, 1, QTableWidgetItem(row[1]))
                 self.paperTbl.setItem(i, 2, QTableWidgetItem(row[2]))
                 self.paperTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
                 self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.paperTbl.setItem(i, 5, QTableWidgetItem(row[5]))
         except Exception as e:
             print(e)
 
@@ -588,14 +583,13 @@ class EditPaperWin(QDialog, Ui_FormEditPaper):
         QMessageBox.critical(self, '错误', msg)
 
     def putOldPaperInfo(self, row):
-        id, title, author, release_date, archive, url = \
-            row[0], row[1], row[2], row[3], row[4], row[5]
+        id, title, author, release_date, url = \
+            row[0], row[1], row[2], row[3], row[4]
 
         self.paperKeyEdit.setText(id)
         self.paperTitleEdit.setText(title)
         self.paperAuthorEdit.setText(author)
         self.paperDateEdit.setText(release_date)
-        self.paperArchiveEdit.setText(archive)
         self.paperURLEdit.setText(url)
 
     def getNewPaperInfo(self):
@@ -603,11 +597,10 @@ class EditPaperWin(QDialog, Ui_FormEditPaper):
         title = self.paperTitleEdit.text()
         author = self.paperAuthorEdit.text()
         release_date = self.paperDateEdit.text()
-        archive = self.paperArchiveEdit.text()
         url = self.paperURLEdit.text()
 
-        if id and title and author and release_date and archive and url:
-            return id, title, author, release_date, archive, url
+        if id and title and author and release_date and url:
+            return id, title, author, release_date, url
         else:
             self.showWarning('论文信息不全！')
             return None
