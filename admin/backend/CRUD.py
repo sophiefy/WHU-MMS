@@ -15,50 +15,19 @@ class Database:
     def create_connection(self):
         try:
             # 打开数据库连接
-            # self.conn = pymysql.connect(user="DB_USER08",
-            #                             password="DB_USER08@123",
-            #                             host="124.70.7.2",
-            #                             port=3306,
-            #                             database="user08db",
-            #                             charset='utf8')
-            self.conn = pymysql.connect(user="root",
-                                        password="admin",
-                                        host="127.0.0.1",
+            self.conn = pymysql.connect(user="DB_USER08",
+                                        password="DB_USER08@123",
+                                        host="124.70.7.2",
                                         port=3306,
-                                        database="book",
-                                        charset='utf8')        
+                                        database="user08db",
+                                        charset='utf8')
             self.cursor = self.conn.cursor()
         except Exception as e:
             print(e)
             return False
         self.check_table()
         return True
-    
-    def trigger(self):
-        sql= '''
-                drop  trigger buyerBookTrigger
-            '''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit() 
-        sql = '''
-                create trigger buyerBookTrigger after insert on buyer 
-                for each row
-                begin
-                    update book set b_sold=b_sold+1 where b_id=new.b_id;
-                end 
-                '''
-        try:
-            self.cursor.execute(sql)
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
-        else:
-            self.conn.commit()
+
 
 
     def check_table(self):
@@ -105,6 +74,32 @@ class Database:
         else:
             self.conn.commit()
 
+    def book_trigger(self):
+        sql= '''
+                drop  trigger buyerBookTrigger
+            '''
+        try:
+            self.cursor.execute(sql)
+        except Exception as e:
+            print(e)
+            self.conn.rollback()
+        else:
+            self.conn.commit()
+        sql = '''
+                create trigger buyerBookTrigger after insert on buyer 
+                for each row
+                begin
+                    update book set b_sold=b_sold+new.buy_num where b_id=new.b_id;
+                end 
+                '''
+        try:
+            self.cursor.execute(sql)
+        except Exception as e:
+            print(e)
+            self.conn.rollback()
+        else:
+            self.conn.commit()
+
     def create_book_table(self):
         # 创建书籍表
         sql = '''CREATE TABLE book (
@@ -124,6 +119,7 @@ class Database:
             self.conn.rollback()
         else:
             self.conn.commit()
+            self.book_trigger()
 
     def create_document_table(self):
         # 创建文档表
