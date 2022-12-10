@@ -18,7 +18,6 @@ class LoginWin(QDialog, Ui_FormLogin):
         self.stackedWidget.setCurrentIndex(0)
 
         self.close_flag = True  # 区分关闭窗体和登录
-
         self.initSignalSlots()
 
     def initSignalSlots(self):
@@ -95,7 +94,8 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.paperTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-
+        self.bookTbl.setColumnHidden(0, True)
+        self.paperTbl.setColumnHidden(0, True)
 
         self.initSignalSlots()
 
