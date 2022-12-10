@@ -262,6 +262,10 @@ class Client:
             print(new_paper_info)
             if new_paper_info:
                 self.database.add_document(*new_paper_info)
+                u_id = self.old_user_info[0]
+                d_id = self.database.search_document_precise(*new_paper_info)[0]
+                upload_date = datetime.date.today()
+                self.database.add_upload(u_id, d_id, upload_date)
                 QMessageBox.information(self.mainWin, '提示', '上传成功！')
         except Exception as e:
             print(e)

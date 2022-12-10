@@ -246,6 +246,7 @@ class Database:
             sql = sql % (b_id)
 
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
+
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -255,6 +256,7 @@ class Database:
                 return None
             else:
                 book_table = self.cursor.fetchall()
+                print(book_table)
                 return book_table
 
     # SECTION: documents

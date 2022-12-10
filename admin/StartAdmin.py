@@ -232,7 +232,7 @@ class Admin:
         if self.database:
             try:
                 old_paper_info = self.mainWin.getSelectedPaperInfo()
-                id = old_paper_info[0]  # primary key
+                id = old_paper_info[0]
             except:
                 QMessageBox.warning(self.mainWin, '警告', '请先选择要删除的论文！')
             else:
@@ -242,7 +242,8 @@ class Admin:
                                              QMessageBox.Yes | QMessageBox.No,
                                              QMessageBox.No)
                 if reply == QMessageBox.Yes:
-                    self.database.delete_paper(id)
+                    self.database.delete_document(id)
+                    QMessageBox.information(self.mainWin, '提示', '删除成功！')
                     self.update_paper_table(keys=self.paper_search_keys)
                 else:
                     pass

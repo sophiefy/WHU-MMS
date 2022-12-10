@@ -185,6 +185,23 @@ class Database:
                 document_table = self.cursor.fetchall()
                 return document_table
 
+    def search_document_precise(self, d_name='', d_author='', d_release_date='', d_url=''):
+        sql = "SELECT * FROM document WHERE d_name = %s AND d_author = %s AND d_release_date = %s AND d_url = %s"
+        sql = sql % (d_name, d_author, d_release_date, d_url)
+
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                did = self.cursor.fetchone()
+                return did[0]
+
+
+
     # SECTION: users
 
     def add_user(self, name, password, age, dpt, grade, perm):
@@ -306,6 +323,7 @@ class Database:
     # SECTION: upload
 
     def add_upload(self, u_id, d_id, upload_date):
+        print(u_id, d_id, upload_date)
         sql = "INSERT INTO upload (u_id, d_id, upload_date) VALUES (%s, %s, %s)"
         if self.conn:
             try:

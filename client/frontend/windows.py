@@ -229,10 +229,9 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.paperTbl.item(row, 1).text()
         author = self.paperTbl.item(row, 2).text()
         release_date = self.paperTbl.item(row, 3).text()
-        archive = self.paperTbl.item(row, 4).text()
         url = self.paperTbl.item(row, 5).text()
 
-        return id, title, author, release_date, archive, url
+        return id, title, author, release_date, url
 
     def showPaperNum(self, num):
         if num:
