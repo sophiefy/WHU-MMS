@@ -35,6 +35,11 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.bookTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.paperTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.userTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.buyerTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.uploadTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.bookFanTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.bestSellerTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.contributorTbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
     def initSignalSlots(self):
         # NOTE: CRUD -> Create, Read, Update and Delete
@@ -48,13 +53,12 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.actionUpload.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(6))
         self.actionCuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(7))
         self.actionRuser.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(8))
-        self.actionStats.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(9))
+        self.actionAbout.triggered.connect(lambda: self.stackedWidget.setCurrentIndex(9))
 
         # home page
         self.bookBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        self.paperBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
-        self.userBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(6))
-        self.statsBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(7))
+        self.paperBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.userBtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(8))
 
         self.bookFirstBtn.clicked.connect(lambda: self.firstPage('book'))
         self.bookPreBtn.clicked.connect(lambda: self.prePage('book'))
@@ -74,7 +78,17 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.userLastBtn.clicked.connect(lambda: self.lastPage('user'))
         self.userJumpBtn.clicked.connect(lambda: self.jumpPage('user'))
 
-        # self.bookPage.setText('1 / 10')  # debug use
+        self.buyerFirstBtn.clicked.connect(lambda: self.firstPage('buyer'))
+        self.buyerPreBtn.clicked.connect(lambda: self.prePage('buyer'))
+        self.buyerNextBtn.clicked.connect(lambda: self.nextPage('buyer'))
+        self.buyerLastBtn.clicked.connect(lambda: self.lastPage('buyer'))
+        self.buyerJumpBtn.clicked.connect(lambda: self.jumpPage('buyer'))
+
+        self.uploadFirstBtn.clicked.connect(lambda: self.firstPage('upload'))
+        self.uploadPreBtn.clicked.connect(lambda: self.prePage('upload'))
+        self.uploadNextBtn.clicked.connect(lambda: self.nextPage('upload'))
+        self.uploadLastBtn.clicked.connect(lambda: self.lastPage('upload'))
+        self.uploadJumpBtn.clicked.connect(lambda: self.jumpPage('upload'))
 
     def showInfo(self, msg):
         QMessageBox.information(self, '提示', msg)
@@ -87,14 +101,22 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
     def getNewBookInfo(self):
         name = self.bookNameEdit.text()
-        author = self.bookNameEdit.text()
+        author = self.bookAuthorEdit.text()
         press = self.bookPressEdit.text()
         release_date = self.bookDateEdit.text()
         ISBN = self.bookISBNEdit.text()
         stock = self.bookStockEdit.text()
         if name and author and press and release_date and ISBN and stock:
-            # TODO: 可以加入格式检查
-            return name, author, press, release_date, ISBN, stock
+            try:
+                stock = int(stock)
+            except:
+                self.showWarning('库存格式不正确！')
+                return None
+            else:
+                if stock < 0:
+                    self.showWarning('库存格式不正确！')
+                    return None
+                return name, author, press, release_date, ISBN, stock
         else:
             self.showWarning('书本信息不完整!')
             return None
@@ -138,7 +160,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         ISBN = self.bookTbl.item(row, 5).text()
         stock = self.bookTbl.item(row, 6).text()  # 在库
 
-        return id, name, author, press, release_date, ISBN, stock
+        return id, name, author, press, release_date, ISBN, int(stock)
 
     def updateBookTable(self, table):
         assert table is not None
@@ -168,13 +190,17 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         if not id:
             id = 0
+            book_id = 0
+            user_id = 0
         try:
             id = int(id)
+            book_id = int(book_id)
+            user_id = int(user_id)
         except:
             self.showWarning('买书号格式不正确！')
             return None
         else:
-            if id < 0:
+            if id < 0 or book_id < 0 or user_id < 0:
                 self.showWarning('买书号格式不正确！')
                 return None
 
@@ -192,14 +218,14 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.buyerTbl.clearContents()
         try:
             for i, row in enumerate(table):
-                # id, book_id, book_name, user_id, user_name
+                # buy_id, buy_date, b_id, b_name, u_id, u_name
                 self.buyerTbl.insertRow(i)
                 self.buyerTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
-                self.buyerTbl.setItem(i, 1, QTableWidgetItem(str(row[1])))
-                self.buyerTbl.setItem(i, 2, QTableWidgetItem(row[2]))
-                self.buyerTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
-                self.buyerTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.buyerTbl.setItem(i, 5, QTableWidgetItem(str(row[5])))
+                self.buyerTbl.setItem(i, 5, QTableWidgetItem(str(row[1])))
+                self.buyerTbl.setItem(i, 1, QTableWidgetItem(str(row[2])))
+                self.buyerTbl.setItem(i, 2, QTableWidgetItem(row[3]))
+                self.buyerTbl.setItem(i, 3, QTableWidgetItem(str(row[4])))
+                self.buyerTbl.setItem(i, 4, QTableWidgetItem(row[5]))
         except Exception as e:
             print(e)
 
@@ -211,9 +237,9 @@ class MainWin(QMainWindow, Ui_MainWindow):
             for i, row in enumerate(table):
                 # user_id, user_name, buy_num
                 self.bookFanTbl.insertRow(i)
-                self.bookFanTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
-                self.bookFanTbl.setItem(row, 1, QTableWidgetItem(row[1]))
-                self.bookFanTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
+                self.bookFanTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.bookFanTbl.setItem(i, 1, QTableWidgetItem(row[1]))
+                self.bookFanTbl.setItem(i, 2, QTableWidgetItem(str(row[2])))
         except Exception as e:
             print(e)
 
@@ -225,12 +251,11 @@ class MainWin(QMainWindow, Ui_MainWindow):
             for i, row in enumerate(table):
                 # book_id, book_name, sold_num
                 self.bestSellerTbl.insertRow(i)
-                self.bestSellerTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
-                self.bestSellerTbl.setItem(row, 1, QTableWidgetItem(row[1]))
-                self.bestSellerTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
+                self.bestSellerTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.bestSellerTbl.setItem(i, 1, QTableWidgetItem(row[1]))
+                self.bestSellerTbl.setItem(i, 2, QTableWidgetItem(str(row[2])))
         except Exception as e:
             print(e)
-
 
     def getNewPaperInfo(self):
         title = self.paperTitleEdit.text()  # 论文标题
@@ -262,6 +287,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 return None
 
         return id, title, author, release_date
+
     def showPaperNum(self, num):
         if num:
             self.paperNumLbl.setText(f'查询结果：共{num}条数据')
@@ -305,13 +331,17 @@ class MainWin(QMainWindow, Ui_MainWindow):
 
         if not id:
             id = 0
+            paper_id = 0
+            user_id = 0
         try:
             id = int(id)
+            paper_id = int(paper_id)
+            user_id = int(user_id)
         except:
             self.showWarning('上传号格式不正确！')
             return None
         else:
-            if id < 0:
+            if id < 0 or paper_id < 0 or user_id < 0:
                 self.showWarning('上传号格式不正确！')
                 return None
 
@@ -329,14 +359,14 @@ class MainWin(QMainWindow, Ui_MainWindow):
         self.uploadTbl.clearContents()
         try:
             for i, row in enumerate(table):
-                # id, paper_id, paper_title, user_id, user_name
+                # upload_id, upload_date, d_id, d_name, u_id, u_name
                 self.uploadTbl.insertRow(i)
                 self.uploadTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
-                self.uploadTbl.setItem(i, 1, QTableWidgetItem(str(row[1])))
-                self.uploadTbl.setItem(i, 2, QTableWidgetItem(row[2]))
-                self.uploadTbl.setItem(i, 3, QTableWidgetItem(str(row[3])))
-                self.uploadTbl.setItem(i, 4, QTableWidgetItem(row[4]))
-                self.uploadTbl.setItem(i, 5, QTableWidgetItem(str(row[5])))
+                self.uploadTbl.setItem(i, 1, QTableWidgetItem(str(row[2])))
+                self.uploadTbl.setItem(i, 2, QTableWidgetItem(row[3]))
+                self.uploadTbl.setItem(i, 3, QTableWidgetItem(str(row[4])))
+                self.uploadTbl.setItem(i, 4, QTableWidgetItem(row[5]))
+                self.uploadTbl.setItem(i, 5, QTableWidgetItem(str(row[1])))
         except Exception as e:
             print(e)
 
@@ -348,9 +378,9 @@ class MainWin(QMainWindow, Ui_MainWindow):
             for i, row in enumerate(table):
                 # user_id, user_name, upload_num
                 self.contributorTbl.insertRow(i)
-                self.contributorTbl.setItem(row, 0, QTableWidgetItem(str(row[0])))
-                self.contributorTbl.setItem(row, 1, QTableWidgetItem(row[1]))
-                self.contributorTbl.setItem(row, 2, QTableWidgetItem(str(row[2])))
+                self.contributorTbl.setItem(i, 0, QTableWidgetItem(str(row[0])))
+                self.contributorTbl.setItem(i, 1, QTableWidgetItem(row[1]))
+                self.contributorTbl.setItem(i, 2, QTableWidgetItem(str(row[2])))
         except Exception as e:
             print(e)
 
@@ -362,9 +392,19 @@ class MainWin(QMainWindow, Ui_MainWindow):
         grade = self.userGradeEdit.text()
 
         if name and password and age and dpt and grade:
-            return name, password, age, dpt, grade
+            try:
+                age = int(age)
+            except:
+                self.showWarning('用户信息格式不正确！')
+                return None
+            else:
+                if age < 0:
+                    self.showWarning('用户信息格式不正确！')
+                    return None
+                return name, password, age, dpt, grade
         else:
             self.showWarning('用户信息不全！')
+            return None
 
     def getUserSearchKey(self):
         number = self.searchUserKeyEdit.text()
@@ -376,7 +416,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         if not number:
             number = 0
         try:
-            numberi = int(number)
+            number = int(number)
         except:
             self.showWarning('读者号格式不正确！')
             return None
@@ -624,7 +664,7 @@ class EditUserWin(QDialog, Ui_FormEditUser):
         QMessageBox.critical(self, '错误', msg)
 
     def putOldUserInfo(self, row):
-        number, name, password, age, dpt, grade, perm= \
+        number, name, password, age, dpt, grade, perm = \
             row[0], row[1], row[2], row[3], row[4], row[5], row[6]
         self.userNumEdit.setText(number)
         self.userNameEdit.setText(name)

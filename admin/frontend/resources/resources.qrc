@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="resources">
+    <file>common/校名校徽组合.png</file>
     <file>common/first.png</file>
     <file>common/second.png</file>
     <file>common/third.png</file>

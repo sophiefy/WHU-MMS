@@ -39,7 +39,16 @@ class LoginWin(QDialog, Ui_FormLogin):
         password = self.loginPasswordEdit.text()
 
         if number and password:
-            return number, password
+            try:
+                number = int(number)
+            except:
+                self.showWarning('登录·信息格式不正确！')
+                return None
+            else:
+                if number < 0:
+                    self.showWarning('注册信息格式不正确！')
+                    return None
+                return number, password
         else:
             return None
 
@@ -51,7 +60,16 @@ class LoginWin(QDialog, Ui_FormLogin):
         grade = self.regGradeEdit.text()
 
         if name and password and age and dpt and grade:
-            return name, password, age, dpt, grade
+            try:
+                age = int(age)
+            except:
+                self.showWarning('注册信息格式不正确！')
+                return None
+            else:
+                if age < 0:
+                    self.showWarning('注册信息格式不正确！')
+                    return None
+                return name, password, age, dpt, grade
         else:
             self.showWarning('注册信息不全！')
             return None
@@ -113,6 +131,33 @@ class MainWin(QMainWindow, Ui_MainWindow):
     def showError(self, msg):
         QMessageBox.critical(self, '错误', msg)
 
+    def givePermission(self):   # 给予注册用户权限
+        # 买书
+        # self.bookBuyBtn.setEnabled(True)
+        self.bookBuyBtn.setStyleSheet('background-color: rgb(85, 255, 255);')
+
+        # 上传论文
+        # self.paperUploadBtn.setEnabled(True)
+        self.paperUploadBtn.setStyleSheet('background-color: rgb(85, 255, 255);')
+
+        # 修改个人信息
+        self.profileEditBtn.setEnabled(True)
+        self.profileEditBtn.setStyleSheet('background-color: rgb(85, 255, 127);')
+
+    def withDrawPermission(self):   # 收回权限（当用户登出后）
+        # 买书
+        # self.bookBuyBtn.setEnabled(False)
+        self.bookBuyBtn.setStyleSheet('background-color: rgb(220, 220, 220);')
+
+        # 上传论文
+        # self.paperUploadBtn.setEnabled(False)
+        self.paperUploadBtn.setStyleSheet('background-color: rgb(220, 220, 220);')
+
+        # 修改个人信息
+        self.profileEditBtn.setEnabled(False)
+        self.profileEditBtn.setStyleSheet('background-color: rgb(220, 220, 220);')
+
+
     def getBookSearchKey(self):
         name = self.searchBookNameEdit.text()
         author = self.searchBookAuthorEdit.text()
@@ -125,7 +170,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
 
-        id = self.bookTbl.item(row, 0)  # primary key, hidden
+        id = self.bookTbl.item(row, 0).text()  # primary key, hidden
         name = self.bookTbl.item(row, 1).text()
         author = self.bookTbl.item(row, 2).text()
         press = self.bookTbl.item(row, 3).text()
@@ -133,7 +178,7 @@ class MainWin(QMainWindow, Ui_MainWindow):
         ISBN = self.bookTbl.item(row, 5).text()
         stock = self.bookTbl.item(row, 6).text()
 
-        return id, name, author, press, release_date, ISBN, stock
+        return id, name, author, press, release_date, ISBN, int(stock)
 
     def showBookNum(self, num):
         if num:
@@ -163,10 +208,9 @@ class MainWin(QMainWindow, Ui_MainWindow):
         title = self.paperTitleEdit.text()  # 论文标题
         author = self.paperAuthorEdit.text()  # 论文作者
         release_date = self.paperDateEdit.text()  # 发表日期
-        archive = self.paperArchiveEdit.text()  # 发表平台
         url = self.paperURLEdit.text()  # 论文地址
-        if title and author and release_date and archive and url:
-            return title, author, release_date, archive, url
+        if title and author and release_date and url:
+            return title, author, release_date, url
         else:
             self.showWarning('论文信息不全！')
             return None
@@ -211,6 +255,77 @@ class MainWin(QMainWindow, Ui_MainWindow):
                 self.paperTbl.setItem(i, 4, QTableWidgetItem(row[4]))
         except Exception as e:
             print(e)
+
+    # SECTION: user info
+    def putUserInfo(self, user_info):
+        self.userNumEdit.setText(str(user_info[0]))
+        self.userNameEdit.setText(user_info[1])
+        self.userPasswordEdit.setText(user_info[2])
+        self.ageEdit.setText(str(user_info[3]))
+        self.dptEdit.setText(user_info[4])
+        self.gradeEdit.setText(user_info[5])
+
+    def enableEditUserInfo(self):
+        self.userNameEdit.setReadOnly(False)
+        self.userPasswordEdit.setReadOnly(False)
+        self.ageEdit.setReadOnly(False)
+        self.dptEdit.setReadOnly(False)
+        self.gradeEdit.setReadOnly(False)
+        self.userNameEdit.setStyleSheet('background-color: rgb(255, 255, 255);')
+        self.userPasswordEdit.setStyleSheet('background-color: rgb(255, 255, 255);')
+        self.ageEdit.setStyleSheet('background-color: rgb(255, 255, 255);')
+        self.dptEdit.setStyleSheet('background-color: rgb(255, 255, 255);')
+        self.gradeEdit.setStyleSheet('background-color: rgb(255, 255, 255);')
+
+        self.profileEditBtn.setEnabled(False)
+        self.profileCommitBtn.setEnabled(True)
+        self.profileCancelBtn.setEnabled(True)
+        self.profileEditBtn.setStyleSheet('background-color: rgb(220, 220, 220);')
+        self.profileCommitBtn.setStyleSheet('background-color: rgb(85, 255, 127);')
+        self.profileCancelBtn.setStyleSheet('background-color: rgb(85, 255, 127);')
+
+    def disableEditUserInfo(self):
+        self.userNameEdit.setReadOnly(True)
+        self.userPasswordEdit.setReadOnly(True)
+        self.ageEdit.setReadOnly(True)
+        self.dptEdit.setReadOnly(True)
+        self.gradeEdit.setReadOnly(True)
+        self.userNameEdit.setStyleSheet('background-color: rgb(245, 245, 245);')
+        self.userPasswordEdit.setStyleSheet('background-color: rgb(245, 245, 245);')
+        self.ageEdit.setStyleSheet('background-color: rgb(245, 245, 245);')
+        self.dptEdit.setStyleSheet('background-color: rgb(245, 245, 245);')
+        self.gradeEdit.setStyleSheet('background-color: rgb(245, 245, 245);')
+
+        self.profileEditBtn.setEnabled(True)
+        self.profileCommitBtn.setEnabled(False)
+        self.profileCancelBtn.setEnabled(False)
+        self.profileEditBtn.setStyleSheet('background-color: rgb(85, 255, 127);')
+        self.profileCommitBtn.setStyleSheet('background-color: rgb(220, 220, 220);')
+        self.profileCancelBtn.setStyleSheet('background-color: rgb(220, 220, 220);')
+
+    def getNewUserInfo(self):
+        number = int(self.userNumEdit.text())
+        name = self.userNameEdit.text()
+        password = self.userPasswordEdit.text()
+        age = self.ageEdit.text()
+        dpt = self.dptEdit.text()
+        grade = self.gradeEdit.text()
+
+        if number and name and password and age and dpt and grade:
+            try:
+                age = int(age)
+            except:
+                self.showWarning('个人信息格式不正确！')
+                return None
+            else:
+                if age < 0:
+                    self.showWarning('个人信息格式不正确！')
+                    return None
+                return number, name, password, age, dpt, grade
+        else:
+            self.showWarning('个人信息不全！')
+            return None
+
 
     # SECTION: 翻页
     def firstPage(self, type):
@@ -304,12 +419,10 @@ class UploadWin(QDialog, Ui_FormUpload):
         title = self.paperTitleEdit.text()
         author = self.paperAuthorEdit.text()
         release_date = self.paperDateEdit.text()
-        archive = self.paperArchiveEdit.text()
         url = self.paperURLEdit.text()
 
-        if title and author and release_date and archive and url:
-            # TODO: 后端要检查是否可以插入，并返回信息给用户
-            return title, author, release_date, archive, url
+        if title and author and release_date and url:
+            return title, author, release_date, url
         else:
             self.showWarning('论文信息不全！')
             return None

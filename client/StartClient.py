@@ -11,6 +11,8 @@ from frontend.windows import *
 from backend.RUD import Database
 import threading
 import math
+import datetime
+
 
 class Client:
     def __init__(self):
@@ -19,11 +21,13 @@ class Client:
         self.uploadWin = UploadWin()
 
         self.registered = False
+        self.mainWin.withDrawPermission()
         self.database = None
         self.init_signal_slots()
 
         self.book_search_keys = self.mainWin.getBookSearchKey()
         self.paper_search_keys = self.mainWin.getPaperSearchKey()
+        self.old_user_info = None
 
         self.create_connection()
 
@@ -37,45 +41,51 @@ class Client:
         self.mainWin.searchPaperBtn.clicked.connect(self.search_paper)
         self.mainWin.bookBuyBtn.clicked.connect(self.buy_book)
         self.mainWin.paperUploadBtn.clicked.connect(self.upload_paper)
+        self.uploadWin.paperUploadBtn.clicked.connect(self.confirm_upload_paper)
 
+        self.mainWin.profileEditBtn.clicked.connect(self.edit_profile)
+        self.mainWin.profileCommitBtn.clicked.connect(self.commit_edit_profile)
+        self.mainWin.profileCancelBtn.clicked.connect(self.cancel_edit_profile)
 
-
+    def create_connection(self):
+        self.database = Database()
+        self.database.create_connection()
 
     def register(self):
         # name, password, age, dpt, grade
         reg_info = self.loginWin.getRegisterInfo()
         if reg_info:
-            # TODO: 数据库检查是否可以注册
-            print('register: ', reg_info)
-            self.database.add_user(reg_info[0], reg_info[1], reg_info[2], reg_info[3], reg_info[4], 1)
-            print("注册成功")
+            number = self.database.search_user(*reg_info)
+            if number:  # 已被注册过
+                QMessageBox.warning(self.mainWin, '警告', '该账户已被注册过！')
+                return
+            number = self.database.add_user(*reg_info, 1)
+            QMessageBox.information(self.mainWin, '提示', '注册成功！\n读者号为{}.'.format(number))
             self.loginWin.stackedWidget.setCurrentIndex(0)
+            self.loginWin.loginNumEdit.setText(str(number))
         else:
             pass
 
     def log_in(self):
-        # TODO: 发送请求至数据库
-        login_info = self.loginWin.getLoginInfo()   # number, password
+        login_info = self.loginWin.getLoginInfo()  # number, password
         if login_info:
             # pass or not
             user_info = self.database.user_login(*login_info)
             if user_info:
-                self.registered = True  # 是注册用户
+                self.registered = True
+                self.mainWin.givePermission()
                 self.loginWin.close_flag = False
                 self.loginWin.close()
                 self.loginWin.close_flag = True
-                self.mainWin.numEdit.setText(login_info[0])
+                self.mainWin.numEdit.setText(str(login_info[0]))
                 self.mainWin.nameEdit.setText(user_info[1])
-                self.mainWin.userNameEdit.setText(user_info[1])
-                self.mainWin.ageEdit.setText(str(user_info[3]))
-                self.mainWin.dptEdit.setText(user_info[4])
-                self.mainWin.gradeEdit.setText(user_info[5])
+                self.old_user_info = user_info
+                self.mainWin.putUserInfo(user_info)
                 self.mainWin.show()
             else:
                 QMessageBox.warning(self.loginWin,
                                     '警告',
-                                    "用户名或密码错误！",
-                                    QMessageBox.Yes)
+                                    "用户名或密码错误！")
         else:
             reply = QMessageBox.question(self.mainWin,
                                          '询问',
@@ -99,6 +109,8 @@ class Client:
                                      QMessageBox.Yes | QMessageBox.No,
                                      QMessageBox.No)
         if reply == QMessageBox.Yes:
+            self.registered = False
+            self.mainWin.withDrawPermission()
             self.mainWin.close_flag = False
             self.mainWin.close()
             self.mainWin.close_flag = True
@@ -107,9 +119,34 @@ class Client:
         else:
             pass
 
-    def create_connection(self):
-        self.database = Database()
-        self.database.create_connection()
+    def edit_profile(self):
+        self.mainWin.enableEditUserInfo()
+
+    def commit_edit_profile(self):
+        new_user_info = self.mainWin.getNewUserInfo()
+        if new_user_info:
+            # number, name, password, age, dpt, grade
+            search_keys = new_user_info[1:]
+            number = self.database.search_user(*search_keys)
+            if not number:  # 允许修改
+                self.database.update_user(*new_user_info)
+                QMessageBox.information(self.mainWin, '提示', '修改成功！')
+            elif number == new_user_info[0]:    # nothing to commit
+                QMessageBox.information(self.mainWin, '提示', 'Nothing to commit!')
+            else:
+                QMessageBox.warning(self.mainWin, '警告', '无法修改！')
+
+    def cancel_edit_profile(self):
+        reply = QMessageBox.question(self.mainWin,
+                                     '询问',
+                                     "确定要退出编辑吗？",
+                                     QMessageBox.Yes | QMessageBox.No,
+                                     QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.mainWin.disableEditUserInfo()
+            self.mainWin.putUserInfo(self.old_user_info)
+        else:
+            pass
 
     def update_book_table(self, keys, page_num=1):
         if self.database:
@@ -135,7 +172,6 @@ class Client:
 
         return
 
-
     def buy_book(self):
         if self.registered:
             try:
@@ -150,8 +186,15 @@ class Client:
                                              QMessageBox.Yes | QMessageBox.No,
                                              QMessageBox.No)
                 if reply == QMessageBox.Yes:
-                    print('成功购买: ', book_info)
-                    # TODO: 后端检查是否可以购买并修改数据库图书信息
+                    # 1. 添加buyer表 2. 修改book表
+                    if book_info[-1] > 0:
+                        u_id = self.old_user_info[0]
+                        b_id = book_info[0]
+                        buy_date = str(datetime.date.today())
+                        self.database.add_buyer(u_id, b_id, buy_date)
+                        QMessageBox.information(self.mainWin, '提示', '购买成功！')
+                    else:
+                        QMessageBox.information(self.mainWin, '提示', '该书已售罄！')
                 else:
                     pass
         else:
@@ -214,13 +257,16 @@ class Client:
 
     def confirm_upload_paper(self):
         try:
+            # title, author, release_date, url
             new_paper_info = self.uploadWin.getNewPaperInfo()
+            print(new_paper_info)
+            if new_paper_info:
+                self.database.add_document(*new_paper_info)
+                QMessageBox.information(self.mainWin, '提示', '上传成功！')
         except Exception as e:
             print(e)
         else:
-            # TODO: 将要上传的论文信息发送至数据库。数据库检查是否可以插入。
             self.uploadWin.close()
-
 
     # SECTION: 翻页
     def turn_page(self, signal):
@@ -261,8 +307,6 @@ class Client:
         else:
             QMessageBox.critical(self.mainWin, '错误', '未知数据类型！')
             return
-
-
 
 
 if __name__ == '__main__':

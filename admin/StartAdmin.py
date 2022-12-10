@@ -22,19 +22,31 @@ class Admin:
         self.editUserWin = EditUserWin()
         self.database = None
 
-        # initial signal slots
+        # SECTION: initial signal slots
+        # book
         self.mainWin.searchBookBtn.clicked.connect(self.search_book)
         self.mainWin.bookAddBtn.clicked.connect(self.add_book)
         self.mainWin.bookEditBtn.clicked.connect(self.edit_book)
         self.mainWin.bookDeleteBtn.clicked.connect(self.delete_book)
         self.editBookWin.bookEditBtn.clicked.connect(self.confirm_edit_book)
 
+        # buyer
+        self.mainWin.searchBuyerBtn.clicked.connect(self.search_buyer)
+        self.mainWin.freshBookFanBtn.clicked.connect(self.update_top_buyer_table)
+        self.mainWin.freshBestSellerBtn.clicked.connect(self.update_top_book_table)
+
+        # paper
         self.mainWin.searchPaperBtn.clicked.connect(self.search_paper)
         self.mainWin.paperAddBtn.clicked.connect(self.add_paper)
         self.mainWin.paperEditBtn.clicked.connect(self.edit_paper)
         self.mainWin.paperDeleteBtn.clicked.connect(self.delete_paper)
         self.editPaperWin.paperEditBtn.clicked.connect(self.confirm_edit_paper)
 
+        # upload
+        self.mainWin.searchUploadBtn.clicked.connect(self.search_upload)
+        self.mainWin.freshContributorBtn.clicked.connect(self.update_top_uploader_table)
+
+        # user
         self.mainWin.searchUserBtn.clicked.connect(self.search_user)
         self.mainWin.userAddBtn.clicked.connect(self.add_user)
         self.mainWin.userEditBtn.clicked.connect(self.edit_user)
@@ -83,11 +95,10 @@ class Admin:
         if self.database and new_book_info:
             try:
                 self.database.add_book(*new_book_info)
-                print('add book: ', new_book_info)
             except Exception as e:
                 print(e)
             else:
-                self.update_book_table()
+                self.update_book_table(keys=self.book_search_keys)
 
     def edit_book(self):
         try:
@@ -106,7 +117,7 @@ class Admin:
             except Exception as e:
                 print(e)
             else:
-                self.update_book_table()
+                self.update_book_table(keys=self.book_search_keys)
 
         self.editBookWin.close()
 
@@ -125,16 +136,33 @@ class Admin:
                                              QMessageBox.No)
                 if reply == QMessageBox.Yes:
                     self.database.delete_book(id)
-                    self.update_book_table()
+                    self.update_book_table(keys=self.book_search_keys)
                 else:
                     pass
 
     def update_buyer_table(self, keys, page_num=1):
         if self.database:
             offset = (page_num - 1) * 20
+            # buy_id, buy_date, b_id, b_name, u_id, u_name
             table = self.database.search_buyer(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updateBuyerTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
+
+    def update_top_buyer_table(self):
+        if self.database:
+            table = self.database.get_top_buyers()
+            if table:
+                self.mainWin.updateBookFanTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
+
+    def update_top_book_table(self):
+        if self.database:
+            table = self.database.get_top_books()
+            if table:
+                self.mainWin.updateBestSellerTable(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
@@ -151,6 +179,7 @@ class Admin:
     def update_paper_table(self, keys, page_num=1):
         if self.database:
             offset = (page_num - 1) * 20
+
             table = self.database.search_document(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updatePaperTable(table)
@@ -176,7 +205,7 @@ class Admin:
             except Exception as e:
                 print(e)
             else:
-                self.update_paper_table()
+                self.update_paper_table(keys=self.paper_search_keys)
 
     def edit_paper(self):
         try:
@@ -189,13 +218,13 @@ class Admin:
 
     def confirm_edit_paper(self):
         new_paper_info = self.editPaperWin.getNewPaperInfo()
-        if self.database:
+        if self.database and new_paper_info:
             try:
-                self.database.update_paper(*new_paper_info)
+                self.database.update_document(*new_paper_info)
             except Exception as e:
                 print(e)
             else:
-                self.update_paper_table()
+                self.update_paper_table(keys=self.paper_search_keys)
 
         self.editPaperWin.close()
 
@@ -214,7 +243,7 @@ class Admin:
                                              QMessageBox.No)
                 if reply == QMessageBox.Yes:
                     self.database.delete_paper(id)
-                    self.update_paper_table()
+                    self.update_paper_table(keys=self.paper_search_keys)
                 else:
                     pass
 
@@ -224,6 +253,14 @@ class Admin:
             table = self.database.search_upload(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updateUploadTable(table)
+        else:
+            QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
+
+    def update_top_uploader_table(self):
+        if self.database:
+            table = self.database.get_top_uploaders()
+            if table:
+                self.mainWin.updateContributorTbl(table)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
@@ -259,13 +296,13 @@ class Admin:
     def add_user(self):
         new_user_info = self.mainWin.getNewUserInfo()
 
-        if self.database:
+        if self.database and new_user_info:
             try:
                 self.database.add_user(new_user_info)
             except Exception as e:
                 print(e)
             else:
-                self.update_user_table()
+                self.update_user_table(keys=self.user_search_keys)
 
     def edit_user(self):
         try:
@@ -278,13 +315,13 @@ class Admin:
 
     def confirm_edit_user(self):
         new_user_info = self.editUserWin.getNewUserInfo()
-        if self.database:
+        if self.database and new_user_info:
             try:
                 self.database.update_user(*new_user_info)
             except Exception as e:
                 print(e)
             else:
-                self.update_user_table()
+                self.update_user_table(keys=self.user_search_keys)
 
         self.editUserWin.close()
 
@@ -303,7 +340,7 @@ class Admin:
                                              QMessageBox.No)
                 if reply == QMessageBox.Yes:
                     self.database.delete_user(id)
-                    self.update_user_table()
+                    self.update_user_table(keys=self.user_search_keys)
                 else:
                     pass
 

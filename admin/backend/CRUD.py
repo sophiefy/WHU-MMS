@@ -7,7 +7,7 @@ class Database:
         self.conn = None
         self.cursor = None
         self.user_attr = ('u_id', 'u_name', 'u_password', 'u_age', 'u_dpt', 'u_grade', 'u_perm')
-        self.book_attr = ('b_id', 'b_name', 'b_author', 'b_press', 'b_release_date', 'b_ISBN', 'b_num','b_sold')
+        self.book_attr = ('b_id', 'b_name', 'b_author', 'b_press', 'b_release_date', 'b_ISBN', 'b_num', 'b_sold')
         self.document_attr = ('d_id', 'd_name', 'd_author', 'd_release_date', 'd_platform', 'd_url')
         self.buyer_attr = ('buy_id', 'b_id', 'u_id', 'buy_date')
         self.upload_attr = ('upload_id', 'u_id', 'd_id', 'upload_date')
@@ -73,7 +73,7 @@ class Database:
             self.conn.commit()
 
     def book_buyer_trigger(self):
-        sql= '''
+        sql = '''
                 drop trigger buyerBookTrigger
             '''
         try:
@@ -239,8 +239,8 @@ class Database:
         if b_id == 0:
             sql = "SELECT * FROM book WHERE b_name LIKE %s AND b_author LIKE %s AND b_press LIKE %s AND b_release_date LIKE %s AND b_ISBN LIKE %s"
             sql = sql % (
-            "'%" + b_name + "%'", "'%" + b_author + "%'", "'%" + b_press + "%'", "'%" + b_release_date + "%'",
-            "'%" + b_ISBN + "%'")
+                "'%" + b_name + "%'", "'%" + b_author + "%'", "'%" + b_press + "%'", "'%" + b_release_date + "%'",
+                "'%" + b_ISBN + "%'")
         else:
             sql = "SELECT * FROM book WHERE b_id = %u"
             sql = sql % (b_id)
@@ -295,7 +295,7 @@ class Database:
         if d_id == 0:
             sql = "SELECT COUNT(*) FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
             sql = sql % (
-            "'%" + d_name + "%'", "'%" + d_author + "%'", "'%" + d_release_date + "%'", "'%" + d_url + "%'")
+                "'%" + d_name + "%'", "'%" + d_author + "%'", "'%" + d_release_date + "%'", "'%" + d_url + "%'")
         else:
             sql = "SELECT COUNT(*) FROM document WHERE d_id = %u"
             sql = sql % (d_id)
@@ -314,7 +314,8 @@ class Database:
     def search_document(self, d_id=0, d_name='', d_author='', d_release_date='', d_url='', limit=10, offset=0):
         if d_id == 0:
             sql = "SELECT * FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
-            sql = sql % ("'%" + d_name + "%'", "'%" + d_author + "%'", "'%" + d_release_date + "%'", "'%" + d_url + "%'")
+            sql = sql % (
+                "'%" + d_name + "%'", "'%" + d_author + "%'", "'%" + d_release_date + "%'", "'%" + d_url + "%'")
         else:
             sql = "SELECT * FROM document WHERE d_id = %u"
             sql = sql % (d_id)
@@ -388,12 +389,14 @@ class Database:
                 num = self.cursor.fetchone()
                 return num[0]
 
-    def search_user(self, u_id=0, u_name='', u_password='', u_age='', u_dpt='', u_grade='', u_perm='', limit=10, offset=0):
+    def search_user(self, u_id=0, u_name='', u_password='', u_age='', u_dpt='', u_grade='', u_perm='', limit=10,
+                    offset=0):
         if u_id == 0:
             sql = "SELECT * FROM user WHERE u_name LIKE %s AND u_password LIKE %s AND u_age LIKE %s AND u_dpt LIKE %s AND u_grade LIKE %s AND u_perm LIKE %s"
             sql = sql % (
-            "'%" + u_name + "%'", "'%" + u_password + "%'", "'%" + u_age + "%'", "'%" + u_dpt + "%'", "'%" + u_grade + "%'",
-            "'%" + u_perm + "%'")
+                "'%" + u_name + "%'", "'%" + u_password + "%'", "'%" + u_age + "%'", "'%" + u_dpt + "%'",
+                "'%" + u_grade + "%'",
+                "'%" + u_perm + "%'")
         else:
             sql = "SELECT * FROM user WHERE u_id = %u"
             sql = sql % (u_id)
@@ -434,20 +437,7 @@ class Database:
             else:
                 self.conn.commit()
 
-    def get_buyer_num(self):
-        sql = "SELECT COUNT(*) FROM buyer"
-        if self.conn:
-            try:
-                self.cursor.execute(sql)
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-                return None
-            else:
-                num = self.cursor.fetchone()
-                return num[0]
-
-    def search_buyer(self, buy_id=0, u_id=0, b_id=0, buy_date='',b_name='',u_name='', limit=10, offset=0):
+    def get_buyer_num(self, buy_id=0, b_id=0, b_name='', u_id=0, u_name='', buy_date=''):
         buyer_sql = "SELECT * FROM buyer WHERE"
         if buy_id != 0:
             buyer_sql += " buy_id = %d" % buy_id
@@ -464,12 +454,47 @@ class Database:
             buyer_sql += " AND"
         else:
             book_sql = "SELECT b_id,b_name FROM book WHERE b_name LIKE %s" % ("'%" + b_name + "%'")
-        buyer_sql += " buy_date LIKE %s" % ("'%" + buy_date + "%'")
+            buyer_sql += " buy_date LIKE %s" % ("'%" + buy_date + "%'")
+
+        sql = "SELECT COUNT(*)" \
+              " FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id JOIN (%s) AS book ON " \
+              "buyer.b_id = book.b_id" % (buyer_sql, user_sql, book_sql)
+
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
+    def search_buyer(self, buy_id=0, b_id=0, b_name='', u_id=0, u_name='', buy_date='', limit=10, offset=0):
+        buyer_sql = "SELECT * FROM buyer WHERE"
+        if buy_id != 0:
+            buyer_sql += " buy_id = %d" % buy_id
+            buyer_sql += " AND"
+        if u_id != 0:
+            buyer_sql += " u_id = %d" % u_id
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_id = %d" % u_id
+            buyer_sql += " AND"
+        else:
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_name LIKE %s" % ("'%" + u_name + "%'")
+        if b_id != 0:
+            buyer_sql += " b_id = %d" % b_id
+            book_sql = "SELECT b_id,b_name FROM book WHERE b_id = %d" % b_id
+            buyer_sql += " AND"
+        else:
+            book_sql = "SELECT b_id,b_name FROM book WHERE b_name LIKE %s" % ("'%" + b_name + "%'")
+            buyer_sql += " buy_date LIKE %s" % ("'%" + buy_date + "%'")
 
         sql = "SELECT buyer.buy_id, buyer.buy_date, book.b_id, book.b_name, user.u_id, user.u_name" \
               " FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id JOIN (%s) AS book ON " \
-              "buyer.b_id = book.b_id" % (buyer_sql,user_sql, book_sql)
+              "buyer.b_id = book.b_id" % (buyer_sql, user_sql, book_sql)
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
+
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -484,7 +509,8 @@ class Database:
     def get_top_buyers(self):
         buyer_sql = "SELECT u_id, SUM(buy_num) AS num FROM buyer GROUP BY u_id ORDER BY num DESC LIMIT 10"
         user_sql = "SELECT u_id,u_name FROM user"
-        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id" % (buyer_sql, user_sql)
+        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS buyer JOIN (%s) AS user ON buyer.u_id = user.u_id" % (
+            buyer_sql, user_sql)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -533,20 +559,7 @@ class Database:
             else:
                 self.conn.commit()
 
-    def get_upload_num(self):
-        sql = "SELECT COUNT(*) FROM upload"
-        if self.conn:
-            try:
-                self.cursor.execute(sql)
-            except Exception as e:
-                self.conn.rollback()
-                print(e)
-                return None
-            else:
-                num = self.cursor.fetchone()
-                return num[0]
-
-    def search_upload(self,upload_id=0,u_id=0, d_id=0, upload_date='',d_name='',u_name='', limit=10, offset=0):
+    def get_upload_num(self, upload_id=0, d_id=0, d_name='', u_id=0, u_name='', upload_date=''):
         upload_sql = "SELECT * FROM upload WHERE"
         if upload_id != 0:
             upload_sql += " upload_id = %d" % upload_id
@@ -564,10 +577,47 @@ class Database:
             upload_sql += " AND"
         else:
             doc_sql = "SELECT d_id,d_name FROM document WHERE d_name LIKE %s" % ("'%" + d_name + "%'")
-        upload_sql += " upload_date LIKE %s" % ("'%" + upload_date + "%'")
+            upload_sql += " upload_date LIKE %s" % ("'%" + upload_date + "%'")
 
-        sql = "SELECT upload.upload_id, upload.upload_date, document.d_id, document.d_name, user.u_id, user.u_name" \
-              " FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (user_sql, doc_sql)
+        sql = "SELECT COUNT(*)" \
+              " FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (
+                  user_sql, doc_sql)
+
+        if self.conn:
+            try:
+                self.cursor.execute(sql)
+            except Exception as e:
+                self.conn.rollback()
+                print(e)
+                return None
+            else:
+                num = self.cursor.fetchone()
+                return num[0]
+
+    def search_upload(self, upload_id=0, d_id=0, d_name='', u_id=0, u_name='', upload_date='', limit=10, offset=0):
+        upload_sql = "SELECT * FROM upload WHERE"
+        if upload_id != 0:
+            upload_sql += " upload_id = %d" % upload_id
+            upload_sql += " AND"
+        if u_id != 0:
+            upload_sql += " u_id = %d" % u_id
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_id = %d" % u_id
+
+            upload_sql += " AND"
+        else:
+            user_sql = "SELECT u_id,u_name FROM user WHERE u_name LIKE %s" % ("'%" + u_name + "%'")
+        if d_id != 0:
+            upload_sql += " d_id = %d" % d_id
+            doc_sql = "SELECT d_id,d_name FROM document WHERE d_id = %d" % d_id
+            upload_sql += " AND"
+        else:
+            doc_sql = "SELECT d_id,d_name FROM document WHERE d_name LIKE %s" % ("'%" + d_name + "%'")
+            upload_sql += " upload_date LIKE %s" % ("'%" + upload_date + "%'")
+
+        sql = "SELECT upload.upload_id, upload.upload_date, doc.d_id, doc.d_name, user.u_id, user.u_name" \
+              " FROM upload JOIN (%s) AS user ON upload.u_id = user.u_id JOIN (%s) AS doc ON upload.d_id = doc.d_id" % (
+                  user_sql, doc_sql)
+
         sql += " LIMIT %d OFFSET %d" % (limit, offset)
         if self.conn:
             try:
@@ -583,7 +633,8 @@ class Database:
     def get_top_uploaders(self):
         upload_sql = "SELECT u_id, COUNT(*) AS num FROM upload GROUP BY u_id ORDER BY num DESC LIMIT 10"
         user_sql = "SELECT u_id,u_name FROM user"
-        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS upload JOIN (%s) AS user ON upload.u_id = user.u_id" % (upload_sql, user_sql)
+        sql = "SELECT user.u_id,user.u_name,num FROM (%s) AS upload JOIN (%s) AS user ON upload.u_id = user.u_id" % (
+            upload_sql, user_sql)
         if self.conn:
             try:
                 self.cursor.execute(sql)
@@ -599,4 +650,4 @@ class Database:
 if __name__ == '__main__':
     database = Database()
     database.create_connection()
-    database.trigger()
+    database.book_buyer_trigger()

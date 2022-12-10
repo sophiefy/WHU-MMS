@@ -1,5 +1,6 @@
 import pymysql
 import numpy as np
+import traceback
 
 class Database:
     def __init__(self):
@@ -74,6 +75,7 @@ class Database:
         sql = "UPDATE book SET b_name = %s, b_author = %s, b_press = %s, b_release_date = %s, b_ISBN = %s, b_num = %s WHERE b_id = %s"
         if self.conn:
             try:
+                print(b_num)
                 self.cursor.execute(sql, (b_name, b_author, b_press, b_release_date, b_ISBN, b_num, b_id))
             except Exception as e:
                 self.conn.rollback()
@@ -190,18 +192,30 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (name, password, age, dpt, grade, perm))
-                sql = "SELECT u_id FROM user WHERE %s = u_name AND %s = u_password AND %s = u_age AND %s = u_dpt AND %s = u_grade AND %s = u_perm"
-                # sql = sql % (
-                #     "'%" + name + "%'", "'%" + password + "%'", "'%" + age + "%'", "'%" + dpt + "%'",
-                #     "'%" + grade + "%'", "'%" + perm + "%'")
-                self.cursor.execute(sql, (name, password, age, dpt, grade, perm))
-                uid = self.cursor.fetchall()
-                print(f"uid is {uid}")
             except Exception as e:
                 self.conn.rollback()
                 print(e)
             else:
                 self.conn.commit()
+
+            uid = self.search_user(name, password, age, dpt, grade)
+            return uid
+
+    def search_user(self, name, password, age, dpt, grade):
+        sql = "SELECT u_id FROM user WHERE u_name = %s AND u_password = %s AND u_age = %s AND u_dpt = %s AND u_grade = %s"
+        if self.conn:
+            try:
+                self.cursor.execute(sql, (name, password, age, dpt, grade))
+            except Exception as e:
+                print(e)
+                return None
+            else:
+                uid = self.cursor.fetchone()
+                if uid:
+                    return uid[0]
+                else:
+                    return None
+
 
     def read_user(self,limit,offset=0):
         sql = "SELECT * FROM user LIMIT %s OFFSET %s"
@@ -216,11 +230,11 @@ class Database:
                 user_table = self.cursor.fetchall()
                 return user_table
 
-    def update_user(self,u_id, u_name, u_password, u_age, u_dpt, u_grade, u_perm):
-        sql = "UPDATE user SET u_name = %s, u_password = %s, u_age = %s, u_dpt = %s, u_grade = %s, u_perm = %s WHERE u_id = %s"
+    def update_user(self, u_id, u_name, u_password, u_age, u_dpt, u_grade):
+        sql = "UPDATE user SET u_name = %s, u_password = %s, u_age = %s, u_dpt = %s, u_grade = %s WHERE u_id = %s"
         if self.conn:
             try:
-                self.cursor.execute(sql, (u_name, u_password, u_age, u_dpt, u_grade, u_perm, u_id))
+                self.cursor.execute(sql, (u_name, u_password, u_age, u_dpt, u_grade, u_id))
             except Exception as e:
                 self.conn.rollback()
                 print(e)
@@ -234,16 +248,11 @@ class Database:
                 self.cursor.execute(sql, (id, password))
             except Exception as e:
                 self.conn.rollback()
-                print(4)
                 print(e)
                 return None
             else:
                 user = self.cursor.fetchone()
-                print(5)
-                print(user)
                 return user
-
-    # SECTION: buyer
 
     def add_buyer(self, u_id, b_id, buy_date):
         sql = "INSERT INTO buyer (u_id, b_id, buy_date) VALUES (%s, %s, %s)"

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1315</width>
-    <height>780</height>
+    <height>770</height>
    </rect>
   </property>
   <property name="font">
@@ -44,7 +44,7 @@
        <string notr="true">background-color: rgba(245, 245, 245, 150);</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -147,8 +147,31 @@ background-color: rgba(255, 255, 255, 0);</string>
         </item>
         <item>
          <layout class="QGridLayout" name="gridLayout_5">
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_32">
+          <item row="0" column="1">
+           <widget class="QPushButton" name="paperBtn">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-image: url(:/resources/common/papers.png);
+background-color: rgba(255, 255, 255, 0);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_34">
             <property name="font">
              <font>
               <family>微软雅黑</family>
@@ -161,15 +184,15 @@ background-color: rgba(255, 255, 255, 0);</string>
              <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
             </property>
             <property name="text">
-             <string>图书管理</string>
+             <string>用户管理</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
-          <item row="2" column="3">
-           <spacer name="verticalSpacer_4">
+          <item row="2" column="2">
+           <spacer name="verticalSpacer_3">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -215,27 +238,6 @@ background-color: rgba(255, 255, 255, 0);</string>
             </property>
            </spacer>
           </item>
-          <item row="1" column="3">
-           <widget class="QLabel" name="label_36">
-            <property name="font">
-             <font>
-              <family>微软雅黑</family>
-              <pointsize>12</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-            </property>
-            <property name="text">
-             <string>统计功能</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="1">
            <spacer name="verticalSpacer_2">
             <property name="orientation">
@@ -248,86 +250,6 @@ background-color: rgba(255, 255, 255, 0);</string>
              </size>
             </property>
            </spacer>
-          </item>
-          <item row="0" column="0">
-           <widget class="QPushButton" name="bookBtn">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>150</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>150</width>
-              <height>150</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 0);
-border-image: url(:/resources/common/books.png);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="label_34">
-            <property name="font">
-             <font>
-              <family>微软雅黑</family>
-              <pointsize>12</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-            </property>
-            <property name="text">
-             <string>用户管理</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="0" column="1">
-           <widget class="QPushButton" name="paperBtn">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>150</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>150</width>
-              <height>150</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border-image: url(:/resources/common/papers.png);
-background-color: rgba(255, 255, 255, 0);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
           </item>
           <item row="0" column="2">
            <widget class="QPushButton" name="userBtn">
@@ -352,8 +274,29 @@ border-image: url(:/resources/common/users.png);</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="3">
-           <widget class="QPushButton" name="statsBtn">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_32">
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>12</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+            </property>
+            <property name="text">
+             <string>图书管理</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="bookBtn">
             <property name="minimumSize">
              <size>
               <width>150</width>
@@ -367,8 +310,8 @@ border-image: url(:/resources/common/users.png);</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">border-image: url(:/resources/common/stats.png);
-background-color: rgba(255, 255, 255, 0);</string>
+             <string notr="true">background-color: rgba(255, 255, 255, 0);
+border-image: url(:/resources/common/books.png);</string>
             </property>
             <property name="text">
              <string/>
@@ -1052,16 +995,16 @@ background-color: rgb(85, 255, 127);</string>
        </layout>
       </widget>
       <widget class="QWidget" name="pageBuyer">
-       <layout class="QHBoxLayout" name="horizontalLayout_12">
+       <layout class="QHBoxLayout" name="horizontalLayout_16">
         <item>
-         <widget class="QSplitter" name="splitter">
+         <widget class="QSplitter" name="splitter_2">
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
              <widget class="QLabel" name="label_26">
@@ -1465,26 +1408,62 @@ background-color: rgb(85, 255, 127);</string>
            </layout>
           </widget>
           <widget class="QWidget" name="">
-           <layout class="QVBoxLayout" name="verticalLayout_10">
+           <layout class="QVBoxLayout" name="verticalLayout_12">
             <property name="spacing">
-             <number>6</number>
+             <number>20</number>
             </property>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_9">
+              <property name="spacing">
+               <number>6</number>
+              </property>
               <item>
-               <widget class="QLabel" name="label_48">
-                <property name="font">
-                 <font>
-                  <family>微软雅黑</family>
-                  <pointsize>12</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>买书榜</string>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <item>
+                 <widget class="QLabel" name="label_48">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>买书榜</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_8">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="freshBookFanBtn">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                  </property>
+                  <property name="text">
+                   <string>刷新</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
                <widget class="QTableWidget" name="bookFanTbl">
@@ -1516,62 +1495,45 @@ background-color: rgb(85, 255, 127);</string>
                  <property name="text">
                   <string>1</string>
                  </property>
-                 <property name="icon">
-                  <iconset resource="resources/resources.qrc">
-                   <normaloff>:/resources/common/first.png</normaloff>:/resources/common/first.png</iconset>
-                 </property>
                 </row>
                 <row>
                  <property name="text">
                   <string>2</string>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="resources/resources.qrc">
-                   <normaloff>:/resources/common/second.png</normaloff>:/resources/common/second.png</iconset>
                  </property>
                 </row>
                 <row>
                  <property name="text">
                   <string>3</string>
                  </property>
-                 <property name="icon">
-                  <iconset resource="resources/resources.qrc">
-                   <normaloff>:/resources/common/third.png</normaloff>:/resources/common/third.png</iconset>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>4</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     4</string>
+                  <string>5</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     5</string>
+                  <string>6</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     6</string>
+                  <string>7</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     7</string>
+                  <string>8</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     8</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>     9</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>     10</string>
+                  <string>10</string>
                  </property>
                 </row>
                 <column>
@@ -1594,21 +1556,54 @@ background-color: rgb(85, 255, 127);</string>
              </layout>
             </item>
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_8">
+             <layout class="QVBoxLayout" name="verticalLayout_10">
               <item>
-               <widget class="QLabel" name="label_49">
-                <property name="font">
-                 <font>
-                  <family>微软雅黑</family>
-                  <pointsize>12</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>销量榜</string>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_9">
+                <item>
+                 <widget class="QLabel" name="label_49">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>销量榜</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_11">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="freshBestSellerBtn">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                  </property>
+                  <property name="text">
+                   <string>刷新</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
                <widget class="QTableWidget" name="bestSellerTbl">
@@ -1634,62 +1629,45 @@ background-color: rgb(85, 255, 127);</string>
                  <property name="text">
                   <string>1</string>
                  </property>
-                 <property name="icon">
-                  <iconset resource="resources/resources.qrc">
-                   <normaloff>:/resources/common/first.png</normaloff>:/resources/common/first.png</iconset>
-                 </property>
                 </row>
                 <row>
                  <property name="text">
                   <string>2</string>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="resources/resources.qrc">
-                   <normaloff>:/resources/common/second.png</normaloff>:/resources/common/second.png</iconset>
                  </property>
                 </row>
                 <row>
                  <property name="text">
                   <string>3</string>
                  </property>
-                 <property name="icon">
-                  <iconset resource="resources/resources.qrc">
-                   <normaloff>:/resources/common/third.png</normaloff>:/resources/common/third.png</iconset>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>4</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     4</string>
+                  <string>5</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     5</string>
+                  <string>6</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     6</string>
+                  <string>7</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     7</string>
+                  <string>8</string>
                  </property>
                 </row>
                 <row>
                  <property name="text">
-                  <string>     8</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>     9</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>     10</string>
+                  <string>10</string>
                  </property>
                 </row>
                 <column>
@@ -1719,6 +1697,20 @@ background-color: rgb(85, 255, 127);</string>
       </widget>
       <widget class="QWidget" name="pageAddPaper">
        <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="2" colspan="2">
+         <widget class="QLineEdit" name="paperAuthorEdit">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_8">
           <property name="font">
@@ -1740,6 +1732,27 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_15">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="text">
+           <string>URL</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
         <item row="2" column="2" colspan="2">
          <widget class="QLineEdit" name="paperDateEdit">
           <property name="font">
@@ -1754,8 +1767,42 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="2" colspan="2">
-         <widget class="QLineEdit" name="paperURLEdit">
+        <item row="4" column="3">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
+          <property name="text">
+           <string>发表日期</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QPushButton" name="paperAddBtn">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -1763,8 +1810,11 @@ background-color: rgb(85, 255, 127);</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
+           <string notr="true">background-color: rgba(255, 255, 255, 0);
+background-color: rgb(85, 255, 127);</string>
+          </property>
+          <property name="text">
+           <string>添加</string>
           </property>
          </widget>
         </item>
@@ -1789,25 +1839,8 @@ background-color: rgb(85, 255, 127);</string>
           </property>
          </widget>
         </item>
-        <item row="5" column="0">
-         <widget class="QPushButton" name="paperAddBtn">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 0);
-background-color: rgb(85, 255, 127);</string>
-          </property>
-          <property name="text">
-           <string>添加</string>
-          </property>
-         </widget>
-        </item>
         <item row="3" column="2" colspan="2">
-         <widget class="QLineEdit" name="paperArchiveEdit">
+         <widget class="QLineEdit" name="paperURLEdit">
           <property name="font">
            <font>
             <family>微软雅黑</family>
@@ -1817,96 +1850,6 @@ background-color: rgb(85, 255, 127);</string>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 150);
 </string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="label_15">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-          </property>
-          <property name="text">
-           <string>URL</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="3">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="2" colspan="2">
-         <widget class="QLineEdit" name="paperAuthorEdit">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_10">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-          </property>
-          <property name="text">
-           <string>发表日期</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_11">
-          <property name="font">
-           <font>
-            <family>微软雅黑</family>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-          </property>
-          <property name="text">
-           <string>发表平台</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -2315,14 +2258,14 @@ background-color: rgb(85, 255, 127);</string>
       <widget class="QWidget" name="pageUpload">
        <layout class="QHBoxLayout" name="horizontalLayout_15">
         <item>
-         <widget class="QSplitter" name="splitter_2">
+         <widget class="QSplitter" name="splitter">
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_11">
             <item>
              <widget class="QLabel" name="label_50">
@@ -2599,6 +2542,9 @@ background-color: rgb(85, 255, 127);</string>
                   <pointsize>10</pointsize>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
                 <property name="text">
                  <string>下一页</string>
                 </property>
@@ -2723,24 +2669,54 @@ background-color: rgb(85, 255, 127);</string>
            </layout>
           </widget>
           <widget class="QWidget" name="">
-           <layout class="QVBoxLayout" name="verticalLayout_12">
-            <property name="spacing">
-             <number>6</number>
-            </property>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
-             <widget class="QLabel" name="label_53">
-              <property name="font">
-               <font>
-                <family>微软雅黑</family>
-                <pointsize>12</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>上传榜</string>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_12">
+              <item>
+               <widget class="QLabel" name="label_53">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>上传榜</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_12">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="freshContributorBtn">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+                </property>
+                <property name="text">
+                 <string>刷新</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
              <widget class="QTableWidget" name="contributorTbl">
@@ -2772,62 +2748,45 @@ background-color: rgb(85, 255, 127);</string>
                <property name="text">
                 <string>1</string>
                </property>
-               <property name="icon">
-                <iconset resource="resources/resources.qrc">
-                 <normaloff>:/resources/common/first.png</normaloff>:/resources/common/first.png</iconset>
-               </property>
               </row>
               <row>
                <property name="text">
                 <string>2</string>
-               </property>
-               <property name="icon">
-                <iconset resource="resources/resources.qrc">
-                 <normaloff>:/resources/common/second.png</normaloff>:/resources/common/second.png</iconset>
                </property>
               </row>
               <row>
                <property name="text">
                 <string>3</string>
                </property>
-               <property name="icon">
-                <iconset resource="resources/resources.qrc">
-                 <normaloff>:/resources/common/third.png</normaloff>:/resources/common/third.png</iconset>
+              </row>
+              <row>
+               <property name="text">
+                <string>4</string>
                </property>
               </row>
               <row>
                <property name="text">
-                <string>     4</string>
+                <string>5</string>
                </property>
               </row>
               <row>
                <property name="text">
-                <string>     5</string>
+                <string>6</string>
                </property>
               </row>
               <row>
                <property name="text">
-                <string>     6</string>
+                <string>7</string>
                </property>
               </row>
               <row>
                <property name="text">
-                <string>     7</string>
+                <string>8</string>
                </property>
               </row>
               <row>
                <property name="text">
-                <string>     8</string>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string>     9</string>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string>     10</string>
+                <string>10</string>
                </property>
               </row>
               <column>
@@ -3503,7 +3462,85 @@ background-color: rgb(85, 255, 127);</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="pageStats"/>
+      <widget class="QWidget" name="pageAbout">
+       <layout class="QVBoxLayout" name="verticalLayout_13">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_17">
+          <item>
+           <spacer name="horizontalSpacer_13">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::PlainText</enum>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources/resources.qrc">:/resources/common/校名校徽组合.png</pixmap>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_14">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTextBrowser" name="textBrowser">
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;我们是来自武汉大学计算机学院的开发团队。&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;团队成员:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;胡  瑞&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;陈胤良&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;王清正&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; text-decoration: underline; color:#0000ff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;张铄琦&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -3564,18 +3601,6 @@ background-color: rgb(85, 255, 127);</string>
     <addaction name="actionCuser"/>
     <addaction name="actionRuser"/>
    </widget>
-   <widget class="QMenu" name="menuStats">
-    <property name="font">
-     <font>
-      <family>微软雅黑</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="title">
-     <string>统计</string>
-    </property>
-    <addaction name="actionStats"/>
-   </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
      <string>主页</string>
@@ -3587,7 +3612,6 @@ background-color: rgb(85, 255, 127);</string>
    <addaction name="menuBook"/>
    <addaction name="menuPaper"/>
    <addaction name="menuUser"/>
-   <addaction name="menuStats"/>
   </widget>
   <action name="actionCbook">
    <property name="text">
@@ -3744,6 +3768,7 @@ background-color: rgb(85, 255, 127);</string>
  </widget>
  <resources>
   <include location="resources/resources.qrc"/>
+  <include location="../../client/frontend/resources/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -20,41 +20,6 @@
    <string>Upload</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_7">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-     </property>
-     <property name="text">
-      <string>标题</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="paperTitleEdit">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_8">
      <property name="font">
@@ -76,6 +41,19 @@
      </property>
     </widget>
    </item>
+   <item row="4" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>849</width>
+       <height>29</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item row="1" column="1">
     <widget class="QLineEdit" name="paperAuthorEdit">
      <property name="font">
@@ -87,6 +65,41 @@
      <property name="styleSheet">
       <string notr="true">background-color: rgba(255, 255, 255, 150);
 </string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="paperTitleEdit">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+     </property>
+     <property name="text">
+      <string>标题</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
@@ -111,56 +124,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="paperDateEdit">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="0">
-    <widget class="QLabel" name="label_11">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-     </property>
-     <property name="text">
-      <string>发表平台</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="paperArchiveEdit">
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 150);
-</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
     <widget class="QLabel" name="label_13">
      <property name="font">
       <font>
@@ -181,8 +145,8 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="paperURLEdit">
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="paperDateEdit">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -195,8 +159,8 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QPushButton" name="paperEditBtn">
+   <item row="4" column="0">
+    <widget class="QPushButton" name="paperUploadBtn">
      <property name="font">
       <font>
        <family>微软雅黑</family>
@@ -212,18 +176,19 @@ background-color: rgb(85, 255, 127);</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="paperURLEdit">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+      </font>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>849</width>
-       <height>29</height>
-      </size>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 150);
+</string>
      </property>
-    </spacer>
+    </widget>
    </item>
   </layout>
  </widget>
