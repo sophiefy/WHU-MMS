@@ -47,8 +47,9 @@ class Client:
         if reg_info:
             # TODO: 数据库检查是否可以注册
             print('register: ', reg_info)
-            self.database.add_user(reg_info[0], reg_info[1], reg_info[2], reg_info[3], reg_info[4])
+            self.database.add_user(reg_info[0], reg_info[1], reg_info[2], reg_info[3], reg_info[4], 1)
             print("注册成功")
+            self.loginWin.stackedWidget.setCurrentIndex(0)
         else:
             pass
 
@@ -65,10 +66,10 @@ class Client:
                 self.loginWin.close_flag = True
                 self.mainWin.numEdit.setText(login_info[0])
                 self.mainWin.nameEdit.setText(user_info[1])
-                self.mainWin.textBrowserUserName.setText(user_info[1])
-                self.mainWin.textBrowserAge.setText(str(user_info[3]))
-                self.mainWin.textBrowserDepartment.setText(user_info[4])
-                self.mainWin.textBrowserGrade.setText(user_info[5])
+                self.mainWin.userNameEdit.setText(user_info[1])
+                self.mainWin.ageEdit.setText(str(user_info[3]))
+                self.mainWin.dptEdit.setText(user_info[4])
+                self.mainWin.gradeEdit.setText(user_info[5])
                 self.mainWin.show()
             else:
                 QMessageBox.warning(self.loginWin,

@@ -190,6 +190,13 @@ class Database:
         if self.conn:
             try:
                 self.cursor.execute(sql, (name, password, age, dpt, grade, perm))
+                sql = "SELECT u_id FROM user WHERE %s = u_name AND %s = u_password AND %s = u_age AND %s = u_dpt AND %s = u_grade AND %s = u_perm"
+                # sql = sql % (
+                #     "'%" + name + "%'", "'%" + password + "%'", "'%" + age + "%'", "'%" + dpt + "%'",
+                #     "'%" + grade + "%'", "'%" + perm + "%'")
+                self.cursor.execute(sql, (name, password, age, dpt, grade, perm))
+                uid = self.cursor.fetchall()
+                print(f"uid is {uid}")
             except Exception as e:
                 self.conn.rollback()
                 print(e)
