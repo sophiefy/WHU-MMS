@@ -236,6 +236,10 @@ class Database:
                 return num[0]
 
     def search_book(self, b_id=0, b_name='', b_author='', b_press='', b_release_date='', b_ISBN='', limit=10, offset=0):
+
+        self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")   # 毫秒级
+        start_time = self.cursor.fetchone()[0]
+
         if b_id == 0:
             sql = "SELECT * FROM book WHERE b_name LIKE %s AND b_author LIKE %s AND b_press LIKE %s AND b_release_date LIKE %s AND b_ISBN LIKE %s"
             sql = sql % (
@@ -256,8 +260,10 @@ class Database:
                 return None
             else:
                 book_table = self.cursor.fetchall()
-                print(book_table)
-                return book_table
+                self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")
+                end_time = self.cursor.fetchone()[0]
+                total_time = end_time - start_time
+                return book_table, total_time
 
     # SECTION: documents
     def add_document(self, name, author, release_date, url):

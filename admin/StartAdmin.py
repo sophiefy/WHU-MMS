@@ -68,7 +68,7 @@ class Admin:
     def update_book_table(self, keys, page_num=1):
         if self.database:
             offset = (page_num - 1) * 20
-            table = self.database.search_book(*keys, limit=20, offset=offset)  # TODO: 分页
+            table, total_time = self.database.search_book(*keys, limit=20, offset=offset)  # TODO: 分页
             if table:
                 self.mainWin.updateBookTable(table)
         else:
