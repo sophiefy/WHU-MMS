@@ -263,7 +263,8 @@ class Database:
                 self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")
                 end_time = self.cursor.fetchone()[0]
                 total_time = end_time - start_time
-                return book_table, total_time
+                print('Total execute time: ',total_time, 'ms.')
+                return book_table
 
     # SECTION: documents
     def add_document(self, name, author, release_date, url):
