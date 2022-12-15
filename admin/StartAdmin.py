@@ -68,9 +68,10 @@ class Admin:
     def update_book_table(self, keys, page_num=1):
         if self.database:
             offset = (page_num - 1) * 20
-            table = self.database.search_book(*keys, limit=20, offset=offset)  # TODO: 分页
+            table, total_time = self.database.search_book(*keys, limit=20, offset=offset)  # TODO: 分页
             if table:
                 self.mainWin.updateBookTable(table)
+                self.mainWin.showBookTime(total_time)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
@@ -144,9 +145,10 @@ class Admin:
         if self.database:
             offset = (page_num - 1) * 20
             # buy_id, buy_date, b_id, b_name, u_id, u_name
-            table = self.database.search_buyer(*keys, limit=20, offset=offset)
+            table, total_time = self.database.search_buyer(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updateBuyerTable(table)
+                self.mainWin.showBuyerTime(total_time)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
@@ -180,9 +182,10 @@ class Admin:
         if self.database:
             offset = (page_num - 1) * 20
 
-            table = self.database.search_document(*keys, limit=20, offset=offset)
+            table, total_time = self.database.search_document(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updatePaperTable(table)
+                self.mainWin.showPaperTime(total_time)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
@@ -251,9 +254,10 @@ class Admin:
     def update_upload_table(self, keys, page_num=1):
         if self.database:
             offset = (page_num - 1) * 20
-            table = self.database.search_upload(*keys, limit=20, offset=offset)
+            table, total_time = self.database.search_upload(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updateUploadTable(table)
+                self.mainWin.showUploadTime(total_time)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 
@@ -278,9 +282,10 @@ class Admin:
     def update_user_table(self, keys, page_num=1):
         if self.database:
             offset = (page_num - 1) * 20
-            table = self.database.search_user(*keys, limit=20, offset=offset)
+            table, total_time = self.database.search_user(*keys, limit=20, offset=offset)
             if table:
                 self.mainWin.updateUserTable(table)
+                self.mainWin.showUserTime(total_time)
         else:
             QMessageBox.warning(self.mainWin, '警告', '请先链接至数据库！')
 

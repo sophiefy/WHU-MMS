@@ -149,6 +149,14 @@ class MainWin(QMainWindow, Ui_MainWindow):
         else:
             self.bookNumLbl.setText(f'查询结果：共0条数据')
 
+    def showBookTime(self, time):
+        text = self.bookNumLbl.text()
+        if time:
+            self.bookNumLbl.setText(text + f'; 搜索用时：{time}毫秒')
+        else:
+            self.bookNumLbl.setText(text + f'; 搜索用时：0.000毫秒')
+
+
     def getSelectedBookInfo(self):
         row = self.bookTbl.currentRow()
 
@@ -211,6 +219,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
             self.buyerNumLbl.setText(f'查询结果：共{num}条数据')
         else:
             self.buyerNumLbl.setText(f'查询结果：共0条数据')
+
+    def showBuyerTime(self, time):
+        text = self.bookNumLbl.text()
+        if time:
+            self.buyerNumLbl.setText(text + f'; 搜索用时：{time}毫秒')
+        else:
+            self.buyerNumLbl.setText(text + f'; 搜索用时：0.000毫秒')
 
     def updateBuyerTable(self, table):
         assert table is not None
@@ -294,6 +309,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
         else:
             self.paperNumLbl.setText(f'查询结果：共0条数据')
 
+    def showPaperTime(self, time):
+        text = self.paperNumLbl.text()
+        if time:
+            self.paperNumLbl.setText(text + f'; 搜索用时：{time}毫秒')
+        else:
+            self.paperNumLbl.setText(text + f'; 搜索用时：0.000毫秒')
+
     def getSelectedPaperInfo(self):
         row = self.paperTbl.currentRow()
 
@@ -352,6 +374,14 @@ class MainWin(QMainWindow, Ui_MainWindow):
             self.uploadNumLbl.setText(f'查询结果：共{num}条数据')
         else:
             self.uploadNumLbl.setText(f'查询结果：共0条数据')
+
+    def showUploadTime(self, time):
+        text = self.uploadNumLbl.text()
+        if time:
+            self.uploadNumLbl.setText(text + f'; 搜索用时：{time}毫秒')
+        else:
+            self.uploadNumLbl.setText(text + f'; 搜索用时：0.000毫秒')
+
 
     def updateUploadTable(self, table):
         assert table is not None
@@ -432,6 +462,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
             self.userNumLbl.setText(f'查询结果：共{num}条数据')
         else:
             self.userNumLbl.setText(f'查询结果：共0条数据')
+
+    def showUserTime(self, time):
+        text = self.userNumLbl.text()
+        if time:
+            self.userNumLbl.setText(text + f'; 搜索用时：{time}毫秒')
+        else:
+            self.userNumLbl.setText(text + f'; 搜索用时：0.000毫秒')
 
     def getSelectedUserInfo(self):
         row = self.userTbl.currentRow()

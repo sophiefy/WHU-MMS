@@ -186,6 +186,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
         else:
             self.bookNumLbl.setText(f'查询结果：共0条数据')
 
+    def showBookTime(self, time):
+        text = self.bookNumLbl.text()
+        if time:
+            self.bookNumLbl.setText(text + f'; 搜索用时：{time}毫秒')
+        else:
+            self.bookNumLbl.setText(text + f'; 搜索用时：0.000毫秒')
+
     def updateBookTable(self, table):
         assert table is not None
         self.bookTbl.setRowCount(0)
@@ -238,6 +245,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
             self.paperNumLbl.setText(f'查询结果：共{num}条数据')
         else:
             self.paperNumLbl.setText(f'查询结果：共0条数据')
+
+    def showPaperTime(self, time):
+        text = self.paperNumLbl.text()
+        if time:
+            self.paperNumLbl.setText(text + f'; 搜索用时：{time}毫秒')
+        else:
+            self.paperNumLbl.setText(text + f'; 搜索用时：0.000毫秒')
 
     def updatePaperTable(self, table):
         assert table is not None
