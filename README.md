@@ -2,11 +2,8 @@
 
 ## 小组成员及大致分工情况
 
-- 胡瑞：编写前端界面、连接前端与后端、准备和处理数据
-- 陈胤良：连接及存储数据至GaussDB、编写后端增删查改模块
-- 王清正：编写及优化前端界面、处理数据
-- 张铄琦：编写后端触发器模块、准备和处理数据
+- [Francis Hu](https://github.com/Francis-Komizu)：编写前端界面、连接前端与后端、准备和处理数据
+- [Yinliang Chen](https://github.com/cylqqqcyl)：连接及存储数据至GaussDB、编写后端增删查改模块
+- [Qingzheng Wang](https://github.com/Qingzheng-Wang)：编写及优化前端界面、处理数据
+- [Fc-idris](https://github.com/Fc-idris)：编写后端触发器模块、准备和处理数据
 
-
-## 测试用例
-**书籍**
