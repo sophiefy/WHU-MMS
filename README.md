@@ -1,56 +1,12 @@
 # WHU-MMS
 
-## 简介
+## 小组成员及大致分工情况
 
-数据库大作业之资料管理系统（Materials Management System）。
-
-资料类型：
-
-- 图书
-- 论文
-
-## 功能
-
-### 管理端
-
-![image-20221122111102215](assets/image-20221122111102215.png)
+- 胡瑞：编写前端界面、连接前端与后端、准备和处理数据
+- 陈胤良：连接及存储数据至GaussDB、编写后端增删查改模块
+- 王清正：编写及优化前端界面、处理数据
+- 张铄琦：编写后端触发器模块、准备和处理数据
 
 
-
-### 客户端
-
-![image-20221122111121739](assets/image-20221122111121739.png)
-
-
-
-![image-20221122111133232](assets/image-20221122111133232.png)
-
-## 实验环境
-
-- GUASSDB for MYSQL
-
-
-
-
-
-## 前端
-
-基于pyqt5的图形化用户界面。
-
-
-
-## 后端
-
-
-
-
-
-## 参考
-
-https://www.huaweicloud.com/product/gaussdbformysql/getting-started.html
-
-https://support.huaweicloud.com/gaussdb_faq/gaussdb_faq_0087.html
-
-[我的毕业设计--图书管理系统 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/191526813)
-
-https://www.iconfont.cn/collections/detail?spm=a313x.7781069.0.da5a778a4&cid=748
+## 测试用例
+**书籍**
