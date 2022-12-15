@@ -264,7 +264,7 @@ class Database:
                 end_time = self.cursor.fetchone()[0]
                 total_time = end_time - start_time
                 print('Total execute time: ',total_time, 'ms.')
-                return book_table
+                return book_table, total_time
 
     # SECTION: documents
     def add_document(self, name, author, release_date, url):
@@ -321,6 +321,9 @@ class Database:
                 return num[0]
 
     def search_document(self, d_id=0, d_name='', d_author='', d_release_date='', d_url='', limit=10, offset=0):
+        self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")   # 毫秒级
+        start_time = self.cursor.fetchone()[0]
+
         if d_id == 0:
             sql = "SELECT * FROM document WHERE d_name LIKE %s AND d_author LIKE %s AND d_release_date LIKE %s AND d_url LIKE %s"
             sql = sql % (
@@ -339,7 +342,11 @@ class Database:
                 return None
             else:
                 document_table = self.cursor.fetchall()
-                return document_table
+                self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")
+                end_time = self.cursor.fetchone()[0]
+                total_time = end_time - start_time
+                print('Total execute time: ',total_time, 'ms.')
+                return document_table, total_time
 
     # SECTION: users
 
@@ -400,6 +407,8 @@ class Database:
 
     def search_user(self, u_id=0, u_name='', u_password='', u_age='', u_dpt='', u_grade='', u_perm='', limit=10,
                     offset=0):
+        self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")   # 毫秒级
+        start_time = self.cursor.fetchone()[0]
         if u_id == 0:
             sql = "SELECT * FROM user WHERE u_name LIKE %s AND u_password LIKE %s AND u_age LIKE %s AND u_dpt LIKE %s AND u_grade LIKE %s AND u_perm LIKE %s"
             sql = sql % (
@@ -420,7 +429,11 @@ class Database:
                 return None
             else:
                 user_table = self.cursor.fetchall()
-                return user_table
+                self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")
+                end_time = self.cursor.fetchone()[0]
+                total_time = end_time - start_time
+                print('Total execute time: ',total_time, 'ms.')
+                return user_table, total_time
 
     # SECTION: buyer
 
@@ -481,6 +494,8 @@ class Database:
                 return num[0]
 
     def search_buyer(self, buy_id=0, b_id=0, b_name='', u_id=0, u_name='', buy_date='', limit=10, offset=0):
+        self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")   # 毫秒级
+        start_time = self.cursor.fetchone()[0]
         buyer_sql = "SELECT * FROM buyer WHERE"
         if buy_id != 0:
             buyer_sql += " buy_id = %d" % buy_id
@@ -513,7 +528,11 @@ class Database:
                 return None
             else:
                 buyer_table = self.cursor.fetchall()
-                return buyer_table
+                self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")
+                end_time = self.cursor.fetchone()[0]
+                total_time = end_time - start_time
+                print('Total execute time: ',total_time, 'ms.')
+                return buyer_table, total_time
 
     def get_top_buyers(self):
         buyer_sql = "SELECT u_id, SUM(buy_num) AS num FROM buyer GROUP BY u_id ORDER BY num DESC LIMIT 10"
@@ -604,6 +623,8 @@ class Database:
                 return num[0]
 
     def search_upload(self, upload_id=0, d_id=0, d_name='', u_id=0, u_name='', upload_date='', limit=10, offset=0):
+        self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")   # 毫秒级
+        start_time = self.cursor.fetchone()[0]
         upload_sql = "SELECT * FROM upload WHERE"
         if upload_id != 0:
             upload_sql += " upload_id = %d" % upload_id
@@ -637,7 +658,11 @@ class Database:
                 return None
             else:
                 upload_table = self.cursor.fetchall()
-                return upload_table
+                self.cursor.execute("SELECT UNIX_TIMESTAMP(NOW(3))*1000")
+                end_time = self.cursor.fetchone()[0]
+                total_time = end_time - start_time
+                print("search_upload time: %d ms" % total_time)
+                return upload_table, total_time
 
     def get_top_uploaders(self):
         upload_sql = "SELECT u_id, COUNT(*) AS num FROM upload GROUP BY u_id ORDER BY num DESC LIMIT 10"
