@@ -122,12 +122,12 @@ class MainWin(QMainWindow, Ui_MainWindow):
             return None
 
     def getBookSearchKey(self):
-        id = self.searchBookKeyEdit.text()
-        name = self.searchBookNameEdit.text()
-        author = self.searchBookAuthorEdit.text()
-        press = self.searchBookPressEdit.text()
-        release_date = self.searchBookDateEdit.text()
-        ISBN = self.searchBookISBNEdit.text()
+        id = self.searchBookKeyEdit.text()  # 图书号
+        name = self.searchBookNameEdit.text()   # 书名
+        author = self.searchBookAuthorEdit.text()   # 作者
+        press = self.searchBookPressEdit.text() # 出版社
+        release_date = self.searchBookDateEdit.text()   # 出版日期
+        ISBN = self.searchBookISBNEdit.text()   # ISBN
 
         if not id:
             id = 0
